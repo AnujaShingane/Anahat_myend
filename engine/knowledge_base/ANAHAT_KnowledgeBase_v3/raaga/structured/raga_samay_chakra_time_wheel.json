@@ -1,0 +1,30 @@
+{
+  "_schema_version": "2.0",
+  "_note": "Response to gap-closure item #7. The prior pass declined to transcribe exact clock boundaries, citing readability uncertainty on rotated/small text. This pass re-rendered the source PDF at 300dpi and re-examined it directly (see raaga/reference_images/rag_samay_chakra_hires-1.png) -- at this resolution all 12 segment labels and all 12 clock-position labels (2am, 4am, 6am, 8am, 10am, 12noon, 2pm, 4pm, 6pm, 8pm, 10pm, 12midnight) are clearly legible, not ambiguous. This supersedes the ashta_prahara-only table in raga_time_of_day.json (v1.0) for exact clock boundaries -- that file remains valid for its own separate source (Raga List.xlsx's 'traditional_performance_time' field) and is NOT being overwritten, since it is a distinct, independently-sourced dataset that happens to broadly agree with this one.",
+  "source": "Rag Samay Chakra.pdf (single circular infographic page, no author/publisher stated in the file)",
+  "source_type": "traditional_musicological_diagram",
+  "transcription_method": "Direct visual reading of a 300dpi render of the source PDF by this pass. Not OCR software -- manual/visual transcription, cross-checked twice against the same image.",
+  "confidence": "high_for_segment_contents_and_boundaries; the source itself is an uncredited diagram (no cited classical text), so confidence describes transcription accuracy, not the underlying claim's musicological authority",
+  "evidence_level": "LEVEL_4 (traditional/musicological reference per the project's evidence-level scale)",
+  "review_status": "musicological_review_required",
+  "usage_constraint": "Musicological/performance-practice context ONLY. Per project instruction Section 5: 'The time wheel is musicological metadata. It must NOT be treated as a medical rule.' Time-of-day compatibility is a soft filtering factor after therapeutic suitability and safety, never a substitute for either. can_influence_chakra_score: false. can_override_therapeutic_suitability: false.",
+  "time_segments": [
+    { "time_segment": "Pre-dawn", "start_time": "02:00", "end_time": "04:00", "ragas": ["Sohini", "Paraj"] },
+    { "time_segment": "Dawn", "start_time": "04:00", "end_time": "06:00", "ragas": ["Bhatiyar", "Lalit"] },
+    { "time_segment": "Early morning", "start_time": "06:00", "end_time": "08:00", "ragas": ["Bhairav", "Ramkali", "Jogia", "Todi"] },
+    { "time_segment": "Morning", "start_time": "08:00", "end_time": "10:00", "ragas": ["Ahir Bhairav", "Bilaskhani Todi"] },
+    { "time_segment": "Late Morning", "start_time": "10:00", "end_time": "12:00", "ragas": ["Bhairavi", "Deshkar", "Alahiya Bilawal", "Komal Rishabh Asavari", "Todi", "Jaunpuri"] },
+    { "time_segment": "Afternoon", "start_time": "12:00", "end_time": "14:00", "ragas": ["Brindabani Sarang", "Shuddha Sarang", "Gaud Sarang"] },
+    { "time_segment": "Late Afternoon", "start_time": "14:00", "end_time": "16:00", "ragas": ["Multani", "Bhimpalasi"] },
+    { "time_segment": "Dusk", "start_time": "16:00", "end_time": "18:00", "ragas": ["Poorvi", "Shree", "Patdeep"] },
+    { "time_segment": "Evening", "start_time": "18:00", "end_time": "20:00", "ragas": ["Yaman", "Puriya", "Shuddha Kalyan", "Hameer"] },
+    { "time_segment": "Late Evening", "start_time": "20:00", "end_time": "22:00", "ragas": ["Jayjaiwanti", "Kedar", "Durga", "Desh"] },
+    { "time_segment": "Night", "start_time": "22:00", "end_time": "00:00", "ragas": ["Bihag", "Bageshri", "Shankara", "Chandrakauns"] },
+    { "time_segment": "Midnight", "start_time": "00:00", "end_time": "02:00", "ragas": ["Malkauns", "Darbari Kanada", "Shahana", "Adana"] }
+  ],
+  "transcription_caveats": [
+    "'Todi' appears in both the Early Morning (06:00-08:00) and Late Morning (10:00-12:00) segments in the source diagram itself -- not a transcription error, preserved as-sourced. Possibly two different Todi-family ragas are intended (e.g. Miyan ki Todi vs. Bilaskhani Todi territory) but the diagram does not disambiguate, so this pass will not guess which.",
+    "Segment name 'Late Afternoon' is labelled 'Late' + 'Afternoon' as two separate rotated words in the source graphic; transcribed as the single conventional segment name.",
+    "This diagram's 12 segments are NOT the same system as the 8-segment ashta_prahara grouping in raga_time_of_day.json -- both are preserved separately rather than forced into one system, per the project's own instruction not to collapse distinct frameworks."
+  ]
+}

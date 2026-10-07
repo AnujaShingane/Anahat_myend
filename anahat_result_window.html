@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chakra Assessment Result</title>
+<style>
+:root{--bg:#f6f5f2;--card:#fff;--ink:#1d2430;--mute:#5d6675;--line:#e2ded6;--imb:#b4471f;--imb-bg:#fbeae2;--bal:#2c6e49;--bal-bg:#e3f2e8;--unr:#7a5b00;--unr-bg:#fff3d1;--bar:#3b5b8c;--bar-bg:#e8ebf1}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#14171c;--card:#1d222a;--ink:#eceff4;--mute:#a4adbb;--line:#323a46;--imb:#ff9d76;--imb-bg:#3a2119;--bal:#7bd39f;--bal-bg:#173323;--unr:#f2cf6a;--unr-bg:#3a3010;--bar:#8fb0e6;--bar-bg:#2a3240}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:1.5rem;margin:0 0 4px}h2{font-size:1.1rem;margin:28px 0 10px}
+.sub{color:var(--mute);margin:0 0 16px}
+.notice{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--unr);border-radius:8px;padding:10px 14px;margin:12px 0}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.stat b{display:block;font-size:1.6rem}.stat span{color:var(--mute);font-size:.85rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.head h3{margin:0;font-size:1.05rem}
+.pill{font-size:.78rem;font-weight:600;padding:3px 9px;border-radius:99px;white-space:nowrap}
+.pill.imb{background:var(--imb-bg);color:var(--imb)}.pill.bal{background:var(--bal-bg);color:var(--bal)}.pill.unr{background:var(--unr-bg);color:var(--unr)}
+.meter{margin:12px 0 4px}.meter label{display:flex;justify-content:space-between;font-size:.82rem;color:var(--mute)}
+.track{position:relative;height:10px;background:var(--bar-bg);border-radius:6px;margin-top:3px}
+.fill{height:100%;background:var(--bar);border-radius:6px}.mark{position:absolute;top:-3px;width:2px;height:16px;background:var(--ink);opacity:.6}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kv{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.85rem;color:var(--mute);margin:10px 0}
+.flag{font-size:.78rem;background:var(--unr-bg);color:var(--unr);padding:2px 8px;border-radius:6px;margin-right:6px;display:inline-block;margin-top:4px}
+ul.reasons{margin:8px 0 0;padding-left:18px;font-size:.88rem}
+details{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}summary{cursor:pointer;font-weight:600;font-size:.88rem}
+table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:8px}th,td{text-align:left;padding:4px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+.tablewrap{overflow-x:auto}
+.open{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.open li{margin:4px 0}
+textarea{width:100%;min-height:90px;font:12px ui-monospace,monospace;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px}
+button{font:inherit;padding:7px 14px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+footer{margin-top:30px;color:var(--mute);font-size:.85rem}
+</style>
+</head>
+<body>
+<main>
+  <h1>Chakra Assessment Result</h1>
+  <p class="sub" id="meta"></p>
+  <div class="notice" id="disclaimer"></div>
+  <div class="summary" id="summary"></div>
+
+  <h2>The seven chakras</h2>
+  <div class="grid" id="cards"></div>
+
+  <h2>Still open</h2>
+  <div class="open" id="open"></div>
+
+  <h2>Coverage</h2>
+  <div class="open" id="coverage"></div>
+
+  <details><summary>Items that need clinical or therapist validation</summary><ul id="validation"></ul></details>
+
+  <details><summary>Load a different result (paste JSON from <code>GET /api/anahat/assessments/:id/result</code>)</summary>
+    <textarea id="paste" placeholder="Paste the result JSON here"></textarea>
+    <p><button id="load">Show this result</button> <span id="err" style="color:var(--imb)"></span></p>
+  </details>
+  <footer>Decision support only. Not a diagnosis. A therapist reviews and approves every result.</footer>
+</main>
+<script id="sample" type="application/json">{
+ "session_id": "demo-session",
+ "stage": "evidence_review",
+ "is_diagnosis": false,
+ "therapist_approval_required": true,
+ "summary": {
+  "imbalanced": [
+   "Throat Chakra"
+  ],
+  "balanced": [],
+  "unresolved": [
+   "Root Chakra",
+   "Sacral Chakra",
+   "Solar Plexus Chakra",
+   "Heart Chakra",
+   "Third Eye Chakra",
+   "Crown Chakra"
+  ],
+  "needs_therapist_review": []
+ },
+ "chakras": [
+  {
+   "chakra": "Root Chakra",
+   "status": "UNRESOLVED",
+   "status_label": "Unresolved",
+   "status_code": "NOT_ASSESSED",
+   "direction": null,
+   "severity": "minimal",
+   "scores": {
+    "presence": 0.0,
+    "deficient": 0.0,
+    "excess": 0.0
+   },
+   "confidence_pct": 24.0,
+   "confidence_label": "Low",
+   "coverage_pct": 80.0,
+   "independent_evidence_units": 0,
+   "high_priority": false,
+   "direction_gray_zone": false,
+   "reasons": [
+    "Not adequately assessed (8/10 quadrants with patient responses). Absence of evidence is NOT balance."
+   ],
+   "pending_details": [],
+   "counts": {
+    "evidence": 0,
+    "negative": 0,
+    "historical": 0,
+    "unresolved": 0,
+    "non_directional": 0
+   },
+   "trace": []
+  },
+  {
+   "chakra": "Sacral Chakra",
+   "status": "UNRESOLVED",
+   "status_label": "Unresolved",
+   "status_code": "NOT_ASSESSED",
+   "direction": null,
+   "severity": "minimal",
+   "scores": {
+    "presence": 0.0,
+    "deficient": 0.0,
+    "excess": 0.0
+   },
+   "confidence_pct": 24.0,
+   "confidence_label": "Low",
+   "coverage_pct": 80.0,
+   "independent_evidence_units": 0,
+   "high_priority": false,
+   "direction_gray_zone": false,
+   "reasons": [
+    "Not adequately assessed (8/10 quadrants with patient responses). Absence of evidence is NOT balance."
+   ],
+   "pending_details": [],
+   "counts": {
+    "evidence": 0,
+    "negative": 0,
+    "historical": 0,
+    "unresolved": 0,
+    "non_directional": 0
+   },
+   "trace": []
+  },
+  {
+   "chakra": "Solar Plexus Chakra",
+   "status": "UNRESOLVED",
+   "status_label": "Unresolved",
+   "status_code": "MISSING_DETAILS",
+   "direction": null,
+   "severity": "severe",
+   "scores": {
+    "presence": 1.0,
+    "deficient": 0.0,
+    "excess": 1.0
+   },
+   "confidence_pct": 52.33,
+   "confidence_label": "Low",
+   "coverage_pct": 80.0,
+   "independent_evidence_units": 2,
+   "high_priority": false,
+   "direction_gray_zone": false,
+   "reasons": [
+    "Confidence 52% is below 60%.",
+    "Severity not yet stated for some evidence: ask before scoring."
+   ],
+   "pending_details": [
+    {
+     "evidence_id": "344a7955-2839-4a86-81b0-a7724d05a8d5",
+     "indicator": "Fatigue",
+     "missing": [
+      "intensity"
+     ]
+    }
+   ],
+   "counts": {
+    "evidence": 3,
+    "negative": 0,
+    "historical": 0,
+    "unresolved": 0,
+    "non_directional": 0
+   },
+   "trace": [
+    {
+     "evidence_id": "e75c4400-7f4b-4d3e-8fd5-d8d9667292d2",
+     "response_id": "626238ca-bd4d-496d-afd1-f9be4129c68a",
+     "quote": "angry all the time",
+     "indicator_id": "EMO-004",
+     "term": "Anger",
+     "domain": "emotion",
+     "kb_state": "Excess",
+     "directional": true,
+     "strength": "Strong",
+     "strength_weight": 1.0,
+     "intensity": "Severe",
+     "intensity_weight": 1.0,
+     "evidence_status": "CONFIRMED",
+     "reliability_weight": 1.0,
+     "contribution": 1.0,
+     "counted": true,
+     "note": null
+    },
+    {
+     "evidence_id": "0910adcc-abdc-4cb6-8c5e-6a3f7958d310",
+     "response_id": "71415097-02f6-4808-997d-8b33efc2f86d",
+     "quote": "blood pressure is high",
+     "indicator_id": "SYM-016",
+     "term": "Blood Pressure, High",
+     "domain": "symptom",
+     "kb_state": "Excess",
+     "directional": true,
+     "strength": "Strong",
+     "strength_weight": 1.0,
+     "intensity": "Severe",
+     "intensity_weight": 1.0,
+     "evidence_status": "CONFIRMED",
+     "reliability_weight": 1.0,
+     "contribution": 1.0,
+     "counted": true,
+     "note": null
+    },
+    {
+     "evidence_id": "344a7955-2839-4a86-81b0-a7724d05a8d5",
+     "response_id": "a2c880bf-2e5e-4ba8-86ec-09417c610453",
+     "quote": "very tired",
+     "indicator_id": "SYM-043",
+     "term": "Fatigue",
+     "domain": "symptom",
+     "kb_state": "Deficient",
+     "directional": true,
+     "strength": "Strong",
+     "strength_weight": 1.0,
+     "intensity": null,
+     "intensity_weight": null,
+     "evidence_status": "CONFIRMED",
+     "reliability_weight": 1.0,
+     "contribution": 0.0,
+     "counted": false,
+     "note": "intensity not stated: contributes 0 until asked"
+    }
+   ]
+  },
+  {
+   "chakra": "Heart Chakra",
+   "status": "UNRESOLVED",
+   "status_label": "Unresolved",
+   "status_code": "NOT_ASSESSED",
+   "direction": null,
+   "severity": "minimal",
+   "scores": {
+    "presence": 0.0,
+    "deficient": 0.0,
+    "excess": 0.0
+   },
+   "confidence_pct": 24.0,
+   "confidence_label": "Low",
+   "coverage_pct": 80.0,
+   "independent_evidence_units": 0,
+   "high_priority": false,
+   "direction_gray_zone": false,
+   "reasons": [
+    "Not adequately assessed (8/10 quadrants with patient responses). Absence of evidence is NOT balance."
+   ],
+   "pending_details": [],
+   "counts": {
+    "evidence": 0,
+    "negative": 0,
+    "historical": 0,
+    "unresolved": 0,
+    "non_directional": 0
+   },
+   "trace": []
+  },
+  {
+   "chakra": "Throat Chakra",
+   "status": "IMBALANCED_DEFICIENT",
+   "status_label": "Imbalanced \u2014 Deficient",
+   "status_code": "DIRECTION_DEFICIENT",
+   "direction": "Deficient",
+   "severity": "severe",
+   "scores": {
+    "presence": 1.0,
+    "deficient": 1.0,
+    "excess": 0.0
+   },
+   "confidence_pct": 84.0,
+   "confidence_label": "High",
+   "coverage_pct": 80.0,
+   "independent_evidence_units": 2,
+   "high_priority": false,
+   "direction_gray_zone": false,
+   "reasons": [
+    "Deficient evidence 1.00 leads by 1.00."
+   ],
+   "pending_details": [],
+   "counts": {
+    "evidence": 2,
+    "negative": 0,
+    "historical": 0,
+    "unresolved": 0,
+    "non_directional": 0
+   },
+   "trace": [
+    {
+     "evidence_id": "feaacea1-326f-4b94-b560-c94db944ea2f",
+     "response_id": "f084bd7b-ffbb-4426-bb9b-0e90bfce1cef",
+     "quote": "never say what I feel",
+     "indicator_id": "EMO-007",
+     "term": "Suppressed Expression",
+     "domain": "emotion",
+     "kb_state": "Deficient",
+     "directional": true,
+     "strength": "Strong",
+     "strength_weight": 1.0,
+     "intensity": "Severe",
+     "intensity_weight": 1.0,
+     "evidence_status": "CONFIRMED",
+     "reliability_weight": 1.0,
+     "contribution": 1.0,
+     "counted": true,
+     "note": null
+    },
+    {
+     "evidence_id": "238fcdd3-b832-4c5e-970c-5bcd3bd8a243",
+     "response_id": "dc288ce3-de95-4252-ae54-f8f5e4d61f47",
+     "quote": "Nobody listens to me",
+     "indicator_id": "EMO-012",
+     "term": "Feeling Unheard / Not Understood",
+     "domain": "emotion",
+     "kb_state": "Deficient",
+     "directional": true,
+     "strength": "Strong",
+     "strength_weight": 1.0,
+     "intensity": "Severe",
+     "intensity_weight": 1.0,
+     "evidence_status": "CONFIRMED",
+     "reliability_weight": 1.0,
+     "contribution": 1.0,
+     "counted": true,
+     "note": null
+    }
+   ]
+  },
+  {
+   "chakra": "Third Eye Chakra",
+   "status": "UNRESOLVED",
+   "status_label": "Unresolved",
+   "status_code": "NOT_ASSESSED",
+   "direction": null,
+   "severity": "minimal",
+   "scores": {
+    "presence": 0.0,
+    "deficient": 0.0,
+    "excess": 0.0
+   },
+   "confidence_pct": 24.0,
+   "confidence_label": "Low",
+   "coverage_pct": 80.0,
+   "independent_evidence_units": 0,
+   "high_priority": false,
+   "direction_gray_zone": false,
+   "reasons": [
+    "Not adequately assessed (8/10 quadrants with patient responses). Absence of evidence is NOT balance."
+   ],
+   "pending_details": [],
+   "counts": {
+    "evidence": 0,
+    "negative": 0,
+    "historical": 0,
+    "unresolved": 0,
+    "non_directional": 0
+   },
+   "trace": []
+  },
+  {
+   "chakra": "Crown Chakra",
+   "status": "UNRESOLVED",
+   "status_label": "Unresolved",
+   "status_code": "NOT_ASSESSED",
+   "direction": null,
+   "severity": "minimal",
+   "scores": {
+    "presence": 0.0,
+    "deficient": 0.0,
+    "excess": 0.0
+   },
+   "confidence_pct": 24.0,
+   "confidence_label": "Low",
+   "coverage_pct": 80.0,
+   "independent_evidence_units": 0,
+   "high_priority": false,
+   "direction_gray_zone": false,
+   "reasons": [
+    "Not adequately assessed (8/10 quadrants with patient responses). Absence of evidence is NOT balance."
+   ],
+   "pending_details": [],
+   "counts": {
+    "evidence": 0,
+    "negative": 0,
+    "historical": 0,
+    "unresolved": 0,
+    "non_directional": 0
+   },
+   "trace": []
+  }
+ ],
+ "coverage": {
+  "assessed_quadrants": [
+   "Diet",
+   "Family",
+   "Lifestyle",
+   "Nature",
+   "Personal Interests",
+   "Physical Nature",
+   "Profession",
+   "Social Circle"
+  ],
+  "reference_quadrants": 10,
+  "balanced_requires": 10,
+  "adequately_assessed": false,
+  "not_yet_assessed_quadrants": [
+   "Medical & Therapeutic Background",
+   "Music Therapy Profile"
+  ]
+ },
+ "open_items": {
+  "contradictions": [
+   {
+    "type": "direction",
+    "chakra": "Solar Plexus Chakra",
+    "deficient_evidence_ids": [
+     "344a7955-2839-4a86-81b0-a7724d05a8d5"
+    ],
+    "excess_evidence_ids": [
+     "e75c4400-7f4b-4d3e-8fd5-d8d9667292d2",
+     "0910adcc-abdc-4cb6-8c5e-6a3f7958d310"
+    ]
+   }
+  ],
+  "pending_deep_dive": [
+   {
+    "evidence_id": "344a7955-2839-4a86-81b0-a7724d05a8d5",
+    "indicator_id": "SYM-043",
+    "term": "Fatigue",
+    "quote": "very tired",
+    "field": "intensity",
+    "blocking": true,
+    "reason": "Needed before this evidence can be scored or read",
+    "question": "How strong is this for you: mild, moderate, or severe?"
+   }
+  ],
+  "unresolved_evidence": [],
+  "safety_amber_unacknowledged": false,
+  "safety_red_active": false
+ },
+ "scoring_audit": {
+  "thresholds": {
+   "imbalance_score": 0.45,
+   "direction": 0.45,
+   "ambiguity_margin": 0.1,
+   "gray_zone_margin": 0.15,
+   "insufficient_score": 0.2,
+   "min_confidence_pct": 60.0,
+   "min_independent_units": 2,
+   "balanced_min_assessed_quadrants": 10
+  },
+  "weights": {
+   "strength": {
+    "Strong": 1.0,
+    "Medium": 0.6,
+    "Weak": 0.3
+   },
+   "intensity": {
+    "Mild": 0.4,
+    "Moderate": 0.7,
+    "Severe": 1.0
+   },
+   "reliability": {
+    "Confirmed": 1.0,
+    "Resolved After Clarification": 1.0,
+    "Provisional": 0.4,
+    "Unresolved": 0.0,
+    "Historical": 0.0
+   },
+   "confidence": {
+    "coverage": 0.3,
+    "consistency": 0.3,
+    "resolution": 0.25,
+    "completeness": 0.15
+   }
+  },
+  "clinically_validated": false,
+  "note": "All thresholds are engineering baselines, configurable, not clinically validated."
+ },
+ "requires_domain_validation": [
+  "balanced_min_assessed_quadrants (how many quadrants must be assessed before 'Balanced' may be shown)",
+  "confidence 'completeness' component definition",
+  "AMBER safety phrase list and RED phrase list",
+  "deep-dive question wording (neutral templates, not from a validated KB list)",
+  "quadrant question text for Personal Interests, Profession, Medical & Therapeutic Background, Music Therapy Profile (no 1:1 KB question bank mapping)",
+  "top-two-chakras (KB design) vs all-seven (spec): all seven are evaluated",
+  "KB duplicate indicators (SYM-009/EMO-008 same term; SYM-069/070)",
+  "handling of KB states 'Either', 'Varies', 'Excess to Deficient', 'Usually Excess' (kept non-directional, never reinterpreted)",
+  "direction gray-zone handling (0.10-0.15)",
+  "Emergency contact numbers in KB are marked 'requires live verification before production'"
+ ],
+ "disclaimer": "Decision-support only. Scores show how much confirmed patient evidence points to each chakra; they are not a diagnosis. A therapist must review and approve."
+}</script>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const THRESH=0.45;
+function cls(s){return s.startsWith('IMBALANCED')?'imb':s==='BALANCED'?'bal':'unr'}
+function icon(s){return s.startsWith('IMBALANCED')?'\u25B2 ':s==='BALANCED'?'\u2713 ':'? '}
+function bar(label,val,mark){const p=Math.round(Math.min(1,val)*100);return `<div class="meter"><label><span>${label}</span><span>${val.toFixed(2)}</span></label><div class="track"><div class="fill" style="width:${p}%"></div>${mark?`<div class="mark" style="left:${THRESH*100}%" title="threshold ${THRESH}"></div>`:''}</div></div>`}
+function trace(t){if(!t.length)return '<p class="sub">No confirmed evidence points to this chakra.</p>';
+ return `<div class="tablewrap"><table><thead><tr><th>Patient said</th><th>KB indicator</th><th>Strength</th><th>Intensity</th><th>Reliability</th><th>Score</th><th>Counted</th></tr></thead><tbody>`+
+ t.map(x=>`<tr><td>${esc(x.quote||'\u2014')}</td><td>${esc(x.term||x.indicator_id)}<br><small>${esc(x.kb_state||'')}${x.directional?'':' (no direction)'}</small></td><td>${esc(x.strength||'')} ${x.strength_weight??''}</td><td>${esc(x.intensity||'missing')} ${x.intensity_weight??''}</td><td>${x.reliability_weight??''}</td><td>${(x.contribution||0).toFixed(2)}</td><td>${x.counted?'yes':'no'}${x.note?`<br><small>${esc(x.note)}</small>`:''}</td></tr>`).join('')+`</tbody></table></div>`}
+function render(r){
+ $('meta').textContent=`Session ${r.session_id||''} \u00B7 stage: ${r.stage||''}`;
+ $('disclaimer').textContent=r.disclaimer||'';
+ const s=r.summary,c=r.coverage;
+ $('summary').innerHTML=[['Imbalanced',s.imbalanced.length],['Balanced',s.balanced.length],['Unresolved',s.unresolved.length],['Quadrants assessed',`${c.assessed_quadrants.length}/${c.reference_quadrants||10}`]].map(([a,b])=>`<div class="stat"><b>${b}</b><span>${a}</span></div>`).join('');
+ $('cards').innerHTML=r.chakras.map(k=>{
+  const sc=k.scores;
+  return `<article class="card"><div class="head"><h3>${esc(k.chakra)}</h3><span class="pill ${cls(k.status)}">${icon(k.status)}${esc(k.status_label||k.status)}</span></div>
+  ${bar('Presence of imbalance',sc.presence,true)}
+  <div class="two">${bar('Deficient',sc.deficient,false)}${bar('Excess',sc.excess,false)}</div>
+  <div class="kv"><span>Confidence: <b>${esc(k.confidence_label)}</b> (${k.confidence_pct}%)</span><span>Independent evidence: <b>${k.independent_evidence_units}</b></span><span>Severity: <b>${esc(k.severity)}</b></span></div>
+  ${k.high_priority?'<span class="flag">Strong single finding \u2013 needs corroboration</span>':''}${k.direction_gray_zone?'<span class="flag">Direction close \u2013 therapist to decide</span>':''}
+  ${k.pending_details.length?`<span class="flag">${k.pending_details.length} detail(s) missing</span>`:''}
+  <ul class="reasons">${(k.reasons||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+  <details><summary>Why this result? (evidence trace)</summary>${trace(k.trace)}</details></article>`}).join('');
+ const o=r.open_items,rows=[];
+ (o.pending_deep_dive||[]).forEach(i=>rows.push(`Missing <b>${esc(i.field)}</b> for \u201C${esc(i.term)}\u201D${i.quote?` (patient: \u201C${esc(i.quote)}\u201D)`:''} \u2014 ${esc(i.question||'therapist to clarify')}`));
+ (o.contradictions||[]).forEach(x=>rows.push(`Contradiction to resolve: ${esc(x.type)} ${esc(x.chakra||x.indicator_id||'')}`));
+ if((o.unresolved_evidence||[]).length)rows.push(`${o.unresolved_evidence.length} evidence item(s) need the disambiguation question answered.`);
+ if(o.safety_amber_unacknowledged)rows.push('<b>Safety alert (amber) not yet acknowledged.</b>');
+ if(o.safety_red_active)rows.push('<b>RED safety escalation is active. Assessment is paused.</b>');
+ $('open').innerHTML=rows.length?'<ul>'+rows.map(x=>`<li>${x}</li>`).join('')+'</ul>':'Nothing open.';
+ $('coverage').innerHTML=`<p>Assessed: ${c.assessed_quadrants.map(esc).join(', ')||'none'}.</p><p>Not yet assessed: ${(c.not_yet_assessed_quadrants||[]).map(esc).join(', ')||'none'}.</p>${c.adequately_assessed===false?'<p class="sub">\u201CBalanced\u201D is only shown once enough quadrants are assessed; until then these chakras stay unresolved rather than balanced.</p>':''}`;
+ $('validation').innerHTML=(r.requires_domain_validation||[]).map(x=>`<li>${esc(x)}</li>`).join('');
+}
+async function boot(){
+ const u=new URLSearchParams(location.search).get('src');
+ if(u){try{const res=await fetch(u,{credentials:'include'});return render(await res.json())}catch(e){}}
+ render(JSON.parse($('sample').textContent));
+}
+$('load').onclick=()=>{try{render(JSON.parse($('paste').value));$('err').textContent=''}catch(e){$('err').textContent='That is not valid result JSON.'}};
+boot();
+</script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+{
+  "_schema_version": "2.0",
+  "_note": "CHAKRA -> RAGA BRIDGE. Per project instruction Section 13: 'If a reliable chakra-to-raga mapping does not exist, DO NOT invent one.' No document in the DATA/Music_Therapy uploads contains a direct, explicit chakra-to-raga table. What DOES exist and is transcribed below is a SYMPTOM/CONDITION -> raga association list from ANAHAT's own proprietary training material ('Emotional Issues & co-relation of Raga.pdf', 'Senior Citizen Issues & co-relation of Raga.pdf' -- both marked 'own intellectual property of Anahat'). This is NOT the same as a chakra mapping. The bridge from THIS list to an actual chakra requires going through the existing structured/symptom_to_chakra.json and structured/emotion_to_chakra.json files, which is a separate, already-controlled step -- this file does not perform that join automatically, to avoid silently chaining two unrelated-provenance mappings into a false appearance of validated chakra->raga evidence. chakra_master.json's existing 'swara_note_for_raaga_mapping' field (Sa/Re/Ga/Ma/Pa/Dha/Ni per chakra) is the ONLY chakra<->raga-adjacent field in the current structured KB, and it is already flagged 'needs domain check, derived positionally, not confirmed' in that file's own audit note -- restated here for visibility, not re-derived. SAFETY: several entries below are flagged condition_flag='serious_medical_condition' or 'serious_psychiatric_condition' (e.g. dementia, schizophrenia, Parkinson's, personality disorders). Per governance_rules.json Rule 9 ('never give medical advice') and Rule 10 ('present as AI-assisted interpretation, not diagnosis'), these entries must NEVER be surfaced as if raga listening treats or diagnoses these conditions. They are included here only for traceability and to be explicitly excluded by the safety/governance filtering layer -- not as usable recommendation candidates -- until clinical lead review (Section 28.7 of the project brief: 'clinically validated chakra -> raga relationships' is listed as still missing). || v2.0 UPDATE (this pass): added a 'research_supported_raga_therapeutic_goals' array after a targeted literature search for peer-reviewed/verifiable raga-therapy studies. IMPORTANT FINDING: most 'research-backed' chakra-raga content found online traces to a single low-credibility source (a school-student review paper in a pay-to-publish venue, IJARIIT V10I4-1179) whose specific study citations (e.g. 'Balasubramanian, Kumar & Sreenivas 2020, Journal of Pain and Symptom Management') could NOT be verified to exist -- a targeted search of that journal found no matching article. That source, and every claim traceable only to it (incl. its Raga Ahir Bhairav->Ajna, Raga Malkauns->Vishuddha, Raga Bhimpalasi->Anahata chakra-activation claims), is EXCLUDED from this file. Three genuinely verifiable, peer-reviewed studies were found instead (see research_supported_raga_therapeutic_goals below) -- none of them claim a chakra linkage; they link a specific raga to a therapeutic OUTCOME (anxiety, stress, insomnia, depression), which is the correct, safer level of claim per Section 1E of the gap-filling brief. No chakra field was added to these entries -- doing so would mean ANAHAT asserting a chakra link the cited papers themselves never make. || GAP-CLOSURE PASS CONFIRMATION: re-reviewed against project instruction Section 10 ('Do not convert Raga -> outcome research into Raga -> Chakra unless an actual reliable source establishes that relationship'). Confirmed compliant: research_supported_raga_therapeutic_goals links ragas to OUTCOMES (anxiety, sleep, stress), not chakras; chakra_bridge_status.candidate_ragas remains an empty list; no chakra is asserted for any researched raga anywhere in this file. No changes needed for this gap item.",
+  "evidence_level": "LEVEL_5",
+  "evidence_level_meaning": "Traditional/practitioner framework (ANAHAT's own curriculum) -- not peer-reviewed, not clinical evidence",
+  "source_documents": [
+    "Emotional Issues & co-relation of Raga.pdf (ANAHAT own IP)",
+    "Senior Citizen Issues & co-relation of Raga.pdf (ANAHAT own IP)"
+  ],
+  "review_status": "clinical_review_required",
+  "can_influence_chakra_score": false,
+  "can_influence_raga_recommendation": false,
+  "_reason_cannot_influence_yet": "No confirmed chakra linkage exists for this list; auto-wiring it would violate Section 13's 'do not invent' rule.",
+  "therapeutic_goal_raga_associations": [
+    {
+      "therapeutic_goal": "dementia_support",
+      "candidate_ragas": [
+        "Hemashree",
+        "Poorvi",
+        "Pilu"
+      ],
+      "condition_flag": "serious_medical_condition"
+    },
+    {
+      "therapeutic_goal": "schizophrenia_support",
+      "candidate_ragas": [
+        "Dhani",
+        "Jhinjhoti",
+        "Harikauns"
+      ],
+      "condition_flag": "serious_psychiatric_condition"
+    },
+    {
+      "therapeutic_goal": "personality_disorder_support",
+      "candidate_ragas": [
+        "Vibhas",
+        "Komal Rishabh Asawari",
+        "Devgandhar"
+      ],
+      "condition_flag": "serious_psychiatric_condition"
+    },
+    {
+      "therapeutic_goal": "attention_deficit_support",
+      "candidate_ragas": [
+        "Kamod",
+        "Marubihag",
+        "Kirwani"
+      ],
+      "condition_flag": null
+    },
+    {
+      "therapeutic_goal": "addiction_support",
+      "candidate_ragas": [
+        "Bairagi Todi",
+        "Sarswati",
+        "Basant Mukhari",
+        "Kalingada"
+      ],
+      "condition_flag": "serious_medical_condition"
+    },
+    {
+      "therapeutic_goal": "fear_reduction",
+      "candidate_ragas": [
+        "Parameshwari",
+        "Kaushik Dhwani (Bhinna Shadja)",
+        "Gorakh Kalyan",
+        "Abhogi Kanada"
+      ],
+      "condition_flag": null
+    },
+    {
+      "therapeutic_goal": "concentration_and_memory",
+      "candidate_ragas": [
+        "Shivranjani",
+        "Shuddha Kalyan",
+        "Tilang"
+      ],
+      "condition_flag": null
+    },
+    {
+      "therapeutic_goal": "confidence_boosting",
+      "candidate_ragas": [
+        "Gauri",
+        "Des"
+      ],
+      "condition_flag": null
+    },
+    {
+      "therapeutic_goal": "parkinsons_support",
+      "candidate_ragas": [
+        "Pooriya",
+        "Shankara"
+      ],
+      "condition_flag": "serious_medical_condition"
+    },
+    {
+      "therapeutic_goal": "insomnia_support",
+      "candidate_ragas": [
+        "Darbari/Darbari Kanada",
+        "Bageshree",
+        "Khamaj",
+        "Bihag",
+        "Kafee"
+      ],
+      "condition_flag": null
+    },
+    {
+      "therapeutic_goal": "partial_memory_loss_support",
+      "candidate_ragas": [
+        "Jaunpuri",
+        "Hindol",
+        "Hameer",
+        "Bilawal",
+        "Deskar"
+      ],
+      "condition_flag": null
+    },
+    {
+      "therapeutic_goal": "arthritis_joint_pain_support",
+      "candidate_ragas": [
+        "Madhuvanti",
+        "Bhairavee"
+      ],
+      "condition_flag": "serious_medical_condition"
+    },
+    {
+      "therapeutic_goal": "digestive_disorder_support",
+      "candidate_ragas": [
+        "Sarang (Shuddha/Brindavani)",
+        "Bhairav",
+        "Natbhairav",
+        "Abhogi"
+      ],
+      "condition_flag": "serious_medical_condition"
+    },
+    {
+      "therapeutic_goal": "heart_related_issue_support",
+      "candidate_ragas": [
+        "Malkauns",
+        "Chandrakauns"
+      ],
+      "condition_flag": "serious_medical_condition"
+    },
+    {
+      "therapeutic_goal": "migraine_support",
+      "candidate_ragas": [
+        "Sohoni",
+        "Jaunpuri"
+      ],
+      "condition_flag": "serious_medical_condition"
+    },
+    {
+      "therapeutic_goal": "digestive_piles_support",
+      "candidate_ragas": [
+        "Gunkali",
+        "Ramkali"
+      ],
+      "condition_flag": "serious_medical_condition"
+    },
+    {
+      "therapeutic_goal": "acidity_support",
+      "candidate_ragas": [
+        "Pooriya Dhanashree",
+        "Marva"
+      ],
+      "condition_flag": "serious_medical_condition"
+    }
+  ],
+  "chakra_bridge_status": {
+    "chakra": "ALL",
+    "therapeutic_goal": "ALL",
+    "candidate_ragas": [],
+    "evidence_level": "LEVEL_UNKNOWN",
+    "source": null,
+    "review_status": "clinical_review_required",
+    "note": "Populate only when an authoritative, reviewed chakra->raga source is supplied. Do not derive by chaining symptom_to_chakra.json + this file's therapeutic_goal list without clinical sign-off."
+  },
+  "research_supported_raga_therapeutic_goals": [
+    {
+      "raga": "Darbari Kanada",
+      "tradition": "hindustani",
+      "therapeutic_goal": [
+        "depression_reduction",
+        "anxiety_reduction",
+        "stress_reduction",
+        "insomnia_support"
+      ],
+      "population_studied": "elderly adults (age 50-60), N=39",
+      "study_design": "single-group pre/post (no control group) -- limitation, not an RCT",
+      "outcome_measures": [
+        "DASS-21 (Depression Anxiety Stress Scales)",
+        "Insomnia Severity Index (ISI)"
+      ],
+      "result_summary": "Statistically significant (p<0.001) reduction in depression, anxiety, stress, and insomnia severity after 8 weeks of nightly listening.",
+      "citation": "Mukherjee, S. C., & Mukherjee, R. (2019). Role of Music Therapy Intervention Using Raga Darbari Kanada of Indian Classical Music in the Management of Depression, Anxiety, Stress, and Insomnia Among Elderly Adults. RESEARCH REVIEW International Journal of Multidisciplinary, 4(5).",
+      "source_url": "https://www.researchgate.net/publication/345806516",
+      "access_date": "2026-08-11",
+      "evidence_level": "moderate",
+      "relationship_type": "research_supported",
+      "review_status": "pending_review",
+      "clinical_validation": "single-study, no control group -- supportive but not confirmatory",
+      "convergence_note": "Converges with ANAHAT's own practitioner-tradition list (Darbari/Darbari Kanada -> insomnia, in raga_therapeutic_indications_practitioner/senior_citizen_issues_raga_correlation.md) -- independent convergence between a practitioner tradition and a peer-reviewed pilot study, though neither is a large/controlled trial.",
+      "can_influence_chakra_score": false,
+      "can_influence_raga_recommendation": true,
+      "notes": "No chakra claim made by the source study; do not attach one."
+    },
+    {
+      "raga": "Bilahari",
+      "tradition": "carnatic",
+      "therapeutic_goal": [
+        "anxiety_reduction",
+        "sleep_disturbance_support",
+        "somatic_symptom_reduction"
+      ],
+      "population_studied": "caregivers of cancer patients, N=30",
+      "study_design": "single-group pre/post (no control group)",
+      "outcome_measures": [
+        "GHQ-28 (screening)",
+        "anxiety/sleep/somatic symptom/distress scales"
+      ],
+      "result_summary": "Statistically significant (p<0.001) decrease in anxiety, sleep disturbance, somatic symptoms, and distress after a month of raga-Bilahari listening (vocal/instrumental, alternating days, 15-30 min).",
+      "citation": "Ramachandran, K., Rajkumar, E., Romate, J., Allen, J. G., & Daniel, M. (2022). Effect of Carnatic raga-Bilahari based music therapy on anxiety, sleep disturbances and somatic symptoms among caregivers of cancer patients. Heliyon, 8(9), e10681.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9508548",
+      "doi": "10.1016/j.heliyon.2022.e10681",
+      "access_date": "2026-08-11",
+      "evidence_level": "moderate",
+      "relationship_type": "research_supported",
+      "review_status": "pending_review",
+      "clinical_validation": "single-study, no control group -- supportive but not confirmatory",
+      "can_influence_chakra_score": false,
+      "can_influence_raga_recommendation": true,
+      "notes": "Peer-reviewed (Heliyon/Cell Press), PMC-indexed. No chakra claim made by the source study; do not attach one."
+    },
+    {
+      "raga": "Bhairavi",
+      "tradition": "hindustani",
+      "therapeutic_goal": [
+        "stress_reduction",
+        "anxiety_reduction"
+      ],
+      "population_studied": "general adult sample, N=44",
+      "study_design": "randomized, VR-delivered intervention group vs. no-exposure control group -- the strongest design of the three",
+      "outcome_measures": [
+        "heart rate variability (HRV)",
+        "psychophysiological stress markers"
+      ],
+      "result_summary": "Six days of VR-delivered raga Bhairavi listening produced measurable improvements in stress-related HRV markers versus control.",
+      "citation": "Chand, K., Chandra, S., & Dutt, V. (2024). Raga Bhairavi in virtual reality reduces stress-related psychophysiological markers. Scientific Reports, 14(1), 1-11.",
+      "source_url": "https://doi.org/10.1038/s41598-024-74932-1",
+      "doi": "10.1038/s41598-024-74932-1",
+      "access_date": "2026-08-11",
+      "evidence_level": "moderate-to-high",
+      "relationship_type": "research_supported",
+      "review_status": "pending_review",
+      "clinical_validation": "Randomized controlled design, published in a reputable peer-reviewed journal (Scientific Reports) -- the strongest of the three studies found, though a single study.",
+      "can_influence_chakra_score": false,
+      "can_influence_raga_recommendation": true,
+      "notes": "No chakra claim made by the source study; do not attach one."
+    }
+  ],
+  "excluded_low_credibility_sources": [
+    {
+      "source": "Varma, S. (2024). Using Technology to Explore the Therapeutic Benefits of Classical Indian Music. International Journal of Advance Research, Ideas and Innovations in Technology, 10(4).",
+      "url": "https://s3.ap-southeast-1.wasabisys.com/ijmanuscripts/manuscripts/v10i4/V10I4-1179.pdf",
+      "reason_excluded": "Author affiliation is a secondary school (not a research institution). Journal is a low-tier/pay-to-publish venue. A spot-checked citation within the paper (Balasubramanian, Kumar & Sreenivas 2020, claimed to be in Journal of Pain and Symptom Management) could not be verified to exist via targeted search -- strong indicator of fabricated or hallucinated references. Per project instruction to never treat unverified citations as evidence, this entire source and any claim traceable only to it (raga->chakra activation claims for Ahir Bhairav/Malkauns/Bhimpalasi) is excluded.",
+      "access_date": "2026-08-11"
+    }
+  ],
+  "raga_reference_validation": {
+    "_note": "Per gap-filling Step 6: every raga referenced in research_supported_raga_therapeutic_goals cross-checked against raaga/structured/raga_metadata.json (93-raga Hindustani list). Not found -> checked raga_hindustani_carnatic_equivalents.json before treating as unresolved. No new metadata was invented for any raga.",
+    "Darbari Kanada": {
+      "status": "resolved",
+      "found_in": "raga_metadata.json"
+    },
+    "Bhairavi": {
+      "status": "resolved",
+      "found_in": "raga_metadata.json (as 'Bhairavee'/'Bhairavi' variants -- note spelling: raga_metadata.json's 'Bhairav' is a DIFFERENT raga from 'Bhairavi'; verify no confusion downstream)"
+    },
+    "Bilahari": {
+      "status": "unresolved_in_primary_list",
+      "reason": "Carnatic raga, not present in raga_metadata.json (which is Hindustani-focused, from Raga List.xlsx). Found only as the Carnatic equivalent of 'Alaiya Bilawal' and 'Desakshi' in raga_hindustani_carnatic_equivalents.json. No vadi/samvadi/time-of-day metadata exists for it in this knowledge base -- NOT invented. Flagged for future raga_metadata.json enrichment with proper Carnatic-raga fields."
+    }
+  }
+}

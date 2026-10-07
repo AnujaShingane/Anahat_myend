@@ -1,0 +1,101 @@
+file_path,status,reason
+GAP_CLOSURE_VALIDATION_REPORT.md,EXCLUDE,"KB meta-documentation / audit report, not narrative content"
+README.md,EXCLUDE,"KB meta-documentation, not narrative content"
+VALIDATION_REPORT.md,EXCLUDE,"KB meta-documentation / audit report, not narrative content"
+config/governance_addendum_proposed.json,EXCLUDE,non-narrative file type
+config/governance_rules.json,EXCLUDE,governance rules
+config/indicator_strength_conflict_report.md,EXCLUDE,"KB meta-documentation / audit report, not narrative content"
+governance/evidence_policy.json,EXCLUDE,non-narrative file type
+governance/safety_rules.json,EXCLUDE,non-narrative file type
+knowledge_base_ingestion_matrix.csv,EXCLUDE,"manifest/metadata file, not content"
+knowledge_base_manifest.json,EXCLUDE,"manifest/metadata file, not content"
+raaga/README.md,EXCLUDE,"folder documentation, not narrative content"
+raaga/pending_integration/README.md,EXCLUDE,"source registry documentation, not narrative content"
+raaga/rag/chakra_raga_reasoning/chakras_and_singing_style_association.md,HOLD,frontmatter review_status: 'pending'
+raaga/rag/raga_theory/introduction_to_indian_classical_music.md,HOLD,frontmatter review_status: 'pending'
+raaga/rag/raga_theory/nada_yoga_indian_healing_technique.md,HOLD,frontmatter review_status: 'usage_review_required'
+raaga/rag/raga_theory/therapeutic_approach_of_indian_classical_music.md,HOLD,frontmatter review_status: 'usage_review_required'
+raaga/rag/raga_therapeutic_indications_practitioner/emotional_issues_raga_correlation.md,HOLD,frontmatter review_status: 'clinical_review_required'
+raaga/rag/raga_therapeutic_indications_practitioner/selection_of_music_for_therapeutic_purposes.md,HOLD,frontmatter review_status: 'usage_review_required'
+raaga/rag/raga_therapeutic_indications_practitioner/senior_citizen_issues_raga_correlation.md,HOLD,frontmatter review_status: 'clinical_review_required'
+raaga/reference_images/rag_samay_chakra.png,EXCLUDE,"reference image, not narrative text"
+raaga/reference_images/rag_samay_chakra_hires-1.png,EXCLUDE,"reference image, not narrative text"
+raaga/structured/carnatic_raga_metadata.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+raaga/structured/chakra_raga_bridge.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+raaga/structured/raga_hindustani_carnatic_equivalents.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+raaga/structured/raga_metadata.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+raaga/structured/raga_safety_metadata.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+raaga/structured/raga_samay_chakra_time_wheel.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+raaga/structured/raga_time_of_day.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+raaga/therapist_provided_source/RAGATABLE_.xlsx,EXCLUDE,"structured/source spreadsheet, not narrative document"
+raaga/therapist_provided_source/README.md,EXCLUDE,"source registry documentation, not narrative content"
+rag/assessment_technique/_QA_REVIEW_throat_third_eye_crown_2026_08.md,EXCLUDE,"KB meta-documentation / QA process record, not narrative content"
+rag/assessment_technique/advanced_questioning_techniques.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/assessment_technique/ambiguity_resolution_guidance.md,HOLD,frontmatter review_status: 'therapist_review_required'
+rag/assessment_technique/chakra_specific_questioning_crown.md,HOLD,frontmatter review_status: 'therapist_review_required'
+rag/assessment_technique/chakra_specific_questioning_heart.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/assessment_technique/chakra_specific_questioning_root.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/assessment_technique/chakra_specific_questioning_sacral.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/assessment_technique/chakra_specific_questioning_solar_plexus.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/assessment_technique/chakra_specific_questioning_third_eye.md,HOLD,frontmatter review_status: 'therapist_review_required'
+rag/assessment_technique/chakra_specific_questioning_throat.md,HOLD,frontmatter review_status: 'therapist_review_required'
+rag/assessment_technique/foundational_questioning_principles.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/assessment_technique/general_reflective_question_bank.md,HOLD,frontmatter review_status: 'therapist_review_required'
+rag/assessment_technique/question_sequencing_guidance.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/chakra_reasoning/crown_chakra_reasoning.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/chakra_reasoning/heart_chakra_reasoning.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/chakra_reasoning/root_chakra_reasoning.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/chakra_reasoning/sacral_chakra_reasoning.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/chakra_reasoning/solar_plexus_chakra_reasoning.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/chakra_reasoning/third_eye_chakra_reasoning.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/chakra_reasoning/throat_chakra_reasoning.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/clinical_frameworks/cbt_core_techniques.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/clinical_frameworks/home_based_mt_activities_by_population.md,HOLD,frontmatter review_status: 'therapist_provided_treat_as_approved_pending_final_confirmation'; ip_flag: SOURCE_BRANDED_ANAHAT_TRANSFORMATIONS
+rag/protocol_and_safety/assessment_protocol_and_referral_guidelines.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/beliefs.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/career.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/clinical_conditions_pending_review/anxiety.md,HOLD,canonical_version='pending_review' -- explicitly unscoped pending-review clinical question set (recommended not to ship as-is)
+rag/question_bank/clinical_conditions_pending_review/bipolar_disorder.md,HOLD,canonical_version='pending_review' -- explicitly unscoped pending-review clinical question set (recommended not to ship as-is)
+rag/question_bank/clinical_conditions_pending_review/covid_19_related_mental_health.md,HOLD,canonical_version='pending_review' -- explicitly unscoped pending-review clinical question set (recommended not to ship as-is)
+rag/question_bank/clinical_conditions_pending_review/depression.md,HOLD,canonical_version='pending_review' -- explicitly unscoped pending-review clinical question set (recommended not to ship as-is)
+rag/question_bank/clinical_conditions_pending_review/eating_disorder.md,HOLD,canonical_version='pending_review' -- explicitly unscoped pending-review clinical question set (recommended not to ship as-is)
+rag/question_bank/clinical_conditions_pending_review/general_mental_health.md,HOLD,canonical_version='pending_review' -- explicitly unscoped pending-review clinical question set (recommended not to ship as-is)
+rag/question_bank/clinical_conditions_pending_review/ocd.md,HOLD,canonical_version='pending_review' -- explicitly unscoped pending-review clinical question set (recommended not to ship as-is)
+rag/question_bank/clinical_conditions_pending_review/ptsd.md,HOLD,canonical_version='pending_review' -- explicitly unscoped pending-review clinical question set (recommended not to ship as-is)
+rag/question_bank/clinical_conditions_pending_review/schizophrenia.md,HOLD,canonical_version='pending_review' -- explicitly unscoped pending-review clinical question set (recommended not to ship as-is)
+rag/question_bank/clinical_conditions_pending_review/stress.md,HOLD,canonical_version='pending_review' -- explicitly unscoped pending-review clinical question set (recommended not to ship as-is)
+rag/question_bank/diet.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/emotions.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/family.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/future_plans.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/healthy_habits.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/medical_therapeutic_background.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/music_therapy_profile.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/nature.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/past.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/personal_interests.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/physical_nature.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/profession.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/relationships.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/social_circle.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/question_bank/thoughts.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/symptom_detection/emotional_symptom_patterns_by_chakra.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/symptom_detection/physical_symptom_checklist_by_chakra.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/wellness_strategies/condition_specific_support_techniques.md,READY,"canonical_version: true, no unresolved review_status flag"
+rag/wellness_strategies/holistic_wellness_strategies.md,READY,"canonical_version: true, no unresolved review_status flag"
+source_registry/RAG_documents_upload_audit.md,EXCLUDE,"KB meta-documentation / audit report, not narrative content"
+source_registry/gap_fill_sources_2026_08_11.json,EXCLUDE,non-narrative file type
+source_registry/source_metadata.json,EXCLUDE,non-narrative file type
+source_registry/therapist_provided_files/ANAHAT_Chakra_Indicator_Strength_Rating_Filled.xlsx,EXCLUDE,"structured/source spreadsheet, not narrative document"
+structured/behaviour_to_chakra.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+structured/chakra_master.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+structured/chakra_specific_questions.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+structured/clinical_context_questions.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+structured/emergency_contacts.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+structured/emotion_to_chakra.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+structured/fixed_opening_questions.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+structured/opening_questions.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+structured/pending_therapist_input/disambiguation_questions_pending_review.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+structured/quadrant_question_bank.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+structured/svara_chakra_mapping.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"
+structured/symptom_to_chakra.json,EXCLUDE,"structured application data (per instruction: excluded from Qdrant manifest, goes to app DB)"

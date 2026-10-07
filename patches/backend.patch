@@ -1,0 +1,40 @@
+diff --git a/backend/src/anahat/anahatService.js b/backend/src/anahat/anahatService.js
+index 34e188e..57e096f 100644
+--- a/backend/src/anahat/anahatService.js
++++ b/backend/src/anahat/anahatService.js
+@@ -421,7 +421,14 @@ export async function endSession(user, doc) {
+       assessment_context_summary: doc.assessmentContextSummary };
+   }
+   const result = await withEngine(doc, () => engine.endSession(doc.engineSessionId));
+-  if (result?.status === 'CLARIFICATION_REQUIRED') return result;
++  // A RED safety escalation pauses the assessment (including End Session) until cleared.
++  if (result?.status === 'SAFETY_ESCALATION') {
++    throw new AppError(result.detail || 'Assessment is paused for a safety escalation. Follow the safety protocol and clear it first.', 409);
++  }
++  // Older engines blocked End Session on open follow-ups; the fixed engine always scores.
++  if (result?.status === 'CLARIFICATION_REQUIRED' || !result?.final_result) {
++    throw new AppError('The AI engine did not return a final chakra evaluation. Update the engine (End Session must always score) and try again.', 409);
++  }
+   doc.finalChakraResult = result.final_result;
+   doc.chakraReport = result.chakra_report;
+   doc.recommendations = { raga: result.raga, activities: result.activities };
+@@ -493,6 +500,7 @@ export async function finalize(user, doc) {
+       title: `ANAHAT prescription — ${new Date().toLocaleDateString('en-IN')}`,
+       notes: [
+         doc.prescriptionDecision.note ? `Therapist note: ${doc.prescriptionDecision.note}` : null,
++        `Chakra findings: ${summarise(findings)}`,
+         ragas.length ? `Ragas: ${ragas.map(nameOfRaga).filter(Boolean).join(', ')}` : 'Ragas: none prescribed',
+         activities.length ? `Activities: ${activities.map(nameOfAct).filter(Boolean).join('; ')}` : 'Activities: none prescribed',
+         `Source: ANAHAT assessment ${doc._id} (decision support; not a clinical diagnosis).`,
+@@ -560,7 +568,10 @@ function summarise(findings) {
+   const list = Array.isArray(findings) ? findings : [];
+   const imbalanced = list.filter((c) => c.status && /IMBALANCED/i.test(c.status));
+   if (!imbalanced.length) return 'No chakra passed the imbalance gate; assessment recorded for therapist review.';
+-  return imbalanced.map((c) => `${c.chakra}: ${c.status}${c.direction ? ` (${c.direction})` : ''}, confidence ${Math.round(c.confidence_pct || 0)}%`).join('; ');
++  return [...imbalanced]
++    .sort((a, b) => Number(b.score || 0) - Number(a.score || 0))
++    .map((c) => `${c.chakra}: ${c.status_label || c.status}${c.severity ? `, ${c.severity}` : ''}, confidence ${Math.round(c.confidence_pct || 0)}%`)
++    .join('; ');
+ }
+ 
+ 

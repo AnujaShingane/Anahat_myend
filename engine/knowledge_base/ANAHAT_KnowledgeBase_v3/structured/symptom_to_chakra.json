@@ -1,0 +1,2519 @@
+{
+  "_schema_version": "2.0",
+  "_note": "Canonical merged ailment list, 135 entries. AUDIT UPDATE: an earlier pass of this file (v1.0) had 116 entries and silently dropped several real ailments (including Insomnia, Anxiety, Obesity, Stuttering) due to a table-parsing regex failure on complex multi-chakra/multi-state rows. This version cross-checked the table-parse against a second independent parse of the prose duplicate document and recovered 19 missing entries. Complex multi-chakra entries (e.g. Anorexia, Insomnia) list state per-chakra in the 'state' field as free text rather than a single value -- parse that field carefully downstream, don't assume one state applies to all listed chakras. || v2.0 UPDATE: therapist-provided Strong/Medium/Weak indicator-strength ratings merged in from ANAHAT_Chakra_Indicator_Strength_Rating_Filled.xlsx (100% complete, 172/172 rows rated), matched by ID+chakra. New field 'indicator_strength_by_chakra' on each entry -- a dict of {chakra: 'Strong'|'Medium'|'Weak'} (or {rating, therapist_note} where the therapist added a note). This is the first real clinical weighting data available for the deterministic scoring engine -- previously every symptom counted equally regardless of how directly it indicates a given chakra. Match report: 171 entry-chakra pairs matched. 0 entry-chakra pairs in the JSON had no corresponding rating in the xlsx (left without a rating, NOT defaulted to any value). 0 rated rows in the xlsx did not match any JSON entry (see below). | v1.3 re-applied onto v3 KB: diagnostic_type/chakra_count/disambiguation_pattern_id added, sourced from pending_therapist_input/disambiguation_questions_pending_review.json.",
+  "entries": [
+    {
+      "ailment": "Abdominal cramps",
+      "chakra": [
+        "Root Chakra",
+        "Sacral Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Contraction of sacral center Fear of letting sexual feelings flow Poor ground",
+      "id": "SYM-001",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Weak",
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-01"
+    },
+    {
+      "ailment": "Aches",
+      "chakra": [
+        "Heart Chakra",
+        "Sacral Chakra"
+      ],
+      "state": "Deficient Heart, Excess Sacral",
+      "comment": "Longing, yearning, unsatisfied in love, excessive need, unable to supply one's own needs",
+      "id": "SYM-002",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Medium",
+        "Sacral Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-02"
+    },
+    {
+      "ailment": "Adrenal problems",
+      "chakra": [
+        "Root Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Excessive fear, too much demanded of energy",
+      "id": "SYM-003",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong",
+        "Solar Plexus Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-03"
+    },
+    {
+      "ailment": "Alcoholism",
+      "chakra": [
+        "Solar Plexus Chakra",
+        "Sacral Chakra"
+      ],
+      "state": "Excess Solar Plexus, Deficient or Excess Sacral",
+      "comment": "Excessive inhibition using alcohol to lessen it, or excessive emotions and compulsive behavior.",
+      "id": "SYM-004",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Medium",
+        "Sacral Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-04"
+    },
+    {
+      "ailment": "Allergies (food)",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Difficulty assimilating physical world Difficulty with mother energy",
+      "id": "SYM-005",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Medium"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Anorexia",
+      "chakra": [
+        "Root Chakra",
+        "Solar Plexus Chakra",
+        "Sacral Chakra"
+      ],
+      "state": "Deficient Root, Excess Solar Plexus, Deficient Sacral",
+      "comment": "Avoidance of the material world, excessive will and power struggle, and a need to desexualize the body.",
+      "id": "SYM-006",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Medium",
+        "Solar Plexus Chakra": "Strong",
+        "Sacral Chakra": "Medium"
+      },
+      "chakra_count": 3,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-05"
+    },
+    {
+      "ailment": "Anus",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Either",
+      "comment": "Excess or deficient depending on whether problem is due to holding on or letting go",
+      "id": "SYM-007",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Anus problems",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Excess or Deficient (depends on holding on vs letting go)",
+      "comment": "Problem is due to either holding on (excess) or letting go (deficient).",
+      "id": "SYM-008",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Anxiety",
+      "chakra": [
+        "Root Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "state": "Deficient Root, Conflicted Solar Plexus",
+      "comment": "Fear, lack of grounding, too much energy that is not directed by will.",
+      "id": "SYM-009",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong",
+        "Solar Plexus Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-06"
+    },
+    {
+      "ailment": "Apathy",
+      "chakra": [
+        "Sacral Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Restricted feeling, too little energy",
+      "id": "SYM-010",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong",
+        "Solar Plexus Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-07"
+    },
+    {
+      "ailment": "Arthritis",
+      "chakra": [
+        "Root Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Not holding together physically, stuck energy",
+      "id": "SYM-011",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Medium",
+        "Solar Plexus Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-08"
+    },
+    {
+      "ailment": "Asthma",
+      "chakra": [
+        "Heart Chakra"
+      ],
+      "state": "Deficient or Excess",
+      "comment": "disorder of the heart: empty or smothered; blocked grief",
+      "id": "SYM-012",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Athlete's foot",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Need to pay attention to ground",
+      "id": "SYM-013",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Bedwetting",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Inability to contain water element",
+      "id": "SYM-014",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Bladder problems",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Either",
+      "comment": "Issues with water element and emotions",
+      "id": "SYM-015",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Blood Pressure, High",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Excessive anxiety, undirected",
+      "id": "SYM-016",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Blood Pressure, Low",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Lethargy, too little energy",
+      "id": "SYM-017",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Bone problems",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Bones are first chakra structure, indicates difficulty with structure, lack of support",
+      "id": "SYM-018",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Bowels",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Either",
+      "comment": "holding on: Excess, letting go: Deficient",
+      "id": "SYM-019",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Breasts",
+      "chakra": [
+        "Heart Chakra"
+      ],
+      "state": "Either",
+      "comment": "issues of love and nourishment lumps, Excess smothered, unable to discharge",
+      "id": "SYM-020",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Breath, shortness",
+      "chakra": [
+        "Heart Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Can't take in love, out of balance, lack of self-love, inner peace",
+      "id": "SYM-021",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Bronchitis",
+      "chakra": [
+        "Heart Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Depleted heart chakra, unresolved grief",
+      "id": "SYM-022",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Burns",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Anger, too much fire element",
+      "id": "SYM-023",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Cancer",
+      "chakra": [
+        "depends on area"
+      ],
+      "state": "Usually Excess",
+      "comment": "Usually excessive energy that cannot be released, held resentments",
+      "id": "SYM-024",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "depends on area": "Weak"
+      },
+      "chakra_count": 0,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Candida",
+      "chakra": [
+        "Solar Plexus Chakra",
+        "Root Chakra"
+      ],
+      "state": "Deficient Solar Plexus, Excess Root",
+      "comment": "Depressed energy and vitality often due to excessive pushing, with excess eating used for grounding.",
+      "id": "SYM-025",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Medium",
+        "Root Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-09"
+    },
+    {
+      "ailment": "Cataracts",
+      "chakra": [
+        "Third Eye Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Restriction of vision, fear of seeing",
+      "id": "SYM-026",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Third Eye Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Chills",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Too little fire element",
+      "id": "SYM-027",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Chronic Fatigue",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess to Deficient",
+      "comment": "Chronic pushing(Excess) results in exhaustion(Deficient)",
+      "id": "SYM-028",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Colds",
+      "chakra": [
+        "Heart Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Unresolved grief, sadness, an extended cry",
+      "id": "SYM-029",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Medium"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Colitis",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Invasion of ground, lack of stability, anger",
+      "id": "SYM-030",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Coma",
+      "chakra": [
+        "Crown Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Disconnection from consciousness",
+      "id": "SYM-031",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Crown Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Conjunctivitis",
+      "chakra": [
+        "Third Eye Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Anger over what you are seeing",
+      "id": "SYM-032",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Third Eye Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Constipation",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Holding on, withholding, lack of trust",
+      "id": "SYM-033",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Deafness",
+      "chakra": [
+        "Throat Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Inability to receive verbal communication",
+      "id": "SYM-034",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Throat Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Diabetes",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Inability to use energy of sugar, overreaction",
+      "id": "SYM-035",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Diarrhea",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Inability to hold on, to appropriately ground",
+      "id": "SYM-036",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Dizziness",
+      "chakra": [
+        "Third Eye Chakra",
+        "Crown Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Excess energy in the upper chakras, losing contact with ground",
+      "id": "SYM-037",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Third Eye Chakra": "Medium",
+        "Crown Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-10"
+    },
+    {
+      "ailment": "Ears",
+      "chakra": [
+        "Throat Chakra"
+      ],
+      "state": "Either",
+      "comment": "Communication, listening",
+      "id": "SYM-038",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Throat Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Eczema",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Irritation, too much energy inside that can't get out",
+      "id": "SYM-039",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Medium"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Edema",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Hanging on to water element, to emotions Can't let go and move on",
+      "id": "SYM-040",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Emphysema",
+      "chakra": [
+        "Heart Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Fear of taking in love",
+      "id": "SYM-041",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Eyes",
+      "chakra": [
+        "Third Eye Chakra"
+      ],
+      "state": "Either",
+      "comment": "Vision and perception",
+      "id": "SYM-042",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Third Eye Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Fatigue",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Exhaustion of energy",
+      "id": "SYM-043",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Feet",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Either",
+      "comment": "Connection with ground, support",
+      "id": "SYM-044",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Fevers",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Too much heat, inability to dissipate energy",
+      "id": "SYM-045",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Fibroids",
+      "chakra": [
+        "Conflict in area"
+      ],
+      "state": "Conflicted",
+      "comment": "Inability to let go and flow",
+      "id": "SYM-046",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Conflict in area": "Weak"
+      },
+      "chakra_count": 0,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Flu",
+      "chakra": [
+        "no particular chakra"
+      ],
+      "state": "Either",
+      "comment": "Need for time out. Excess vulnerability",
+      "id": "SYM-047",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "no particular chakra": "Weak"
+      },
+      "chakra_count": 0,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Frigidity",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Fear of sexual feelings",
+      "id": "SYM-048",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Gallstones",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Over controlled, hard, rigid",
+      "id": "SYM-049",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Gas pains",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Poor digestion, low fire, excess air",
+      "id": "SYM-050",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Gastritis",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Inflammation of digestive organs",
+      "id": "SYM-051",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Genitals",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Either",
+      "comment": "Sexual expression",
+      "id": "SYM-052",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Glands: Adrenals",
+      "chakra": [
+        "Root Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "state": "Either",
+      "comment": "fight or flight survival response",
+      "id": "SYM-053",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong",
+        "Solar Plexus Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-03"
+    },
+    {
+      "ailment": "Glands: Gonads",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Either",
+      "comment": "Sexuality",
+      "id": "SYM-054",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Glands: Pancreas",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Either",
+      "comment": "Metabolism",
+      "id": "SYM-055",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Glands: Pineal",
+      "chakra": [
+        "Third Eye Chakra"
+      ],
+      "state": "Either",
+      "comment": "Light sensitive organ",
+      "id": "SYM-056",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Third Eye Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Glands: Pituitary",
+      "chakra": [
+        "Crown Chakra"
+      ],
+      "state": "Either",
+      "comment": "Master gland, chemical communicator",
+      "id": "SYM-057",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Crown Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Glands: Thymus",
+      "chakra": [
+        "Heart Chakra"
+      ],
+      "state": "Either",
+      "comment": "Immune System",
+      "id": "SYM-058",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Glands: Thyroid, parathyroid",
+      "chakra": [
+        "Throat Chakra"
+      ],
+      "state": "Either",
+      "comment": "near throat, also metabolism",
+      "id": "SYM-059",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Throat Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Goiter",
+      "chakra": [
+        "Throat Chakra"
+      ],
+      "state": "Conflicted",
+      "comment": "Being silenced, can't get communication out",
+      "id": "SYM-060",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Throat Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Gout",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Need to dominate (L.H.)",
+      "id": "SYM-061",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Medium"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Gum Problems",
+      "chakra": [
+        "Root Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Inability to bite through, lack of aggression",
+      "id": "SYM-062",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Medium",
+        "Solar Plexus Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-11"
+    },
+    {
+      "ailment": "Hands",
+      "chakra": [
+        "Solar Plexus Chakra",
+        "Heart Chakra",
+        "Throat Chakra"
+      ],
+      "state": "Either",
+      "comment": "Doing, loving, creating",
+      "id": "SYM-063",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Medium",
+        "Heart Chakra": "Medium",
+        "Throat Chakra": "Weak"
+      },
+      "chakra_count": 3,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-12"
+    },
+    {
+      "ailment": "Hay fever",
+      "chakra": [
+        "Sacral Chakra",
+        "Heart Chakra"
+      ],
+      "state": "Excess Sacral, Deficient Heart",
+      "comment": "Emotional congestion, lack of self-love",
+      "id": "SYM-064",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Medium",
+        "Heart Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-13"
+    },
+    {
+      "ailment": "Headaches",
+      "chakra": [
+        "Third Eye Chakra",
+        "Crown Chakra"
+      ],
+      "state": "Excess Third Eye, Conflicted Crown",
+      "comment": "Excess pressure to see or know, conflicting need for spiritual connection.",
+      "id": "SYM-065",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Third Eye Chakra": "Strong",
+        "Crown Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-14"
+    },
+    {
+      "ailment": "Heart Problems (General)",
+      "chakra": [
+        "Heart Chakra"
+      ],
+      "state": "Varies",
+      "comment": "Issues of love and acceptance, and support of will.",
+      "id": "SYM-066",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Heart, general",
+      "chakra": [
+        "Heart Chakra"
+      ],
+      "state": "Either",
+      "comment": "Issues of love and acceptance, support of will",
+      "id": "SYM-067",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Heartburn",
+      "chakra": [
+        "Solar Plexus Chakra",
+        "Heart Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Fire in the heart, using power instead of love pushing too hard",
+      "id": "SYM-068",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong",
+        "Heart Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-15"
+    },
+    {
+      "ailment": "Hemmorhoids",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Need attention to ground, trust and accept Holding on",
+      "id": "SYM-069",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Hemorrhoids",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Need for attention to grounding, trust, and acceptance.",
+      "id": "SYM-070",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Hepatitis",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Conflicted",
+      "comment": "Energy toxicity, need to shut down and clean out",
+      "id": "SYM-071",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Hernia",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Misjudgment of one's power, inability to contain",
+      "id": "SYM-072",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Herpes",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Either",
+      "comment": "Need for better sexual boundaries, often created to be a \"no,\" when \"no\" is hard to say",
+      "id": "SYM-073",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Hip problems",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Either",
+      "comment": "Locomotion, being able to move through life",
+      "id": "SYM-074",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Hives",
+      "chakra": [
+        "Heart Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "state": "Deficient Heart, Excess Solar Plexus",
+      "comment": "Intolerance, anger, excess irritation.",
+      "id": "SYM-075",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Medium",
+        "Solar Plexus Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-16"
+    },
+    {
+      "ailment": "Hyperglycemia",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess",
+      "comment": "See diabetes",
+      "id": "SYM-076",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Hyperthyroidism",
+      "chakra": [
+        "Throat Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Intense need to communicate",
+      "id": "SYM-077",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Throat Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Hyperventilation",
+      "chakra": [
+        "Heart Chakra",
+        "Root Chakra"
+      ],
+      "state": "Excess Heart, Deficient Root",
+      "comment": "Inability to assimilate love while feeling ungrounded.",
+      "id": "SYM-078",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Medium",
+        "Root Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-17"
+    },
+    {
+      "ailment": "Hypoglycemia",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Too little fire, will, focus",
+      "id": "SYM-079",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Impotence",
+      "chakra": [
+        "Sacral Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Fear of sexuality, low self-esteem",
+      "id": "SYM-080",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong",
+        "Solar Plexus Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-18"
+    },
+    {
+      "ailment": "Incontinence",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Inability to contain water, as substitute for expressing intense emotions",
+      "id": "SYM-081",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Incurable diseases",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Stuck, fear of change, afraid of flow, afraid of emotional release, surrender",
+      "id": "SYM-082",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Weak"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Indigestion",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Deficient or Excess",
+      "comment": "Poor metabolism, fire imbalance",
+      "id": "SYM-083",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Infection",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Leaky boundaries, invasion, anger",
+      "id": "SYM-084",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Medium"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Inflammation",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Anger in chakra close to related area",
+      "id": "SYM-085",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Medium"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Insomnia",
+      "chakra": [
+        "Root Chakra",
+        "Solar Plexus Chakra",
+        "Third Eye Chakra",
+        "Crown Chakra"
+      ],
+      "state": "Deficient Root, Excess Solar Plexus, Excess Third Eye, Excess Crown",
+      "comment": "Inability to settle into the ground, excess energy rising to the top, over-thinking and intellectualizing.",
+      "id": "SYM-086",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Medium",
+        "Solar Plexus Chakra": "Medium",
+        "Third Eye Chakra": "Medium",
+        "Crown Chakra": "Weak"
+      },
+      "chakra_count": 4,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-19"
+    },
+    {
+      "ailment": "Itching",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Blocked sexual or emotional release",
+      "id": "SYM-087",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Medium"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Jaundice",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Poor liver function, weak will",
+      "id": "SYM-088",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Jaw Problems",
+      "chakra": [
+        "Solar Plexus Chakra",
+        "Throat Chakra"
+      ],
+      "state": "Excess Solar Plexus, Deficient Throat",
+      "comment": "Anger and blocked expression.",
+      "id": "SYM-089",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Medium",
+        "Throat Chakra": "Strong"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-20"
+    },
+    {
+      "ailment": "Joints",
+      "chakra": [
+        "Root Chakra",
+        "Sacral Chakra"
+      ],
+      "state": "Either",
+      "comment": "Connective principle, look to ground, dissociation of mind from body",
+      "id": "SYM-090",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Medium",
+        "Sacral Chakra": "Weak"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-21"
+    },
+    {
+      "ailment": "Kidney problems",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Either",
+      "comment": "Can't sort through emotions, toxic environ.",
+      "id": "SYM-091",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Knee problems",
+      "chakra": [
+        "Root Chakra",
+        "Sacral Chakra"
+      ],
+      "state": "Either",
+      "comment": "Issues of ground and flexibility",
+      "id": "SYM-092",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong",
+        "Sacral Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-22"
+    },
+    {
+      "ailment": "Laryngitis",
+      "chakra": [
+        "Throat Chakra"
+      ],
+      "state": "Deficient or Excess",
+      "comment": "Fear of speaking one's truth, need to listen",
+      "id": "SYM-093",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Throat Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Legs",
+      "chakra": [
+        "Root Chakra",
+        "Sacral Chakra"
+      ],
+      "state": "Either",
+      "comment": "Issues of ground and movement",
+      "id": "SYM-094",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong",
+        "Sacral Chakra": "Weak"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-23"
+    },
+    {
+      "ailment": "Liver",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Either",
+      "comment": "Considered by Chinese to be the \"Sergeant general\" of the body, issues of control, will",
+      "id": "SYM-095",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Liver Problems",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Varies",
+      "comment": "The liver is considered by Chinese medicine to relate to fear and anger processing.",
+      "id": "SYM-096",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Lump in throat",
+      "chakra": [
+        "Throat Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Fear of speaking",
+      "id": "SYM-097",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Throat Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Lungs",
+      "chakra": [
+        "Heart Chakra"
+      ],
+      "state": "Either",
+      "comment": "Ability to take in love, breath, trust",
+      "id": "SYM-098",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Lupus",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess and Deficient (Conflicted)",
+      "comment": "Conflicted will, blocked anger turned against self, deep trauma",
+      "id": "SYM-099",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Medium"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Lymph problems",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "System overload, poor boundaries, too much stress, toxic environment",
+      "id": "SYM-100",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Medium"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Menopause problems",
+      "chakra": [
+        "varies"
+      ],
+      "state": "Varies",
+      "comment": "Unresolved issues coming ripe",
+      "id": "SYM-101",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "varies": "Weak"
+      },
+      "chakra_count": 0,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Menstrual problems",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Excess or Deficient",
+      "comment": "Issues with sexuality, femininity, flow",
+      "id": "SYM-102",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Migraines",
+      "chakra": [
+        "Third Eye Chakra",
+        "Crown Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Too much energy in upper chakras, need to ground and discharge",
+      "id": "SYM-103",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Third Eye Chakra": "Strong",
+        "Crown Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-24"
+    },
+    {
+      "ailment": "Nausea",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Anger, need to reject something",
+      "id": "SYM-104",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Neck Problems",
+      "chakra": [
+        "Throat Chakra"
+      ],
+      "state": "Either",
+      "comment": "Related to communication, held resentments Blocking things from consciousness",
+      "id": "SYM-105",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Throat Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Obesity",
+      "chakra": [
+        "Root Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess Root, Deficient Solar Plexus",
+      "comment": "Need to use weight to ground, and blocked fire.",
+      "id": "SYM-106",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong",
+        "Solar Plexus Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-25"
+    },
+    {
+      "ailment": "Paralysis",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Fear, terror, conflicting impulses, mind and body dissociation",
+      "id": "SYM-107",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Medium"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Pneumonia",
+      "chakra": [
+        "Heart Chakra",
+        "Solar Plexus Chakra",
+        "Root Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Extreme general deficiency and depletion, depression, poor will to live, feeling unloved",
+      "id": "SYM-108",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Strong",
+        "Solar Plexus Chakra": "Medium",
+        "Root Chakra": "Medium"
+      },
+      "chakra_count": 3,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-26"
+    },
+    {
+      "ailment": "Sciatica",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Deficient or Excess",
+      "comment": "Related to grounding, too much or too little Need to clear up grounding connection, issues from the past",
+      "id": "SYM-109",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Scoliosis",
+      "chakra": [
+        "varies"
+      ],
+      "state": "Varies",
+      "comment": "Difficulty letting chakras line up, fear of Kundalini energy, need to dissociate",
+      "id": "SYM-110",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "varies": "Weak"
+      },
+      "chakra_count": 0,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Shortness of Breath",
+      "chakra": [
+        "Heart Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Can't take in love, out of balance, lack self-love and inner peace.",
+      "id": "SYM-111",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Sinuses",
+      "chakra": [
+        "Third Eye Chakra"
+      ],
+      "state": "Either",
+      "comment": "Pressure from unconscious to see something",
+      "id": "SYM-112",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Third Eye Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Skin",
+      "chakra": [
+        "Root Chakra",
+        "Sacral Chakra"
+      ],
+      "state": "Either",
+      "comment": "Boundaries, enclosure of the body, sensate organ",
+      "id": "SYM-113",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Medium",
+        "Sacral Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-27"
+    },
+    {
+      "ailment": "Skin Problems",
+      "chakra": [
+        "Root Chakra",
+        "Sacral Chakra"
+      ],
+      "state": "Varies",
+      "comment": "Issues with boundaries, enclosure of the body.",
+      "id": "SYM-114",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Medium",
+        "Sacral Chakra": "Medium"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-27"
+    },
+    {
+      "ailment": "Slipped disk",
+      "chakra": [
+        "any"
+      ],
+      "state": "Either",
+      "comment": "Chakra out of alignment, check for nearest",
+      "id": "SYM-115",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "any": "Weak"
+      },
+      "chakra_count": 0,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Spleen",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Either",
+      "comment": "Used to be second chakra organ, immune system, white blood cells",
+      "id": "SYM-116",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Sterility",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Fear in reproductive system",
+      "id": "SYM-117",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Stomach problems",
+      "chakra": [
+        "Root Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "state": "Either",
+      "comment": "Digestion and metabolism — fire element Survival issue",
+      "id": "SYM-118",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Medium",
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-28"
+    },
+    {
+      "ailment": "Stroke",
+      "chakra": [
+        "Crown Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Overwhelm to consciousness, nervous system, can't respond effectively",
+      "id": "SYM-119",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Crown Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Stuttering",
+      "chakra": [
+        "Sacral Chakra",
+        "Throat Chakra"
+      ],
+      "state": "Excess Sacral, Deficient Throat",
+      "comment": "Often relates to sexual abuse and indicates someone else's energy in one's chakras.",
+      "id": "SYM-120",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Medium",
+        "Throat Chakra": "Strong"
+      },
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-29"
+    },
+    {
+      "ailment": "Throat",
+      "chakra": [
+        "Throat Chakra"
+      ],
+      "state": "Either",
+      "comment": "Communication chakra",
+      "id": "SYM-121",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Throat Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Throat Problems",
+      "chakra": [
+        "Throat Chakra"
+      ],
+      "state": "Varies",
+      "comment": "Issues with communication.",
+      "id": "SYM-122",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Throat Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Thymus",
+      "chakra": [
+        "Heart Chakra"
+      ],
+      "state": "Either",
+      "comment": "Related to heart and immune system",
+      "id": "SYM-123",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Heart Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Thyroid",
+      "chakra": [
+        "Throat Chakra"
+      ],
+      "state": "Either",
+      "comment": "Ability to process what we take in",
+      "id": "SYM-124",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Throat Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Thyroid Problems",
+      "chakra": [
+        "Throat Chakra"
+      ],
+      "state": "Varies",
+      "comment": "Ability to process what you take in.",
+      "id": "SYM-125",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Throat Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Toes: big toe",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Either",
+      "comment": "Grounding the energy of the related chakra",
+      "id": "SYM-126",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Medium"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Toes: littlest",
+      "chakra": [
+        "Throat Chakra"
+      ],
+      "state": "Either",
+      "comment": "Grounding the energy of the related chakra",
+      "id": "SYM-127",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Throat Chakra": "Weak"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Tonsillitis",
+      "chakra": [
+        "Throat Chakra"
+      ],
+      "state": "Deficient",
+      "comment": "Exhaustion of 5th chakra, poor self-care",
+      "id": "SYM-128",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Throat Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Tumors",
+      "chakra": [
+        "any"
+      ],
+      "state": "Either",
+      "comment": "related to chakra near tumor, blocked energy that needs release and is holding on, fear",
+      "id": "SYM-129",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "any": "Weak"
+      },
+      "chakra_count": 0,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Ulcers",
+      "chakra": [
+        "Solar Plexus Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Excess stomach fire",
+      "id": "SYM-130",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Solar Plexus Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Urinary infections",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Excess",
+      "comment": "look to sexual boundaries",
+      "id": "SYM-131",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Uterus",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Either",
+      "comment": "Reproductive system, feminine symbol",
+      "id": "SYM-132",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Vaginitis",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Overwhelmed and need to shut out sexuality Look to boundaries",
+      "id": "SYM-133",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Varicose veins",
+      "chakra": [
+        "Root Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Holding on to ground too tightly, not letting energy flow down easily, lack of trust",
+      "id": "SYM-134",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Root Chakra": "Medium"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "ailment": "Venereal disease",
+      "chakra": [
+        "Sacral Chakra"
+      ],
+      "state": "Excess",
+      "comment": "Carelessness, sexual guilt",
+      "id": "SYM-135",
+      "source": "Merged from BOTH duplicate sources: 'Chakra and common-ailments.txt' (clean table, primary) and 'CHAKRA & COMMON AILMENTS REFERENCE GUIDE.pdf' (prose version, used to recover entries the table-parser missed). 'Chakra and common-ailments.pdf' (garbled OCR) was discarded -- fully redundant with these two.",
+      "original_reference": "Anodea Judith, Sacred Centers - Chart of Common Physical Ailments",
+      "clinical_disclaimer": "General energetic guide only. NOT a medical diagnosis. Use alongside therapist judgment.",
+      "indicator_strength_by_chakra": {
+        "Sacral Chakra": "Strong"
+      },
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    }
+  ],
+  "indicator_strength_provenance": {
+    "source_file": "ANAHAT_Chakra_Indicator_Strength_Rating_Filled.xlsx",
+    "source_file_md5": "093ccd3bf82daa95f137396cb86b4fd7",
+    "provided_by": "Project therapist (per user instruction: 'treat as authoritative therapist input')",
+    "date_received_and_integrated": "2026-09-02 (first integration); re-verified byte-identical on re-upload same date",
+    "integration_method": "Exact match on (ID, Linked Chakra) between the xlsx 'Symptoms'/'Emotions'/'Behaviours' sheets and this file's existing entries. No fuzzy matching, no inference -- every rating below is a direct 1:1 copy of the therapist's 'Your Rating' column value.",
+    "verification": "171/171 symptom pairs, 20/20 emotion pairs, 24/24 behaviour pairs matched with zero conflicts and zero missing data across both the original integration and this re-verification pass. See config/indicator_strength_conflict_report.md for the full report.",
+    "not_integrated": "The workbook's 'Disambiguation Qs Review' sheet (38 rows) is 0% filled by the therapist as of this upload -- no rating data exists there to integrate. Tracked separately in structured/pending_therapist_input/disambiguation_questions_pending_review.json.",
+    "excel_file_unmodified": true,
+    "excel_file_archived_at": "source_registry/therapist_provided_files/ANAHAT_Chakra_Indicator_Strength_Rating_Filled.xlsx"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "_schema_version": "1.0",
+  "_note": "Response to gap-closure item #11 (Bilahari). raga_metadata.json is explicitly Hindustani-focused (sourced from Raga List.xlsx, framework: hindustani_classical_musicology). Bilahari is a Carnatic raga referenced in chakra_raga_bridge.json's research-supported evidence (Ramachandran et al. 2022, Heliyon -- a real peer-reviewed study on Carnatic raga-Bilahari and anxiety/sleep/somatic symptoms in cancer caregivers). Per project instruction Section 7 ('Do not create a fake Hindustani equivalent... preserve as a separate Carnatic entity rather than forcing it into the wrong taxonomy'), this file creates a small, separate Carnatic-raga structure rather than inventing Bilahari vadi/samvadi/thaat fields inside the Hindustani-schema raga_metadata.json.",
+  "framework": "carnatic_classical_musicology",
+  "ragas": [
+    {
+      "raga_name": "Bilahari",
+      "tradition": "Carnatic",
+      "melakarta_parent": "29 (Dheera Shankarabharanam) -- per raga_hindustani_carnatic_equivalents.json, which lists Bilahari as the Carnatic raga corresponding to melakarta 29 in two separate rows",
+      "hindustani_equivalents_found_in_kb": [
+        {
+          "hindustani_raga": "Alaiya Bilawal",
+          "thaat": "2",
+          "source": "raga_hindustani_carnatic_equivalents.json, row 1"
+        },
+        {
+          "hindustani_raga": "Desakshi",
+          "thaat": "3",
+          "source": "raga_hindustani_carnatic_equivalents.json, row 2"
+        }
+      ],
+      "hindustani_equivalents_caveat": "The equivalents table gives TWO different Hindustani ragas (with two different thaat numbers, 2 and 3) as corresponding to the same Carnatic raga Bilahari. This is an internal inconsistency in that source table, not resolved by this pass -- flagged rather than silently picking one. A musicologist should confirm whether this reflects a genuine one-to-many relationship (plausible, since Hindustani/Carnatic correspondence is by underlying note-set, not a strict 1:1 mapping) or a source error.",
+      "arohanam": null,
+      "avarohanam": null,
+      "mood_character": null,
+      "traditional_performance_time": null,
+      "field_status": "aroha/avaroha/mood/time fields not_found -- no Carnatic-musicology source available to this pass (no web access)",
+      "therapeutic_research": {
+        "study": "Ramachandran, K., Rajkumar, E., Romate, J., Allen, J. G., & Daniel, M. (2022). Effect of Carnatic raga-Bilahari based music therapy on anxiety, sleep disturbances and somatic symptoms among caregivers of cancer patients. Heliyon, 8(9), e10681.",
+        "population": "Cancer-patient caregivers, N=30",
+        "result_summary": "Statistically significant (p<0.001) decrease in anxiety, sleep disturbance, somatic symptoms, and distress after a month of raga-Bilahari listening (vocal/instrumental, alternating days, 15-30 min).",
+        "evidence_level": "LEVEL_1 (peer-reviewed clinical research, per this project's evidence scale)",
+        "does_this_establish_a_chakra_link": false,
+        "note": "This study links Bilahari to a therapeutic OUTCOME (anxiety/sleep/somatic symptoms), not to any chakra. Do not infer a chakra association from this entry -- see chakra_raga_bridge.json's own explicit separation of raga-research from chakra-mapping."
+      },
+      "evidence_level_for_musical_metadata": "LEVEL_UNKNOWN (arohanam/avarohanam/mood not sourced)",
+      "review_status": "musicological_review_required"
+    }
+  ]
+}

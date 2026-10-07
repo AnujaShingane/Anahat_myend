@@ -1,0 +1,472 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Dancing+Script:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   ANAHAT DESIGN TOKENS — single source of truth
+   One cyan, one orange, one charcoal. Every other
+   "shade" you see is this same color at different
+   opacity/brightness, never a different hue.
+   ============================================ */
+:root {
+  --anahat-cyan: 15, 133, 148;         /* #0F8594 — the ONE cyan used everywhere */
+  --anahat-cyan-strong: 10, 105, 118;  /* same hue, darker, for hover/active only */
+  --anahat-orange: 232, 93, 53;        /* #E85D35 */
+  --anahat-orange-strong: 200, 74, 40; /* #C84A28 */
+  --anahat-charcoal: 41, 45, 50;       /* #292D32 */
+  --anahat-cream: 253, 246, 238;       /* #FDF6EE */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Playfair Display is the serif used in the Anahat wordmark — it is now the
+   display/heading font across the whole site (marketing pages, dashboard
+   headings, section titles). Dancing Script mirrors the "Transformations"
+   script under the logo and is reserved for that one accent use. */
+.font-display { font-family: 'Playfair Display', Georgia, serif; }
+.font-script { font-family: 'Dancing Script', cursive; }
+h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+
+/* The page itself scrolls (browser scrollbar on the right). Dashboard
+   layouts are h-screen and scroll their own content pane; every other page
+   just grows and the window scrolls. */
+html { scroll-behavior: smooth; }
+body { overflow-y: auto; overflow-x: hidden; }
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.portal-page-content > :first-child:not(.pt-8):not(.fixed):not(.portal-full-chat) {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  margin-inline: -2rem;
+  padding: 0.75rem 2rem 0.5rem;
+  background: #F6F4EC;
+}
+
+.portal-page-content > :first-child.pt-8 {
+  position: static;
+}
+
+.portal-page-content > :first-child.pt-8 > :first-child {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  margin-inline: -2rem;
+  padding: 0.75rem 2rem 0.5rem;
+  background: #F6F4EC;
+}
+
+.portal-page-filters {
+  position: sticky;
+  top: 4rem;
+  z-index: 29;
+  margin-inline: -2rem;
+  padding: 0.5rem 2rem;
+  background: #F6F4EC;
+}
+
+.portal-page-content [class*="rounded-2xl"],
+.portal-page-content [class*="rounded-3xl"],
+.portal-page-content [class*="rounded-[2rem]"],
+.portal-page-content [class*="rounded-[24px]"] {
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+.portal-page-content [class*="shadow-"] {
+  box-shadow: none !important;
+}
+
+.therapist-card-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 639px) {
+  .portal-page-content > :first-child:not(.pt-8):not(.fixed):not(.portal-full-chat),
+  .portal-page-content > :first-child.pt-8 > :first-child,
+  .portal-page-filters {
+    margin-inline: -1rem;
+    padding-inline: 1rem;
+  }
+}
+/* Add these to your src/index.css file */
+
+/* ============================================
+   CUSTOM SCROLLBAR STYLES - ALL PAGES
+   ============================================ */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #e85d35 #f3f4f6;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #e85d35 0%, #ce4828 100%);
+  border-radius: 10px;
+  border: 2px solid #f3f4f6;
+  transition: all 0.3s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ce4828 0%, #b63c21 100%);
+  border: 2px solid #e5e7eb;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #f28b65 0%, #e85d35 100%);
+}
+
+/* Horizontal scrollbar */
+*::-webkit-scrollbar-horizontal {
+  height: 10px;
+}
+
+/* Corner where vertical and horizontal scrollbars meet */
+*::-webkit-scrollbar-corner {
+  background: #f3f4f6;
+}
+
+/* ============================================
+   DARK THEME SCROLLBAR (for dark backgrounds)
+   ============================================ */
+
+.dark-scroll::-webkit-scrollbar-track,
+.bg-gradient-to-br::-webkit-scrollbar-track,
+[class*="from-purple"]::-webkit-scrollbar-track,
+[class*="from-teal"]::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.dark-scroll::-webkit-scrollbar-thumb,
+.bg-gradient-to-br::-webkit-scrollbar-thumb,
+[class*="from-purple"]::-webkit-scrollbar-thumb,
+[class*="from-teal"]::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(168, 85, 247, 0.8) 0%, rgba(147, 51, 234, 0.8) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-scroll::-webkit-scrollbar-thumb:hover,
+.bg-gradient-to-br::-webkit-scrollbar-thumb:hover,
+[class*="from-purple"]::-webkit-scrollbar-thumb:hover,
+[class*="from-teal"]::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(232, 93, 53, 0.95) 0%, rgba(206, 72, 40, 0.95) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   THIN SCROLLBAR (for small containers)
+   ============================================ */
+
+.thin-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: #e85d35;
+  border-radius: 3px;
+  border: none;
+}
+
+/* ============================================
+   HIDE SCROLLBAR (but keep functionality)
+   ============================================ */
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
+
+/* ============================================
+   SMOOTH SCROLLING
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================
+   FADE EFFECT AT TOP/BOTTOM OF SCROLL
+   ============================================ */
+
+.scroll-fade {
+  position: relative;
+}
+
+.scroll-fade::before,
+.scroll-fade::after {
+  content: '';
+  position: sticky;
+  left: 0;
+  right: 0;
+  height: 20px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.scroll-fade::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.scroll-fade::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* ============================================
+   ANIMATED SCROLLBAR (pulsing effect)
+   ============================================ */
+
+@keyframes pulse-scrollbar {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animated-scroll::-webkit-scrollbar-thumb {
+  animation: pulse-scrollbar 2s ease-in-out infinite;
+}
+
+/* ============================================
+   SCROLLBAR FOR SPECIFIC COMPONENTS
+   ============================================ */
+
+/* Conversation History Panel */
+.conversation-history::-webkit-scrollbar {
+  width: 8px;
+}
+
+.conversation-history::-webkit-scrollbar-track {
+  background: rgba(243, 244, 246, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.conversation-history::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a855f7 0%, #9333ea 100%);
+  border-radius: 4px;
+}
+
+/* Dashboard Cards */
+.dashboard-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.dashboard-scroll::-webkit-scrollbar-track {
+  background: #f9fafb;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.dashboard-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #20AFC0 0%, #12707D 100%);
+  border-radius: 5px;
+  border: 2px solid #f9fafb;
+}
+
+/* Modal/Dialog Scrollbar */
+.modal-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(232, 93, 53, 0.5);
+  border-radius: 4px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(232, 93, 53, 0.8);
+}
+
+/* ============================================
+   ANAHAT — PRIMARY ACTION STYLE
+   (kept the .btn-sunset / .text-sunset / etc. class names so every existing
+  component that references them repaints automatically.)
+   ============================================ */
+
+.btn-sunset {
+  background: #e85d35;
+  color: #ffffff;
+  box-shadow: 0 8px 24px -8px rgba(232, 93, 53, 0.28);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.btn-sunset:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px -6px rgba(232, 93, 53, 0.34);
+  filter: brightness(1.1);
+}
+
+.btn-sunset:active:not(:disabled) {
+  transform: translateY(0) scale(0.99);
+}
+
+.btn-sunset:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-sunset-outline {
+  background: rgba(232, 93, 53, 0.08);
+  border: 1px solid rgba(232, 93, 53, 0.4);
+  color: #cf4c2b;
+  transition: all 0.3s ease;
+}
+
+.btn-sunset-outline:hover:not(:disabled) {
+  background: rgba(232, 93, 53, 0.16);
+  border-color: rgba(232, 93, 53, 0.7);
+}
+
+.text-sunset {
+  color: #cf4c2b;
+}
+
+.bg-sunset-soft {
+  background: rgba(232, 93, 53, 0.1);
+}
+
+.border-sunset {
+  border-color: rgba(232, 93, 53, 0.35);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+/* Always show scrollbar */
+.scrollbar-always::-webkit-scrollbar {
+  display: block !important;
+}
+
+/* ============================================
+   RESPONSIVE SCROLLBAR
+   ============================================ */
+
+@media (max-width: 768px) {
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .thin-scroll::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+}
+/* ============================================
+   THERAPIST DASHBOARD (Anahat Transformations) — micro-interactions
+   ============================================ */
+
+.td-surface {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03), 0 8px 24px -12px rgba(15, 23, 42, 0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.td-surface:hover {
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05), 0 14px 32px -14px rgba(15, 23, 42, 0.1);
+}
+
+.td-card-hover {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.td-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px -12px rgba(15, 23, 42, 0.18);
+}
+
+.td-chip {
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+.td-chip:hover {
+  transform: translateY(-1px);
+}
+
+.td-btn-pop {
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.15s ease;
+}
+.td-btn-pop:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+.td-btn-pop:active:not(:disabled) {
+  transform: translateY(0) scale(0.97);
+}
+
+@keyframes td-fade-slide-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.td-animate-in {
+  animation: td-fade-slide-in 0.35s ease both;
+}
+
+/* Used on the marketing landing page for text/labels that sit directly on
+   the hero photo (no opaque card behind them) so they stay legible no
+   matter how light or busy that part of the photo is. */
+.photo-text-shadow {
+  text-shadow: 0 2px 10px rgba(11, 19, 16, 0.85), 0 1px 3px rgba(11, 19, 16, 0.95);
+}

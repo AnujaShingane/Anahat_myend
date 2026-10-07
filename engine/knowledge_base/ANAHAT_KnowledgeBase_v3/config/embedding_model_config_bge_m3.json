@@ -1,0 +1,14 @@
+{
+  "_schema_version": "1.0",
+  "embedding_model": "BAAI/bge-m3",
+  "language_scope": "Multilingual patient queries and multilingual knowledge retrieval",
+  "vector_dimension": 1024,
+  "distance_metric": "Cosine",
+  "instruction": "Use the same embedding model and preprocessing policy for indexed documents and queries. Do not mix embedding models within one Qdrant collection.",
+  "query_prefix": "",
+  "notes": [
+    "BGE-M3 is used for multilingual semantic retrieval; it is not the clinical decision-maker.",
+    "Retrieval returns candidates. Patient confirmation, KB validation, scoring, safety, and therapist review remain separate stages.",
+    "Do not store governance_rules.json as ordinary retrievable knowledge; keep it as control logic."
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "_schema_version": "1.0",
+  "_note": "PROPOSED addendum to config/governance_rules.json. Not merged into the existing file automatically -- governance_rules.json is control logic injected into every agent's system prompt, and per project instructions existing structured/config files must be preserved, not silently modified. A clinical/product lead should review and, if approved, merge this as Rule 15 into governance_rules.json (bumping _schema_version to 1.2).",
+  "proposed_rule": {
+    "id": 15,
+    "title": "Raga Recommendation Evidence Gating (proposed)",
+    "summary": "No raga may be surfaced as a recommendation candidate for a therapeutic goal tied to a serious medical or psychiatric condition (per raaga/structured/chakra_raga_bridge.json condition_flag) unless (a) the association has evidence_level LEVEL_1-3 and review_status=approved, or (b) it is presented purely as a general relaxation/wellbeing option with explicit non-treatment framing and therapist sign-off. This extends Rule 10 (Responsible Chakra & Raaga Recommendations) with an explicit gate specific to the newly-added ANAHAT practitioner-tradition raga-condition data (LEVEL_5), which was not present in the knowledge base Rule 10 was originally written against."
+  }
+}

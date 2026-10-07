@@ -1,0 +1,90 @@
+{
+  "_schema_version": "1.0",
+  "_note": "Response to gap-closure item (raga contraindications). No reliable, source-backed contraindication data exists anywhere in this knowledge base for any raga. This file exists to hold that data WHEN a reliable source is found -- it does not itself supply contraindications. An empty contraindications list below means 'no validated contraindication has been established in this knowledge base,' NOT 'this raga is universally safe' -- see usage_constraint.",
+  "usage_constraint": {
+    "empty_contraindications_does_not_mean_safe": true,
+    "statement": "An empty or short contraindications array must never be interpreted or communicated as 'this raga has no known risks.' It means the available source material did not address the question. The correct default posture for the recommendation engine is caution, not permissiveness, when contraindication data is absent.",
+    "can_influence_raga_recommendation": "only in the negative direction (i.e. a populated, sourced contraindication can BLOCK a recommendation; an empty list cannot be used to APPROVE one on its own)"
+  },
+  "condition_flagged_ragas": [
+    {
+      "raga": "Vihag / Bihag",
+      "condition_flag": "epilepsy",
+      "reason": "chakra_raga_bridge.json / raaga_therapeutic_indications data associates this raga with epilepsy treatment (traditional/practitioner source, ANAHAT Music Therapy Training material). This is NOT a validated contraindication -- it is the opposite direction (a claimed traditional indication FOR epilepsy) -- but any raga associated with a seizure-related condition should route through therapist review before being shown to a user who has disclosed epilepsy or seizure history (see structured/clinical_context_questions.json, CC-NEURO-01), out of caution, regardless of the traditional indication's direction.",
+      "known_considerations": [],
+      "contraindications": [],
+      "evidence_level": "insufficient",
+      "source": null,
+      "review_status": "clinical_review_required"
+    },
+    {
+      "raga": "Dhani",
+      "condition_flag": "epilepsy",
+      "reason": "Same as Vihag/Bihag above.",
+      "known_considerations": [],
+      "contraindications": [],
+      "evidence_level": "insufficient",
+      "source": null,
+      "review_status": "clinical_review_required"
+    },
+    {
+      "raga": "Jhinjhoti",
+      "condition_flag": "schizophrenia (named psychiatric condition in source)",
+      "reason": "Traditional/practitioner source names this raga in connection with schizophrenia. Per Governance Rules 9-10, must never be presented as diagnosis or treatment for schizophrenia. Internal mapping-logic use only, pending clinical-lead review.",
+      "known_considerations": [],
+      "contraindications": [],
+      "evidence_level": "insufficient",
+      "source": null,
+      "review_status": "clinical_review_required"
+    },
+    {
+      "raga": "Harikauns",
+      "condition_flag": "schizophrenia (named psychiatric condition in source)",
+      "reason": "Same as Jhinjhoti above.",
+      "known_considerations": [],
+      "contraindications": [],
+      "evidence_level": "insufficient",
+      "source": null,
+      "review_status": "clinical_review_required"
+    },
+    {
+      "raga": "Pooriya / Shankara",
+      "condition_flag": "Parkinson's Disease (named neurological condition in source)",
+      "reason": "Traditional/practitioner source. If ever surfaced to a user with a diagnosed movement disorder, route to clinical review rather than auto-recommend.",
+      "known_considerations": [],
+      "contraindications": [],
+      "evidence_level": "insufficient",
+      "source": null,
+      "review_status": "clinical_review_required"
+    },
+    {
+      "raga": "Malkauns / Chandrakauns",
+      "condition_flag": "cardiac / heart-related conditions",
+      "reason": "Traditional/practitioner source associates these ragas with 'heart-related issues.' If surfaced to a user with a disclosed cardiac condition, route to clinical review.",
+      "known_considerations": [],
+      "contraindications": [],
+      "evidence_level": "insufficient",
+      "source": null,
+      "review_status": "clinical_review_required"
+    },
+    {
+      "raga": "Todi / Purvi / Bhoopal",
+      "condition_flag": "blood pressure",
+      "reason": "Traditional/practitioner source associates these ragas with blood-pressure conditions. If surfaced to a user with disclosed hypertension/hypotension, route to clinical review.",
+      "known_considerations": [],
+      "contraindications": [],
+      "evidence_level": "insufficient",
+      "source": null,
+      "review_status": "clinical_review_required"
+    }
+  ],
+  "all_other_ragas_in_knowledge_base": {
+    "contraindications": [],
+    "known_considerations": [],
+    "evidence_level": "insufficient",
+    "source": null,
+    "review_status": "review_required",
+    "note": "No specific contraindication data was found for any raga not listed in condition_flagged_ragas above. This is the 'insufficient evidence' default state for the remaining ~85 ragas in raga_metadata.json, not a statement that they are confirmed safe."
+  },
+  "recommendation_engine_integration_note": "The Raga Selection Rules / Safety Filtering step in the pipeline should treat this file as a BLOCK LIST candidate source (condition_flagged_ragas require clinical_context_questions.json disclosures to be checked before recommending), not an ALLOW LIST. Absence from this file is not evidence of safety."
+}

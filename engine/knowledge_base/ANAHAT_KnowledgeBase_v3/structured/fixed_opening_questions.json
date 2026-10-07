@@ -1,0 +1,11 @@
+{
+  "_schema_version": "1.0",
+  "_note": "SUPERSEDED as of the 'ANAHAT AI ENGINE - RECENT DESIGN UPDATES (vNext)' document. The single fixed-list model this file represents has been replaced by a three-style, therapist-selected model -- see structured/opening_questions.json instead, which is the file vNext explicitly names as the live config ('opening_questions.json'). This file is kept only for provenance; these same 4 questions are carried into opening_questions.json's Set A ('Direct but Friendly') as a best-fit mapping. Do not wire this file into the live Assessment Agent.",
+  "source_document": "Fix_Questions.txt",
+  "questions": [
+    {"id": "FQ-01", "text": "How have you been feeling lately—emotionally, mentally, and physically?"},
+    {"id": "FQ-02", "text": "Are there any thoughts or tensions that keep coming up?"},
+    {"id": "FQ-03", "text": "Which parts of your daily life or relationships feel out of balance, draining, or stuck right now?"},
+    {"id": "FQ-04", "text": "Are there recent situations or past experiences that have caused stress or still affect you, and how do you usually cope with them?"}
+  ]
+}

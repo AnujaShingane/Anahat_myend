@@ -1,0 +1,802 @@
+{
+  "_schema_version": "1.0",
+  "_note": "Hindustani <-> Carnatic raga equivalence table with Thaat and Melakarta numbers. Transcribed from 'Equivalent Ragas in Hindustani and Carnatic Music.pdf' (DATA upload). 132 of an unknown total row count parsed cleanly via layout-mode text extraction; some rows spanning a page break in the source PDF may have been dropped rather than risk a silent misparse -- flagged copyright/source status: usage_review_required (no author/publisher byline found in the extracted text; source authority not yet confirmed). This table is musicological reference (LEVEL_4) -- it establishes which Carnatic raga corresponds to which Hindustani raga, NOT a therapeutic claim about either.",
+  "evidence_level": "LEVEL_4",
+  "source": "Equivalent Ragas in Hindustani and Carnatic Music.pdf",
+  "review_status": "usage_review_required",
+  "row_count_parsed": 132,
+  "entries": [
+    {
+      "thaat": "1",
+      "hindustani_raga": "Kalyan",
+      "melakarta_number": "65",
+      "carnatic_raga": "Mecha Kalyani"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Bilawal",
+      "melakarta_number": "29",
+      "carnatic_raga": "Dheera Shankarabharanam"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Kamaj",
+      "melakarta_number": "28",
+      "carnatic_raga": "Hari Kambhoji"
+    },
+    {
+      "thaat": "4",
+      "hindustani_raga": "Bhairav",
+      "melakarta_number": "15",
+      "carnatic_raga": "Mayamalava Gaula"
+    },
+    {
+      "thaat": "5",
+      "hindustani_raga": "Bhairavi",
+      "melakarta_number": "8",
+      "carnatic_raga": "Hanumathodi"
+    },
+    {
+      "thaat": "6",
+      "hindustani_raga": "Asaveri",
+      "melakarta_number": "20",
+      "carnatic_raga": "Nata Bhairavi"
+    },
+    {
+      "thaat": "7",
+      "hindustani_raga": "Thodi",
+      "melakarta_number": "45",
+      "carnatic_raga": "Subhapanthuvarali"
+    },
+    {
+      "thaat": "8",
+      "hindustani_raga": "Purvi",
+      "melakarta_number": "51",
+      "carnatic_raga": "Kamavardani"
+    },
+    {
+      "thaat": "9",
+      "hindustani_raga": "Marva",
+      "melakarta_number": "53",
+      "carnatic_raga": "Gamanasrama"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Kapi",
+      "melakarta_number": "22",
+      "carnatic_raga": "Karaharapriya"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Abhogi Kanada",
+      "melakarta_number": "22",
+      "carnatic_raga": "Abhogi"
+    },
+    {
+      "thaat": "1",
+      "hindustani_raga": "Adbutkalyan",
+      "melakarta_number": "29",
+      "carnatic_raga": "Niroshta"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Alaiya Bilawal",
+      "melakarta_number": "29",
+      "carnatic_raga": "Bilahari"
+    },
+    {
+      "thaat": "9",
+      "hindustani_raga": "Ambika",
+      "melakarta_number": "59",
+      "carnatic_raga": "Dharmavati"
+    },
+    {
+      "thaat": "1",
+      "hindustani_raga": "Anand, Anandkalyan, Nand",
+      "melakarta_number": "65",
+      "carnatic_raga": "Anand, Anandkalyan"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Audhava Bilawal",
+      "melakarta_number": "29",
+      "carnatic_raga": "Lalitha, Hindolam (Type"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Bagaesree",
+      "melakarta_number": "22",
+      "carnatic_raga": "Bagaesree-Suddha Bhairavi"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Bagaesree Kanada",
+      "melakarta_number": "22",
+      "carnatic_raga": "Kanada"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Bahar",
+      "melakarta_number": "22",
+      "carnatic_raga": "Kanada"
+    },
+    {
+      "thaat": "4",
+      "hindustani_raga": "Bairagi Bhairav",
+      "melakarta_number": "2",
+      "carnatic_raga": "Revathi"
+    },
+    {
+      "thaat": "4",
+      "hindustani_raga": "Bangla Bhairav",
+      "melakarta_number": "15",
+      "carnatic_raga": "Kannada Bangala"
+    },
+    {
+      "thaat": "8",
+      "hindustani_raga": "Basant",
+      "melakarta_number": "15",
+      "carnatic_raga": "Vasantha"
+    },
+    {
+      "thaat": "4",
+      "hindustani_raga": "Basant Mukhari",
+      "melakarta_number": "14",
+      "carnatic_raga": "Vasantha Mukhari"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Bhativari",
+      "melakarta_number": "28",
+      "carnatic_raga": "Chaya Tarangini"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Bhativari",
+      "melakarta_number": "28",
+      "carnatic_raga": "Sama (Shyama)"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Bhimplasi",
+      "melakarta_number": "20",
+      "carnatic_raga": "Bhimpalas, Abheri"
+    },
+    {
+      "thaat": "1",
+      "hindustani_raga": "Bhoop",
+      "melakarta_number": "65",
+      "carnatic_raga": "Mohanam"
+    },
+    {
+      "thaat": "1",
+      "hindustani_raga": "Suddhakalyan",
+      "melakarta_number": "65",
+      "carnatic_raga": "Mohanam"
+    },
+    {
+      "thaat": "1",
+      "hindustani_raga": "Bhoop Kalyan",
+      "melakarta_number": "65",
+      "carnatic_raga": "Mohan Kalyan"
+    },
+    {
+      "thaat": "4",
+      "hindustani_raga": "Bibhas",
+      "melakarta_number": "15",
+      "carnatic_raga": "Bibhas"
+    },
+    {
+      "thaat": "8",
+      "hindustani_raga": "Bibhas",
+      "melakarta_number": "15",
+      "carnatic_raga": "Bhauli"
+    },
+    {
+      "thaat": "9",
+      "hindustani_raga": "Bibhas",
+      "melakarta_number": "53",
+      "carnatic_raga": "Purvi Kalyani"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Behag",
+      "melakarta_number": "29",
+      "carnatic_raga": "Behag"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Brindavani Sarang",
+      "melakarta_number": "22",
+      "carnatic_raga": "Pushpalatika"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Champok",
+      "melakarta_number": "28",
+      "carnatic_raga": "Balahamsa"
+    },
+    {
+      "thaat": "1 and 3",
+      "hindustani_raga": "Champakali",
+      "melakarta_number": "64",
+      "carnatic_raga": "Ketaka Priya"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Chanchaldas Malhar",
+      "melakarta_number": "22",
+      "carnatic_raga": "Aro. Madhyamavati,"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Chandra Kauns",
+      "melakarta_number": "22",
+      "carnatic_raga": "Varam"
+    },
+    {
+      "thaat": "8",
+      "hindustani_raga": "Dheepak",
+      "melakarta_number": "51",
+      "carnatic_raga": "Deepaka"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Desh",
+      "melakarta_number": "28",
+      "carnatic_raga": "Kedara Gaula"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Desh Goud",
+      "melakarta_number": "28",
+      "carnatic_raga": "Desya Gaula"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Desakshi",
+      "melakarta_number": "28",
+      "carnatic_raga": "Bilahari"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Deshkar",
+      "melakarta_number": "29",
+      "carnatic_raga": "Mohanam"
+    },
+    {
+      "thaat": "4",
+      "hindustani_raga": "Devaranji",
+      "melakarta_number": "15",
+      "carnatic_raga": "Devaranji"
+    },
+    {
+      "thaat": "5",
+      "hindustani_raga": "Dhanasari",
+      "melakarta_number": "8",
+      "carnatic_raga": "Dhanyasi"
+    },
+    {
+      "thaat": "6",
+      "hindustani_raga": "Durbari Kannada",
+      "melakarta_number": "20",
+      "carnatic_raga": "Durbari Kanada"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Durga",
+      "melakarta_number": "29",
+      "carnatic_raga": "Suddha Saveri"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Durga",
+      "melakarta_number": "22",
+      "carnatic_raga": "Matura Dhwani, Varam"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Gara",
+      "melakarta_number": "22",
+      "carnatic_raga": "Dhana Kapi"
+    },
+    {
+      "thaat": "4",
+      "hindustani_raga": "Gauri",
+      "melakarta_number": "15",
+      "carnatic_raga": "Gauri"
+    },
+    {
+      "thaat": "4",
+      "hindustani_raga": "Girija",
+      "melakarta_number": "15",
+      "carnatic_raga": "Vasantha"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Gopi Kambhodi",
+      "melakarta_number": "22",
+      "carnatic_raga": "Jaya Narayani"
+    },
+    {
+      "thaat": "5",
+      "hindustani_raga": "Gopikavasant",
+      "melakarta_number": "20",
+      "carnatic_raga": "Gopika Vasantha"
+    },
+    {
+      "thaat": "1",
+      "hindustani_raga": "Goud Sarang",
+      "melakarta_number": "29",
+      "carnatic_raga": "Goud Sarang"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Gound Giri",
+      "melakarta_number": "22",
+      "carnatic_raga": "Pushpalatika, Sudda Dhanyasi"
+    },
+    {
+      "thaat": "1",
+      "hindustani_raga": "Hamir Kalyan",
+      "melakarta_number": "65",
+      "carnatic_raga": "Hamir Kalyani"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Hamsadhwani",
+      "melakarta_number": "29",
+      "carnatic_raga": "Hamsadhwani"
+    },
+    {
+      "thaat": "8",
+      "hindustani_raga": "Hamsa Narayani",
+      "melakarta_number": "51",
+      "carnatic_raga": "Hamsa Narayani"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Hemakalyan",
+      "melakarta_number": "29",
+      "carnatic_raga": "Begada"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Hemant",
+      "melakarta_number": "29",
+      "carnatic_raga": "Hemant"
+    },
+    {
+      "thaat": "1",
+      "hindustani_raga": "Hindol",
+      "melakarta_number": "65",
+      "carnatic_raga": "Sunadavinodini"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Kalavati",
+      "melakarta_number": "16",
+      "carnatic_raga": "Malayamarutham"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Hindustani Kapi",
+      "melakarta_number": "28",
+      "carnatic_raga": "Hindustani Kapi"
+    },
+    {
+      "thaat": "9",
+      "hindustani_raga": "Jait",
+      "melakarta_number": "53",
+      "carnatic_raga": "Gamanasrama"
+    },
+    {
+      "thaat": "12",
+      "hindustani_raga": "Jhaitkalyan",
+      "melakarta_number": "28",
+      "carnatic_raga": "Mohanam"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Jayajayavanti",
+      "melakarta_number": "22",
+      "carnatic_raga": "Jayajayavanti (Dwijavanthi)"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Jayanth",
+      "melakarta_number": "22",
+      "carnatic_raga": "Jayantasena"
+    },
+    {
+      "thaat": "6",
+      "hindustani_raga": "Jeevanpuri",
+      "melakarta_number": "20",
+      "carnatic_raga": "Jounpuri, Suddha Desi"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Jinjoti",
+      "melakarta_number": "28",
+      "carnatic_raga": "Jinjuti, Navroj"
+    },
+    {
+      "thaat": "4",
+      "hindustani_raga": "Jogid",
+      "melakarta_number": "15",
+      "carnatic_raga": "Padi"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Kafi",
+      "melakarta_number": "22",
+      "carnatic_raga": "Hindustani Kapi"
+    },
+    {
+      "thaat": "15",
+      "hindustani_raga": "Kamalamanohari",
+      "melakarta_number": "27",
+      "carnatic_raga": "Kamala Manohari"
+    },
+    {
+      "thaat": "6",
+      "hindustani_raga": "Kokila Pancham",
+      "melakarta_number": "8",
+      "carnatic_raga": "Prabhu Priya"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Kedaram",
+      "melakarta_number": "29",
+      "carnatic_raga": "Kedar-Neelambari"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Kamajee",
+      "melakarta_number": "28",
+      "carnatic_raga": "Kamajee"
+    },
+    {
+      "thaat": "8",
+      "hindustani_raga": "Kusuma Ranjani",
+      "melakarta_number": "15",
+      "carnatic_raga": "Gauli Panthu"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Lavanti",
+      "melakarta_number": "29",
+      "carnatic_raga": "Suddha Saveri"
+    },
+    {
+      "thaat": "4",
+      "hindustani_raga": "Lalita Pancham",
+      "melakarta_number": "15",
+      "carnatic_raga": "Lalitha Pancham"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Lankadhhan Sarang",
+      "melakarta_number": "22",
+      "carnatic_raga": "Sri,               Kanakavarali,"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Madhumad Sarang",
+      "melakarta_number": "22",
+      "carnatic_raga": "Madhyamavati"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Madhyamadi Sarang",
+      "melakarta_number": "22",
+      "carnatic_raga": "Madhyamavati"
+    },
+    {
+      "thaat": "36",
+      "hindustani_raga": "Udaya Ravi Chandrika",
+      "melakarta_number": "36",
+      "carnatic_raga": "Gambirnata"
+    },
+    {
+      "thaat": "9",
+      "hindustani_raga": "Madhu Vanthi",
+      "melakarta_number": "59",
+      "carnatic_raga": "Dharmavati"
+    },
+    {
+      "thaat": "5",
+      "hindustani_raga": "Malakosh",
+      "melakarta_number": "8",
+      "carnatic_raga": "Hindola"
+    },
+    {
+      "thaat": "1",
+      "hindustani_raga": "Malarani",
+      "melakarta_number": "60",
+      "carnatic_raga": "Hamsanadham"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Manavi",
+      "melakarta_number": "22",
+      "carnatic_raga": "Manavi"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Mand",
+      "melakarta_number": "29",
+      "carnatic_raga": "Mand"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Manohari",
+      "melakarta_number": "22",
+      "carnatic_raga": "Manohari"
+    },
+    {
+      "thaat": "1",
+      "hindustani_raga": "Marga Behag",
+      "melakarta_number": "65",
+      "carnatic_raga": "Suddha Kosala"
+    },
+    {
+      "thaat": "4",
+      "hindustani_raga": "Megha Ranji",
+      "melakarta_number": "15",
+      "carnatic_raga": "Megha Ranjani"
+    },
+    {
+      "thaat": "7",
+      "hindustani_raga": "Multani",
+      "melakarta_number": "45",
+      "carnatic_raga": "Gamaka Samantham"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Nagavari",
+      "melakarta_number": "28",
+      "carnatic_raga": "Nagaswaravali"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Narayani",
+      "melakarta_number": "28",
+      "carnatic_raga": "Narayani"
+    },
+    {
+      "thaat": "4",
+      "hindustani_raga": "Natabairav",
+      "melakarta_number": "27",
+      "carnatic_raga": "Sarasangi"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Natakuranji",
+      "melakarta_number": "28",
+      "carnatic_raga": "Natakurinji"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Pahadi",
+      "melakarta_number": "29",
+      "carnatic_raga": "Pahadi, Mohana Kalyani"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Palasi",
+      "melakarta_number": "22",
+      "carnatic_raga": "Pushpalatika"
+    },
+    {
+      "thaat": "5",
+      "hindustani_raga": "Pancham Malakoh",
+      "melakarta_number": "20",
+      "carnatic_raga": "Jayantasri"
+    },
+    {
+      "thaat": "9",
+      "hindustani_raga": "Paraju",
+      "melakarta_number": "15",
+      "carnatic_raga": "Parasu"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Patadeep",
+      "melakarta_number": "22",
+      "carnatic_raga": "Patadeep"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Patamanjari",
+      "melakarta_number": "22",
+      "carnatic_raga": "Phalamanjari"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Piloo",
+      "melakarta_number": "22",
+      "carnatic_raga": "Piloo"
+    },
+    {
+      "thaat": "9",
+      "hindustani_raga": "Pooria",
+      "melakarta_number": "53",
+      "carnatic_raga": "Hamsa Nandi"
+    },
+    {
+      "thaat": "9",
+      "hindustani_raga": "Pooria Dhanashree",
+      "melakarta_number": "53",
+      "carnatic_raga": "Hamsanandi-Kamavardini"
+    },
+    {
+      "thaat": "8",
+      "hindustani_raga": "Poorvi",
+      "melakarta_number": "15",
+      "carnatic_raga": "Poorvi"
+    },
+    {
+      "thaat": "9",
+      "hindustani_raga": "Poorva Kalyani",
+      "melakarta_number": "53",
+      "carnatic_raga": "Poorvi Kalyani"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Pratapavarali",
+      "melakarta_number": "28",
+      "carnatic_raga": "Pratapavarali"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Pulindika",
+      "melakarta_number": "28",
+      "carnatic_raga": "Nagavarali"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Ravichandrika",
+      "melakarta_number": "28",
+      "carnatic_raga": "Ravichandrika"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Rudra Priya",
+      "melakarta_number": "22",
+      "carnatic_raga": "Rudra Priya"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Sahana",
+      "melakarta_number": "22",
+      "carnatic_raga": "Sahana"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Saindavi",
+      "melakarta_number": "22",
+      "carnatic_raga": "Saindhavi"
+    },
+    {
+      "thaat": "10",
+      "hindustani_raga": "Sindhura",
+      "melakarta_number": "22",
+      "carnatic_raga": "Salaga Bhairavi"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Shankara",
+      "melakarta_number": "29",
+      "carnatic_raga": "Shankara"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Shankaramohan",
+      "melakarta_number": "29",
+      "carnatic_raga": "Shankara and Mohanam"
+    },
+    {
+      "thaat": "6",
+      "hindustani_raga": "Shobavari",
+      "melakarta_number": "20",
+      "carnatic_raga": "Sutradari"
+    },
+    {
+      "thaat": "1",
+      "hindustani_raga": "Shree Kalyan",
+      "melakarta_number": "64",
+      "carnatic_raga": "Saraswati"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Shuddha Bibas (Mohan Type)",
+      "melakarta_number": "65",
+      "carnatic_raga": "Mohanam"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Suddha Bilaval",
+      "melakarta_number": "29",
+      "carnatic_raga": "Sankara Baranam"
+    },
+    {
+      "thaat": "2",
+      "hindustani_raga": "Shuddha Kalyan",
+      "melakarta_number": "65",
+      "carnatic_raga": "Mohan Kalyani"
+    },
+    {
+      "thaat": "6",
+      "hindustani_raga": "Sindhu Bhairavi",
+      "melakarta_number": "10",
+      "carnatic_raga": "Sindhu Bhairavi"
+    },
+    {
+      "thaat": "9",
+      "hindustani_raga": "Sohoni",
+      "melakarta_number": "53",
+      "carnatic_raga": "Hamsa Nandi"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Sorat",
+      "melakarta_number": "28",
+      "carnatic_raga": "Surati"
+    },
+    {
+      "thaat": "4",
+      "hindustani_raga": "Bairav",
+      "melakarta_number": "17",
+      "carnatic_raga": "Sourashtram"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Suhakannada",
+      "melakarta_number": "28",
+      "carnatic_raga": "Pushpalatika"
+    },
+    {
+      "thaat": "4",
+      "hindustani_raga": "Takka",
+      "melakarta_number": "15",
+      "carnatic_raga": "Takka"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Tilakkamod",
+      "melakarta_number": "27",
+      "carnatic_raga": "Nalinakanti"
+    },
+    {
+      "thaat": "3",
+      "hindustani_raga": "Tilang 28Tilang",
+      "melakarta_number": "36",
+      "carnatic_raga": "Vedanda Gamana"
+    },
+    {
+      "thaat": "9",
+      "hindustani_raga": "Varati",
+      "melakarta_number": "52",
+      "carnatic_raga": "Patalambari, Hamsanandi"
+    },
+    {
+      "thaat": "9",
+      "hindustani_raga": "Vibhavari",
+      "melakarta_number": "2",
+      "carnatic_raga": "Revati"
+    },
+    {
+      "thaat": "1",
+      "hindustani_raga": "Vyjayanthi",
+      "melakarta_number": "59",
+      "carnatic_raga": "Varata"
+    },
+    {
+      "thaat": "1",
+      "hindustani_raga": "Yamakalyan",
+      "melakarta_number": "65",
+      "carnatic_raga": "Yamuna Kalyani"
+    }
+  ]
+}

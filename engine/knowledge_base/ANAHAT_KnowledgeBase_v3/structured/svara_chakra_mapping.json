@@ -1,0 +1,35 @@
+{
+  "_schema_version": "1.0",
+  "_note": "Created in response to gap-closure item #1: 'Svara -> Chakra assignments remain unconfirmed.' This file makes explicit what was previously only a note inside chakra_master.json's _note field. IMPORTANT HONESTY CHECK ON THIS PASS'S OWN CAPABILITY: this environment has no live web/browsing tool available, so this pass could not search for additional traditions, cross-check against a third independent source, or consult a musicology/Vedic-studies database. Everything below is a restructuring of what was ALREADY in the knowledge base from prior passes -- no new source was found or added.",
+  "mapping_status_summary": "SINGLE TRADITION FOUND, NOT INDEPENDENTLY CROSS-VALIDATED. Two documents in this knowledge base give the identical Sa-Re-Ga-Ma-Pa-Dha-Ni -> Root-through-Crown sequence, but per chakra_master.json's own v1.2 audit note, they are judged to share 'the same lineage assumption' rather than being genuinely independent traditions. No conflicting or alternative svara-chakra tradition was found anywhere in the source material supplied to this project. This does NOT mean no other tradition exists -- it means none was found in the documents available to this knowledge base.",
+  "svara_chakra_mappings": [
+    {
+      "svara": "Sa (Shadja)",
+      "chakra": "Muladhara (Root Chakra)",
+      "mapping_framework": "positional 7-svara / 7-chakra correspondence",
+      "tradition": "Not attributed to a named classical school or named text in either source; both sources present it as general Indian classical / yogic knowledge without citing a primary Sanskrit text.",
+      "sources": [
+        "Bhattacharya, S. 'Therapeutic Approach Of Indian Classical Music' (course/practitioner article, no journal/publisher named)",
+        "Chakra_Mapping.xlsx (uploaded reference spreadsheet, 'Swar' column; original author/compiler not stated in the file itself)"
+      ],
+      "evidence_level": "traditional",
+      "clinical_validation": "not_established",
+      "review_status": "musicological_review_required"
+    },
+    { "svara": "Re (Rishabha)", "chakra": "Svadhisthana (Sacral Chakra)", "mapping_framework": "positional 7-svara / 7-chakra correspondence", "tradition": "Same as Sa row above.", "sources": ["Bhattacharya, S. 'Therapeutic Approach Of Indian Classical Music'", "Chakra_Mapping.xlsx"], "evidence_level": "traditional", "clinical_validation": "not_established", "review_status": "musicological_review_required" },
+    { "svara": "Ga (Gandhara)", "chakra": "Manipura (Solar Plexus Chakra)", "mapping_framework": "positional 7-svara / 7-chakra correspondence", "tradition": "Same as Sa row above.", "sources": ["Bhattacharya, S. 'Therapeutic Approach Of Indian Classical Music'", "Chakra_Mapping.xlsx"], "evidence_level": "traditional", "clinical_validation": "not_established", "review_status": "musicological_review_required" },
+    { "svara": "Ma (Madhyama)", "chakra": "Anahata (Heart Chakra)", "mapping_framework": "positional 7-svara / 7-chakra correspondence", "tradition": "Same as Sa row above.", "sources": ["Bhattacharya, S. 'Therapeutic Approach Of Indian Classical Music'", "Chakra_Mapping.xlsx"], "evidence_level": "traditional", "clinical_validation": "not_established", "review_status": "musicological_review_required" },
+    { "svara": "Pa (Panchama)", "chakra": "Vishuddha (Throat Chakra)", "mapping_framework": "positional 7-svara / 7-chakra correspondence", "tradition": "Same as Sa row above.", "sources": ["Bhattacharya, S. 'Therapeutic Approach Of Indian Classical Music'", "Chakra_Mapping.xlsx"], "evidence_level": "traditional", "clinical_validation": "not_established", "review_status": "musicological_review_required" },
+    { "svara": "Dha (Dhaivata)", "chakra": "Ajna (Third Eye Chakra)", "mapping_framework": "positional 7-svara / 7-chakra correspondence", "tradition": "Same as Sa row above.", "sources": ["Bhattacharya, S. 'Therapeutic Approach Of Indian Classical Music'", "Chakra_Mapping.xlsx"], "evidence_level": "traditional", "clinical_validation": "not_established", "review_status": "musicological_review_required" },
+    { "svara": "Ni (Nishada)", "chakra": "Sahasrara (Crown Chakra)", "mapping_framework": "positional 7-svara / 7-chakra correspondence", "tradition": "Same as Sa row above.", "sources": ["Bhattacharya, S. 'Therapeutic Approach Of Indian Classical Music'", "Chakra_Mapping.xlsx"], "evidence_level": "traditional", "clinical_validation": "not_established", "review_status": "musicological_review_required" }
+  ],
+  "conflicting_traditions_found": [],
+  "conflicting_traditions_note": "Empty by honest construction, not by exhaustive search -- this pass had no web-search capability and could not survey the wider ethnomusicological literature (e.g. some Carnatic-tradition or Tantric sources may assign svaras to chakras differently). Do not read the empty array as 'confirmed there is only one tradition.'",
+  "usage_constraints": {
+    "can_influence_chakra_score": false,
+    "can_influence_raga_recommendation": false,
+    "allowed_usage": ["context", "explanation", "musicological_background"],
+    "rationale": "A single, non-independently-corroborated positional mapping must not silently become a scoring input. It may only inform LLM explanation text (e.g. 'this raga's emphasized svara traditionally corresponds to the Throat Chakra in one documented framework') clearly labeled as traditional context."
+  },
+  "relationship_to_chakra_master_json": "chakra_master.json's 'swara_note_for_raaga_mapping' field is DERIVED FROM this file and must be kept in sync if this file is ever updated with new sources or a conflicting tradition. This file is now the canonical record; chakra_master.json's field is a denormalized convenience copy."
+}

@@ -1,0 +1,21 @@
+{
+  "package": "ANAHAT_KnowledgeBase_v3",
+  "status": "FINAL_SOURCE_PACKAGE_FOR_ENGINE_HANDOFF",
+  "base_source": "ANAHAT_KnowledgeBase_v3_assessment_integrated.zip",
+  "embedding_model": "BAAI/bge-m3",
+  "vector_dimension": 1024,
+  "distance": "cosine",
+  "assessment_design": "structured/assessment/assessment_engine_design_v3.json",
+  "scoring_config": "structured/assessment/chakra_scoring_config_v2.json",
+  "governance": [
+    "governance/governance_rules.json",
+    "governance/evidence_policy.json",
+    "governance/safety_rules.json"
+  ],
+  "added_files": [
+    "config/embedding_model_config_bge_m3.json",
+    "config/QDRANT_CHUNKING_GUIDE_BGE_M3.md",
+    "structured/assessment/README_FINAL_ASSESSMENT_V3.md",
+    "MASTER_PROMPT_FOR_CLAUDE_ANAHAT_FINAL_ENGINE.md"
+  ]
+}

@@ -1,0 +1,1366 @@
+{
+  "matrix_rows": 64,
+  "source_files_found": 29,
+  "exact_source_matches": 29,
+  "missing_matrix_sources": 35,
+  "extra_source_files": [],
+  "policy_counts": {
+    "INDEX": 0,
+    "STRUCTURED_ONLY": 1,
+    "HOLD": 29,
+    "DO_NOT_INDEX": 34
+  },
+  "records": [
+    {
+      "matrix_file": "Brain & nervous system  .pdf",
+      "source_present": true,
+      "source_path": "sources/Brain & nervous system  .pdf",
+      "policy": "HOLD",
+      "policy_reason": "IP/source verification unresolved",
+      "qdrant_flag": "yes",
+      "reference_only": "no",
+      "requires_review": "no",
+      "ingestion_status": "approved_for_ingestion_pending_ip_relationship_confirmation",
+      "license_status": "proprietary_ANAHAT_org_ip_relationship_unconfirmed",
+      "source_verification_status": "source_identified_publisher_relationship_unconfirmed",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Brain Waves.pdf",
+      "source_present": true,
+      "source_path": "sources/Brain Waves.pdf",
+      "policy": "HOLD",
+      "policy_reason": "IP/source verification unresolved",
+      "qdrant_flag": "yes",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "approved_for_ingestion",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Brain_Mind_Behaviour.pdf",
+      "source_present": true,
+      "source_path": "sources/Brain_Mind_Behaviour.pdf",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "full-text ingestion prohibited",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Functioning of Nervous system.pdf",
+      "source_present": true,
+      "source_path": "sources/Functioning of Nervous system.pdf",
+      "policy": "HOLD",
+      "policy_reason": "IP/source verification unresolved",
+      "qdrant_flag": "yes",
+      "reference_only": "no",
+      "requires_review": "no",
+      "ingestion_status": "approved_for_ingestion_pending_ip_relationship_confirmation",
+      "license_status": "proprietary_ANAHAT_org_ip_relationship_unconfirmed",
+      "source_verification_status": "source_identified_publisher_relationship_unconfirmed",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Joe-Dispenza-Evolve-Your-Brain ( PDFDrive ).pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "do_not_ingest_sourced_from_unauthorized_sharing_aggregator",
+      "source_verification_status": "author_publication_identified_below",
+      "best_matches": [
+        {
+          "path": "sources/Brain Waves.pdf",
+          "similarity": 0.414
+        },
+        {
+          "path": "sources/Music Therapy & Brain signals processing.pdf",
+          "similarity": 0.4
+        },
+        {
+          "path": "sources/Brain & nervous system  .pdf",
+          "similarity": 0.388
+        }
+      ]
+    },
+    {
+      "matrix_file": "Music Therapy & Brain signals processing.pdf",
+      "source_present": true,
+      "source_path": "sources/Music Therapy & Brain signals processing.pdf",
+      "policy": "HOLD",
+      "policy_reason": "IP/source verification unresolved",
+      "qdrant_flag": "yes",
+      "reference_only": "no",
+      "requires_review": "no",
+      "ingestion_status": "approved_for_ingestion_pending_ip_relationship_confirmation",
+      "license_status": "proprietary_ANAHAT_org_ip_relationship_unconfirmed",
+      "source_verification_status": "source_identified_publisher_relationship_unconfirmed",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Neurological Music Therapy.pdf",
+      "source_present": true,
+      "source_path": "sources/Neurological Music Therapy.pdf",
+      "policy": "HOLD",
+      "policy_reason": "IP/source verification unresolved",
+      "qdrant_flag": "yes",
+      "reference_only": "no",
+      "requires_review": "no",
+      "ingestion_status": "approved_for_ingestion_pending_ip_relationship_confirmation",
+      "license_status": "proprietary_ANAHAT_org_ip_relationship_unconfirmed",
+      "source_verification_status": "source_identified_publisher_relationship_unconfirmed",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "brain-health-from-birth-...-9780999676158.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "full-text ingestion prohibited",
+      "qdrant_flag": "review_pending",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Brain_Mind_Behaviour.pdf",
+          "similarity": 0.462
+        },
+        {
+          "path": "sources/Brain & nervous system  .pdf",
+          "similarity": 0.4
+        },
+        {
+          "path": "sources/Brain Waves.pdf",
+          "similarity": 0.393
+        }
+      ]
+    },
+    {
+      "matrix_file": "Acupuncture and the Chakra Energy System ( PDFDrive ).pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "do_not_ingest_sourced_from_unauthorized_sharing_aggregator",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Functioning of Nervous system.pdf",
+          "similarity": 0.465
+        },
+        {
+          "path": "sources/Brain & nervous system  .pdf",
+          "similarity": 0.442
+        },
+        {
+          "path": "sources/Chakras & It's nature.pdf",
+          "similarity": 0.421
+        }
+      ]
+    },
+    {
+      "matrix_file": "Chakras & It_s nature.pdf",
+      "source_present": true,
+      "source_path": "sources/Chakras & It's nature.pdf",
+      "policy": "HOLD",
+      "policy_reason": "review pending",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "license_review_required",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Chakras & Singing Style Association.pdf",
+      "source_present": true,
+      "source_path": "sources/Chakras & Singing Style Association.pdf",
+      "policy": "HOLD",
+      "policy_reason": "IP/source verification unresolved",
+      "qdrant_flag": "yes",
+      "reference_only": "no",
+      "requires_review": "no",
+      "ingestion_status": "approved_for_ingestion_pending_ip_relationship_confirmation",
+      "license_status": "proprietary_ANAHAT_org_ip_relationship_unconfirmed",
+      "source_verification_status": "source_identified_publisher_relationship_unconfirmed",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Complete_Book_of_Chakras (Cyndi Dale).pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Chakras & It's nature.pdf",
+          "similarity": 0.484
+        },
+        {
+          "path": "sources/ExploringTheChakras.pdf",
+          "similarity": 0.452
+        },
+        {
+          "path": "sources/Functioning of Nervous system.pdf",
+          "similarity": 0.417
+        }
+      ]
+    },
+    {
+      "matrix_file": "Eastern Body Western Mind.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "author_publication_identified_below",
+      "best_matches": [
+        {
+          "path": "sources/Western Instruments.pdf",
+          "similarity": 0.538
+        },
+        {
+          "path": "sources/Experiencing Music.pdf",
+          "similarity": 0.471
+        },
+        {
+          "path": "sources/Ayurveda_Redesigned.pdf",
+          "similarity": 0.462
+        }
+      ]
+    },
+    {
+      "matrix_file": "ExploringTheChakras.pdf",
+      "source_present": true,
+      "source_path": "sources/ExploringTheChakras.pdf",
+      "policy": "HOLD",
+      "policy_reason": "review pending",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "license_review_required",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Seven+Senses+Chakra+Guide.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Rag Samay Chakra.pdf",
+          "similarity": 0.531
+        },
+        {
+          "path": "sources/Senior Citizen Issues & co-relation of Raga.pdf",
+          "similarity": 0.514
+        },
+        {
+          "path": "sources/Chakras & It's nature.pdf",
+          "similarity": 0.5
+        }
+      ]
+    },
+    {
+      "matrix_file": "Techniques of MusicTherapy.pdf (Chakras copy)",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "duplicate",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "duplicate",
+      "license_status": "n/a_duplicate",
+      "source_verification_status": "n/a_duplicate",
+      "best_matches": [
+        {
+          "path": "sources/Neurological Music Therapy.pdf",
+          "similarity": 0.521
+        },
+        {
+          "path": "sources/The Selection Of Music For Therapeutic Purposes.pdf",
+          "similarity": 0.489
+        },
+        {
+          "path": "sources/ABC of Music.pdf",
+          "similarity": 0.475
+        }
+      ]
+    },
+    {
+      "matrix_file": "anodea-judith-wheels-of-life.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "author_publication_identified_below",
+      "best_matches": [
+        {
+          "path": "sources/Chakras & It's nature.pdf",
+          "similarity": 0.473
+        },
+        {
+          "path": "sources/Senior Citizen Issues & co-relation of Raga.pdf",
+          "similarity": 0.442
+        },
+        {
+          "path": "sources/Noise.pdf",
+          "similarity": 0.439
+        }
+      ]
+    },
+    {
+      "matrix_file": "chakra-ebook.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "HOLD",
+      "policy_reason": "review pending",
+      "qdrant_flag": "review_pending",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "license_review_required",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Chakras & It's nature.pdf",
+          "similarity": 0.615
+        },
+        {
+          "path": "sources/Rag Samay Chakra.pdf",
+          "similarity": 0.556
+        },
+        {
+          "path": "sources/Chakras & Singing Style Association.pdf",
+          "similarity": 0.528
+        }
+      ]
+    },
+    {
+      "matrix_file": "ABC of Music.pdf",
+      "source_present": true,
+      "source_path": "sources/ABC of Music.pdf",
+      "policy": "HOLD",
+      "policy_reason": "review pending",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "license_review_required",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Acoustic.pdf",
+      "source_present": true,
+      "source_path": "sources/Acoustic.pdf",
+      "policy": "HOLD",
+      "policy_reason": "review pending",
+      "qdrant_flag": "review_pending",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "license_review_required",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Brain waves.docx.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "duplicate",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "duplicate",
+      "license_status": "n/a_duplicate",
+      "source_verification_status": "n/a_duplicate",
+      "best_matches": [
+        {
+          "path": "sources/Brain Waves.pdf",
+          "similarity": 0.857
+        },
+        {
+          "path": "sources/Brain & nervous system  .pdf",
+          "similarity": 0.591
+        },
+        {
+          "path": "sources/Brain_Mind_Behaviour.pdf",
+          "similarity": 0.591
+        }
+      ]
+    },
+    {
+      "matrix_file": "Experiencing Music.pdf",
+      "source_present": true,
+      "source_path": "sources/Experiencing Music.pdf",
+      "policy": "HOLD",
+      "policy_reason": "review pending",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "license_review_required",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Indian Instruments.pdf",
+      "source_present": true,
+      "source_path": "sources/Indian Instruments.pdf",
+      "policy": "HOLD",
+      "policy_reason": "review pending",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "license_review_required",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Introduction of Indian Classical Music.pdf",
+      "source_present": true,
+      "source_path": "sources/Introduction of Indian Classical Music.pdf",
+      "policy": "HOLD",
+      "policy_reason": "IP/source verification unresolved",
+      "qdrant_flag": "yes",
+      "reference_only": "no",
+      "requires_review": "no",
+      "ingestion_status": "approved_for_ingestion_pending_ip_relationship_confirmation",
+      "license_status": "proprietary_ANAHAT_org_ip_relationship_unconfirmed",
+      "source_verification_status": "source_identified_publisher_relationship_unconfirmed",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Musical Energies.pdf",
+      "source_present": true,
+      "source_path": "sources/Musical Energies.pdf",
+      "policy": "HOLD",
+      "policy_reason": "review pending",
+      "qdrant_flag": "review_pending",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "license_review_required",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Noise.pdf",
+      "source_present": true,
+      "source_path": "sources/Noise.pdf",
+      "policy": "HOLD",
+      "policy_reason": "review pending",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "license_review_required",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Raga List.xlsx",
+      "source_present": false,
+      "source_path": "",
+      "policy": "STRUCTURED_ONLY",
+      "policy_reason": "structured data",
+      "qdrant_flag": "n/a_structured",
+      "reference_only": "no",
+      "requires_review": "no",
+      "ingestion_status": "approved_for_ingestion_structured_data",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Chakras & It's nature.pdf",
+          "similarity": 0.378
+        },
+        {
+          "path": "sources/Indian Instruments.pdf",
+          "similarity": 0.333
+        },
+        {
+          "path": "sources/Brain & nervous system  .pdf",
+          "similarity": 0.316
+        }
+      ]
+    },
+    {
+      "matrix_file": "The Sound Spectrum.docx.pdf",
+      "source_present": true,
+      "source_path": "sources/The Sound Spectrum.docx.pdf",
+      "policy": "HOLD",
+      "policy_reason": "review pending",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "license_review_required",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Western Instruments.pdf",
+      "source_present": true,
+      "source_path": "sources/Western Instruments.pdf",
+      "policy": "HOLD",
+      "policy_reason": "review pending",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "license_review_required",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "World Music.pdf",
+      "source_present": true,
+      "source_path": "sources/World Music.pdf",
+      "policy": "HOLD",
+      "policy_reason": "review pending",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "license_review_required",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Aspect of healing - Physical & Emotional Body.pdf",
+      "source_present": true,
+      "source_path": "sources/Aspect of healing - Physical & Emotional Body.pdf",
+      "policy": "HOLD",
+      "policy_reason": "IP/source verification unresolved",
+      "qdrant_flag": "yes",
+      "reference_only": "no",
+      "requires_review": "no",
+      "ingestion_status": "approved_for_ingestion_pending_ip_relationship_confirmation",
+      "license_status": "proprietary_ANAHAT_org_ip_relationship_unconfirmed",
+      "source_verification_status": "source_identified_publisher_relationship_unconfirmed",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Ayurveda_Redesigned.pdf",
+      "source_present": true,
+      "source_path": "sources/Ayurveda_Redesigned.pdf",
+      "policy": "HOLD",
+      "policy_reason": "review pending",
+      "qdrant_flag": "review_pending",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "license_review_required",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Emotional Issues & co-relation of Raga.pdf",
+      "source_present": true,
+      "source_path": "sources/Emotional Issues & co-relation of Raga.pdf",
+      "policy": "HOLD",
+      "policy_reason": "IP/source verification unresolved",
+      "qdrant_flag": "yes",
+      "reference_only": "no",
+      "requires_review": "no",
+      "ingestion_status": "approved_for_ingestion_pending_ip_relationship_confirmation",
+      "license_status": "proprietary_ANAHAT_org_ip_relationship_unconfirmed",
+      "source_verification_status": "source_identified_publisher_relationship_unconfirmed",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Equivalent Ragas in Hindustani and Carnatic Music.pdf",
+      "source_present": true,
+      "source_path": "sources/Equivalent Ragas in Hindustani and Carnatic Music.pdf",
+      "policy": "HOLD",
+      "policy_reason": "IP/source verification unresolved",
+      "qdrant_flag": "yes",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "approved_for_ingestion",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Handbook of Neurologic Music Therapy ( PDFDrive ).pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "full-text ingestion prohibited",
+      "qdrant_flag": "review_pending",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "do_not_ingest_sourced_from_unauthorized_sharing_aggregator",
+      "source_verification_status": "author_publication_identified_below",
+      "best_matches": [
+        {
+          "path": "sources/Neurological Music Therapy.pdf",
+          "similarity": 0.709
+        },
+        {
+          "path": "sources/Music therapy Techniques.pdf",
+          "similarity": 0.519
+        },
+        {
+          "path": "sources/Functioning of Nervous system.pdf",
+          "similarity": 0.463
+        }
+      ]
+    },
+    {
+      "matrix_file": "Music therapy Techniques.pdf",
+      "source_present": true,
+      "source_path": "sources/Music therapy Techniques.pdf",
+      "policy": "HOLD",
+      "policy_reason": "review pending",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "license_review_required",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Nada Yoga, Indian Healing Technique.pdf",
+      "source_present": true,
+      "source_path": "sources/Nada Yoga, Indian Healing Technique.pdf",
+      "policy": "HOLD",
+      "policy_reason": "IP/source verification unresolved",
+      "qdrant_flag": "yes",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "approved_for_ingestion",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Rag Samay Chakra.pdf",
+      "source_present": true,
+      "source_path": "sources/Rag Samay Chakra.pdf",
+      "policy": "HOLD",
+      "policy_reason": "transcription required",
+      "qdrant_flag": "image_not_text",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "requires_transcription_before_ingestion",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Senior Citizen Issues & co-relation of Raga.pdf",
+      "source_present": true,
+      "source_path": "sources/Senior Citizen Issues & co-relation of Raga.pdf",
+      "policy": "HOLD",
+      "policy_reason": "IP/source verification unresolved",
+      "qdrant_flag": "yes",
+      "reference_only": "no",
+      "requires_review": "no",
+      "ingestion_status": "approved_for_ingestion_pending_ip_relationship_confirmation",
+      "license_status": "proprietary_ANAHAT_org_ip_relationship_unconfirmed",
+      "source_verification_status": "source_identified_publisher_relationship_unconfirmed",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Techniques of MusicTherapy.pdf (Music Therapy copy)",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "duplicate",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "duplicate",
+      "license_status": "n/a_duplicate",
+      "source_verification_status": "n/a_duplicate",
+      "best_matches": [
+        {
+          "path": "sources/Neurological Music Therapy.pdf",
+          "similarity": 0.557
+        },
+        {
+          "path": "sources/The Selection Of Music For Therapeutic Purposes.pdf",
+          "similarity": 0.48
+        },
+        {
+          "path": "sources/ABC of Music.pdf",
+          "similarity": 0.431
+        }
+      ]
+    },
+    {
+      "matrix_file": "The Selection Of Music For Therapeutic Purposes.pdf",
+      "source_present": true,
+      "source_path": "sources/The Selection Of Music For Therapeutic Purposes.pdf",
+      "policy": "HOLD",
+      "policy_reason": "IP/source verification unresolved",
+      "qdrant_flag": "yes",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "approved_for_ingestion",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "Therapeutic Approach Of Indian Classical Music.pdf",
+      "source_present": true,
+      "source_path": "sources/Therapeutic Approach Of Indian Classical Music.pdf",
+      "policy": "HOLD",
+      "policy_reason": "IP/source verification unresolved",
+      "qdrant_flag": "yes",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "approved_for_ingestion",
+      "license_status": "unknown_no_rights_holder_identified",
+      "source_verification_status": "source_verification_required",
+      "best_matches": []
+    },
+    {
+      "matrix_file": "music-as-medicine-...-3987589087.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "full-text ingestion prohibited",
+      "qdrant_flag": "review_pending",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Musical Energies.pdf",
+          "similarity": 0.5
+        },
+        {
+          "path": "sources/Music Therapy & Brain signals processing.pdf",
+          "similarity": 0.432
+        },
+        {
+          "path": "sources/Music therapy Techniques.pdf",
+          "similarity": 0.4
+        }
+      ]
+    },
+    {
+      "matrix_file": "music-therapy-in-a-multicultural-context-...9781784508074_compress.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "full-text ingestion prohibited",
+      "qdrant_flag": "review_pending",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Music Therapy & Brain signals processing.pdf",
+          "similarity": 0.55
+        },
+        {
+          "path": "sources/Music therapy Techniques.pdf",
+          "similarity": 0.484
+        },
+        {
+          "path": "sources/The Selection Of Music For Therapeutic Purposes.pdf",
+          "similarity": 0.424
+        }
+      ]
+    },
+    {
+      "matrix_file": "music-therapy-research-...david-aldridge.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "full-text ingestion prohibited",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Music therapy Techniques.pdf",
+          "similarity": 0.58
+        },
+        {
+          "path": "sources/Music Therapy & Brain signals processing.pdf",
+          "similarity": 0.554
+        },
+        {
+          "path": "sources/Neurological Music Therapy.pdf",
+          "similarity": 0.479
+        }
+      ]
+    },
+    {
+      "matrix_file": "musicophilia-tales-of-music-and-the-brain_compress.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "full-text ingestion prohibited",
+      "qdrant_flag": "review_pending",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "author_publication_identified_below",
+      "best_matches": [
+        {
+          "path": "sources/The Selection Of Music For Therapeutic Purposes.pdf",
+          "similarity": 0.533
+        },
+        {
+          "path": "sources/Neurological Music Therapy.pdf",
+          "similarity": 0.524
+        },
+        {
+          "path": "sources/Music Therapy & Brain signals processing.pdf",
+          "similarity": 0.521
+        }
+      ]
+    },
+    {
+      "matrix_file": "the-handbook-of-music-therapy-2nd-edition_compress.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "full-text ingestion prohibited",
+      "qdrant_flag": "review_pending",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "author_publication_identified_below",
+      "best_matches": [
+        {
+          "path": "sources/The Selection Of Music For Therapeutic Purposes.pdf",
+          "similarity": 0.59
+        },
+        {
+          "path": "sources/Music Therapy & Brain signals processing.pdf",
+          "similarity": 0.542
+        },
+        {
+          "path": "sources/Music therapy Techniques.pdf",
+          "similarity": 0.512
+        }
+      ]
+    },
+    {
+      "matrix_file": "DSM 5 TR-APA (2022).pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "author_publication_identified_below",
+      "best_matches": [
+        {
+          "path": "sources/Music therapy Techniques.pdf",
+          "similarity": 0.449
+        },
+        {
+          "path": "sources/Rag Samay Chakra.pdf",
+          "similarity": 0.439
+        },
+        {
+          "path": "sources/Chakras & It's nature.pdf",
+          "similarity": 0.409
+        }
+      ]
+    },
+    {
+      "matrix_file": "Fundamentals-of-Psychological-Disorders-3rd-edition-5TR.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Aspect of healing - Physical & Emotional Body.pdf",
+          "similarity": 0.462
+        },
+        {
+          "path": "sources/Emotional Issues & co-relation of Raga.pdf",
+          "similarity": 0.424
+        },
+        {
+          "path": "sources/Chakras & Singing Style Association.pdf",
+          "similarity": 0.396
+        }
+      ]
+    },
+    {
+      "matrix_file": "Grant_s Atlas of Anatomy.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "author_publication_identified_below",
+      "best_matches": [
+        {
+          "path": "sources/Chakras & It's nature.pdf",
+          "similarity": 0.51
+        },
+        {
+          "path": "sources/Emotional Issues & co-relation of Raga.pdf",
+          "similarity": 0.471
+        },
+        {
+          "path": "sources/Senior Citizen Issues & co-relation of Raga.pdf",
+          "similarity": 0.466
+        }
+      ]
+    },
+    {
+      "matrix_file": "Power-ed-Modd-Disorders-A-Handbook.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Ayurveda_Redesigned.pdf",
+          "similarity": 0.459
+        },
+        {
+          "path": "sources/Emotional Issues & co-relation of Raga.pdf",
+          "similarity": 0.41
+        },
+        {
+          "path": "sources/Senior Citizen Issues & co-relation of Raga.pdf",
+          "similarity": 0.41
+        }
+      ]
+    },
+    {
+      "matrix_file": "Textbook of Human Anatomy.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Introduction of Indian Classical Music.pdf",
+          "similarity": 0.479
+        },
+        {
+          "path": "sources/Therapeutic Approach Of Indian Classical Music.pdf",
+          "similarity": 0.456
+        },
+        {
+          "path": "sources/ABC of Music.pdf",
+          "similarity": 0.444
+        }
+      ]
+    },
+    {
+      "matrix_file": "1-2-3 Magic ( PDFDrive ).pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "do_not_ingest_sourced_from_unauthorized_sharing_aggregator",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/ABC of Music.pdf",
+          "similarity": 0.45
+        },
+        {
+          "path": "sources/Chakras & It's nature.pdf",
+          "similarity": 0.426
+        },
+        {
+          "path": "sources/World Music.pdf",
+          "similarity": 0.41
+        }
+      ]
+    },
+    {
+      "matrix_file": "Brain_Mind_Behaviour.pdf (Psych copy)",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "duplicate",
+      "qdrant_flag": "review_pending",
+      "reference_only": "no",
+      "requires_review": "yes",
+      "ingestion_status": "duplicate",
+      "license_status": "n/a_duplicate",
+      "source_verification_status": "n/a_duplicate",
+      "best_matches": [
+        {
+          "path": "sources/Brain_Mind_Behaviour.pdf",
+          "similarity": 0.814
+        },
+        {
+          "path": "sources/Brain & nervous system  .pdf",
+          "similarity": 0.508
+        },
+        {
+          "path": "sources/Brain Waves.pdf",
+          "similarity": 0.48
+        }
+      ]
+    },
+    {
+      "matrix_file": "Cognitive_Psychology_6e (PDFDrive).pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "full-text ingestion prohibited",
+      "qdrant_flag": "review_pending",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "do_not_ingest_sourced_from_unauthorized_sharing_aggregator",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Senior Citizen Issues & co-relation of Raga.pdf",
+          "similarity": 0.395
+        },
+        {
+          "path": "sources/Functioning of Nervous system.pdf",
+          "similarity": 0.377
+        },
+        {
+          "path": "sources/Acoustic.pdf",
+          "similarity": 0.375
+        }
+      ]
+    },
+    {
+      "matrix_file": "Emotion and Healing in the Energy Body ( PDFDrive ).pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "do_not_ingest_sourced_from_unauthorized_sharing_aggregator",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Aspect of healing - Physical & Emotional Body.pdf",
+          "similarity": 0.5
+        },
+        {
+          "path": "sources/Nada Yoga, Indian Healing Technique.pdf",
+          "similarity": 0.449
+        },
+        {
+          "path": "sources/Emotional Issues & co-relation of Raga.pdf",
+          "similarity": 0.44
+        }
+      ]
+    },
+    {
+      "matrix_file": "Gift-Of-Therapy-...Irvin-D.-Yalom.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Music Therapy & Brain signals processing.pdf",
+          "similarity": 0.56
+        },
+        {
+          "path": "sources/Music therapy Techniques.pdf",
+          "similarity": 0.492
+        },
+        {
+          "path": "sources/Aspect of healing - Physical & Emotional Body.pdf",
+          "similarity": 0.487
+        }
+      ]
+    },
+    {
+      "matrix_file": "Handbook-of-Psychological-Assessment.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "full-text ingestion prohibited",
+      "qdrant_flag": "review_pending",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/ABC of Music.pdf",
+          "similarity": 0.464
+        },
+        {
+          "path": "sources/Introduction of Indian Classical Music.pdf",
+          "similarity": 0.439
+        },
+        {
+          "path": "sources/Neurological Music Therapy.pdf",
+          "similarity": 0.429
+        }
+      ]
+    },
+    {
+      "matrix_file": "Neuro Linguistic Programming WorkBook.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Neurological Music Therapy.pdf",
+          "similarity": 0.479
+        },
+        {
+          "path": "sources/Music Therapy & Brain signals processing.pdf",
+          "similarity": 0.434
+        },
+        {
+          "path": "sources/Brain_Mind_Behaviour.pdf",
+          "similarity": 0.431
+        }
+      ]
+    },
+    {
+      "matrix_file": "The-Body-Keeps-the-Score-PDF.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "full-text ingestion prohibited",
+      "qdrant_flag": "review_pending",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "author_publication_identified_below",
+      "best_matches": [
+        {
+          "path": "sources/Chakras & It's nature.pdf",
+          "similarity": 0.473
+        },
+        {
+          "path": "sources/Neurological Music Therapy.pdf",
+          "similarity": 0.387
+        },
+        {
+          "path": "sources/ABC of Music.pdf",
+          "similarity": 0.375
+        }
+      ]
+    },
+    {
+      "matrix_file": "emotions-revealed-by-paul-ekman1.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "author_publication_identified_below",
+      "best_matches": [
+        {
+          "path": "sources/Emotional Issues & co-relation of Raga.pdf",
+          "similarity": 0.526
+        },
+        {
+          "path": "sources/The Selection Of Music For Therapeutic Purposes.pdf",
+          "similarity": 0.414
+        },
+        {
+          "path": "sources/Western Instruments.pdf",
+          "similarity": 0.407
+        }
+      ]
+    },
+    {
+      "matrix_file": "pdfcoffee.com_irvin-yalom-3-pdf-free.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "do_not_ingest_sourced_from_unauthorized_sharing_aggregator",
+      "source_verification_status": "author_publication_identified_below",
+      "best_matches": [
+        {
+          "path": "sources/Aspect of healing - Physical & Emotional Body.pdf",
+          "similarity": 0.4
+        },
+        {
+          "path": "sources/Functioning of Nervous system.pdf",
+          "similarity": 0.384
+        },
+        {
+          "path": "sources/Senior Citizen Issues & co-relation of Raga.pdf",
+          "similarity": 0.353
+        }
+      ]
+    },
+    {
+      "matrix_file": "the_dictionary_of_body_language_-_Joe_Navarro.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "author_publication_identified_below",
+      "best_matches": [
+        {
+          "path": "sources/Introduction of Indian Classical Music.pdf",
+          "similarity": 0.449
+        },
+        {
+          "path": "sources/The Selection Of Music For Therapeutic Purposes.pdf",
+          "similarity": 0.449
+        },
+        {
+          "path": "sources/Aspect of healing - Physical & Emotional Body.pdf",
+          "similarity": 0.435
+        }
+      ]
+    },
+    {
+      "matrix_file": "unmasking-the-face_compress.pdf",
+      "source_present": false,
+      "source_path": "",
+      "policy": "DO_NOT_INDEX",
+      "policy_reason": "matrix says qdrant=no",
+      "qdrant_flag": "no",
+      "reference_only": "yes",
+      "requires_review": "yes",
+      "ingestion_status": "do_not_ingest_full_text",
+      "license_status": "commercially_published_no_ingestion_license_confirmed",
+      "source_verification_status": "source_verification_required",
+      "best_matches": [
+        {
+          "path": "sources/Music therapy Techniques.pdf",
+          "similarity": 0.508
+        },
+        {
+          "path": "sources/ExploringTheChakras.pdf",
+          "similarity": 0.481
+        },
+        {
+          "path": "sources/Chakras & Singing Style Association.pdf",
+          "similarity": 0.471
+        }
+      ]
+    }
+  ]
+}

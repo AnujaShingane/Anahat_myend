@@ -1,0 +1,467 @@
+{
+  "_schema_version": "1.1",
+  "_note": "Reconstructed from the untitled 'Music Therapy Case - Question Quadrants' spreadsheet embedded in the PDF. Source table's 'Possible Categories/Responses' column was badly damaged by text extraction (multi-column layout interleaved character-by-character) -- attribute NAMES were fully recoverable, but the dropdown-style response OPTIONS need re-export from the original spreadsheet file rather than reconstruction from this PDF. This structure matches Section 8/9 (Quadrant System) of the ANAHAT Software Design Document -- these ARE the 10 predefined quadrants referenced there. || v1.1 UPDATE (this pass): 'needs_source_reexport' resolved. Re-exported cleanly from 'Music Therapy Case - Question Quadrants.xlsx' (RAG_documents upload). Added a new 'attributes_with_responses' field per quadrant, pairing each existing attribute with its 'Possible Categories/Responses' from the source spreadsheet -- this is new information not previously captured (the original 'attributes' list had no response-option data). The plain 'attributes' list is kept unchanged for backward compatibility with anything already reading it.",
+  "needs_source_reexport": false,
+  "quadrants": [
+    {
+      "quadrant_id": 1,
+      "name": "Nature",
+      "attributes": [
+        "Personality Traits",
+        "Communication Style",
+        "Attitude Towards Life",
+        "Risk-taking Behavior",
+        "Time Management",
+        "Forgiveness",
+        "Memory",
+        "Leadership & Collaboration",
+        "Reaction to Stress"
+      ],
+      "attributes_with_responses": [
+        {
+          "attribute": "Personality Traits",
+          "possible_responses": "Introvert, Extrovert, Ambivert"
+        },
+        {
+          "attribute": "Communication Style",
+          "possible_responses": "Outspoken, Diplomatic, Pleaser, Overthinker"
+        },
+        {
+          "attribute": "Attitude Towards Life",
+          "possible_responses": "Optimist, Realist, Idealist"
+        },
+        {
+          "attribute": "Risk-taking Behavior",
+          "possible_responses": "Risk Taker, Stays in Comfort Zone"
+        },
+        {
+          "attribute": "Time Management",
+          "possible_responses": "Procrastinator, Planner, Manages Time Well"
+        },
+        {
+          "attribute": "Forgiveness",
+          "possible_responses": "Can Forgive Self/Others Easily, Holds Grudges"
+        },
+        {
+          "attribute": "Memory",
+          "possible_responses": "Good Memory, Forgets Day-to-Day Things"
+        },
+        {
+          "attribute": "Leadership & Collaboration",
+          "possible_responses": "Works Well as Leader, Prefers to Follow, Struggles with Delegation"
+        },
+        {
+          "attribute": "Reaction to Stress",
+          "possible_responses": "Overthinks, Gets Frustrated Easily, Stays Calm"
+        }
+      ]
+    },
+    {
+      "quadrant_id": 2,
+      "name": "Family",
+      "attributes": [
+        "Family Structure",
+        "Family Members",
+        "Family Bond",
+        "Role in Family",
+        "Family Atmosphere",
+        "Family Dynamics",
+        "What Family Means to You"
+      ],
+      "attributes_with_responses": [
+        {
+          "attribute": "Family Structure",
+          "possible_responses": "Nuclear Family, Joint Family"
+        },
+        {
+          "attribute": "Family Members",
+          "possible_responses": "Parents, Siblings, Spouse, Children"
+        },
+        {
+          "attribute": "Family Bond",
+          "possible_responses": "Strong, Cordial, Connected, Just Okay, Not Okay"
+        },
+        {
+          "attribute": "Role in Family",
+          "possible_responses": "Caregiver, Supportive, Dependent, Breadwinner"
+        },
+        {
+          "attribute": "Family Atmosphere",
+          "possible_responses": "Positive, Supportive, Stressful, Indifferent"
+        },
+        {
+          "attribute": "Family Dynamics",
+          "possible_responses": "Close-knit, Distant, Conflicting"
+        },
+        {
+          "attribute": "What Family Means to You",
+          "possible_responses": "Source of Support, Responsibility, Obligation"
+        }
+      ]
+    },
+    {
+      "quadrant_id": 3,
+      "name": "Social Circle",
+      "attributes": [
+        "Social Interactions",
+        "Close Confidants",
+        "Social Support System",
+        "Social Media Presence",
+        "Preferred Activities with Friends",
+        "Known For",
+        "What You Look for in Friends"
+      ],
+      "attributes_with_responses": [
+        {
+          "attribute": "Social Interactions",
+          "possible_responses": "Large Social Circle, Selective Friends"
+        },
+        {
+          "attribute": "Close Confidants",
+          "possible_responses": "Family, Friends, Colleagues"
+        },
+        {
+          "attribute": "Social Support System",
+          "possible_responses": "Reliable, Inconsistent, Limited"
+        },
+        {
+          "attribute": "Social Media Presence",
+          "possible_responses": "Active, Occasional, Inactive"
+        },
+        {
+          "attribute": "Preferred Activities with Friends",
+          "possible_responses": "Sports, Movies, Traveling, Spiritual Gatherings"
+        },
+        {
+          "attribute": "Known For",
+          "possible_responses": "Smart, Kind, Helpful, Fun"
+        },
+        {
+          "attribute": "What You Look for in Friends",
+          "possible_responses": "Trust, Fun, Emotional Support, Similar Interests"
+        }
+      ]
+    },
+    {
+      "quadrant_id": 4,
+      "name": "Personal Interests",
+      "attributes": [
+        "Hobbies & Interests",
+        "Preferred Learning Style",
+        "Creative Outlets",
+        "Travel Preferences",
+        "Personal Growth Activities",
+        "Reading Habits",
+        "Spiritual or Religious Practices"
+      ],
+      "attributes_with_responses": [
+        {
+          "attribute": "Hobbies & Interests",
+          "possible_responses": "Reading, Music, Dance, Gardening, Art"
+        },
+        {
+          "attribute": "Preferred Learning Style",
+          "possible_responses": "Visual, Auditory, Kinesthetic, Read/Write"
+        },
+        {
+          "attribute": "Creative Outlets",
+          "possible_responses": "Painting, Writing, Singing"
+        },
+        {
+          "attribute": "Travel Preferences",
+          "possible_responses": "Adventurous, Comfort-seeking, Cultural Experiences"
+        },
+        {
+          "attribute": "Personal Growth Activities",
+          "possible_responses": "Self-taught Skills, Workshops, Online Courses"
+        },
+        {
+          "attribute": "Reading Habits",
+          "possible_responses": "Fiction, Non-Fiction, Self-Help, Biographies"
+        },
+        {
+          "attribute": "Spiritual or Religious Practices",
+          "possible_responses": "Meditation, Prayer, Spiritual Reading"
+        }
+      ]
+    },
+    {
+      "quadrant_id": 5,
+      "name": "Profession",
+      "attributes": [
+        "Nature of Job/Studies",
+        "Job Responsibilities",
+        "Work Environment",
+        "Recent Challenges",
+        "Coping Mechanisms for Work Stress",
+        "Professional Growth Aspirations",
+        "Willingness to Take on New Projects"
+      ],
+      "attributes_with_responses": [
+        {
+          "attribute": "Nature of Job/Studies",
+          "possible_responses": "Managerial, Technical, Creative, Supportive"
+        },
+        {
+          "attribute": "Job Responsibilities",
+          "possible_responses": "Leading Teams, Meeting Targets, Client Interaction"
+        },
+        {
+          "attribute": "Work Environment",
+          "possible_responses": "High-Pressure, Collaborative, Structured, Flexible"
+        },
+        {
+          "attribute": "Recent Challenges",
+          "possible_responses": "Managing Workload, Meeting Deadlines, Balancing Teams"
+        },
+        {
+          "attribute": "Coping Mechanisms for Work Stress",
+          "possible_responses": "Music Therapy, Meditation, Exercise, Talking to Friends"
+        },
+        {
+          "attribute": "Professional Growth Aspirations",
+          "possible_responses": "Ambitious, Content, Seeking Change"
+        },
+        {
+          "attribute": "Willingness to Take on New Projects",
+          "possible_responses": "Eager, Hesitant, Open to Opportunities"
+        }
+      ]
+    },
+    {
+      "quadrant_id": 6,
+      "name": "Lifestyle",
+      "attributes": [
+        "Routine Activities",
+        "Work-Life Balance",
+        "Sleep Patterns",
+        "Stress Management Techniques",
+        "Leisure Activities",
+        "Hygiene and Self-Care",
+        "Household Responsibilities"
+      ],
+      "attributes_with_responses": [
+        {
+          "attribute": "Routine Activities",
+          "possible_responses": "Active, Sedentary, Balanced"
+        },
+        {
+          "attribute": "Work-Life Balance",
+          "possible_responses": "Well-maintained, Struggling, Overworked"
+        },
+        {
+          "attribute": "Sleep Patterns",
+          "possible_responses": "Sound, Disturbed, Insomnia"
+        },
+        {
+          "attribute": "Stress Management Techniques",
+          "possible_responses": "Yoga, Mindfulness, Socializing, Isolation"
+        },
+        {
+          "attribute": "Leisure Activities",
+          "possible_responses": "Hobbies, Relaxation, Watching TV, Outdoor Adventures"
+        },
+        {
+          "attribute": "Hygiene and Self-Care",
+          "possible_responses": "Regular, Occasional, Needs Improvement"
+        },
+        {
+          "attribute": "Household Responsibilities",
+          "possible_responses": "Actively Involved, Minimal Involvement, Delegates"
+        }
+      ]
+    },
+    {
+      "quadrant_id": 7,
+      "name": "Diet",
+      "attributes": [
+        "Type of Diet",
+        "Meal Frequency",
+        "Favorite Foods",
+        "Water Intake",
+        "Eating Habits",
+        "Special Dietary Needs",
+        "Food Cravings"
+      ],
+      "attributes_with_responses": [
+        {
+          "attribute": "Type of Diet",
+          "possible_responses": "Vegetarian, Non-Vegetarian, Vegan"
+        },
+        {
+          "attribute": "Meal Frequency",
+          "possible_responses": "3 Regular Meals, Frequent Snacking, Irregular Eating"
+        },
+        {
+          "attribute": "Favorite Foods",
+          "possible_responses": "Comfort Foods, Healthy Options, Fast Food"
+        },
+        {
+          "attribute": "Water Intake",
+          "possible_responses": "Adequate (8-10 glasses), Low, High"
+        },
+        {
+          "attribute": "Eating Habits",
+          "possible_responses": "Mindful Eating, Emotional Eating, Fussy Eater"
+        },
+        {
+          "attribute": "Special Dietary Needs",
+          "possible_responses": "Low Sugar, Low Salt, Gluten-Free, Allergies"
+        },
+        {
+          "attribute": "Food Cravings",
+          "possible_responses": "Sweets, Salty Snacks, Spicy Foods"
+        }
+      ]
+    },
+    {
+      "quadrant_id": 8,
+      "name": "Physical Nature",
+      "attributes": [
+        "Fitness Routine",
+        "Exercise Frequency",
+        "Body Image Perception",
+        "Current Health Issues",
+        "Family Health History",
+        "Pain Management Techniques",
+        "Self-Care and Wellness"
+      ],
+      "attributes_with_responses": [
+        {
+          "attribute": "Fitness Routine",
+          "possible_responses": "Walking, Running, Yoga, Gym"
+        },
+        {
+          "attribute": "Exercise Frequency",
+          "possible_responses": "Daily, Weekly, Inconsistent"
+        },
+        {
+          "attribute": "Body Image Perception",
+          "possible_responses": "Positive, Neutral, Self-conscious"
+        },
+        {
+          "attribute": "Current Health Issues",
+          "possible_responses": "Weight Management, Digestive Problems, Anxiety"
+        },
+        {
+          "attribute": "Family Health History",
+          "possible_responses": "Diabetes, Hypertension, Heart Issues"
+        },
+        {
+          "attribute": "Pain Management Techniques",
+          "possible_responses": "Music Therapy, Medication, Physical Therapy"
+        },
+        {
+          "attribute": "Self-Care and Wellness",
+          "possible_responses": "Regular Check-ups, Preventive Measures, Ignored"
+        }
+      ]
+    },
+    {
+      "quadrant_id": 9,
+      "name": "Medical & Therapeutic Background",
+      "attributes": [
+        "Medical History",
+        "Current Medication",
+        "Other Therapy / Medication",
+        "Previous Mental Health Support"
+      ],
+      "attributes_with_responses": [
+        {
+          "attribute": "Medical History",
+          "possible_responses": "Diabetes, Hypertension, Thyroid Disorder, Asthma, Heart Disease, Mental Health Disorder, Neurological Disorder, None, Other"
+        },
+        {
+          "attribute": "Current Medication",
+          "possible_responses": "Yes (Specify), No"
+        },
+        {
+          "attribute": "Other Therapy / Medication",
+          "possible_responses": "Physiotherapy, Counseling, Ayurveda, Homeopathy, Allopathy, Meditation, Yoga, None"
+        },
+        {
+          "attribute": "Previous Mental Health Support",
+          "possible_responses": "Never, Counselor, Psychologist, Psychiatrist, Support Group"
+        }
+      ]
+    },
+    {
+      "quadrant_id": 10,
+      "name": "Music Therapy Profile",
+      "attributes": [
+        "Purpose of Music Therapy",
+        "Pain Level",
+        "Current Health Status",
+        "Chronic Illness",
+        "Allergies",
+        "Previous Music Experience",
+        "Musical Likings",
+        "Favorite Artists/Instruments",
+        "Type of Music",
+        "Frequency of Listening to Music",
+        "Listening Duration",
+        "Music Listening Criteria",
+        "Musical Sensitivities",
+        "Spiritual or Cultural Preferences"
+      ],
+      "attributes_with_responses": [
+        {
+          "attribute": "Purpose of Music Therapy",
+          "possible_responses": null
+        },
+        {
+          "attribute": "Pain Level",
+          "possible_responses": null
+        },
+        {
+          "attribute": "Current Health Status",
+          "possible_responses": null
+        },
+        {
+          "attribute": "Chronic Illness",
+          "possible_responses": null
+        },
+        {
+          "attribute": "Allergies",
+          "possible_responses": null
+        },
+        {
+          "attribute": "Previous Music Experience",
+          "possible_responses": "None, Casual Listener, Self-Learner, Trained Musician, Professional Musician"
+        },
+        {
+          "attribute": "Musical Likings",
+          "possible_responses": "Classical, Instrumental, Devotional, Bollywood, Pop, Rock, Jazz, Folk, Fusion, Nature Sounds"
+        },
+        {
+          "attribute": "Favorite Artists/Instruments",
+          "possible_responses": null
+        },
+        {
+          "attribute": "Type of Music",
+          "possible_responses": "Relaxing, Motivational, Spiritual, Healing Frequencies, Meditation, Upbeat, Emotional"
+        },
+        {
+          "attribute": "Frequency of Listening to Music",
+          "possible_responses": "Daily, Weekly, Occasionally, Rarely"
+        },
+        {
+          "attribute": "Listening Duration",
+          "possible_responses": "Less than 15 Minutes, 15\u201330 Minutes, 30\u201360 Minutes, More than 1 Hour"
+        },
+        {
+          "attribute": "Music Listening Criteria",
+          "possible_responses": "Mood Based, Lyrics, Melody, Rhythm, Instrumental Preference, Recommendations"
+        },
+        {
+          "attribute": "Musical Sensitivities",
+          "possible_responses": "Loud Sounds, High Frequencies, Certain Songs, Certain Genres, Emotional Triggers, None"
+        },
+        {
+          "attribute": "Spiritual or Cultural Preferences",
+          "possible_responses": "Devotional Music, Meditation Music, Chanting, Nature Sounds, Universal Music, No Preference"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "_schema_version": "1.0",
+  "_note": "Closes the v1/v2 gap: Throat (Vishuddha), Third Eye (Ajna), and Crown (Sahasrara) had no chakra-specific assessment questions anywhere in the knowledge base (source document advanced_questioning_techniques.txt ends mid-sentence at exactly this point in both the original upload and the RAG_documents re-upload -- confirmed identical placeholder text in both, so this could not be sourced from existing material and was authored fresh for this pass, matching the structure and neutrality standard of Root/Sacral/Solar Plexus/Heart's existing rag/assessment_technique/chakra_specific_questioning_*.md files). Every question investigates the underlying psychological/emotional/behavioural experience -- none names a chakra or asserts an imbalance to the patient, per gap-filling instruction 3 (do not lead the patient). Crown-chakra questions carry an explicit opt-in gate (CQ-CRN-05) and are marked optional/non-assumed per instruction 3D. All questions are 'therapist_review_required' -- authored to spec, not clinically piloted.",
+  "does_not_diagnose": "These questions must never be used to diagnose depression, anxiety disorder, psychosis, ADHD, PTSD, or any other clinical condition (gap-filling instruction 3F). Clinically relevant disclosures should route to the existing clinical-context workflow, not be resolved via chakra questioning.",
+  "questions": [
+    {
+      "question_id": "CQ-THR-01",
+      "chakra": "Throat Chakra",
+      "domain": "self_expression",
+      "question": "How comfortable are you expressing what you really think or feel?",
+      "purpose": "Assess general comfort with authentic self-expression, without naming the chakra.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [
+        "Is there anything you often want to say but hold back?"
+      ],
+      "sensitivity": {
+        "optional": false
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    },
+    {
+      "question_id": "CQ-THR-02",
+      "chakra": "Throat Chakra",
+      "domain": "unexpressed_needs",
+      "question": "Is there anything you often want to say but hold back?",
+      "purpose": "Surface suppressed communication as a candidate Throat-domain indicator.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [
+        "What usually stops you from saying it?"
+      ],
+      "sensitivity": {
+        "optional": false
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    },
+    {
+      "question_id": "CQ-THR-03",
+      "chakra": "Throat Chakra",
+      "domain": "assertiveness",
+      "question": "How easy is it for you to ask for what you need?",
+      "purpose": "Assess assertiveness/need-expression, a core Throat-domain theme.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [
+        "Can you think of a recent time you needed something and didn't ask?"
+      ],
+      "sensitivity": {
+        "optional": false
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    },
+    {
+      "question_id": "CQ-THR-04",
+      "chakra": "Throat Chakra",
+      "domain": "being_heard",
+      "question": "Do you generally feel heard when communicating with others?",
+      "purpose": "Assess the patient's felt experience of being listened to/understood.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [
+        "What does it feel like when you don't feel heard?"
+      ],
+      "sensitivity": {
+        "optional": false
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    },
+    {
+      "question_id": "CQ-THR-05",
+      "chakra": "Throat Chakra",
+      "domain": "communication_under_conflict",
+      "question": "How comfortable are you expressing yourself when there is disagreement?",
+      "purpose": "Assess communication style specifically under interpersonal conflict.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [
+        "Do you tend to go quiet, or do you speak up, when you disagree with someone?"
+      ],
+      "sensitivity": {
+        "optional": false
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    },
+    {
+      "question_id": "CQ-THR-06",
+      "chakra": "Throat Chakra",
+      "domain": "authenticity",
+      "question": "How often do you feel you can be your authentic self around others?",
+      "purpose": "Assess authenticity/self-censorship as a Throat-domain theme.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [],
+      "sensitivity": {
+        "optional": false
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    },
+    {
+      "question_id": "CQ-AJN-01",
+      "chakra": "Third Eye Chakra",
+      "domain": "concentration",
+      "question": "How easy is it for you to maintain concentration?",
+      "purpose": "Assess general attentional capacity without asserting a clinical attention disorder.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [
+        "What usually makes it difficult for you to focus?"
+      ],
+      "sensitivity": {
+        "optional": false
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    },
+    {
+      "question_id": "CQ-AJN-02",
+      "chakra": "Third Eye Chakra",
+      "domain": "focus_disruptors",
+      "question": "When you do notice your focus slipping, what tends to be going on around you or in your mind?",
+      "purpose": "Identify situational/emotional/environmental disruptors of focus, WITHOUT presupposing the patient regularly struggles to focus (previous wording 'What usually makes it difficult for you to focus?' presumed the difficulty existed) -- this revised wording is conditional on CQ-AJN-01's answer rather than asserted upfront.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [],
+      "sensitivity": {
+        "optional": false
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required",
+      "gap_review_fix": "Reworded 2026 gap-closure QA pass: original phrasing was mildly leading (presupposed difficulty existed). Should ideally only be asked as a follow-up to CQ-AJN-01 if that answer indicates some difficulty, not asked standalone."
+    },
+    {
+      "question_id": "CQ-AJN-03",
+      "chakra": "Third Eye Chakra",
+      "domain": "decision_making",
+      "question": "How comfortable are you making important decisions?",
+      "purpose": "Assess decision-making confidence, a core Third-Eye-domain theme.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [
+        "Do you tend to overthink decisions after making them?"
+      ],
+      "sensitivity": {
+        "optional": false
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    },
+    {
+      "question_id": "CQ-AJN-04",
+      "chakra": "Third Eye Chakra",
+      "domain": "overthinking",
+      "question": "Do you tend to overthink decisions after making them?",
+      "purpose": "Assess rumination/overthinking pattern specifically tied to decisions.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [],
+      "sensitivity": {
+        "optional": false
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    },
+    {
+      "question_id": "CQ-AJN-05",
+      "chakra": "Third Eye Chakra",
+      "domain": "mental_clarity",
+      "question": "How clear does your thinking usually feel?",
+      "purpose": "Assess self-reported mental clarity/fog as a Third-Eye-domain theme.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [
+        "What helps you think clearly when you feel uncertain?"
+      ],
+      "sensitivity": {
+        "optional": false
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    },
+    {
+      "question_id": "CQ-AJN-06",
+      "chakra": "Third Eye Chakra",
+      "domain": "coping_with_uncertainty",
+      "question": "What helps you think clearly when you feel uncertain?",
+      "purpose": "Surface existing coping strategies for uncertainty/ambiguity, useful for both assessment and later activity suggestions.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [],
+      "sensitivity": {
+        "optional": false
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    },
+    {
+      "question_id": "CQ-CRN-01",
+      "chakra": "Crown Chakra",
+      "domain": "meaning_and_purpose",
+      "question": "Do you currently feel that your life has meaning or purpose?",
+      "purpose": "Assess sense of meaning/purpose -- core Crown-domain theme -- without assuming religiosity.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [
+        "What gives you a sense of purpose at this stage of life?"
+      ],
+      "sensitivity": {
+        "optional": true,
+        "do_not_assume_spiritual_beliefs": true,
+        "allow_patient_to_decline": true
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    },
+    {
+      "question_id": "CQ-CRN-02",
+      "chakra": "Crown Chakra",
+      "domain": "meaning_and_purpose",
+      "question": "What gives you a sense of purpose at this stage of life?",
+      "purpose": "Open-ended follow-up allowing the patient to define purpose in their own terms.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [],
+      "sensitivity": {
+        "optional": true,
+        "do_not_assume_spiritual_beliefs": true,
+        "allow_patient_to_decline": true
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    },
+    {
+      "question_id": "CQ-CRN-03",
+      "chakra": "Crown Chakra",
+      "domain": "life_transitions",
+      "question": "Have your priorities or sense of purpose changed recently?",
+      "purpose": "Assess recent shifts, which may correlate with life transitions or distress.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [],
+      "sensitivity": {
+        "optional": true,
+        "do_not_assume_spiritual_beliefs": true,
+        "allow_patient_to_decline": true
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    },
+    {
+      "question_id": "CQ-CRN-04",
+      "chakra": "Crown Chakra",
+      "domain": "peace_and_connection",
+      "question": "Are there activities that give you a sense of peace or connection?",
+      "purpose": "Assess existing sources of peace/connection -- secular or spiritual -- without presuming which.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [],
+      "sensitivity": {
+        "optional": true,
+        "do_not_assume_spiritual_beliefs": true,
+        "allow_patient_to_decline": true
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    },
+    {
+      "question_id": "CQ-CRN-05",
+      "chakra": "Crown Chakra",
+      "domain": "spiritual_beliefs_opt_in",
+      "question": "Would you like your personal beliefs or spirituality to be considered as part of your assessment?",
+      "purpose": "Explicit opt-in gate before any spiritual/religious content is explored further -- must never be assumed.",
+      "evidence_type": "self_report",
+      "follow_up_if_ambiguous": [],
+      "sensitivity": {
+        "optional": true,
+        "do_not_assume_spiritual_beliefs": true,
+        "allow_patient_to_decline": true,
+        "gate_question": true,
+        "note": "If declined, do not raise spiritual/religious content again this session."
+      },
+      "source": "ANAHAT assessment design (gap-fill pass, 2026-08-11)",
+      "review_status": "therapist_review_required"
+    }
+  ]
+}

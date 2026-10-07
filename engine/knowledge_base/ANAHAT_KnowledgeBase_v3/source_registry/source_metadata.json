@@ -1,0 +1,38 @@
+{
+  "_schema_version": "1.0",
+  "_note": "The authoritative, complete per-file record is knowledge_base_ingestion_matrix.csv (64 rows covering 57 unique files from the DATA + Music_Therapy uploads, with duplicate-filename call-outs). This file is a lightweight pointer plus summary so the manifest and this registry don't drift out of sync with two full copies of the same data.",
+  "authoritative_file": "knowledge_base_ingestion_matrix.csv",
+  "upload_sources": [
+    {"upload": "DATA-20260810T124558Z-1-001.zip", "unique_files": 57, "folders": ["Brain Theory","Chakras","Music & Sound","Music Therapy","Physiology , Disorders","Psychology , Bodylanguage"]},
+    {"upload": "Music_Therapy-20260804T183828Z-1-001.zip", "unique_files": 0, "note": "Confirmed via md5 hash comparison to be a 100% byte-for-byte duplicate of DATA/DATA/Music Therapy/ -- contributed no new content."},
+    {"upload": "ANAHAT_KnowledgeBase_Redesigned.zip", "note": "The existing v1 structured/config/rag knowledge base -- see top-level README.md for what was preserved unchanged."}
+  ],
+  "known_internal_duplicate_filenames_requiring_hash_verification": [
+    "Techniques of MusicTherapy.pdf (appears in both Chakras/ and Music Therapy/ folders)",
+    "Brain_Mind_Behaviour.pdf (appears in both Brain Theory/ and Psychology , Bodylanguage/ folders)"
+  ],
+  "confirmed_anahat_own_ip_files": [
+    "Brain & nervous system  .pdf",
+    "Functioning of Nervous system.pdf",
+    "Music Therapy & Brain signals processing.pdf",
+    "Neurological Music Therapy.pdf",
+    "Introduction of Indian Classical Music.pdf",
+    "Aspect of healing - Physical & Emotional Body.pdf",
+    "Emotional Issues & co-relation of Raga.pdf",
+    "Senior Citizen Issues & co-relation of Raga.pdf",
+    "Chakras & Singing Style Association.pdf"
+  ],
+  "confirmed_third_party_commercial_books_flagged_for_licensing_review": [
+    "DSM 5 TR-APA (2022).pdf",
+    "Grant_s Atlas of Anatomy.pdf",
+    "Textbook of Human Anatomy.pdf",
+    "The-Body-Keeps-the-Score-PDF.pdf",
+    "Cognitive_Psychology_6e_(_PDFDrive_com_)1.pdf",
+    "Complete_Book_of_Chakras__Your_-_Cyndi_Dale.pdf",
+    "anodea-judith-wheels-of-life.pdf",
+    "the-handbook-of-music-therapy-2nd-edition_compress.pdf",
+    "Handbook of Neurologic Music Therapy ( PDFDrive ).pdf",
+    "musicophilia-tales-of-music-and-the-brain_compress.pdf",
+    "pdfcoffee.com_irvin-yalom-3-pdf-free.pdf (piracy-aggregator filename -- highest-risk item in the upload)"
+  ]
+}

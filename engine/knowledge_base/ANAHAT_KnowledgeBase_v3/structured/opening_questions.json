@@ -1,0 +1,66 @@
+{
+  "_schema_version": "1.0",
+  "_note": "Fixed application-maintained Opening Questions. These questions are displayed together and are never generated, modified, or selected by the LLM. The therapist discusses all four questions with the patient and enters one combined summary response.",
+  "baseline_rating_questions": {
+    "_note": "Collected once per session, before Opening Questions. Permanent baseline values for the session; never regenerated or rewritten by AI.",
+    "ratings": [
+      {
+        "id": "BR-01",
+        "name": "Stress",
+        "scale": "1-10"
+      },
+      {
+        "id": "BR-02",
+        "name": "Anxiety",
+        "scale": "1-10"
+      },
+      {
+        "id": "BR-03",
+        "name": "Mood",
+        "scale": "1-10"
+      },
+      {
+        "id": "BR-04",
+        "name": "Sleep Quality",
+        "scale": "categorical",
+        "options": [
+          "Poor",
+          "Fair",
+          "Good",
+          "Excellent"
+        ]
+      },
+      {
+        "id": "BR-05",
+        "name": "Energy",
+        "scale": "1-10"
+      }
+    ]
+  },
+  "opening_questions": {
+    "title": "Opening Questions",
+    "questions": [
+      {
+        "id": "OQ-01",
+        "text": "What brings you here today, and what would you most like us to understand about what you have been experiencing?"
+      },
+      {
+        "id": "OQ-02",
+        "text": "How have you been feeling physically and emotionally in your day-to-day life recently?"
+      },
+      {
+        "id": "OQ-03",
+        "text": "How is this affecting your sleep, energy, routine, relationships, work or studies, or other parts of your daily life?"
+      },
+      {
+        "id": "OQ-04",
+        "text": "When did you first notice these changes, and what was happening around that time?"
+      }
+    ]
+  },
+  "opening_response": {
+    "type": "combined_summary",
+    "instruction": "The therapist discusses all four Opening Questions with the patient and enters one combined summary of the patient's responses. The AI analyzes the summary together with the four fixed Opening Questions.",
+    "required": true
+  }
+}

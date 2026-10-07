@@ -1,0 +1,1461 @@
+ANAHAT PRIORITY CHUNK INSPECTION
+Selected chunks: 21
+
+==========================================================================================
+File: GAP_CLOSURE_VALIDATION_REPORT.md
+Chunk: 0
+Tokens: 760
+ID: GAP_CLOSURE_VALIDATION_REPORT:00000:6c51f221d74026da
+------------------------------------------------------------------------------------------
+# ANAHAT Knowledge Base — Gap-Closure & Final Hardening Report (2026-08-11, Pass 2)
+
+## COMPLETED
+
+- `structured/clinical_context_questions.json` created — safety/personalization
+ context questions across 10 categories, explicitly distinct in purpose from
+ `clinical_conditions_pending_review/`.
+- `raaga/structured/raga_samay_chakra_time_wheel.json` created — exact 12-segment
+ clock boundaries transcribed from a 300dpi re-render of the source image,
+ which this pass found clearly legible.
+- `raaga/structured/carnatic_raga_metadata.json` created — Bilahari resolved as
+ a Carnatic-tradition entity with its (internally-inconsistent, flagged)
+ Hindustani equivalents, not forced into a fabricated single mapping.
+- `raaga/structured/raga_safety_metadata.json` created — 7 condition-flagged
+ ragas routed to clinical review; explicit "empty ≠ safe" usage constraint for
+ the remaining ~85.
+- `chakra_raga_bridge.json` re-reviewed and confirmed compliant with the
+ raga-research vs. chakra-mapping separation requirement.
+- QA review of all 17 Throat/Third-Eye/Crown questions completed; 1 leading
+ question found and fixed (CQ-AJN-02).
+- `knowledge_base_ingestion_matrix.csv` extended with
+ author/publication_title/license_status/source_verification_status/
+ ingestion_status for all 64 rows.
+
+## PARTIALLY COMPLETED
+
+- **Svara → Chakra assignments**: new canonical `structured/svara_chakra_mapping.json`
+ built with full source/evidence-level detail per svara, but only one
+ tradition/lineage was ever found — not independently cross-validated. Still
+ needs a musicology domain expert.
+- **93-raga metadata**: `thaat` filled for 19/92 ragas via a legitimate
+ cross-reference join against data already in the KB (not new research).
+ aroha/avaroha/pakad/mood_character/therapeutic_goal remain null for all 92 —
+ **this pass has no musicological reference source or web access to fill
+ these**, and did not fabricate them.
+- **Raga contraindications**: framework built and correctly populated with
+ "insufficient evidence" for nearly every raga — this is very likely the
+ correct long-term state of this file, not a temporary gap, absent real
+ clinical/musicological input.
+- **Throat/Third-Eye/Crown questions**: reviewed and one issue fixed, but this
+ was an AI QA pass, not a clinical validation — `therapist_review_required`
+ remains on every question.
+- **47 registry-only files**: classified with the new licensing vocabulary,
+ but zero additional files were newly ingested this pass (see "Files Not
+ Ingested" below) — classification is not the same as resolution.
+
+## REQUIRES HUMAN REVIEW
+
+- Svara-to-chakra mapping (musicological/domain expert).
+- All 93 raga metadata gaps (aroha/avaroha/pakad/mood) — needs a musicologist
+ or a citable reference text.
+- The 7 condition-flagged ragas in `raga_safety_metadata.json` — needs
+ clinical lead sign-off before any is shown to a user who has disclosed the
+ associated condition.
+- All 17 Throat/Third-Eye/Crown questions — needs an actual therapist/
+ psychologist review, not just this pass's structural QA.
+- Bilahari's two conflicting Hindustani equivalents (Alaiya Bilawal vs.
+ Desakshi) in the existing equivalents table — needs a musicologist to
+ confirm whether this is a genuine one-to-many relationship or a source error.
+- `clinical_conditions_pending_review/` folder — still needs a product/
+ clinical decision on whether it ships at all (recommendation logged: no).
+
+## REQUIRES SOURCE VERIFICATION
+
+- **KIRAN helpline number** (1800-599-0019) — see capability note below.
+- **108/102 ambulance, state-by-state status** — same.
+- **US crisis resources (988, Crisis Text Line, 911)** — never re-verified by
+ any pass of this KB.
+- 21 files in the ingestion matrix flagged `source_verification_required`
+ (no author/publisher identifiable from the document text).
+
+**Capability note, stated plainly:** this pass — like every prior pass of this
+knowledge base — has no live web/browsing tool available in this environment.
+"Verification" of the emergency contact numbers in earlier passes meant
+matching training-data recall to a named official source, not a live check.
+This pass relabeled those fields to say that accurately
+(`training_data_recall_matches_named_official_source_not_live_checked`)
+rather than continue using the more confident-sounding but inaccurate
+`verified_via_official_source` label. **None of the phone numbers or URLs in
+this knowledge base should be trusted for production use until a human
+actually calls the number or opens the URL.**
+
+## REQUIRES LICENSING REVIEW
+
+==========================================================================================
+File: GAP_CLOSURE_VALIDATION_REPORT.md
+Chunk: 1
+Tokens: 724
+ID: GAP_CLOSURE_VALIDATION_REPORT:00001:81e5bcd04cd05644
+------------------------------------------------------------------------------------------
+## REQUIRES LICENSING REVIEW
+
+- 23 files: commercially-published books/textbooks/manuals with no ingestion
+ license confirmed (DSM-5-TR, Grant's Atlas of Anatomy, The Body Keeps the
+ Score, Cognitive Psychology 6e, the Handbook of Music Therapy 2nd ed.,
+ Complete Book of Chakras, and 17 others) — `license_review_required` in the
+ matrix.
+- 7 files sourced from filenames indicating an unauthorized-sharing aggregator
+ (PDFDrive, pdfcoffee.com) — flagged `do_not_ingest_sourced_from_
+ unauthorized_sharing_aggregator`, a stricter category than ordinary
+ license-review, since the distribution channel itself is questionable
+ regardless of the underlying work's copyright status.
+- 9 "ANAHAT own IP" files — the relationship between "Anahat Music Therapy
+ Training" (the named source organization) and this project is still
+ unconfirmed from a prior pass; not re-resolved this pass.
+
+## NOT SAFE TO INFER / NOT FOUND
+
+- Aroha, avaroha, pakad, and mood_character for all 93 ragas.
+- Any raga contraindication beyond the 7 condition-flagged associations
+ already present in traditional-indication source material (which are
+ *indications*, not contraindications, and are explicitly not the same
+ thing).
+- Any conflicting or alternative svara-to-chakra tradition (none was found,
+ which is different from confirming none exists).
+- Any independently-corroborated live value for KIRAN, 108, 102, 988, or
+ Crisis Text Line.
+
+## FILES CREATED
+
+```
+structured/svara_chakra_mapping.json
+structured/clinical_context_questions.json
+raaga/structured/raga_samay_chakra_time_wheel.json
+raaga/structured/carnatic_raga_metadata.json
+raaga/structured/raga_safety_metadata.json
+rag/assessment_technique/_QA_REVIEW_throat_third_eye_crown_2026_08.md
+raaga/reference_images/rag_samay_chakra_hires-1.png
+GAP_CLOSURE_VALIDATION_REPORT.md (this file)
+```
+
+## FILES MODIFIED
+
+```
+structured/chakra_master.json (v1.2 -> v1.3, note updated, points to new canonical svara file)
+structured/emergency_contacts.json (v2.0 -> v2.1, verification_status vocabulary corrected)
+structured/chakra_specific_questions.json (CQ-AJN-02 reworded)
+raaga/structured/raga_metadata.json (v1.0 -> v2.0, thaat cross-referenced, not_found status fields added)
+raaga/structured/chakra_raga_bridge.json (confirmation note appended, no structural change)
+knowledge_base_ingestion_matrix.csv (5 new columns)
+knowledge_base_manifest.json (v3.0 -> v4.0, full gap-closure status table added)
+```
+
+## FILES NOT INGESTED
+
+Every file already marked `do_not_ingest_full_text`, `license_review_required`,
+or `source_verification_required` in the ingestion matrix from the prior pass
+remains not-ingested. This pass added classification detail but performed
+**zero new document ingestion** — it was a structured-data and governance
+hardening pass, per the instruction to prioritize accuracy/traceability over
+closing every gap.
+
+## QDRANT INGESTION READINESS
+
+**NOT READY.**
+
+Reason: the structured/governance/safety layer is now meaningfully stronger
+(explicit evidence separation, honest verification-status labeling, a proper
+safety-metadata framework), but three blocking items remain:
+
+1. **No live source verification has ever occurred** for the emergency
+ contact numbers in this KB — these are safety-critical and must be
+ confirmed before any deployment, not just before "production."
+2. **Licensing status is unresolved** for 23+7 = 30 files, and the
+ "Anahat Music Therapy Training" IP relationship is still unconfirmed for
+ 9 more — ingesting any of these without resolution is a real legal
+ exposure, not a formality.
+3. **No environment in any pass of this project has had live Qdrant/embedding
+ API access** — everything delivered is a design artifact (schema,
+ structured JSON, classified registry, chunked-and-tagged markdown for the
+ already-ingested files) ready to run through a real ingestion pipeline
+ once one is available, not a live collection.
+
+## Summary counts
+
+| Category | Count |
+|---|---|
+| Total files across all uploads (post-dedup) | 57 new + 25 from v1 = 82 unique source documents |
+| Approved for ingestion (structured data + small attributed docs) | 15 |
+| Pending licensing review | 30 |
+| Pending source verification (unattributed) | 21 |
+| Pending clinical review (raga safety, question sets, clinical_context) | 3 structured frameworks, all entries |
+| Pending musicological review (svara mapping, 93-raga metadata, Bilahari) | 3 structured items |
+| Rejected outright (unauthorized-aggregator sourcing) | 7 |
+
+==========================================================================================
+File: MASTER_PROMPT_FOR_CLAUDE_ANAHAT_FINAL_ENGINE.md
+Chunk: 0
+Tokens: 457
+ID: MASTER_PROMPT_FOR_CLAUDE_ANAHAT_FINAL_ENGINE:00000:99d67f910b4ab05a
+------------------------------------------------------------------------------------------
+You are taking over the ANAHAT AI Engine project. Your job is to finish the engine end-to-end, validate what already exists, and return a production-integration-ready implementation plus documentation.
+
+IMPORTANT: Do not blindly change the knowledge base. Treat the supplied ANAHAT_KnowledgeBase_v3_FINAL.zip as the source-of-truth package. First inspect it and compare it with the assessment design documents, therapist rating workbook, question bank, raga data, governance rules, and existing engine code. If something is unsupported, say so and do not invent a clinical rule.
+
+==================================================
+A. CURRENT SOURCE-OF-TRUTH STATUS
+==================================================
+
+The KB already contains:
+- therapist-rated symptom/emotion/behaviour mappings
+- multi-chakra associations
+- raw Deficient/Excess/ambiguous/conflicted state information
+- chakra master
+- 10-quadrant question bank
+- fixed opening / baseline / clinical context questions
+- disambiguation question data
+- assessment design v3
+- chakra scoring config v2
+- raga metadata
+- raga safety metadata
+- raga time/prahar metadata
+- chakra/raga bridge
+- Hindustani/Carnatic equivalents
+- governance rules
+- evidence policy
+- Qdrant ingestion manifest
+- BAAI/bge-m3, 1024 dimensions, cosine configuration
+- assessment change log and chunking guide
+
+Important source semantics:
+- therapist Strong/Medium/Weak is association strength, not clinical certainty.
+- Qdrant similarity is a candidate retrieval score, not confirmation.
+- patient confirmation is separate from KB mapping.
+- multiple chakras can be valid simultaneously.
+- never suppress a supported chakra because another has a higher score.
+- `any` chakra is unspecified, not all 7.
+- `varies`, `depends on area`, `Conflict in area` require context.
+- `Either`, `Deficient or Excess`, `Excess or Deficient`, `Conflicted` must not be forced into a direction.
+- `Excess to Deficient` and `Usually Excess` remain unresolved until therapist/domain lead clarifies them.
+- do not invent a chakra→raga relationship that is absent from the approved KB.
+- therapist is always final decision-maker.
+
+==================================================
+B. EMBEDDING MODEL
+==================================================
+
+Use exactly:
+BAAI/bge-m3
+
+Purpose:
+- multilingual patient-language semantic retrieval
+- multilingual query ↔ knowledge matching
+
+Expected:
+- vector dimension 1024
+- cosine distance/similarity
+- same model for indexing and querying
+- no mixing embedding models inside one Qdrant collection
+
+The embedding model is not the clinical decision-maker.
+
+==================================================
+C. ASSESSMENT FLOW TO IMPLEMENT
+==================================================
+
+Implement this complete runtime:
+
+==========================================================================================
+File: MASTER_PROMPT_FOR_CLAUDE_ANAHAT_FINAL_ENGINE.md
+Chunk: 1
+Tokens: 802
+ID: MASTER_PROMPT_FOR_CLAUDE_ANAHAT_FINAL_ENGINE:00001:e303d826b5f7194c
+------------------------------------------------------------------------------------------
+==================================================
+B. EMBEDDING MODEL
+==================================================
+
+Use exactly:
+BAAI/bge-m3
+
+Purpose:
+- multilingual patient-language semantic retrieval
+- multilingual query ↔ knowledge matching
+
+Expected:
+- vector dimension 1024
+- cosine distance/similarity
+- same model for indexing and querying
+- no mixing embedding models inside one Qdrant collection
+
+The embedding model is not the clinical decision-maker.
+
+==================================================
+C. ASSESSMENT FLOW TO IMPLEMENT
+==================================================
+
+Implement this complete runtime:
+
+1. Create session.
+2. Collect demographics.
+3. Capture communication/disability information where applicable.
+4. Collect fixed baseline ratings:
+ - Stress
+ - Anxiety
+ - Mood
+ - Sleep Quality
+ - Energy
+5. Therapist records patient-state summary.
+6. Therapist selects one fixed opening style from the KB.
+7. Ask fixed opening questions; do not have the LLM invent opening questions.
+8. Use current issue + opening answers + baseline as inputs for initial quadrant recommendation.
+9. Return top candidate quadrants with reason/confidence/missing information.
+10. Therapist chooses the quadrant.
+11. Generate 2–3 personalized questions within the selected quadrant.
+12. Avoid asking questions already answered.
+13. Explore direct problem, ambiguity, missing high-value attributes, trigger/timing/intensity/impact/coping.
+14. Store every raw patient/therapist response; never overwrite.
+15. Extract candidate symptoms, emotions, behaviours and context.
+16. Retrieve semantic candidates with BGE-M3 + Qdrant.
+17. Apply metadata filters and candidate validation.
+18. Candidate retrieval is NOT confirmation.
+19. Confirm the underlying patient indicator.
+20. If ambiguous, ask targeted clarification.
+21. Preserve all clarification IDs and resolution state.
+22. Detect meaningful contradictions across responses; distinguish contradiction from added context.
+23. Resolve or mark unresolved.
+24. Expand confirmed indicator into every authoritative KB chakra association.
+25. Normalize state semantics.
+26. Correlate repeated descriptions of the same underlying issue.
+27. Score all 7 chakras independently.
+28. Keep presence separate from direction.
+29. Use the agreed baseline:
+ Strong=1.0, Medium=0.6, Weak=0.3
+ Mild=0.4, Moderate=0.7, Severe=1.0
+ Confirmed=1.0, Resolved After Clarification=1.0,
+ Provisional=0.4, Unresolved=0, Historical=0
+ diminishing returns within independent correlation groups.
+30. Initial imbalance gate:
+ directional score >= 0.45
+ confidence >= 60%
+ >=2 independent supporting evidence units
+31. A Strong + Severe + Confirmed unit >=0.70 may be shown as a high-priority candidate but seek corroboration before final confirmation.
+32. If both directions are meaningful/conflicted, do not force a direction.
+33. Balanced requires adequate assessment and no meaningful validated imbalance evidence.
+34. Unresolved means inadequate assessment or unresolved ambiguity/conflict/insufficient evidence.
+35. Do not call a chakra balanced merely because nothing was found if that chakra was not adequately assessed.
+36. Recommend deeper exploration/next quadrant.
+37. Therapist decides whether to continue or stop.
+38. Do not force exactly two chakras. Report only supported findings.
+39. Provide an explainability trace for every significant chakra result.
+
+==================================================
+D. QUADRANT COVERAGE
+==================================================
+
+Implement all 10:
+Nature
+Family
+Social Circle
+Personal Interests
+Profession
+Lifestyle
+Diet
+Physical Nature
+Medical & Therapeutic Background
+Music Therapy Profile
+
+Coverage must mean meaningful assessment, not simply "a question was displayed."
+Positive relevant information or meaningful negative information after appropriate exploration can count.
+Refusal/silence does not count as evidence.
+Generic "fine" should not automatically mark a quadrant adequately assessed.
+
+==================================================
+E. SAFETY
+==================================================
+
+Load and enforce governance/safety_rules.json and evidence_policy.json.
+
+High-risk content:
+- stop normal probing
+- route to therapist/safety workflow
+- preserve audit event
+- do not provide diagnosis or unsafe medical advice
+
+Do not invent emergency contacts; use the supplied structured data where applicable.
+
+==================================================
+F. RAGA + PRAHAR
+==================================================
+
+Implement the raga subsystem, but respect the KB governance boundary.
+
+Allowed:
+- retrieve raga candidates from approved KB records
+- match patient-supported indications to raga evidence
+- use raga metadata
+- apply safety restrictions
+- apply approved time-of-day/prahar metadata
+- show provenance/evidence
+- let therapist approve/edit/reject
+
+Forbidden:
+- inventing a chakra→raga mapping
+- silently chaining symptom→chakra→raga and calling it clinically validated
+- automatically prescribing an unreviewed raga
+- ignoring contraindications/safety flags
+- inventing a prahar
+
+==========================================================================================
+File: MASTER_PROMPT_FOR_CLAUDE_ANAHAT_FINAL_ENGINE.md
+Chunk: 2
+Tokens: 725
+ID: MASTER_PROMPT_FOR_CLAUDE_ANAHAT_FINAL_ENGINE:00002:f7cd37ecbfdaa377
+------------------------------------------------------------------------------------------
+Do not invent emergency contacts; use the supplied structured data where applicable.
+
+==================================================
+F. RAGA + PRAHAR
+==================================================
+
+Implement the raga subsystem, but respect the KB governance boundary.
+
+Allowed:
+- retrieve raga candidates from approved KB records
+- match patient-supported indications to raga evidence
+- use raga metadata
+- apply safety restrictions
+- apply approved time-of-day/prahar metadata
+- show provenance/evidence
+- let therapist approve/edit/reject
+
+Forbidden:
+- inventing a chakra→raga mapping
+- silently chaining symptom→chakra→raga and calling it clinically validated
+- automatically prescribing an unreviewed raga
+- ignoring contraindications/safety flags
+- inventing a prahar
+
+The output should clearly distinguish:
+Candidate
+Therapist approved
+Therapist rejected
+Not enough evidence
+
+==================================================
+G. ACTIVITIES
+==================================================
+
+The user will provide a separate Activities document.
+
+When it is provided:
+1. inspect it completely;
+2. identify activity IDs/names, purpose, target population, contraindications, chakra/condition links, intensity, duration, frequency, source/provenance, and review status;
+3. never invent an activity;
+4. recommend activities only from that supplied document;
+5. match activities to confirmed patient needs and therapist-approved findings;
+6. apply contraindications/safety;
+7. keep therapist approval;
+8. preserve activity provenance in the prescription.
+
+The final prescription should support:
+- approved raga/music plan
+- approved activities
+- duration
+- frequency
+- instructions
+- safety/clinical notes
+- therapist decision
+
+==================================================
+H. API / BACKEND INTEGRATION
+==================================================
+
+Implement clean APIs for:
+- create session
+- demographics
+- baseline
+- patient-state
+- opening questions
+- quadrant recommendation
+- quadrant selection
+- next personalized questions
+- submit response
+- clarification
+- evidence review
+- chakra evaluation
+- evidence trace
+- next-step recommendation
+- raga candidates
+- raga approval/rejection/edit
+- activity candidates
+- activity approval/rejection/edit
+- prescription generation
+- therapist override
+- assessment completion
+
+Do not let frontend talk directly to Qdrant.
+
+Use durable persistence abstraction, not only in-memory state.
+
+==================================================
+I. VALIDATION REQUIREMENT
+==================================================
+
+Before changing code:
+- inventory every existing module
+- identify what is correct
+- identify duplicate/conflicting implementations
+- compare implementation against:
+ assessment_engine_design_v3.json
+ chakra_scoring_config_v2.json
+ governance_rules.json
+ evidence_policy.json
+ question bank
+ therapist rating workbook if available
+ qdrant ingestion manifest
+ raga structured files
+- produce a gap matrix.
+
+Then implement.
+
+After implementation run:
+1. unit tests
+2. retrieval tests
+3. evidence extraction tests
+4. ambiguity tests
+5. contradiction tests
+6. scoring tests
+7. 7-chakra tests
+8. 10-quadrant flow tests
+9. safety tests
+10. raga safety/time tests
+11. therapist override tests
+12. prescription tests
+13. API tests
+14. end-to-end tests
+15. 30 supplied sample patient-response cases
+
+Do not claim success if a test is skipped, mocked, or cannot run.
+Separate:
+PASS
+FAIL
+BLOCKED
+SOURCE DISCREPANCY
+CLINICAL REVIEW REQUIRED
+
+The 30 sample reference chakras are comparison/reference data, not unquestionable ground truth. If they disagree with the authoritative KB, report SOURCE DISCREPANCY rather than modifying the KB just to match.
+
+==================================================
+J. CHUNKING — DO NOT IMPLEMENT BLINDLY
+==================================================
+
+Use the KB's QDRANT_CHUNKING_GUIDE_BGE_M3.md as the baseline.
+
+Recommended:
+- target 800 tokens
+- max 1000 tokens
+- overlap 120 tokens
+- heading-aware splitting
+- preserve tables/questions/rules as semantic units
+- one logical structured record per chunk
+- BGE-M3, 1024 dimensions, cosine
+- metadata-rich payloads
+
+Do not vectorize governance_rules.json as normal RAG knowledge.
+
+You must provide:
+- complete chunking code
+- ingestion code
+- manifest generation
+- duplicate/content hash detection
+- dry-run mode
+- validation report
+- Qdrant collection creation
+- upsert
+- payload metadata
+- re-index/update strategy
+- exact command-line steps
+- simple explanation for a beginner
+
+==================================================
+K. DELIVERABLES
+==================================================
+
+==========================================================================================
+File: MASTER_PROMPT_FOR_CLAUDE_ANAHAT_FINAL_ENGINE.md
+Chunk: 3
+Tokens: 291
+ID: MASTER_PROMPT_FOR_CLAUDE_ANAHAT_FINAL_ENGINE:00003:d1f4d604fd255996
+------------------------------------------------------------------------------------------
+Do not vectorize governance_rules.json as normal RAG knowledge.
+
+You must provide:
+- complete chunking code
+- ingestion code
+- manifest generation
+- duplicate/content hash detection
+- dry-run mode
+- validation report
+- Qdrant collection creation
+- upsert
+- payload metadata
+- re-index/update strategy
+- exact command-line steps
+- simple explanation for a beginner
+
+==================================================
+K. DELIVERABLES
+==================================================
+
+Return a complete project containing:
+1. final AI engine source code
+2. Qdrant ingestion/chunking code
+3. BGE-M3 embedding adapter
+4. retrieval adapter
+5. complete assessment pipeline
+6. evidence engine
+7. ambiguity/clarification engine
+8. consistency engine
+9. chakra scoring
+10. explainability
+11. safety
+12. raga recommendation
+13. activity recommendation using the provided Activities document
+14. therapist workflow
+15. prescription generation
+16. API layer
+17. configuration
+18. tests
+19. migration/installation instructions
+20. architecture documentation
+21. beginner-friendly assessment flow explanation
+22. beginner-friendly Qdrant/chunking explanation
+23. validation report
+24. known limitations / therapist review list
+
+Do not remove source provenance.
+Do not silently change clinical mappings.
+Do not label engineering thresholds as clinically validated.
+
+At the end give a table:
+DONE BEFORE YOUR WORK
+CHANGED BY YOU
+REMAINING AFTER YOUR WORK
+CLINICAL/THERAPIST REVIEW REQUIRED
+BLOCKED BY MISSING INPUT
+
+Then explain in simple language how the final system works from:
+patient opening → questions → response → semantic retrieval → evidence → chakra result → raga/activity candidate → therapist approval → prescription.
+
+==========================================================================================
+File: general_reflective_question_bank.md
+Chunk: 0
+Tokens: 730
+ID: rag_assessment_technique_general_reflective_question_bank:00000:9d488f9c96564068
+------------------------------------------------------------------------------------------
+---
+document_type: assessment_technique
+knowledge_category: assessment_technique
+source_document: Questions.txt (RAG_documents upload, 2026-08-31)
+canonical_version: true
+evidence_level: not_applicable_question_bank
+review_status: therapist_review_required
+version: 1.0
+---
+
+# General Reflective Question Bank
+
+A broad, non-chakra-framed reflective question bank covering: past experiences,
+emotions, thoughts, healthy habits, beliefs, relationships, and career. Verified
+against the existing `structured/quadrant_question_bank.json` -- this is
+genuinely supplementary content (broader, more open-ended reflective prompts),
+not a duplicate of the 10-quadrant structured intake questions.
+
+Organized by theme, ~90 questions total. Full text preserved in this file
+rather than reproduced here in the frontmatter description -- see the source
+file for the complete set across 7 themes: Past, Emotions, Thoughts, Healthy
+Habits, Beliefs, Relationships, and Career.
+
+## Usage note
+These are general-purpose reflective prompts, not chakra-specific or
+diagnostic. Safe for supplementary retrieval alongside the structured
+assessment flow, but should not be presented as a required or sequential
+protocol -- they were not authored with the same
+opening/deepening/scaling/exception structure used in
+`chakra_specific_questioning_*.md`. A therapist should confirm phrasing
+quality before production use -- several questions in the source were
+somewhat awkwardly phrased (e.g. machine-translated or AI-drafted register),
+worth a light copy-edit pass.
+
+## Full source content
+Questions About Your Past
+Are you uncomfortable discussing anything from past events?
+What would you say about your early years?
+What are a few of your favorite childhood memories?
+What characteristics and beliefs have been influenced by your past?
+Is there a particular moment in your life you would like to share about how your values or viewpoint changed significantly?
+Do you still feel the effects of any major past events on you now?
+Would you like to go back and revisit any past experiences?
+Do you have a special family ritual or tradition from your early years that you cherish?
+Do you see any recurring themes or patterns in your earlier experiences? If so, how do you deal with them in your present life?
+How does nostalgia affect your current feelings and what part does it play in your thoughts about the past?
+Do you feel that unresolved problems from previous experiences are impeding your happiness or personal development?
+What aspects of your past decisions—both successful and unsuccessful—still affect the way you make decisions now?
+What effects did the good and bad relationships you had in the past have on your capacity to trust people?
+
+Questions About Your Emotions
+In three words, how would you sum up your emotional condition right now?
+Which certain situations or incidents make you feel happy?
+How do you manage intense feelings on a daily basis?
+Is there a particular memory from your early years that still affects your feelings now?
+How do your fundamental concepts influence the way you feel and behave?
+Is there a good way for you to let out your anger? How do you do that?
+Do you have any feelings that you usually repress? If yes, why?
+What effects do your feelings have on the people you interact with?
+Which forms of self-care do you use to keep your emotional health in check?
+Can you identify any stress or anxiety-related emotional triggers in your life?
+How do you tell the difference between real feelings and ones that are influenced by other forces?
+Do you have any particular objectives in mind to strengthen your emotional resilience?
+Regarding the emotional development, how at ease are you with vulnerability?
+How can self-reflection help you recognize and control your emotions?
+
+==========================================================================================
+File: general_reflective_question_bank.md
+Chunk: 1
+Tokens: 598
+ID: rag_assessment_technique_general_reflective_question_bank:00001:c7609c6ff76ff9bb
+------------------------------------------------------------------------------------------
+Questions About Your Thoughts
+What would you say best describes the primary thoughts that cross your head every day?
+Would you like to look into any negative thought patterns that seem to come back?
+What is your approach to dealing with self-critical thoughts, and how do they affect your sense of worth as an individual?
+Is there anything that you can see that might be causing you to perceive reality differently?
+How much do your current cognitive processes originate from your previous experiences?
+Are you prone to having intrusive or nervous thoughts in certain situations?
+What is your procedure for making decisions, and are there any particular ideas that get in the way?
+Do you have any instinctive beliefs that exacerbate stress or feelings of being overwhelmed?
+What effects do your thoughts have on your capacity to establish and accomplish goals?
+In what ways do you strike a balance in your everyday thinking between acceptable and inappropriate ideas?
+Do you see any patterns of thinking that might be causing problems in your relationships?
+What effects does your self-talk have on your determination and ability to persevere in the face of difficulty?
+Are you always thinking about any unsolved problems or unanswered questions?
+How do you deal with overthinking, and does it make it harder for you to unwind?
+Which techniques do you regularly use to encourage constructive and optimistic thinking?
+
+Questions About Your Healthy Habits
+What benefits do your present healthful activities provide for your general well-being?
+Do you have any particular daily practices that promote your mental and physical well-being?
+How well do your food choices support your overall wellness and health objectives?
+Do you have any bad habits that you think might be affecting your general health?
+As sleep is essential to living a healthy lifestyle, how do you prioritize getting enough of it?
+How do you stay motivated to be active? What part does regular exercise represent in your daily routine?
+What particular methods or strategies do you employ to handle stress in every aspect of your life?
+How do you keep a balanced fluid intake throughout the day and make sure you’re properly hydrated?
+To enhance your mental well-being, do you engage in mindfulness or meditation practices? If so, how has it changed your day-to-day activities?
+What actions do you take to keep a good work-life balance, and how has it affected your general well-being?
+In everyday routine, how do you maintain a healthy relationship with technology and regulate screen time?
+How do you respond to obstacles or failures in upholding your healthful patterns?
+Do you adhere to any particular dietary guidelines or nutritional targets in order to maintain a healthy lifestyle?
+How can your general health and well-being benefit from your relationships and social connections?
+
+==========================================================================================
+File: general_reflective_question_bank.md
+Chunk: 2
+Tokens: 599
+ID: rag_assessment_technique_general_reflective_question_bank:00002:24a12265e2bc3793
+------------------------------------------------------------------------------------------
+Questions About Your Beliefs
+What effects do your underlying beliefs have on how you see the world and yourself?
+Is there any belief that you can think of that limits your growth or well-being?
+How have your relationships beliefs changed over time, and how do they affect how you connect with other people?
+What fundamental beliefs do you have about success and failure, and how do they influence the way you tackle obstacles?
+What aspects of your identity and decision-making are influenced by your cultural or religious beliefs?
+Did you ever doubt or reevaluate some of your long-held beliefs? If so, why did you think that way?
+To what extent does your mental and emotional health depend on what you believe about your own value and affection?
+Which belief systems in your life can be a cause behind your tension or anxiety?
+How can you better handle life transitions if your beliefs about change and adaptability are different?
+Do any messages or beliefs from your early years still affect the way you think and act now?
+How does your sense of purpose and involvement in the community stem from your political or social beliefs?
+Which decisions and priorities in life are influenced by your beliefs about happiness and fulfillment?
+Have you seen any changes in your beliefs as a result of remarkable experiences or personal development?
+What are your methods for finding balance and how do you resolve contradictory beliefs inside yourself?
+Could you describe a situation in which refuting or altering a certain belief resulted in a beneficial change in yourself?
+
+Questions About Your Relationships
+In what ways does your present approach to building connections with others draw from your past relationships, both good and bad?
+In your relationships, what are the most important values you look for, and how do they make you feel satisfied overall?
+Do you see any trends in your previous relationships that you would like to alter or enhance?
+What techniques do you employ to protect healthy communication in your relationships, and how do you handle conflict in them?
+How do you handle disagreements in a relationship and what aspects of your expectations match those of your partner?
+How do you strike a good balance and set priorities for your friendships, family ties, and romantic relationships?
+How do you establish and maintain trust with others, and what part does trust play in your relationships?
+What are some changes you would like to make to the way you give and receive love in your relationships?
+Do you have any concerns or insecurities that might be getting in the way of your capacity to build and sustain meaningful relationships?
+In order to build mutual respect and understanding, how do you establish and convey limits in your relationships?
+
+==========================================================================================
+File: general_reflective_question_bank.md
+Chunk: 3
+Tokens: 674
+ID: rag_assessment_technique_general_reflective_question_bank:00003:d74492790ee3728c
+------------------------------------------------------------------------------------------
+Questions About Your Career
+Can you spot any trends in the way you decide on a career, and if so, how have they affected your route in the workplace?
+What coping strategies do you employ to deal with the pressure and stress you face at work?
+How does the career you’re pursuing now help you feel fulfilled and purposeful?
+Is there anything that you are afraid of or insecure about that could be impeding your career growth? If so, how do you intend to overcome it?
+In making job decisions, how do you strike a balance between following your passion and being realistic?
+How important is work-life balance to your sense of overall job satisfaction?
+How can you make sure your health and well-being are top priorities at work?
+How do your professional decisions fit into your long-term financial objectives?
+What is your definition of success in your career, and has it changed over time?
+Questions About Your Future Plans
+How does your perfect future appear to you?
+Do you have any concerns regarding your future?
+How well do your present objectives fit with your long-term plan?
+Which goals are more important to you, long-term or short-term?
+What impact do your core values have on your future plans?
+How do you respond to unanticipated modifications to your long-term plans?
+How do you strike a balance between your career and personal goals?
+Do any self-limiting thoughts prevent you from pursuing your goals?
+How do you handle uncertainty regarding the future in your life?
+How do you make sure your plans for the future help you feel fulfilled?
+
+What has brought you to therapy?
+What are the key problems you would like to explore or solve?
+How is your appetite? Are you eating more or less than usual?
+How are you sleeping? Are you sleeping more or less than usual? How is the quality of your sleep?
+How often do you exercise?
+Where do you go for support when you need it? Do you have a network of supportive relationships with others?
+Have you experienced any previous struggles with your mental health?
+Have you attended any previous therapy or treatment programs?
+How are your relationships with your family? How often are you in touch with them?
+Are you in an intimate relationship with a partner? How is that going?
+Are there any aspects of your daily life that you struggle with right now?
+Are there any areas of your work and/or school life that you find challenging?
+
+General Mental Health Questions
+How would you rate your overall mental health on a scale of 1-10?
+How often do you feel stressed?
+How often do you feel anxious?
+How often do you feel depressed?
+How often do you have trouble sleeping?
+How often do you feel overwhelmed?
+How often do you feel lonely?
+How often do you feel happy?
+How often do you feel motivated?
+How often do you feel tired?
+How often do you have suicidal thoughts?
+Have you been diagnosed with a mental health condition?
+Are you currently receiving treatment for a mental health condition?
+How effective is your current treatment?
+
+==========================================================================================
+File: general_reflective_question_bank.md
+Chunk: 4
+Tokens: 767
+ID: rag_assessment_technique_general_reflective_question_bank:00004:038f686727dfe351
+------------------------------------------------------------------------------------------
+Anxiety Questions
+How often do you feel nervous or anxious?
+How often do you have panic attacks?
+How often do you avoid certain situations because of anxiety?
+How often do you have trouble concentrating because of anxiety?
+How often do you feel restless or on edge?
+How often do you worry excessively about everyday things?
+How often do you have physical symptoms like sweating or trembling due to anxiety?
+How often do you feel like something terrible is going to happen?
+How often do you have difficulty controlling your worry?
+How often do you avoid social situations because of anxiety?
+
+Depression Questions
+How often do you feel sad or down?
+How often do you lose interest in activities you used to enjoy?
+How often do you feel worthless or guilty?
+How often do you have trouble sleeping?
+How often do you feel tired or have low energy?
+How often do you have thoughts of death or suicide?
+How often do you have trouble concentrating or making decisions?
+How often do you feel hopeless about the future?
+How often do you have changes in your appetite?
+How often do you feel irritable or angry?
+
+Stress Questions
+How often do you feel stressed?
+What are your main sources of stress?
+How do you cope with stress?
+How often do you feel overwhelmed by stress?
+How does stress affect your daily life?
+How often do you feel like you can't handle your responsibilities?
+How often do you experience physical symptoms of stress (e.g., headaches, muscle tension)?
+How often do you feel like you're losing control?
+How often do you have trouble relaxing?
+How often do you feel burned out?
+
+PTSD Questions
+Have you ever experienced a traumatic event?
+How often do you have flashbacks or nightmares about the event?
+How often do you avoid reminders of the traumatic event?
+How often do you feel emotionally numb or detached?
+How often do you feel jumpy or easily startled?
+How often do you have trouble sleeping due to the event?
+How often do you feel irritable or angry?
+How often do you have difficulty concentrating?
+How often do you feel guilty or blame yourself for the event?
+How often do you feel like your life has been shortened by the event?
+
+OCD Questions
+How often do you have unwanted, intrusive thoughts?
+How often do you perform repetitive behaviors or rituals?
+How often do you feel compelled to check things repeatedly?
+How often do you feel anxious if you don't perform rituals?
+How often do you spend a lot of time on obsessive thoughts or compulsions?
+How often do you try to ignore or suppress your obsessions?
+How often do you feel distressed by your obsessions or compulsions?
+How often do you avoid situations that trigger your obsessions?
+How often do you seek reassurance from others?
+How often do you feel like your rituals interfere with your daily life?
+
+Bipolar Disorder Questions
+How often do you experience periods of elevated mood or mania?
+How often do you feel overly energetic or restless during these periods?
+How often do you have racing thoughts or talk rapidly?
+How often do you engage in risky behaviors during manic episodes?
+How often do you experience depressive episodes?
+How often do you have trouble sleeping during manic periods?
+How often do you feel grandiose or overly confident?
+How often do you have suicidal thoughts during depressive episodes?
+How often do you experience mixed episodes (both manic and depressive symptoms)?
+How often do you have difficulty maintaining relationships due to mood swings?
+
+==========================================================================================
+File: general_reflective_question_bank.md
+Chunk: 5
+Tokens: 729
+ID: rag_assessment_technique_general_reflective_question_bank:00005:87a09a66b19de8e3
+------------------------------------------------------------------------------------------
+Schizophrenia Questions
+How often do you hear voices or see things that others don't?
+How often do you have disorganized thoughts or speech?
+How often do you feel paranoid or suspicious?
+How often do you have delusions (false beliefs)?
+How often do you feel emotionally flat or numb?
+How often do you have trouble with motivation or daily activities?
+How often do you experience hallucinations?
+How often do you have trouble distinguishing reality from fantasy?
+How often do you feel socially withdrawn?
+How often do you have cognitive difficulties (e.g., memory or attention problems)?
+
+Eating Disorder Questions
+How often do you worry about your weight or body shape?
+How often do you restrict your food intake?
+How often do you binge eat?
+How often do you purge after eating?
+How often do you exercise excessively to control your weight?
+How often do you feel guilty after eating?
+How often do you avoid social situations involving food?
+How often do you have a distorted body image?
+How often do you feel out of control during eating episodes?
+How often do you use laxatives or diuretics to control weight?
+
+Substance Abuse Questions
+How often do you use alcohol or drugs?
+How often do you feel like you need to use substances to function?
+How often do you experience withdrawal symptoms when not using?
+How often do you continue using despite negative consequences?
+How often do you spend a lot of time obtaining or using substances?
+How often do you neglect responsibilities due to substance use?
+How often do you have cravings for substances?
+How often do you use substances in dangerous situations?
+How often do you try to cut down or stop but can't?
+How often do you experience blackouts or memory loss from substance use?
+
+COVID-19 Related Mental Health Questions
+How has the pandemic affected your mental health?
+How often do you feel anxious about the pandemic?
+How often do you feel isolated due to lockdowns?
+How often do you have trouble sleeping because of pandemic-related worries?
+How often do you feel stressed about health risks?
+How often do you experience changes in mood due to the pandemic?
+How often do you feel overwhelmed by news about the pandemic?
+How often do you have trouble concentrating due to pandemic concerns?
+How often do you feel grateful or positive despite the challenges?
+How often do you seek support from others during the pandemic?
+
+Questions About Your Medical & Therapeutic Background
+Do you have any ongoing medical conditions I should know about, such as diabetes, thyroid, heart, or any other health issue?
+Are you currently taking any medication? If so, could you tell me what it's for?
+Are you currently undergoing any other kind of therapy or treatment, such as physiotherapy, counselling, Ayurveda, or yoga?
+Have you ever spoken with a counsellor, psychologist, or psychiatrist before, or been part of a support group?
+What are you hoping this music therapy will help you with the most right now?
+On a scale of 0 to 10, how much physical pain or discomfort would you say you're experiencing these days?
+Overall, how would you describe your general health right now -- excellent, good, fair, or poor?
+Do you live with any long-term or chronic illness?
+Do you have any allergies -- to food, medication, or anything in your environment -- that I should be aware of?
+
+==========================================================================================
+File: general_reflective_question_bank.md
+Chunk: 6
+Tokens: 767
+ID: rag_assessment_technique_general_reflective_question_bank:00006:7bd567f31cdefde1
+------------------------------------------------------------------------------------------
+Questions About Your Music Therapy Profile
+What has your relationship with music been like so far -- do you play an instrument, or are you more of a listener?
+What kind of music do you naturally gravitate towards -- classical, devotional, Bollywood, or something else?
+Is there a particular instrument or sound -- like flute, tabla, piano, or vocals -- that you feel especially drawn to?
+When you listen to music to feel better, do you look for something calming, uplifting, spiritual, or something else?
+How often do you find yourself listening to music in a typical week?
+When you do listen, how long do you usually stay with it -- a few minutes, or longer stretches?
+What usually draws you to a song -- the mood it creates, the lyrics, the melody, or the rhythm?
+Is there any kind of sound or music that bothers you or feels overwhelming -- loud sounds, certain songs, or anything like that?
+Do devotional or meditative sounds, like chanting or nature sounds, resonate with you, or do you prefer more universal music?
+Questions About Your Nature
+Would you describe yourself as more of an introvert, an extrovert, or a bit of both?
+When something's bothering you, do you tend to speak up directly, or do you hold back and go along with things?
+Would you say you generally look at life with optimism, or do you tend to see things more realistically or idealistically?
+Are you someone who likes to take risks, or do you prefer to stay within your comfort zone?
+How would you describe your relationship with time -- do you plan ahead, or do things tend to pile up till the last minute?
+Do you find it easy to forgive yourself and others, or do certain things tend to stay with you?
+Would you say you have a sharp memory, or do day-to-day things tend to slip your mind?
+In a group setting, do you naturally take the lead, prefer to follow, or find it hard to hand things off to others?
+When you're under stress, what usually happens -- do you overthink, get frustrated, or manage to stay calm?
+
+Questions About Your Family
+Do you come from a nuclear family or a joint family setup?
+Who would you say makes up your immediate family -- parents, siblings, spouse, children?
+How would you describe your bond with your family -- strong, just okay, or something you're still working through?
+What role do you usually find yourself playing in your family -- caregiver, supportive, or maybe more of a breadwinner?
+Growing up and even now, would you say the atmosphere at home feels more positive and supportive, or stressful?
+Would you describe your family as close-knit, a bit distant, or somewhere with ongoing conflicts?
+What does family mean to you personally -- a source of support, a responsibility, or something else?
+
+Questions About Your Social Circle
+Would you say you have a large circle of friends, or do you keep your circle small and selective?
+Who do you usually turn to when you need to talk -- family, friends, or colleagues?
+How reliable would you say your support system is when you need someone?
+How active are you on social media -- would you say often, occasionally, or barely at all?
+What do you usually enjoy doing with friends -- sports, movies, travel, or maybe spiritual gatherings?
+What would your friends say you're known for?
+What matters most to you in a friendship -- trust, fun, emotional support, or shared interests?
+
+==========================================================================================
+File: general_reflective_question_bank.md
+Chunk: 7
+Tokens: 768
+ID: rag_assessment_technique_general_reflective_question_bank:00007:b26867ca520a8021
+------------------------------------------------------------------------------------------
+Questions About Your Personal Interests
+What do you enjoy doing in your free time -- reading, music, dance, gardening, art?
+When you're learning something new, do you prefer to see it, hear it, try it hands-on, or read about it?
+Do you have any creative outlets you turn to -- painting, writing, singing?
+When you travel, are you more adventurous, or do you prefer comfort and familiar experiences?
+Are you currently working on learning something new -- through courses, workshops, or on your own?
+Do you enjoy reading? If so, what kind -- fiction, non-fiction, self-help, biographies?
+Do you have any spiritual or religious practices, like meditation or prayer, that are part of your life?
+
+Questions About Your Profession
+Could you tell me a bit about the nature of your work or studies -- is it more managerial, technical, creative, or supportive in nature?
+What does your day-to-day work usually involve -- leading a team, meeting targets, client interaction?
+How would you describe your work environment -- high-pressure, collaborative, structured, or flexible?
+What's been the toughest part of work lately -- workload, deadlines, or managing a team?
+When work gets stressful, what do you usually do to cope?
+How do you feel about where you are professionally -- ambitious for more, content, or looking for a change?
+How do you usually feel about taking on new projects at work -- eager, hesitant, or open depending on the situation?
+
+Questions About Your Lifestyle
+How would you describe your daily routine -- fairly active, mostly sedentary, or a good balance of both?
+How would you rate your work-life balance right now -- well-maintained, a struggle, or overworked?
+How has your sleep been lately -- sound and restful, disturbed, or are you dealing with insomnia?
+What do you usually turn to when you need to manage stress -- yoga, mindfulness, spending time with people, or do you tend to withdraw?
+How do you like to unwind -- hobbies, just relaxing, watching TV, or getting outdoors?
+How would you describe your self-care routine these days -- regular, occasional, or something you feel needs attention?
+How involved are you in household responsibilities -- actively, minimally, or do you mostly delegate?
+
+Questions About Your Diet
+What kind of diet do you follow -- vegetarian, non-vegetarian, vegan?
+How regular are your meals -- three set meals a day, frequent snacking, or fairly irregular?
+What kind of food do you find yourself reaching for most -- comfort food, healthier options, or fast food?
+How much water would you say you drink through the day?
+Would you describe your eating habits as mindful, more emotional, or a bit fussy?
+Do you have any specific dietary needs or restrictions I should know about -- low sugar, low salt, gluten-free, allergies?
+Are there particular cravings you notice often -- sweets, salty snacks, spicy food?
+
+Questions About Your Physical Nature
+Do you follow any kind of fitness routine -- walking, running, yoga, gym?
+How often would you say you exercise -- daily, weekly, or fairly inconsistently?
+How would you describe how you feel about your body right now -- positive, neutral, or a bit self-conscious?
+Are there any current health concerns you're dealing with -- weight, digestion, anxiety, or something else?
+Is there any family history of health conditions like diabetes, hypertension, or heart issues?
+If you experience physical pain, what do you usually turn to for relief -- music, medication, physical therapy?
+Would you say you keep up with regular check-ups and preventive care, or does that tend to get put off?
+
+==========================================================================================
+File: home_based_mt_activities_by_population.md
+Chunk: 0
+Tokens: 574
+ID: rag_clinical_frameworks_home_based_mt_activities_by_population:00000:fd8d889bcd301423
+------------------------------------------------------------------------------------------
+---
+document_type: clinical_technique
+knowledge_category: music_therapy_technique
+source_document: MT_Activities_(Home_Based).pdf, provided by therapist, 2026
+canonical_version: true
+evidence_level: practitioner_authored_no_citations
+ip_flag: SOURCE_BRANDED_ANAHAT_TRANSFORMATIONS
+review_status: therapist_provided_treat_as_approved_pending_final_confirmation
+version: 1.0
+---
+
+# Home-Based Music Therapy Activities, by Population
+
+Practical, equipment-free music-based self-regulation activities the therapist
+provided directly, organized by population/context. Unlike most of the raga
+and chakra practitioner content elsewhere in this knowledge base, this is
+population-segmented practical guidance (what to actually do), which fills a
+real gap: most of the `music_therapy_interventions` structured data has
+technique *names* but blank tempo/duration/session-structure fields, since no
+prior source specified that level of practical detail. This document does.
+
+## IP note
+Branded "ANAHAT TRANSFORMATIONS" on each page -- the same source
+organization already flagged elsewhere in this knowledge base (see the
+Neurological Music Therapy / autism file's IP flag, which carries an explicit
+legal notice). This document itself does not carry that same explicit
+no-redistribution legal language, and was supplied directly by the project's
+therapist, so it's treated as approved for internal knowledge-base use --
+but the same underlying question (this project's relationship to the "Anahat
+Transformations"/"Anahat Music Therapy Training" organizations) is still
+worth resolving before anything derived from this file is exposed externally.
+
+## Non-clinical framing
+These are self-directed, low-demand regulation tools, not treatment. Several
+sections explicitly say so in the source (e.g. "alongside, not instead of,
+medical management" for chronic pain; "a coping tool," not a cure). Preserve
+that framing wherever this content is surfaced -- do not let it drift into
+being presented as a treatment protocol.
+
+---
+
+## Prenatal Activities
+
+1. **Humming meditation** — Sit or lie comfortably, close your eyes, and hum a low, steady note for a few breaths at a time. The vibration is soothing for the parent and gently reaches the baby. Try humming through an exhale, pausing, then repeating for 5–10 minutes.
+2. **Singing to the baby** — Sing lullabies, favorite songs, or made-up tunes softly to the belly. Babies begin recognizing their mother's voice in the womb; this builds an early bond while calming the parent's nervous system.
+3. **Breath-and-voice pairing** — Combine slow breathing with soft vocal sounds: inhale for 4 counts, exhale while sighing out an "ahh" or "ohh" sound. Blends vocal music therapy with relaxation breathing, useful for reducing anxiety.
+4. **Vocal toning for relaxation** — Sit upright, take a deep breath, and let out an open vowel sound ("aa", "ee", "oo") slowly and steadily. Repeat with different vowels; used to release tension and calm the mind.
+5. **Call-and-response singing with a partner** — Take turns singing simple phrases back and forth, even nonsense syllables. Playful, connects with a partner, doubles as light social-emotional engagement.
+
+## For School Students (no materials/equipment needed)
+
+==========================================================================================
+File: home_based_mt_activities_by_population.md
+Chunk: 1
+Tokens: 756
+ID: rag_clinical_frameworks_home_based_mt_activities_by_population:00001:fee7819cc25cedec
+------------------------------------------------------------------------------------------
+## For School Students (no materials/equipment needed)
+
+1. **Humming break** — Between homework sessions, hum a favorite tune for 2–3 minutes with eyes closed. Resets focus and calms pre-exam jitters.
+2. **Body percussion rhythms** — Clap, tap thighs, or stomp feet in simple repeating patterns ("clap-clap-tap-tap"). Burns off restless energy, improves concentration afterward.
+3. **Singing along to memory** — Recall and sing a favorite song from memory. Boosts mood and works memory recall simultaneously.
+4. **Breath-and-hum combo** — Inhale slowly for 4 counts, hum out the exhale as long as comfortable, repeat 5–6 times. Useful before tests or when anxious.
+5. **Call-and-response with a sibling/friend** — Take turns singing/chanting short phrases back and forth. Builds listening skills, turns a break into social activity.
+6. **"Soundtrack your mood" reflection** — Think of a song matching current feelings, hum or sing a bit of it. Helps name and process emotions in a low-pressure way.
+7. **Rhythmic recitation** — Turn multiplication tables, spellings, or notes into a rhythmic chant. Combines music with memory retention for studying.
+8. **Vocal toning for stress release** — Deep breath, long "aaa"/"ooo" sound, slowly. A few repetitions when overwhelmed; under a minute.
+9. **Freeze dance (mental version)** — Imagine a favorite upbeat song, move/sway to it seated or standing, "freeze" when mentally pausing the song. Quick energizer between study blocks.
+10. **Group humming circle** (if with family/friends) — Everyone hums together into one long note. Builds connection and calm, especially after a stressful day.
+
+## For College Students
+
+1. **Humming reset between study blocks** — Low, steady note for 2–3 minutes between lectures/sessions.
+2. **Breath-and-hum for exam anxiety** — Inhale 4 counts, hum out the exhale, 5–6 rounds before an exam/presentation — activates the parasympathetic nervous system.
+3. **Singing through emotional processing** — Sing/hum a song matching current mood (stress, homesickness, excitement) to acknowledge and release rather than suppress the emotion.
+4. **Rhythmic chanting for memorization** — Turn dense material (definitions, formulas, dates) into a rhythmic chant or tune.
+5. **Vocal toning for overwhelm** — Long, slow "aaa"/"ooo" exhalations for a minute; effective during finals/deadline weeks.
+6. **Internal music imagery** — Mentally "play" a favorite song in full detail (melody, lyrics, instruments); useful winding down before sleep or between classes.
+7. **Call-and-response with roommates/friends** — Trade short sung/chanted phrases; low-effort social connection, breaks up isolation during intense study periods.
+8. **Body percussion for restlessness** — Clap or tap a rhythm on desk/thighs when too wired to sit still.
+9. **"Playlist in your head" mood shift** — Recall an upbeat/motivating song, hum/sing it to shift energy before a workout or hard task.
+10. **Group humming or singing** (if living with others) — Eases dorm/roommate tension, builds community during stressful periods.
+11. **Pre-sleep vocal wind-down** — Hum or sing quietly before bed; helps with racing thoughts common during exam season, supports sleep.
+
+## For Neurodivergent People
+
+*General principles that apply across all conditions below:*
+- **No "correct" form.** Volume, pitch, duration, and whether audible or internal should be self-determined.
+- **Work with existing regulating behaviors, don't replace them.** Stimming, echolalia, tics, and repetitive movement are natural regulators — pair music with them, don't substitute for them.
+- **Masking isn't the goal.** These are private, low-demand tools, not performance.
+- **Sensory profile decides the activity, not the diagnosis label.** Two autistic people might need opposite things — these are starting points, not prescriptions.
+- **Stop anytime something feels aversive rather than regulating.** What helps can shift day to day or hour to hour.
+
+==========================================================================================
+File: home_based_mt_activities_by_population.md
+Chunk: 2
+Tokens: 790
+ID: rag_clinical_frameworks_home_based_mt_activities_by_population:00002:2465cad442411a57
+------------------------------------------------------------------------------------------
+**For sensory regulation (autism, sensory processing differences):**
+1. Self-paced humming — adjust pitch/volume freely, no fixed rules.
+2. Silent internal music — mentally "play" a comforting song without vocalizing, for when sound is overstimulating.
+3. Rhythmic stimming — rock, sway, or flap in time with a hummed/imagined rhythm.
+4. Predictable repetition loops — hum the same short phrase repeatedly; sameness itself is calming.
+
+**For focus and restlessness (ADHD):**
+5. Rhythmic tapping for transitions — steady beat on leg/desk to bridge between tasks.
+6. "Study chant" — turn facts or to-do items into a rhythmic chant to hold attention.
+7. Freeze-and-release humming — hum energetically for 30 seconds, then sit in quiet; repeat as a focus reset.
+8. Movement-paired humming — hum while pacing/fidgeting rather than sitting still, since stillness can work against focus for some.
+
+**For motor coordination (dyspraxia/DCD):**
+9. Simple rhythm tapping — one steady beat with one hand only, no inter-limb coordination required.
+10. Vocal-only rhythm — chant/hum a rhythm instead of clapping/tapping if fine-motor timing feels effortful.
+11. Slow-tempo humming — self-set pace rather than matching external timing.
+
+**For tics (Tourette's/tic disorders):**
+12. Tic-friendly humming — hum/vocalize alongside tics rather than suppressing them; may reduce tic frequency by giving the urge somewhere to go.
+13. Rhythmic breathing without breath-holding — gentle hum-on-exhale, since breath-holding can worsen tic urges for some.
+
+**For emotional regulation (OCD, anxiety-linked neurodivergence):**
+14. Vocal toning for intrusive-thought interruption — sustained "aaa"/"ooo" can interrupt looping thoughts by shifting attention to physical sensation.
+15. Grounding hum — hum while naming 3 things you can feel; pairs music with sensory grounding.
+
+**For reading/processing differences (dyslexia, auditory processing differences):**
+16. Turning text into rhythm — chant/sing information rather than reading silently.
+17. Slowed-down internal singing — mentally sing information slowly, giving processing time without pressure.
+
+**Additional neurodivergent-specific tools (co-regulation, special interests):**
+- Stimming to internal rhythm — combine an existing stim with a hummed/imagined rhythm rather than suppressing either.
+- Echoing/vocal stimming — lean into existing echolalia-style repetition intentionally as a calming tool.
+- Special interest soundtrack (mental) — recall and hum/sing theme music or character songs tied to a special interest.
+- Silence-friendly toning — humming with mouth closed and minimal volume, for internal-vibration benefit without much sound output.
+- Co-regulation humming (optional, only with trusted people) — hum/chant alongside a trusted person without needing to talk or match pitch/rhythm exactly.
+
+## For Corporates
+
+**Individual:**
+1. Micro-humming break — 1–2 minutes between meetings/tasks, discreet for open offices.
+2. Breath-and-hum before high-stakes moments — inhale 4 counts, hum out the exhale, 4–5 repetitions before a presentation or difficult call.
+3. Silent internal playlist — mentally replay a favorite song during repetitive tasks.
+4. Rhythmic tapping for the 3pm slump — quiet, steady desk/thigh tap to re-energize focus.
+5. Vocal toning in a private space — a minute of low "aaa"/"ooo" toning before/after a stressful meeting.
+
+**Team/group activities:**
+6. Group humming check-in — 30 seconds of shared humming to open a huddle.
+7. Call-and-response energizer — one person hums/claps a rhythm, group repeats it; 2-minute icebreaker before brainstorms.
+8. "Soundtrack the project" reflection — team members describe (not sing) a song capturing the project/quarter's feeling, for retrospectives.
+9. Collective breath-hum reset — one shared breath-and-hum cycle before a tense meeting (layoffs, conflict resolution, high-pressure deadlines).
+
+**Manager/HR-level implementation:**
+10. "Sound break" norm — team norm allowing anyone to call a 2-minute silent/humming break during long meetings.
+11. Pre-review calming ritual — personal breath-hum routine before performance reviews, for both giver and receiver of feedback.
+12. Wellness week micro-sessions — optional 5-minute guided humming/breathing sessions, no equipment or vendor cost, scales across remote/in-office teams.
+
+## For Senior Citizens
+
+==========================================================================================
+File: home_based_mt_activities_by_population.md
+Chunk: 3
+Tokens: 774
+ID: rag_clinical_frameworks_home_based_mt_activities_by_population:00003:02632e176e824ad1
+------------------------------------------------------------------------------------------
+**Manager/HR-level implementation:**
+10. "Sound break" norm — team norm allowing anyone to call a 2-minute silent/humming break during long meetings.
+11. Pre-review calming ritual — personal breath-hum routine before performance reviews, for both giver and receiver of feedback.
+12. Wellness week micro-sessions — optional 5-minute guided humming/breathing sessions, no equipment or vendor cost, scales across remote/in-office teams.
+
+## For Senior Citizens
+
+**Memory and cognitive engagement:**
+1. Singing familiar songs from memory — hymns, folk songs, film songs, wedding songs. Long-term musical memory often stays strong even with recent-memory decline, valuable for mild cognitive decline or early dementia.
+2. "Name that memory" reflection — hum/sing a tune, then discuss a memory it brings up. Combines music with reminiscence therapy.
+3. Call-and-response with a caregiver/family member — old back-and-forth folk-singing style, encourages engagement without needing to remember full lyrics alone.
+
+**Physical ease (seated/low-mobility friendly):**
+4. Seated humming with gentle sway — hum while gently swaying side to side in a chair.
+5. Hand-tapping to rhythm — tap fingers/palm lightly in time with a hummed tune; accessible with limited hand strength or mild arthritis (keep gentle).
+6. Breath-and-hum for relaxation — slow inhale, gentle hum on exhale, repeated; useful for calming anxiety, aiding sleep, easing evening restlessness.
+
+**Emotional wellbeing and social connection:**
+7. Group singing (if with family/shared living) — strongly linked to reduced loneliness and improved mood in older adults.
+8. "Song of the day" ritual — one favorite song hummed/sung during a daily routine, builds comforting structure.
+9. Generational song sharing — seniors and younger family members trade old and current songs.
+
+**Sleep and evening wind-down:**
+10. Pre-sleep humming — soft humming or slow lullaby-style tune before bed, especially for restlessness/difficulty settling.
+11. Silent internal music — mentally replaying a cherished old song during quiet moments (waiting rooms, resting in bed).
+
+## For Any Adults
+
+**Chronic pain / chronic illness (e.g., arthritis, fibromyalgia, long-term fatigue conditions):**
+1. Slow humming for pain distraction — shifts attention from pain signals to sound/vibration; a coping tool **alongside, not instead of, medical management**.
+2. Seated or lying-down breath-hum — for fatigue/low-energy days when movement-based coping isn't possible.
+3. Rhythmic tapping within pain-free range — light tapping on a comfortable (not painful) body part.
+
+**Anxiety and stress-related conditions:**
+4. Vocal toning for panic/anxiety spikes — long, slow "aaa"/"ooo" exhale, 4–5 repetitions, to down-regulate the nervous system during acute anxiety.
+5. Grounding hum — hum while naming physical sensations (feet on floor, hands, breath).
+6. Predictable repetition — the same short phrase repeated rather than varied, for high-anxiety periods.
+
+**Depression / low mood:**
+7. "One song" rule — on low-motivation days, commit to just humming/singing one line of one song.
+8. Memory-song reflection — a song tied to a positive memory, to gently counter flatness/numbness without forcing false positivity.
+9. Movement-paired humming — hum while doing a small physical task (tea, tidying) to pair music with gentle behavioral activation.
+
+**Sleep issues / insomnia:**
+10. Pre-sleep humming ritual — a consistent wind-down cue signaling sleep is coming.
+
+**Lifestyle-related conditions (e.g., stress tied to diabetes, hypertension, weight management):**
+11. Stress-reset humming before meals/routines — as part of a broader routine, **not a treatment itself**.
+12. Rhythmic breathing during cravings/urges — a minute of hum-on-exhale breathing to help ride out an urge, for those managing stress-eating/smoking-type patterns.
+
+**General emotional processing:**
+13. "Soundtrack the feeling" — hum/sing whatever matches the current emotional state, even if heavy or sad, as acknowledgment rather than needing to shift mood.
+14. Co-regulation with a trusted person — humming/singing quietly together without needing to discuss what's wrong.
+
+## For Specific Emotional Challenges
+
+==========================================================================================
+File: home_based_mt_activities_by_population.md
+Chunk: 4
+Tokens: 549
+ID: rag_clinical_frameworks_home_based_mt_activities_by_population:00004:614b5b9b3d88d3e7
+------------------------------------------------------------------------------------------
+**General emotional processing:**
+13. "Soundtrack the feeling" — hum/sing whatever matches the current emotional state, even if heavy or sad, as acknowledgment rather than needing to shift mood.
+14. Co-regulation with a trusted person — humming/singing quietly together without needing to discuss what's wrong.
+
+## For Specific Emotional Challenges
+
+**Anger / frustration:**
+1. Loud release humming — a forceful hum or strong "aaa" sound for a few seconds, a controlled release through voice rather than action.
+2. Fast rhythmic tapping — quick, hard rhythm on thigh/desk to burn off frustration before it builds.
+3. Growl-and-release — a short, low growl/grunt followed by a slow exhale hum.
+4. Stomp-and-hum — a few stomps paired with a hum, if space allows.
+
+**Sadness:**
+5. Sit-with-it humming — a slow, low tune matching the sadness rather than forcing cheer.
+6. Memory-song comfort — a song tied to comfort or nostalgia.
+7. Quiet tears-and-tune — a soft hum continuing underneath crying, even shaky or broken.
+
+**Loneliness:**
+8. Singing to fill the space — out loud, even alone.
+9. "Imagined duet" — humming a song while imagining singing it with someone you care about.
+10. Call out into silence — sing a phrase and pause, as if waiting for a response.
+
+**Irritation / low-grade annoyance:**
+11. Short vocal sigh-hum — one long exhale with a hum/sigh sound.
+12. Pattern-breaking hum — a completely different tune than what's looping in your head, to interrupt the cycle.
+
+**Low mood (flat/heavy, not sadness exactly):**
+13. One-line commitment — hum/sing just one line of any song, no pressure to continue.
+14. Upbeat memory hum — a song from a genuinely fun or light-hearted time, even half-heartedly.
+
+**Boredom:**
+15. Freestyle humming — an unstructured, goal-free made-up tune.
+16. Rhythm games with yourself — tap a pattern, repeat it, then vary it slightly.
+17. Soundtrack your surroundings — hum a tune matching whatever you're looking at or doing.
+
+## Relevance to the platform
+
+This is the first source in this knowledge base with concrete, population-
+segmented, equipment-free practical activities — a direct input for
+`structured/music_therapy_interventions` -style content and for any
+patient-facing "try this at home" feature. Cross-reference against
+`structured/clinical_context_questions.json` (e.g. CC-NEURO-01, CC-PAIN-01)
+to route population-appropriate activities once patient context is known.
+
+## Gap / caution note
+No citations or evidence-level claims accompany any of these activities in
+the source -- they read as practitioner-authored practical guidance, not
+research-backed protocol. Appropriate for the CONTEXTUAL/RAG tier of this
+knowledge base's evidence framework, not the structured/decision tier, and
+should not be presented as clinically validated without further review.
+
+==========================================================================================
+File: VALIDATION_REPORT.md
+Chunk: 0
+Tokens: 609
+ID: VALIDATION_REPORT:00000:ce019153cfec0695
+------------------------------------------------------------------------------------------
+# Validation Report — v2 Additions Only
+
+(v1's structured/config/rag content was not modified, so it is not re-validated
+here — see v1's own architecture report for its validation history.)
+
+## Structured data checks
+
+| Check | Result |
+|---|---|
+| Valid JSON (all 4 new raaga/structured/ files + 4 new governance/config files) | Pass — all 8 parse cleanly |
+| No duplicate raga entries in raga_metadata.json | Pass — 93 rows, 93 distinct raga_name values from source spreadsheet's 95 (2 rows had no name, dropped) |
+| No invented field values | Pass by construction — every null field (aroha, avaroha, pakad, mood_character, therapeutic_goal, etc.) was left null rather than guessed; see file `_note` fields |
+| chakra_raga_bridge.json does not silently claim a chakra mapping | Pass — `chakra_bridge_status.candidate_ragas` is an empty list; `can_influence_chakra_score`/`can_influence_raga_recommendation` both `false` |
+
+## Document checks
+
+| Check | Result |
+|---|---|
+| No corrupted files among the 10 ingested | Pass — all extracted with pdftotext or openpyxl without errors |
+| Duplicate upload detected | Pass — Music_Therapy.zip confirmed (md5) identical to DATA/DATA/Music Therapy/, excluded from double-counting |
+| Metadata attached to every ingested doc | Pass — all 8 new markdown files carry YAML frontmatter matching v1's schema |
+| Source traceability | Pass — every structured entry and markdown file names its source PDF/XLSX |
+
+## Retrieval test (manual walk-through, no live vector DB in this environment)
+
+| Query | Would retrieve from | Domain | Evidence level | Appropriate? |
+|---|---|---|---|---|
+| "raga for insomnia" | `raaga/rag/raga_therapeutic_indications_practitioner/senior_citizen_issues_raga_correlation.md` | raga_therapeutic_evidence | LEVEL_5 | Yes, WITH the file's safety framing surfaced alongside it (not condition_flag'd, so lower risk, but still practitioner-tradition, not clinical) |
+| "raga for Parkinson's" | same source, `emotional_issues_raga_correlation.md` | raga_therapeutic_evidence | LEVEL_5 | Retrieval itself is fine for a therapist researching context; the SAFETY WARNING banner in the doc is what stops it from becoming an auto-recommendation. `can_influence_raga_recommendation: false` blocks the automated path. |
+| "raga time of day" | `raaga/structured/raga_time_of_day.json` + `reference_images/rag_samay_chakra.png` | raga_time | LEVEL_4 | Yes — appropriate, non-clinical |
+| "Hindustani Carnatic equivalent of Kalyan" | `raaga/structured/raga_hindustani_carnatic_equivalents.json` | raga | LEVEL_4 | Yes, but flag `usage_review_required` (source unattributed) should surface to the therapist too |
+| "chakra specific evidence for Heart Chakra" | existing v1 `rag/chakra_reasoning/heart_chakra_reasoning.md` (unchanged) + `raaga/rag/chakra_raga_reasoning/chakras_and_singing_style_association.md` (new) | chakra | traditional/energetic | Yes |
+| "neurological condition" | Would currently retrieve **nothing** — the neurology/medical_context domains are registry-only this pass, not chunked | medical_context | n/a | **Gap** — flagged as an open item; nothing was ingested for general neurology yet, only the 3 small ANAHAT brain-basics docs |
+| "anxiety" | Same gap — `music-as-medicine...` (sleep/anxiety/pain) is registry-only, not ingested | music_therapy | n/a | **Gap** |
+
+---
+
+## Gap-fill pass (2026-08-11) — additional validation
+
+### Retrieval test walk-through
+
+==========================================================================================
+File: VALIDATION_REPORT.md
+Chunk: 1
+Tokens: 549
+ID: VALIDATION_REPORT:00001:30d706ac089819d5
+------------------------------------------------------------------------------------------
+---
+
+## Gap-fill pass (2026-08-11) — additional validation
+
+### Retrieval test walk-through
+
+| Query | Would retrieve | Domain | Source | Evidence level | Appropriate? |
+|---|---|---|---|---|---|
+| "patient has difficulty expressing emotions" | `rag/assessment_technique/chakra_specific_questioning_throat.md` (CQ-THR-01, CQ-THR-06) | assessment_technique | ANAHAT design, authored | general_reference | Yes |
+| "patient struggles to communicate needs" | `chakra_specific_questioning_throat.md` (CQ-THR-03) | assessment_technique | ANAHAT design | general_reference | Yes |
+| "patient reports difficulty concentrating" | `chakra_specific_questioning_third_eye.md` (CQ-AJN-01/02) | assessment_technique | ANAHAT design | general_reference | Yes, with the file's own safety note (must not diagnose ADHD) surfaced alongside |
+| "patient is experiencing excessive overthinking" | `chakra_specific_questioning_third_eye.md` (CQ-AJN-04) | assessment_technique | ANAHAT design | general_reference | Yes |
+| "patient is questioning their sense of purpose" | `chakra_specific_questioning_crown.md` (CQ-CRN-01/02/03) | assessment_technique | ANAHAT design | general_reference | Yes -- retrieval should also surface the opt-in gate (CQ-CRN-05) reminder |
+| "raga information for therapeutic emotional regulation" | `raaga/structured/chakra_raga_bridge.json` -> `research_supported_raga_therapeutic_goals` (Darbari Kanada, Bilahari, Bhairavi) FIRST, practitioner-tradition list SECOND | raga_therapeutic_evidence | mixed (3 peer-reviewed + ANAHAT practitioner tradition) | moderate / traditional | Yes, but ranking matters -- the 3 research-supported entries should outrank the LEVEL_5 practitioner list for this query, not the reverse |
+| "Indian mental health support" | `structured/emergency_contacts.json` -> India -> Tele MANAS, KIRAN | indian_mental_health_resources | MoHFW, DEPwD (official) | high | Yes -- this is exact-match structured data, never semantic-searched, so ranking risk doesn't apply here |
+| "patient wants a calming music intervention" | `raaga/structured/chakra_raga_bridge.json` research-supported entries (all 3 target stress/anxiety) + `raaga/structured/raga_metadata.json` time-of-day fields | raga_therapeutic_evidence + raga | mixed | moderate | Yes |
+
+### Check: low-quality sources do not outrank authoritative sources
+
+Confirmed by construction, not just by retrieval-time ranking logic: the
+excluded low-credibility source (IJARIIT V10I4-1179) was never ingested into
+any structured or RAG file in this knowledge base, so it cannot be retrieved
+at all, regardless of semantic similarity. This is a stronger guarantee than
+a ranking rule that could fail — it was filtered at ingestion, not left to
+compete at retrieval time.
+
+### JSON validation
+
+| File | Check | Result |
+|---|---|---|
+| `structured/chakra_specific_questions.json` | Valid JSON, 17 unique question_ids, all required fields present | Pass |
+| `raaga/structured/chakra_raga_bridge.json` | Valid JSON, every referenced raga cross-checked against `raga_metadata.json` | Pass (2/3 resolved directly, 1/3 resolved via equivalents table, 0 invented) |
+| `structured/emergency_contacts.json` | Valid JSON, restructured by country, US data preserved | Pass |
+| All other files touched this pass | Re-validated after edits | Pass |

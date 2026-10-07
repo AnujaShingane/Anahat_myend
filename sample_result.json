@@ -1,0 +1,447 @@
+{
+ "session_id": "demo-session",
+ "stage": "evidence_review",
+ "is_diagnosis": false,
+ "therapist_approval_required": true,
+ "summary": {
+  "imbalanced": [
+   "Throat Chakra"
+  ],
+  "balanced": [],
+  "unresolved": [
+   "Root Chakra",
+   "Sacral Chakra",
+   "Solar Plexus Chakra",
+   "Heart Chakra",
+   "Third Eye Chakra",
+   "Crown Chakra"
+  ],
+  "needs_therapist_review": []
+ },
+ "chakras": [
+  {
+   "chakra": "Root Chakra",
+   "status": "UNRESOLVED",
+   "status_label": "Unresolved",
+   "status_code": "NOT_ASSESSED",
+   "direction": null,
+   "severity": "minimal",
+   "scores": {
+    "presence": 0.0,
+    "deficient": 0.0,
+    "excess": 0.0
+   },
+   "confidence_pct": 24.0,
+   "confidence_label": "Low",
+   "coverage_pct": 80.0,
+   "independent_evidence_units": 0,
+   "high_priority": false,
+   "direction_gray_zone": false,
+   "reasons": [
+    "Not adequately assessed (8/10 quadrants with patient responses). Absence of evidence is NOT balance."
+   ],
+   "pending_details": [],
+   "counts": {
+    "evidence": 0,
+    "negative": 0,
+    "historical": 0,
+    "unresolved": 0,
+    "non_directional": 0
+   },
+   "trace": []
+  },
+  {
+   "chakra": "Sacral Chakra",
+   "status": "UNRESOLVED",
+   "status_label": "Unresolved",
+   "status_code": "NOT_ASSESSED",
+   "direction": null,
+   "severity": "minimal",
+   "scores": {
+    "presence": 0.0,
+    "deficient": 0.0,
+    "excess": 0.0
+   },
+   "confidence_pct": 24.0,
+   "confidence_label": "Low",
+   "coverage_pct": 80.0,
+   "independent_evidence_units": 0,
+   "high_priority": false,
+   "direction_gray_zone": false,
+   "reasons": [
+    "Not adequately assessed (8/10 quadrants with patient responses). Absence of evidence is NOT balance."
+   ],
+   "pending_details": [],
+   "counts": {
+    "evidence": 0,
+    "negative": 0,
+    "historical": 0,
+    "unresolved": 0,
+    "non_directional": 0
+   },
+   "trace": []
+  },
+  {
+   "chakra": "Solar Plexus Chakra",
+   "status": "UNRESOLVED",
+   "status_label": "Unresolved",
+   "status_code": "MISSING_DETAILS",
+   "direction": null,
+   "severity": "severe",
+   "scores": {
+    "presence": 1.0,
+    "deficient": 0.0,
+    "excess": 1.0
+   },
+   "confidence_pct": 52.33,
+   "confidence_label": "Low",
+   "coverage_pct": 80.0,
+   "independent_evidence_units": 2,
+   "high_priority": false,
+   "direction_gray_zone": false,
+   "reasons": [
+    "Confidence 52% is below 60%.",
+    "Severity not yet stated for some evidence: ask before scoring."
+   ],
+   "pending_details": [
+    {
+     "evidence_id": "344a7955-2839-4a86-81b0-a7724d05a8d5",
+     "indicator": "Fatigue",
+     "missing": [
+      "intensity"
+     ]
+    }
+   ],
+   "counts": {
+    "evidence": 3,
+    "negative": 0,
+    "historical": 0,
+    "unresolved": 0,
+    "non_directional": 0
+   },
+   "trace": [
+    {
+     "evidence_id": "e75c4400-7f4b-4d3e-8fd5-d8d9667292d2",
+     "response_id": "626238ca-bd4d-496d-afd1-f9be4129c68a",
+     "quote": "angry all the time",
+     "indicator_id": "EMO-004",
+     "term": "Anger",
+     "domain": "emotion",
+     "kb_state": "Excess",
+     "directional": true,
+     "strength": "Strong",
+     "strength_weight": 1.0,
+     "intensity": "Severe",
+     "intensity_weight": 1.0,
+     "evidence_status": "CONFIRMED",
+     "reliability_weight": 1.0,
+     "contribution": 1.0,
+     "counted": true,
+     "note": null
+    },
+    {
+     "evidence_id": "0910adcc-abdc-4cb6-8c5e-6a3f7958d310",
+     "response_id": "71415097-02f6-4808-997d-8b33efc2f86d",
+     "quote": "blood pressure is high",
+     "indicator_id": "SYM-016",
+     "term": "Blood Pressure, High",
+     "domain": "symptom",
+     "kb_state": "Excess",
+     "directional": true,
+     "strength": "Strong",
+     "strength_weight": 1.0,
+     "intensity": "Severe",
+     "intensity_weight": 1.0,
+     "evidence_status": "CONFIRMED",
+     "reliability_weight": 1.0,
+     "contribution": 1.0,
+     "counted": true,
+     "note": null
+    },
+    {
+     "evidence_id": "344a7955-2839-4a86-81b0-a7724d05a8d5",
+     "response_id": "a2c880bf-2e5e-4ba8-86ec-09417c610453",
+     "quote": "very tired",
+     "indicator_id": "SYM-043",
+     "term": "Fatigue",
+     "domain": "symptom",
+     "kb_state": "Deficient",
+     "directional": true,
+     "strength": "Strong",
+     "strength_weight": 1.0,
+     "intensity": null,
+     "intensity_weight": null,
+     "evidence_status": "CONFIRMED",
+     "reliability_weight": 1.0,
+     "contribution": 0.0,
+     "counted": false,
+     "note": "intensity not stated: contributes 0 until asked"
+    }
+   ]
+  },
+  {
+   "chakra": "Heart Chakra",
+   "status": "UNRESOLVED",
+   "status_label": "Unresolved",
+   "status_code": "NOT_ASSESSED",
+   "direction": null,
+   "severity": "minimal",
+   "scores": {
+    "presence": 0.0,
+    "deficient": 0.0,
+    "excess": 0.0
+   },
+   "confidence_pct": 24.0,
+   "confidence_label": "Low",
+   "coverage_pct": 80.0,
+   "independent_evidence_units": 0,
+   "high_priority": false,
+   "direction_gray_zone": false,
+   "reasons": [
+    "Not adequately assessed (8/10 quadrants with patient responses). Absence of evidence is NOT balance."
+   ],
+   "pending_details": [],
+   "counts": {
+    "evidence": 0,
+    "negative": 0,
+    "historical": 0,
+    "unresolved": 0,
+    "non_directional": 0
+   },
+   "trace": []
+  },
+  {
+   "chakra": "Throat Chakra",
+   "status": "IMBALANCED_DEFICIENT",
+   "status_label": "Imbalanced \u2014 Deficient",
+   "status_code": "DIRECTION_DEFICIENT",
+   "direction": "Deficient",
+   "severity": "severe",
+   "scores": {
+    "presence": 1.0,
+    "deficient": 1.0,
+    "excess": 0.0
+   },
+   "confidence_pct": 84.0,
+   "confidence_label": "High",
+   "coverage_pct": 80.0,
+   "independent_evidence_units": 2,
+   "high_priority": false,
+   "direction_gray_zone": false,
+   "reasons": [
+    "Deficient evidence 1.00 leads by 1.00."
+   ],
+   "pending_details": [],
+   "counts": {
+    "evidence": 2,
+    "negative": 0,
+    "historical": 0,
+    "unresolved": 0,
+    "non_directional": 0
+   },
+   "trace": [
+    {
+     "evidence_id": "feaacea1-326f-4b94-b560-c94db944ea2f",
+     "response_id": "f084bd7b-ffbb-4426-bb9b-0e90bfce1cef",
+     "quote": "never say what I feel",
+     "indicator_id": "EMO-007",
+     "term": "Suppressed Expression",
+     "domain": "emotion",
+     "kb_state": "Deficient",
+     "directional": true,
+     "strength": "Strong",
+     "strength_weight": 1.0,
+     "intensity": "Severe",
+     "intensity_weight": 1.0,
+     "evidence_status": "CONFIRMED",
+     "reliability_weight": 1.0,
+     "contribution": 1.0,
+     "counted": true,
+     "note": null
+    },
+    {
+     "evidence_id": "238fcdd3-b832-4c5e-970c-5bcd3bd8a243",
+     "response_id": "dc288ce3-de95-4252-ae54-f8f5e4d61f47",
+     "quote": "Nobody listens to me",
+     "indicator_id": "EMO-012",
+     "term": "Feeling Unheard / Not Understood",
+     "domain": "emotion",
+     "kb_state": "Deficient",
+     "directional": true,
+     "strength": "Strong",
+     "strength_weight": 1.0,
+     "intensity": "Severe",
+     "intensity_weight": 1.0,
+     "evidence_status": "CONFIRMED",
+     "reliability_weight": 1.0,
+     "contribution": 1.0,
+     "counted": true,
+     "note": null
+    }
+   ]
+  },
+  {
+   "chakra": "Third Eye Chakra",
+   "status": "UNRESOLVED",
+   "status_label": "Unresolved",
+   "status_code": "NOT_ASSESSED",
+   "direction": null,
+   "severity": "minimal",
+   "scores": {
+    "presence": 0.0,
+    "deficient": 0.0,
+    "excess": 0.0
+   },
+   "confidence_pct": 24.0,
+   "confidence_label": "Low",
+   "coverage_pct": 80.0,
+   "independent_evidence_units": 0,
+   "high_priority": false,
+   "direction_gray_zone": false,
+   "reasons": [
+    "Not adequately assessed (8/10 quadrants with patient responses). Absence of evidence is NOT balance."
+   ],
+   "pending_details": [],
+   "counts": {
+    "evidence": 0,
+    "negative": 0,
+    "historical": 0,
+    "unresolved": 0,
+    "non_directional": 0
+   },
+   "trace": []
+  },
+  {
+   "chakra": "Crown Chakra",
+   "status": "UNRESOLVED",
+   "status_label": "Unresolved",
+   "status_code": "NOT_ASSESSED",
+   "direction": null,
+   "severity": "minimal",
+   "scores": {
+    "presence": 0.0,
+    "deficient": 0.0,
+    "excess": 0.0
+   },
+   "confidence_pct": 24.0,
+   "confidence_label": "Low",
+   "coverage_pct": 80.0,
+   "independent_evidence_units": 0,
+   "high_priority": false,
+   "direction_gray_zone": false,
+   "reasons": [
+    "Not adequately assessed (8/10 quadrants with patient responses). Absence of evidence is NOT balance."
+   ],
+   "pending_details": [],
+   "counts": {
+    "evidence": 0,
+    "negative": 0,
+    "historical": 0,
+    "unresolved": 0,
+    "non_directional": 0
+   },
+   "trace": []
+  }
+ ],
+ "coverage": {
+  "assessed_quadrants": [
+   "Diet",
+   "Family",
+   "Lifestyle",
+   "Nature",
+   "Personal Interests",
+   "Physical Nature",
+   "Profession",
+   "Social Circle"
+  ],
+  "reference_quadrants": 10,
+  "balanced_requires": 10,
+  "adequately_assessed": false,
+  "not_yet_assessed_quadrants": [
+   "Medical & Therapeutic Background",
+   "Music Therapy Profile"
+  ]
+ },
+ "open_items": {
+  "contradictions": [
+   {
+    "type": "direction",
+    "chakra": "Solar Plexus Chakra",
+    "deficient_evidence_ids": [
+     "344a7955-2839-4a86-81b0-a7724d05a8d5"
+    ],
+    "excess_evidence_ids": [
+     "e75c4400-7f4b-4d3e-8fd5-d8d9667292d2",
+     "0910adcc-abdc-4cb6-8c5e-6a3f7958d310"
+    ]
+   }
+  ],
+  "pending_deep_dive": [
+   {
+    "evidence_id": "344a7955-2839-4a86-81b0-a7724d05a8d5",
+    "indicator_id": "SYM-043",
+    "term": "Fatigue",
+    "quote": "very tired",
+    "field": "intensity",
+    "blocking": true,
+    "reason": "Needed before this evidence can be scored or read",
+    "question": "How strong is this for you: mild, moderate, or severe?"
+   }
+  ],
+  "unresolved_evidence": [],
+  "safety_amber_unacknowledged": false,
+  "safety_red_active": false
+ },
+ "scoring_audit": {
+  "thresholds": {
+   "imbalance_score": 0.45,
+   "direction": 0.45,
+   "ambiguity_margin": 0.1,
+   "gray_zone_margin": 0.15,
+   "insufficient_score": 0.2,
+   "min_confidence_pct": 60.0,
+   "min_independent_units": 2,
+   "balanced_min_assessed_quadrants": 10
+  },
+  "weights": {
+   "strength": {
+    "Strong": 1.0,
+    "Medium": 0.6,
+    "Weak": 0.3
+   },
+   "intensity": {
+    "Mild": 0.4,
+    "Moderate": 0.7,
+    "Severe": 1.0
+   },
+   "reliability": {
+    "Confirmed": 1.0,
+    "Resolved After Clarification": 1.0,
+    "Provisional": 0.4,
+    "Unresolved": 0.0,
+    "Historical": 0.0
+   },
+   "confidence": {
+    "coverage": 0.3,
+    "consistency": 0.3,
+    "resolution": 0.25,
+    "completeness": 0.15
+   }
+  },
+  "clinically_validated": false,
+  "note": "All thresholds are engineering baselines, configurable, not clinically validated."
+ },
+ "requires_domain_validation": [
+  "balanced_min_assessed_quadrants (how many quadrants must be assessed before 'Balanced' may be shown)",
+  "confidence 'completeness' component definition",
+  "AMBER safety phrase list and RED phrase list",
+  "deep-dive question wording (neutral templates, not from a validated KB list)",
+  "quadrant question text for Personal Interests, Profession, Medical & Therapeutic Background, Music Therapy Profile (no 1:1 KB question bank mapping)",
+  "top-two-chakras (KB design) vs all-seven (spec): all seven are evaluated",
+  "KB duplicate indicators (SYM-009/EMO-008 same term; SYM-069/070)",
+  "handling of KB states 'Either', 'Varies', 'Excess to Deficient', 'Usually Excess' (kept non-directional, never reinterpreted)",
+  "direction gray-zone handling (0.10-0.15)",
+  "Emergency contact numbers in KB are marked 'requires live verification before production'"
+ ],
+ "disclaimer": "Decision-support only. Scores show how much confirmed patient evidence points to each chakra; they are not a diagnosis. A therapist must review and approve."
+}

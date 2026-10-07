@@ -1,0 +1,767 @@
+{
+  "_schema_version": "3.0",
+  "_status": "proposed_clinical_review_required",
+  "_purpose": "Plain-English clarification questions used only when one observed symptom, emotion, or behaviour has more than one chakra candidate.",
+  "rules": {
+    "ask_only_when_ambiguous": true,
+    "do_not_name_chakras_to_patient": true,
+    "do_not_lead": "Ask about the patient's own experience and context; do not tell the patient that a chakra is causing the problem.",
+    "stop_when_clear": true,
+    "if_unclear": "Keep the evidence unresolved and continue assessment rather than guessing.",
+    "medical_caution": "A physical symptom is not evidence that a chakra caused a medical condition. These questions explore associated experiences for the project's complementary framework."
+  },
+  "questions": [
+    {
+      "id": "RCD-01",
+      "pattern": "Abdominal cramps",
+      "candidate_chakras": [
+        "Root Chakra",
+        "Sacral Chakra"
+      ],
+      "question": "When these cramps happen, what is usually going on around that time?",
+      "answer_options": [
+        {
+          "label": "You feel unsafe, worried about basic needs, or unsettled.",
+          "points_to_chakra": "Root Chakra"
+        },
+        {
+          "label": "Strong feelings, closeness, relationships, or other personal feelings are more connected.",
+          "points_to_chakra": "Sacral Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-02",
+      "pattern": "Aches",
+      "candidate_chakras": [
+        "Heart Chakra",
+        "Sacral Chakra"
+      ],
+      "question": "When you have these aches, what feels more connected to them?",
+      "answer_options": [
+        {
+          "label": "Loss, sadness, love, or feeling hurt by someone.",
+          "points_to_chakra": "Heart Chakra"
+        },
+        {
+          "label": "Strong personal feelings, closeness, pleasure, or difficulty enjoying life.",
+          "points_to_chakra": "Sacral Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-03",
+      "pattern": "Adrenal problems / Glands: Adrenals",
+      "candidate_chakras": [
+        "Root Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "question": "When this problem is troubling you, what feels closer to your experience?",
+      "answer_options": [
+        {
+          "label": "Feeling unsafe, worried about basic needs, or unable to feel steady.",
+          "points_to_chakra": "Root Chakra"
+        },
+        {
+          "label": "Feeling under pressure, needing to stay in control, or feeling unable to manage things.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-04",
+      "pattern": "Alcoholism",
+      "candidate_chakras": [
+        "Solar Plexus Chakra",
+        "Sacral Chakra"
+      ],
+      "question": "When you feel the need to drink, what are you mainly trying to deal with?",
+      "answer_options": [
+        {
+          "label": "Pressure, control, confidence, or feeling unable to handle things.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        },
+        {
+          "label": "Strong emotions, difficult feelings, or using alcohol to escape those feelings.",
+          "points_to_chakra": "Sacral Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-05",
+      "pattern": "Anorexia",
+      "candidate_chakras": [
+        "Root Chakra",
+        "Solar Plexus Chakra",
+        "Sacral Chakra"
+      ],
+      "question": "When you think about food and your body, what feels closest to what you are going through?",
+      "answer_options": [
+        {
+          "label": "Worry about safety, stability, or feeling secure.",
+          "points_to_chakra": "Root Chakra"
+        },
+        {
+          "label": "A strong need to control things or feel in control.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        },
+        {
+          "label": "Difficulty accepting or feeling comfortable with your body or personal feelings.",
+          "points_to_chakra": "Sacral Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-06",
+      "pattern": "Anxiety",
+      "candidate_chakras": [
+        "Root Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "question": "When your anxiety is strong, what happens most for you?",
+      "answer_options": [
+        {
+          "label": "You feel unsafe, on edge, or unable to feel steady.",
+          "points_to_chakra": "Root Chakra"
+        },
+        {
+          "label": "You feel under pressure, restless, or unable to manage what is happening.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-07",
+      "pattern": "Apathy",
+      "candidate_chakras": [
+        "Sacral Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "question": "When you feel like you do not want to do anything, which feels closer?",
+      "answer_options": [
+        {
+          "label": "Your feelings feel flat, numb, or hard to enjoy.",
+          "points_to_chakra": "Sacral Chakra"
+        },
+        {
+          "label": "You have lost your drive, confidence, or push to do things.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-08",
+      "pattern": "Arthritis",
+      "candidate_chakras": [
+        "Root Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "question": "When this problem feels worse, what is more connected to what you are going through?",
+      "answer_options": [
+        {
+          "label": "You feel unsteady, unsupported, or worried about safety in everyday life.",
+          "points_to_chakra": "Root Chakra"
+        },
+        {
+          "label": "You feel stuck, under pressure, or unable to manage things.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-09",
+      "pattern": "Candida",
+      "candidate_chakras": [
+        "Solar Plexus Chakra",
+        "Root Chakra"
+      ],
+      "question": "When you think about the time this problem became worse, what was happening in your life?",
+      "answer_options": [
+        {
+          "label": "You were pushing yourself hard, under pressure, or trying to stay in control.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        },
+        {
+          "label": "You were worried about safety, stability, or basic needs.",
+          "points_to_chakra": "Root Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-10",
+      "pattern": "Dizziness",
+      "candidate_chakras": [
+        "Third Eye Chakra",
+        "Crown Chakra"
+      ],
+      "question": "When you feel dizzy, what else is usually happening for you?",
+      "answer_options": [
+        {
+          "label": "Your mind feels crowded, confused, or full of thoughts.",
+          "points_to_chakra": "Third Eye Chakra"
+        },
+        {
+          "label": "You feel disconnected, lost, or unsure about meaning or purpose.",
+          "points_to_chakra": "Crown Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-11",
+      "pattern": "Gum Problems",
+      "candidate_chakras": [
+        "Root Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "question": "When this problem is happening, which part of your life feels more difficult?",
+      "answer_options": [
+        {
+          "label": "Feeling safe, supported, or steady.",
+          "points_to_chakra": "Root Chakra"
+        },
+        {
+          "label": "Standing up for yourself, handling pressure, or managing anger.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-12",
+      "pattern": "Hands",
+      "candidate_chakras": [
+        "Solar Plexus Chakra",
+        "Heart Chakra",
+        "Throat Chakra"
+      ],
+      "question": "When you notice the problem with your hands, what is also difficult for you?",
+      "answer_options": [
+        {
+          "label": "Getting things done or taking action.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        },
+        {
+          "label": "Feeling close to people or showing care.",
+          "points_to_chakra": "Heart Chakra"
+        },
+        {
+          "label": "Speaking up, explaining yourself, or saying what you mean.",
+          "points_to_chakra": "Throat Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-13",
+      "pattern": "Hay fever",
+      "candidate_chakras": [
+        "Sacral Chakra",
+        "Heart Chakra"
+      ],
+      "question": "When this problem is bothering you, which area feels more connected?",
+      "answer_options": [
+        {
+          "label": "Strong or blocked personal feelings.",
+          "points_to_chakra": "Sacral Chakra"
+        },
+        {
+          "label": "Feeling hurt, having difficulty with closeness, or accepting yourself or others.",
+          "points_to_chakra": "Heart Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-14",
+      "pattern": "Headaches",
+      "candidate_chakras": [
+        "Third Eye Chakra",
+        "Crown Chakra"
+      ],
+      "question": "Before or during the headache, what is usually happening in your mind?",
+      "answer_options": [
+        {
+          "label": "You are thinking a lot, trying to solve things, or feeling mentally overloaded.",
+          "points_to_chakra": "Third Eye Chakra"
+        },
+        {
+          "label": "You feel lost, disconnected, or unsure about meaning or purpose.",
+          "points_to_chakra": "Crown Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-15",
+      "pattern": "Heartburn",
+      "candidate_chakras": [
+        "Solar Plexus Chakra",
+        "Heart Chakra"
+      ],
+      "question": "When the heartburn gets worse, what is happening in your life or feelings?",
+      "answer_options": [
+        {
+          "label": "You feel pressure, are pushing yourself, or need to stay in control.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        },
+        {
+          "label": "Strong feelings about love, trust, loss, or close relationships.",
+          "points_to_chakra": "Heart Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-16",
+      "pattern": "Hives",
+      "candidate_chakras": [
+        "Heart Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "question": "When the hives appear or get worse, what is usually happening around you?",
+      "answer_options": [
+        {
+          "label": "You feel hurt, rejected, or affected by a close relationship.",
+          "points_to_chakra": "Heart Chakra"
+        },
+        {
+          "label": "You feel angry, frustrated, pressured, or like you need control.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-17",
+      "pattern": "Hyperventilation",
+      "candidate_chakras": [
+        "Heart Chakra",
+        "Root Chakra"
+      ],
+      "question": "When your breathing becomes very fast, what feeling is strongest at that moment?",
+      "answer_options": [
+        {
+          "label": "Strong feelings about love, loss, or close relationships.",
+          "points_to_chakra": "Heart Chakra"
+        },
+        {
+          "label": "Fear, danger, or feeling unsafe and unsteady.",
+          "points_to_chakra": "Root Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-18",
+      "pattern": "Impotence",
+      "candidate_chakras": [
+        "Sacral Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "question": "When this is difficult for you, what feels more connected to the problem?",
+      "answer_options": [
+        {
+          "label": "Fear, discomfort, or difficulty around closeness or intimacy.",
+          "points_to_chakra": "Sacral Chakra"
+        },
+        {
+          "label": "Low confidence, pressure, or feeling that you are not good enough.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-19",
+      "pattern": "Insomnia",
+      "candidate_chakras": [
+        "Root Chakra",
+        "Solar Plexus Chakra",
+        "Third Eye Chakra",
+        "Crown Chakra"
+      ],
+      "question": "When you cannot sleep, what usually keeps you awake?",
+      "answer_options": [
+        {
+          "label": "Worry about safety, money, home, or basic needs.",
+          "points_to_chakra": "Root Chakra"
+        },
+        {
+          "label": "Pressure, work, responsibility, or trying to stay in control.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        },
+        {
+          "label": "Too many thoughts or overthinking.",
+          "points_to_chakra": "Third Eye Chakra"
+        },
+        {
+          "label": "Feeling lost, disconnected, or thinking about meaning or purpose.",
+          "points_to_chakra": "Crown Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-20",
+      "pattern": "Jaw Problems",
+      "candidate_chakras": [
+        "Solar Plexus Chakra",
+        "Throat Chakra"
+      ],
+      "question": "When your jaw feels tight or painful, what are you often doing or feeling?",
+      "answer_options": [
+        {
+          "label": "Holding in anger, frustration, or pressure.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        },
+        {
+          "label": "Holding back words or finding it hard to say what you really want.",
+          "points_to_chakra": "Throat Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-21",
+      "pattern": "Joints",
+      "candidate_chakras": [
+        "Root Chakra",
+        "Sacral Chakra"
+      ],
+      "question": "When this problem bothers you, what else feels difficult in your life?",
+      "answer_options": [
+        {
+          "label": "Feeling steady, safe, or supported.",
+          "points_to_chakra": "Root Chakra"
+        },
+        {
+          "label": "Dealing with change, feelings, closeness, or feeling comfortable in your body.",
+          "points_to_chakra": "Sacral Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-22",
+      "pattern": "Knee problems",
+      "candidate_chakras": [
+        "Root Chakra",
+        "Sacral Chakra"
+      ],
+      "question": "When your knee problem is worse, what is happening in your life at that time?",
+      "answer_options": [
+        {
+          "label": "You feel unsafe, unsupported, or unsure about moving forward.",
+          "points_to_chakra": "Root Chakra"
+        },
+        {
+          "label": "You are finding it hard to accept change or move with what is happening.",
+          "points_to_chakra": "Sacral Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-23",
+      "pattern": "Legs",
+      "candidate_chakras": [
+        "Root Chakra",
+        "Sacral Chakra"
+      ],
+      "question": "When you feel this problem in your legs, what feels closest to what you are going through?",
+      "answer_options": [
+        {
+          "label": "You feel unsupported or unsteady.",
+          "points_to_chakra": "Root Chakra"
+        },
+        {
+          "label": "You feel stuck or find it hard to move forward with something personal or emotional.",
+          "points_to_chakra": "Sacral Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-24",
+      "pattern": "Migraines",
+      "candidate_chakras": [
+        "Third Eye Chakra",
+        "Crown Chakra"
+      ],
+      "question": "When the migraine happens, what is usually going on in your thoughts or feelings?",
+      "answer_options": [
+        {
+          "label": "Too many thoughts, mental pressure, or difficulty getting clear.",
+          "points_to_chakra": "Third Eye Chakra"
+        },
+        {
+          "label": "Feeling disconnected, lost, or unsure about purpose or meaning.",
+          "points_to_chakra": "Crown Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-25",
+      "pattern": "Obesity",
+      "candidate_chakras": [
+        "Root Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "question": "When you think about your weight and daily life, what feels more important?",
+      "answer_options": [
+        {
+          "label": "Feeling safe, secure, steady, or using food for comfort.",
+          "points_to_chakra": "Root Chakra"
+        },
+        {
+          "label": "Feeling a strong need for control, confidence, or managing pressure.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-26",
+      "pattern": "Pneumonia",
+      "candidate_chakras": [
+        "Heart Chakra",
+        "Solar Plexus Chakra",
+        "Root Chakra"
+      ],
+      "question": "While dealing with this problem, which part of your experience has been strongest?",
+      "answer_options": [
+        {
+          "label": "Loss, loneliness, hurt, or difficulty with close relationships.",
+          "points_to_chakra": "Heart Chakra"
+        },
+        {
+          "label": "Pressure, low confidence, or feeling unable to manage things.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        },
+        {
+          "label": "Fear, insecurity, or feeling unsafe and depleted.",
+          "points_to_chakra": "Root Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-27",
+      "pattern": "Skin / Skin Problems",
+      "candidate_chakras": [
+        "Root Chakra",
+        "Sacral Chakra"
+      ],
+      "question": "When the skin problem gets worse, what is usually happening in your life?",
+      "answer_options": [
+        {
+          "label": "You feel exposed, unsafe, or unable to feel secure.",
+          "points_to_chakra": "Root Chakra"
+        },
+        {
+          "label": "You are dealing with difficult feelings, closeness, or personal boundaries.",
+          "points_to_chakra": "Sacral Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-28",
+      "pattern": "Stomach problems",
+      "candidate_chakras": [
+        "Root Chakra",
+        "Solar Plexus Chakra"
+      ],
+      "question": "When your stomach problem gets worse, what is usually happening?",
+      "answer_options": [
+        {
+          "label": "Worry about safety, home, money, or basic needs.",
+          "points_to_chakra": "Root Chakra"
+        },
+        {
+          "label": "Pressure, workload, control, or feeling that you must handle everything.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-29",
+      "pattern": "Stuttering",
+      "candidate_chakras": [
+        "Sacral Chakra",
+        "Throat Chakra"
+      ],
+      "question": "When speaking becomes difficult, what feels more like your experience?",
+      "answer_options": [
+        {
+          "label": "Strong feelings make it hard to express yourself.",
+          "points_to_chakra": "Sacral Chakra"
+        },
+        {
+          "label": "You know what you want to say but have trouble getting the words out.",
+          "points_to_chakra": "Throat Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-30",
+      "pattern": "Fear",
+      "candidate_chakras": [
+        "Root Chakra",
+        "Throat Chakra"
+      ],
+      "question": "When you feel this fear, what are you most afraid of?",
+      "answer_options": [
+        {
+          "label": "Something bad may happen or you may not be safe.",
+          "points_to_chakra": "Root Chakra"
+        },
+        {
+          "label": "Being judged, not being accepted, or speaking up.",
+          "points_to_chakra": "Throat Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-31",
+      "pattern": "Anxiety (emotion)",
+      "candidate_chakras": [
+        "Root Chakra",
+        "Solar Plexus Chakra",
+        "Throat Chakra"
+      ],
+      "question": "When you feel anxious, what worries you the most?",
+      "answer_options": [
+        {
+          "label": "Safety, security, or something going wrong.",
+          "points_to_chakra": "Root Chakra"
+        },
+        {
+          "label": "Pressure, control, performance, or not feeling capable.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        },
+        {
+          "label": "Speaking, being judged, or not being understood.",
+          "points_to_chakra": "Throat Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-32",
+      "pattern": "Loneliness / Social Isolation / Feeling Isolated",
+      "candidate_chakras": [
+        "Heart Chakra",
+        "Throat Chakra"
+      ],
+      "question": "When you feel alone, what feels hardest for you?",
+      "answer_options": [
+        {
+          "label": "Missing closeness, love, care, or connection.",
+          "points_to_chakra": "Heart Chakra"
+        },
+        {
+          "label": "Wanting to connect but finding it hard to speak, reach out, or feel understood.",
+          "points_to_chakra": "Throat Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-33",
+      "pattern": "Dissatisfaction / Unfulfilled Potential",
+      "candidate_chakras": [
+        "Solar Plexus Chakra",
+        "Throat Chakra"
+      ],
+      "question": "When you feel unhappy with where your life is going, what feels more true?",
+      "answer_options": [
+        {
+          "label": "You feel you have lost your drive, confidence, or sense of ability.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        },
+        {
+          "label": "You know what you want but find it hard to say it or show it.",
+          "points_to_chakra": "Throat Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-34",
+      "pattern": "Attention Deficit / Lack of Focus",
+      "candidate_chakras": [
+        "Throat Chakra",
+        "Third Eye Chakra"
+      ],
+      "question": "When you lose focus, what usually makes it difficult?",
+      "answer_options": [
+        {
+          "label": "You lose focus especially when you need to speak, explain, or communicate.",
+          "points_to_chakra": "Throat Chakra"
+        },
+        {
+          "label": "Your mind wanders or there are too many thoughts.",
+          "points_to_chakra": "Third Eye Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-35",
+      "pattern": "Cannot Sustain Interest",
+      "candidate_chakras": [
+        "Throat Chakra",
+        "Sacral Chakra"
+      ],
+      "question": "When you lose interest in something, what usually happens?",
+      "answer_options": [
+        {
+          "label": "You find it hard to follow through, speak about what you want, or express yourself.",
+          "points_to_chakra": "Throat Chakra"
+        },
+        {
+          "label": "The enjoyment or creative interest fades quickly.",
+          "points_to_chakra": "Sacral Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-36",
+      "pattern": "Issues Expressing Emotions",
+      "candidate_chakras": [
+        "Throat Chakra",
+        "Sacral Chakra"
+      ],
+      "question": "When you have a feeling but cannot express it, what feels harder?",
+      "answer_options": [
+        {
+          "label": "You cannot find the words or feel safe saying what you feel.",
+          "points_to_chakra": "Throat Chakra"
+        },
+        {
+          "label": "The feeling itself feels stuck, blocked, or hard to understand.",
+          "points_to_chakra": "Sacral Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-37",
+      "pattern": "Not Confident / Low Self-Confidence",
+      "candidate_chakras": [
+        "Solar Plexus Chakra",
+        "Sacral Chakra"
+      ],
+      "question": "When you do not feel confident, what is the main difficulty for you?",
+      "answer_options": [
+        {
+          "label": "You feel not good enough, powerless, or unable to take charge.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        },
+        {
+          "label": "You hold back your personal, emotional, or creative side.",
+          "points_to_chakra": "Sacral Chakra"
+        }
+      ]
+    },
+    {
+      "id": "RCD-38",
+      "pattern": "Dejected / Pessimistic",
+      "candidate_chakras": [
+        "Solar Plexus Chakra",
+        "Sacral Chakra"
+      ],
+      "question": "When you feel hopeless or negative, what feels closer to your experience?",
+      "answer_options": [
+        {
+          "label": "You feel you have lost your drive, confidence, or belief that you can manage things.",
+          "points_to_chakra": "Solar Plexus Chakra"
+        },
+        {
+          "label": "Your feelings feel flat, heavy, or hard to enjoy.",
+          "points_to_chakra": "Sacral Chakra"
+        }
+      ]
+    }
+  ]
+}
