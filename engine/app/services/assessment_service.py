@@ -33,6 +33,7 @@ from app.services.question_topics import merge_follow_up_fragments, question_fit
 from app.services.raga_service import RagaService
 from app.services.response_service import ResponseService
 from app.services.safety_service import SafetyService
+from app.services.contextual_reasoning import ContextualReasoningService
 from app.llm.prompts import compact_context
 
 
@@ -210,9 +211,11 @@ def _question_bank_rejection_reason(payload: dict, body: str = "") -> str | None
 class AssessmentService:
     _sessions = {}
 
-    def __init__(self, kb=None, llm=None, retriever=None, embedder=None, question_generator=None):
+    def __init__(self, kb=None, llm=None, retriever=None, embedder=None, question_generator=None,
+                 contextual_reasoner=None):
         self.kb, self.llm, self.retriever = kb, llm, retriever
         self.embedder = embedder
+        self.contextual_reasoner = contextual_reasoner or ContextualReasoningService.from_settings()
         if kb:
             self.indicators = IndicatorRepository(kb)
             self.evidence_engine = EvidenceEngine(self.indicators)
@@ -299,8 +302,7 @@ class AssessmentService:
     # ------------------------------------------------------------------ session + baseline
     def create_session(self, request):
         sid = str(uuid4()); ctx = PatientContext()
-        ctx.demographics = {"patient_id": request.patient_id, "language": request.language,
-                            "communication_preferences": request.communication_preferences}
+        ctx.demographics = {key: value for key, value in request.model_dump().items() if value is not None}
         ctx.patient_state.update({
             "selected_quadrants": None, "selected_quadrant_names": [], "completed_quadrants": [],
             "current_quadrant": None, "current_question": None, "asked_questions": [],
@@ -1045,6 +1047,7 @@ class AssessmentService:
             except Exception:  # noqa: BLE001 - keep the previous suggestion
                 logging.getLogger("anahat.quadrants").exception("Quadrant refresh failed")
                 return copy.deepcopy(cached)
+            rec = self._apply_contextual_quadrant_plan(ctx, rec, issue)
             ctx.patient_state["selected_quadrants"] = copy.deepcopy(rec)
             ctx.patient_state["quadrant_rec_response_count"] = len(ctx.responses)
             logging.getLogger("anahat.quadrants").info("REFRESHED QUADRANT SUGGESTIONS: %s",
@@ -1070,6 +1073,7 @@ class AssessmentService:
             opening_answers=all_openings,
             baseline=ctx.baseline, demographics=ctx.demographics, concepts=concepts,
             exhausted=self._exhausted(ctx), assessed=self.assessed_quadrants(ctx))
+        rec = self._apply_contextual_quadrant_plan(ctx, rec, full_issue, all_openings)
         ctx.patient_state["current_issue"] = full_issue
         ctx.patient_state["selected_quadrants"] = copy.deepcopy(rec)
         ctx.patient_state["quadrant_rec_response_count"] = len(ctx.responses)
@@ -1081,12 +1085,73 @@ class AssessmentService:
         ctx.audit("QUADRANT_RECOMMENDATION", recommendations=rec)
         return rec
 
+    def _apply_contextual_quadrant_plan(self, ctx, recommendations, concerns, opening_answers=None):
+        reasoner = getattr(self, "contextual_reasoner", None)
+        if not reasoner or not getattr(reasoner, "available", True):
+            return recommendations
+        definitions = [{"quadrant_id": str(q.get("quadrant_id")), "name": q.get("name"),
+                        "attributes": list(q.get("attributes") or [])} for q in self.kb.quadrants]
+        demographic_fields = {"age", "gender", "language", "occupation", "marital_status",
+                              "disability_type", "mental_age"}
+        profile = {key: value for key, value in (ctx.demographics or {}).items()
+                   if key in demographic_fields and value is not None}
+        preferences = (ctx.demographics or {}).get("communication_preferences")
+        if isinstance(preferences, dict):
+            profile["communication_preferences"] = {
+                key: value for key, value in preferences.items()
+                if str(key).strip().lower() not in {"id", "patient_id", "name"} and value is not None
+            }
+        try:
+            decision = reasoner.analyze_profile(
+                profile=profile, concerns="\n".join(filter(None, [concerns,
+                    "Opening responses: " + str(opening_answers) if opening_answers else ""])),
+                quadrants=definitions)
+            plan = decision.model_dump() if hasattr(decision, "model_dump") else decision
+            by_name = {str(item.get("quadrant")): item for item in plan.get("quadrants", [])}
+            known = {q["name"]: q["quadrant_id"] for q in definitions}
+            if set(by_name) != set(known) or any(
+                    str(by_name[name].get("quadrant_id")) != qid for name, qid in known.items()):
+                raise ValueError("contextual plan did not match the KB quadrant definitions")
+            ctx.patient_state["contextual_assessment"] = plan
+            ctx.patient_state["contextual_assessment_status"] = "openai"
+            existing = {item["quadrant"]: item for item in recommendations}
+            ranked = []
+            status_score = {"priority": 0.9, "relevant": 0.7, "conditional": 0.45}
+            for quadrant in plan["quadrants"]:
+                status = quadrant["status"]
+                if status not in status_score:
+                    continue
+                item = existing.get(quadrant["quadrant"])
+                if item is None:
+                    item = {"quadrant": quadrant["quadrant"], "relevance_score": status_score[status],
+                            "method": "llm_contextual_plan", "reasons": [quadrant["rationale"]],
+                            "already_started": False, "missing_information": []}
+                else:
+                    item = copy.deepcopy(item)
+                    item["relevance_score"] = max(float(item.get("relevance_score", 0)), status_score[status])
+                    item["reasons"] = [quadrant["rationale"], *item.get("reasons", [])]
+                ranked.append((status_score[status], item))
+            ranked.sort(key=lambda pair: (-pair[0], -pair[1].get("relevance_score", 0)))
+            return [item for _, item in ranked]
+        except Exception:  # noqa: BLE001 - existing recommendations remain the explicit fallback
+            logging.getLogger("anahat.quadrants").exception("Contextual planning failed; using KB recommendations")
+            ctx.patient_state["contextual_assessment_status"] = "fallback"
+            return recommendations
+
     def select_quadrant(self, sid, quadrant):
         ctx = self._ctx(sid)
         if ctx.patient_state.get("final_chakra_evaluated"):
             raise ValueError("The assessment has ended")
         if quadrant not in self.kb.quadrant_names:
             raise ValueError(f"Unknown quadrant: {quadrant}")
+        if not ctx.patient_state.get("contextual_assessment"):
+            self._apply_contextual_quadrant_plan(
+                ctx, [], ctx.patient_state.get("current_issue") or "",
+                ctx.patient_state.get("opening_responses"))
+        plan = ctx.patient_state.get("contextual_assessment") or {}
+        planned = next((item for item in plan.get("quadrants", []) if item.get("quadrant") == quadrant), None)
+        if ctx.patient_state.get("contextual_assessment_status") == "openai" and planned and planned.get("status") in {"inapplicable", "deferred"}:
+            raise ValueError(f"Quadrant is currently {planned['status']}: {planned.get('rationale', '')}")
         st = self._q_state(ctx, quadrant)
         selected = ctx.patient_state.setdefault("selected_quadrant_names", [])
         if quadrant not in selected:
@@ -1122,6 +1187,10 @@ class AssessmentService:
                 current_issue=" ".join(r.raw_text for r in ctx.responses), exhausted=self._exhausted(ctx),
                 assessed=self.assessed_quadrants(ctx),
                 concepts=[c["concept"] for r in ctx.responses for c in (r.extraction or {}).get("concepts", [])])
+            others = self._apply_contextual_quadrant_plan(
+                ctx, others, " ".join([ctx.patient_state.get("current_issue") or "",
+                                       *(r.raw_text for r in ctx.responses)]),
+                ctx.patient_state.get("opening_responses"))
             page["recommended_quadrants"] = others
             remaining = set(self.kb.quadrant_names) - self._exhausted(ctx)
             page["message"] = ("All questions for this quadrant are answered. Choose another quadrant, or view the result."
@@ -1190,9 +1259,13 @@ class AssessmentService:
                     f"Symptoms, emotions or behaviours the patient just described: {latest_concepts}"]
         else:
             lead = [f"Opening responses: {ctx.patient_state.get('opening_responses', [])}"]
+        contextual_plan = ctx.patient_state.get("contextual_assessment") or {}
+        quadrant_plan = next((item for item in contextual_plan.get("quadrants", [])
+                              if item.get("quadrant") == quadrant), {})
         query = "\n".join([
             *lead,
             f"Current quadrant: {quadrant}",
+            f"Contextual retrieval focus: {quadrant_plan.get('retrieval_query', '')}",
             f"Findings so far: {evidence[-6:]}",
             f"Earlier answers in this quadrant: {recent_answers}",
         ])
@@ -1348,6 +1421,47 @@ class AssessmentService:
                     "reason=%s points=%s rejected=%s",
                     quadrant, fallback_reason, len(points), rejected,
                 )
+        reasoner = getattr(self, "contextual_reasoner", None)
+        if selected is not None and reasoner and getattr(reasoner, "available", True):
+            selectable = list(candidates)
+            if not any(item.get("id") == selected.get("id") for item in selectable):
+                selectable.append(selected)
+            try:
+                decision = reasoner.select_question(
+                    context={
+                        "profile": ctx.demographics,
+                        "developmental_stage": contextual_plan.get("developmental_stage"),
+                        "current_concern": ctx.patient_state.get("current_issue"),
+                        "quadrant": quadrant,
+                        "quadrant_status": quadrant_plan.get("status"),
+                        "latest_answer": latest_text,
+                        "recent_answers": recent_answers,
+                        "asked_questions": asked_text[-12:],
+                        "supported_indicators": evidence[-8:],
+                    },
+                    candidates=[{"id": item["id"], "question": item["question"],
+                                 "quadrant": item.get("quadrant"), "score": item.get("score")}
+                                for item in selectable],
+                )
+                decision_data = decision.model_dump() if hasattr(decision, "model_dump") else decision
+                selected_id = decision_data.get("selected_question_id")
+                if decision_data.get("action") in {"explore", "reconsider_deferred", "advance"}:
+                    selected = None
+                    retrieval_status = "LLM_ADVANCE"
+                else:
+                    chosen = next((item for item in selectable if item.get("id") == selected_id), None)
+                    if chosen:
+                        selected = dict(chosen)
+                        selected["ask_to"] = decision_data.get("ask_to", "patient")
+                ctx.patient_state["contextual_question_decision"] = {
+                    **decision_data, "provider": "openai", "quadrant": quadrant,
+                }
+                ctx.patient_state["contextual_question_decision_status"] = "openai"
+                ctx.patient_state["question_recipient"] = decision_data.get("ask_to", "patient")
+            except Exception:  # noqa: BLE001 - retain the existing ranked KB choice
+                ctx.patient_state["contextual_question_decision_status"] = "fallback"
+                ctx.patient_state["question_recipient"] = "patient"
+                logger.exception("Contextual question selection failed; using ranked KB result")
         dynamic = getattr(self, "dynamic", None)
         if dynamic is not None and (selected is not None or self._latest_patient_signal(ctx)[0]):
             kb_selected = selected
@@ -1356,8 +1470,9 @@ class AssessmentService:
             if selected is not None and selected.get("generated"):
                 retrieval_status = "LLM_ADAPTIVE" if kb_selected else "LLM_ADAPTIVE_NO_KB_FALLBACK"
         if not deep_dive:
-            state["rag_exhausted"] = selected is None
-            state["retrieval_failed"] = selected is None
+            intentional_advance = retrieval_status == "LLM_ADVANCE"
+            state["rag_exhausted"] = selected is None and not intentional_advance
+            state["retrieval_failed"] = selected is None and not intentional_advance
         elif selected is None:
             state["deep_dive_exhausted"] = True
             state["deep_dive_active"] = False

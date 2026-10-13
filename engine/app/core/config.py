@@ -137,6 +137,10 @@ class Settings(BaseSettings):
 
     together_api_key: str | None = None
 
+    # Optional OpenAI planner for demographic-aware assessment and KB question selection.
+    openai_api_key: str | None = None
+    openai_reasoning_model: str = "gpt-4o-mini"
+
     llm_model: str = "gemini-2.5-flash"
 
     # Bounded retry / timeout controls

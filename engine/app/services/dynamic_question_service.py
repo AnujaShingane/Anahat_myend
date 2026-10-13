@@ -218,6 +218,7 @@ class DynamicQuestionService:
         }
         question = {
             "id": qid, "question": text, "quadrant": quadrant,
+            "ask_to": state.get("question_recipient", "patient"),
             "source": "LLM adaptive question (validated; KB question kept as fallback)",
             "selection_method": "llm_adaptive",
             "generated": True,
@@ -455,6 +456,7 @@ class DynamicQuestionService:
             "approved_example_questions_for_this_area": refs,
             "already_asked": asked,
             "patient_language": _LANGUAGES.get(str(language).lower(), language),
+            "intended_respondent": state.get("question_recipient", "patient"),
             # KB adaptive_questioning.selection_priority, with chakra words removed (the model
             # must not be primed to think in chakra terms).
             "selection_priority": [

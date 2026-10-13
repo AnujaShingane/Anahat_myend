@@ -168,6 +168,17 @@ def test_same_state_reuses_the_question_instead_of_calling_the_model_again(adapt
     assert a["id"] == b["id"] and len(gen.contexts) == 1
 
 
+def test_caregiver_recipient_is_preserved_for_adapted_questions(adaptive):
+    gen = FakeGenerator(ok())
+    svc, sid = session_after_brother(gen)
+    svc.get(sid).patient_state["question_recipient"] = "caregiver"
+
+    question = svc.select_quadrant(sid, "Family")["questions"][0]
+
+    assert question["ask_to"] == "caregiver"
+    assert gen.contexts[0]["intended_respondent"] == "caregiver"
+
+
 # ---- fallback -------------------------------------------------------------------------------
 @pytest.mark.parametrize("bad,reason", [
     (ok("How does your Root Chakra blockage make you feel unsafe?"), "chakra_term_in_question"),
