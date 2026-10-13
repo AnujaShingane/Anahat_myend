@@ -1,0 +1,1 @@
+The new approved-for-review question set is in structured/assessment/chakra_disambiguation_questions_v3.json. The older pending file is retained for provenance/history and should not be wired into the live engine.

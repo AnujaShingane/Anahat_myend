@@ -1,0 +1,247 @@
+{
+  "_schema_version": "3.0",
+  "_status": "proposed_clinical_review_required",
+  "_purpose": "Therapist-controlled opening conversation. Fixed application content; AI may select only the therapist-approved style and must not rewrite question text.",
+  "rules": {
+    "normal_count": "Ask 2 to 3 questions.",
+    "therapist_control": "Therapist selects, skips, or stops the opening questions.",
+    "language": "Simple everyday English.",
+    "no_diagnosis": "Opening questions gather the main concern and comfort level; they do not diagnose."
+  },
+  "styles": [
+    {
+      "id": "A",
+      "name": "Friendly and Direct",
+      "recommended_for": [
+        "comfortable",
+        "returning",
+        "ready to talk"
+      ],
+      "questions": [
+        {
+          "id": "A-FQ-01",
+          "text": "How have you been feeling these days?"
+        },
+        {
+          "id": "A-FQ-02",
+          "text": "What is bothering you the most right now?"
+        },
+        {
+          "id": "A-FQ-03",
+          "text": "How is this problem making your everyday life difficult?"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Friendly and Gentle",
+      "recommended_for": [
+        "first-time",
+        "shy",
+        "not opening up"
+      ],
+      "questions": [
+        {
+          "id": "B-FQ-01",
+          "text": "How have things been going for you these days?"
+        },
+        {
+          "id": "B-FQ-02",
+          "text": "Is there something that has been bothering you or making you feel bad?"
+        },
+        {
+          "id": "B-FQ-03",
+          "text": "Can you tell me a little about what you are going through?"
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "name": "Calm and Reassuring",
+      "recommended_for": [
+        "nervous",
+        "worried",
+        "very upset",
+        "emotionally overwhelmed"
+      ],
+      "questions": [
+        {
+          "id": "C-FQ-01",
+          "text": "Take your time. How are you feeling right now?"
+        },
+        {
+          "id": "C-FQ-02",
+          "text": "Is there something that is making you feel worried, sad, angry, or uncomfortable?"
+        },
+        {
+          "id": "C-FQ-03",
+          "text": "What would you like us to help you with today?"
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "name": "Very Simple",
+      "recommended_for": [
+        "young child",
+        "limited vocabulary",
+        "difficulty understanding long questions"
+      ],
+      "questions": [
+        {
+          "id": "D-FQ-01",
+          "text": "How are you feeling today?"
+        },
+        {
+          "id": "D-FQ-02",
+          "text": "Is something making you feel sad, scared, angry, or worried?"
+        },
+        {
+          "id": "D-FQ-03",
+          "text": "What do you want help with?"
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "name": "Friendly for Children",
+      "recommended_for": [
+        "shy child",
+        "nervous child",
+        "child avoiding direct discussion"
+      ],
+      "questions": [
+        {
+          "id": "E-FQ-01",
+          "text": "What has been making you happy or unhappy these days?"
+        },
+        {
+          "id": "E-FQ-02",
+          "text": "Has anything been making you feel sad, scared, angry, or worried?"
+        },
+        {
+          "id": "E-FQ-03",
+          "text": "What is the one thing that is bothering you the most?"
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "name": "Simple and Respectful",
+      "recommended_for": [
+        "older adult",
+        "needs more time",
+        "prefers slow conversation"
+      ],
+      "questions": [
+        {
+          "id": "F-FQ-01",
+          "text": "How have you been feeling these days?"
+        },
+        {
+          "id": "F-FQ-02",
+          "text": "What has been bothering you or making your days difficult?"
+        },
+        {
+          "id": "F-FQ-03",
+          "text": "Has this problem changed your sleep, daily work, family life, or interest in things you enjoy?"
+        }
+      ]
+    },
+    {
+      "id": "G",
+      "name": "Easy Communication",
+      "recommended_for": [
+        "intellectual disability",
+        "developmental disability",
+        "cognitive difficulty",
+        "lower mental age"
+      ],
+      "questions": [
+        {
+          "id": "G-FQ-01",
+          "text": "How are you feeling today?"
+        },
+        {
+          "id": "G-FQ-02",
+          "text": "Is something making you feel bad, sad, scared, angry, or worried?"
+        },
+        {
+          "id": "G-FQ-03",
+          "text": "What is bothering you the most?"
+        }
+      ]
+    },
+    {
+      "id": "H",
+      "name": "Communication Support",
+      "recommended_for": [
+        "speech difficulty",
+        "hearing difficulty",
+        "difficulty expressing",
+        "needs extra response time"
+      ],
+      "questions": [
+        {
+          "id": "H-FQ-01",
+          "text": "How are you feeling today?"
+        },
+        {
+          "id": "H-FQ-02",
+          "text": "What is bothering you the most?"
+        },
+        {
+          "id": "H-FQ-03",
+          "text": "How is this problem affecting your everyday life?"
+        }
+      ]
+    },
+    {
+      "id": "I",
+      "name": "No Pressure",
+      "recommended_for": [
+        "does not want to talk",
+        "very short answers",
+        "withdrawn",
+        "uncomfortable"
+      ],
+      "questions": [
+        {
+          "id": "I-FQ-01",
+          "text": "Would you like to tell me a little about how you are feeling?"
+        },
+        {
+          "id": "I-FQ-02",
+          "text": "What has been the hardest thing for you these days?"
+        },
+        {
+          "id": "I-FQ-03",
+          "text": "What would you like to talk about today?"
+        }
+      ]
+    },
+    {
+      "id": "J",
+      "name": "Short and Easy",
+      "recommended_for": [
+        "limited attention",
+        "gets tired",
+        "prefers short questions"
+      ],
+      "questions": [
+        {
+          "id": "J-FQ-01",
+          "text": "How are you feeling?"
+        },
+        {
+          "id": "J-FQ-02",
+          "text": "What is bothering you?"
+        },
+        {
+          "id": "J-FQ-03",
+          "text": "How is it affecting your everyday life?"
+        }
+      ]
+    }
+  ]
+}

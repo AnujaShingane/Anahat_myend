@@ -1,0 +1,22 @@
+{
+  "_status": "draft_requires_domain_review",
+  "_purpose": "Spec section 5: different KB terms that name the SAME underlying problem form ONE evidence group (one presence / directional contribution) when scoring a chakra. Example from the spec: 'I am afraid' / 'I feel unsafe' / 'I worry something bad will happen' are one problem. Matching is by normalized KB term only; this file adds no indicator and no chakra mapping. Different problems that merely map to the same chakra are NOT listed here and stay independent.",
+  "groups": {
+    "fear_and_anxiety":        ["Fear", "Anxiety"],
+    "fatigue":                 ["Fatigue", "Chronic Fatigue"],
+    "ruminative_thinking":     ["Overthinking", "Obsessive Thinking"],
+    "social_isolation":        ["Loneliness / Social Isolation", "Feeling Isolated"],
+    "not_understood":          ["Feeling Unheard / Not Understood", "Feeling Misunderstood"],
+    "emotional_expression":    ["Suppressed Expression", "Issues Expressing Emotions"],
+    "breathlessness":          ["Breath, shortness", "Shortness of Breath"],
+    "hemorrhoids":             ["Hemmorhoids", "Hemorrhoids"],
+    "skin":                    ["Skin", "Skin Problems"],
+    "throat":                  ["Throat", "Throat Problems"],
+    "thyroid":                 ["Thyroid", "Thyroid Problems", "Glands: Thyroid, parathyroid"],
+    "liver":                   ["Liver", "Liver Problems"],
+    "heart_general":           ["Heart Problems (General)", "Heart, general"],
+    "anus":                    ["Anus", "Anus problems"],
+    "thymus":                  ["Thymus", "Glands: Thymus"],
+    "adrenal":                 ["Adrenal problems", "Glands: Adrenals"]
+  }
+}

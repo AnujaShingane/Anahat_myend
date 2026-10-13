@@ -1,0 +1,10 @@
+{
+  "_schema_version": "1.0",
+  "_note": "Domain-specific safety rules for the new medical/psychology/raga content added in this KB upgrade. These SUPPLEMENT config/governance_rules.json (12->14 core rules) and do not replace or override it. Proposed as a reviewable addendum -- see config/governance_addendum_proposed.json for the specific new rule text suggested for formal addition.",
+  "rules": [
+    {"id": "S1", "title": "No condition-to-raga auto-recommendation for serious conditions", "detail": "Any raga associated with a serious_medical_condition or serious_psychiatric_condition flag (see raaga/structured/chakra_raga_bridge.json) must be excluded from automatic ranking/recommendation output until a clinical lead has reviewed and explicitly approved a framing that does not imply treatment or diagnosis."},
+    {"id": "S2", "title": "Traditional framework content is never restated as medical fact", "detail": "LEVEL_4/5/6 content (chakra books, Ayurveda, raga-condition folklore) may only be surfaced with framing that makes its traditional/non-clinical status explicit to the therapist."},
+    {"id": "S3", "title": "Copyrighted trade books require licensing review before ingestion", "detail": "Full commercial books/textbooks identified in source_registry/source_metadata.json as usage_review_required must not be embedded into the production vector store until licensing/fair-use status is confirmed. Short paraphrased summaries for internal reference are lower-risk than full-text chunking, but still require review."},
+    {"id": "S4", "title": "Medical context never implies chakra causation", "detail": "Retrieval from medical/ domains (anatomy, physiology, neurology, DSM-5-TR, psychological disorders) may only inform contextual understanding of a patient's stated symptom. It must never be used to derive a chakra score directly -- that path runs only through the existing structured/symptom_to_chakra.json, emotion_to_chakra.json, behaviour_to_chakra.json files."}
+  ]
+}

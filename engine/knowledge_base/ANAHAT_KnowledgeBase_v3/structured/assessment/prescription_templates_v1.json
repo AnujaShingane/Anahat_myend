@@ -1,0 +1,41 @@
+{
+  "_schema_version": "1.0",
+  "_status": "template_for_clinical_review",
+  "therapist_template": {
+    "title": "ANAHAT Therapist Assessment & Prescription",
+    "fields": [
+      "Patient ID",
+      "Patient Name",
+      "Therapist ID",
+      "Therapist Name",
+      "Assessment Date",
+      "Main reason for help",
+      "Important patient findings",
+      "Top Chakra 1: direction, severity, confidence, evidence",
+      "Top Chakra 2: direction, severity, confidence, evidence",
+      "Suggested Ragas",
+      "Recommended Prahar / listening time",
+      "Therapist-selected activities",
+      "Therapist-selected songs",
+      "Safety / clinical notes",
+      "Therapist final decision",
+      "Approval date/signature"
+    ]
+  },
+  "patient_template": {
+    "title": "ANAHAT Patient Music Therapy Plan",
+    "fields": [
+      "Patient ID",
+      "Patient Name",
+      "Therapist Name",
+      "Therapist ID",
+      "Therapist-approved activities",
+      "Therapist-approved songs / music",
+      "Suggested Raga(s)",
+      "Recommended listening time / Prahar",
+      "Simple instructions",
+      "Date"
+    ]
+  },
+  "editing_rule": "The AI draft is editable. Only the therapist-approved final prescription is shown to the patient."
+}

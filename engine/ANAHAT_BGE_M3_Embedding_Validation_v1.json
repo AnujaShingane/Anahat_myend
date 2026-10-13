@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "model": "BAAI/bge-m3",
+  "manifest": "C:\\Users\\Shruti Gavhane\\OneDrive\\Desktop\\ANAHAT_AI_ENGINE\\ANAHAT_Qdrant_Chunk_Manifest_v1.json",
+  "chunks": 37,
+  "vectors_generated": 37,
+  "expected_dimension": 1024,
+  "actual_dimension": 1024,
+  "finite_values": true,
+  "nan_values": false,
+  "inf_values": false,
+  "normalized": true,
+  "min_norm": 0.9999999403953552,
+  "max_norm": 1.0000001192092896,
+  "mean_norm": 1.0,
+  "unique_vectors": 37,
+  "unique_ratio": 1.0,
+  "issues": []
+}

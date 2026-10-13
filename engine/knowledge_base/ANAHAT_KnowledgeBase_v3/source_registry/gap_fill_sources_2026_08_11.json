@@ -1,0 +1,94 @@
+{
+  "_schema_version": "1.0",
+  "_note": "External sources added during the 2026-08-11 gap-filling pass. Every entry was fetched and read (not just search-snippet-skimmed) before use, except where noted.",
+  "sources": [
+    {
+      "source_id": "SRC-001",
+      "title": "Tele MANAS official portal",
+      "organization": "Ministry of Health and Family Welfare (MoHFW) / NIMHANS",
+      "source_type": "official_government",
+      "domain": "indian_mental_health_resources",
+      "url": "https://telemanas.mohfw.gov.in/",
+      "access_date": "2026-08-11",
+      "evidence_level": "high (official government source)",
+      "license_usage_status": "public information",
+      "what_information_was_used": "Helpline number (14416 / 1-800-891-4416), availability, service model"
+    },
+    {
+      "source_id": "SRC-002",
+      "title": "24x7 Toll-Free Mental Health Rehabilitation Helpline Kiran (1800-599-0019) launched",
+      "organization": "Press Information Bureau, Govt. of India (Ministry of Social Justice & Empowerment)",
+      "source_type": "official_government_press_release",
+      "domain": "indian_mental_health_resources",
+      "url": "https://www.pib.gov.in/pressreleaseshare.aspx?prid=1652240",
+      "access_date": "2026-08-11",
+      "evidence_level": "high (official government source)",
+      "license_usage_status": "public information",
+      "what_information_was_used": "KIRAN helpline number and scope"
+    },
+    {
+      "source_id": "SRC-003",
+      "title": "112 India / Emergency Response Support System",
+      "organization": "Ministry of Home Affairs, Govt. of India",
+      "source_type": "official_government",
+      "domain": "indian_emergency_resources",
+      "url": "https://112.gov.in/",
+      "access_date": "2026-08-11",
+      "evidence_level": "high (official government source)",
+      "license_usage_status": "public information",
+      "what_information_was_used": "National emergency number 112 and scope"
+    },
+    {
+      "source_id": "SRC-004",
+      "title": "Role of Music Therapy Intervention Using Raga Darbari Kanada... Among Elderly Adults",
+      "organization": "Mukherjee, S. C., & Mukherjee, R. -- Dept. of Hindustani Classical Music, Visva-Bharati University",
+      "source_type": "peer_reviewed_journal_article",
+      "domain": "raga_therapeutic_evidence",
+      "url": "https://www.researchgate.net/publication/345806516",
+      "publication": "RESEARCH REVIEW International Journal of Multidisciplinary, 4(5), 2019",
+      "access_date": "2026-08-11",
+      "evidence_level": "moderate (single-group pre/post, N=39, no control group)",
+      "license_usage_status": "abstract/methodology summarized, not reproduced in full",
+      "what_information_was_used": "Raga Darbari Kanada -> depression/anxiety/stress/insomnia outcome data"
+    },
+    {
+      "source_id": "SRC-005",
+      "title": "Effect of Carnatic raga-Bilahari based music therapy on anxiety, sleep disturbances and somatic symptoms among caregivers of cancer patients",
+      "organization": "Ramachandran, Rajkumar, Romate, Allen, Daniel -- published in Heliyon (Cell Press)",
+      "source_type": "peer_reviewed_journal_article",
+      "domain": "raga_therapeutic_evidence",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9508548",
+      "doi": "10.1016/j.heliyon.2022.e10681",
+      "access_date": "2026-08-11",
+      "evidence_level": "moderate (single-group pre/post, N=30, no control group, but reputable peer-reviewed journal, PMC-indexed)",
+      "license_usage_status": "abstract/methodology summarized, not reproduced in full",
+      "what_information_was_used": "Raga Bilahari -> anxiety/sleep/somatic symptom outcome data"
+    },
+    {
+      "source_id": "SRC-006",
+      "title": "Raga Bhairavi in virtual reality reduces stress-related psychophysiological markers",
+      "organization": "Chand, Chandra, Dutt -- published in Scientific Reports (Springer Nature)",
+      "source_type": "peer_reviewed_journal_article",
+      "domain": "raga_therapeutic_evidence",
+      "url": "https://doi.org/10.1038/s41598-024-74932-1",
+      "doi": "10.1038/s41598-024-74932-1",
+      "access_date": "2026-08-11",
+      "evidence_level": "moderate-to-high (randomized VR-controlled design, N=44, reputable peer-reviewed journal)",
+      "license_usage_status": "abstract/methodology summarized, not reproduced in full",
+      "what_information_was_used": "Raga Bhairavi -> stress/HRV outcome data"
+    },
+    {
+      "source_id": "SRC-007-EXCLUDED",
+      "title": "Using Technology to Explore the Therapeutic Benefits of Classical Indian Music",
+      "organization": "Varma, S. -- Jamnabai Narsee School, Mumbai (secondary school, not a research institution)",
+      "source_type": "low_tier_journal_article",
+      "domain": "raga_therapeutic_evidence",
+      "url": "https://s3.ap-southeast-1.wasabisys.com/ijmanuscripts/manuscripts/v10i4/V10I4-1179.pdf",
+      "publication": "International Journal of Advance Research, Ideas and Innovations in Technology, 10(4), 2024",
+      "access_date": "2026-08-11",
+      "evidence_level": "EXCLUDED -- see reason below",
+      "license_usage_status": "not used",
+      "what_information_was_used": "NONE -- explicitly excluded. A spot-checked internal citation (Balasubramanian, Kumar & Sreenivas 2020, claimed published in Journal of Pain and Symptom Management) could not be verified to exist via targeted search of that journal. Strong indicator of fabricated/hallucinated references throughout the paper's 'research examined' section (round, suspiciously clean sample sizes across every cited study: 60, 50, 45, 30, 39). Logged here per Step 5's instruction to record sources considered, including rejected ones."
+    }
+  ]
+}

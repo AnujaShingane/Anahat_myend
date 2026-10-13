@@ -1,0 +1,53 @@
+{
+  "_schema_version": "3.0",
+  "_source": "ANAHAT_Finalized_Scoring_Rules_Final.docx (sections 2, 3, 8, 10, 11, 12, 13, 18)",
+  "_note": "Engine-owned scoring rules. They are applied ON TOP of the KB scoring config so the validated KB files stay byte-identical. All numeric values are engineering starting parameters, configurable, and NOT clinically validated (spec section 17).",
+
+  "strength_weights": {"Strong": 1.0, "Medium": 0.6, "Weak": 0.3},
+  "intensity_weights": {"Mild": 0.4, "Moderate": 0.7, "Severe": 1.0},
+  "reliability_weights": {
+    "Confirmed": 1.0,
+    "Resolved After Clarification": 1.0,
+    "Provisional": 0.4,
+    "Unresolved": 0.1,
+    "Historical": 0.1
+  },
+
+  "overall_bands": {
+    "_spec": "Section 2 / 18. Overall evidence score decides Balanced / Not assessed properly / Imbalanced and the severity label.",
+    "balanced_below": 0.40,
+    "mild_below": 0.55,
+    "moderate_below": 0.75
+  },
+
+  "diminishing_returns": {
+    "_spec": "Sections 8 / 18. Applied to independent evidence groups ordered strongest to weakest, AFTER semantic/correlation grouping.",
+    "curve": "geometric",
+    "geometric_base": 0.70,
+    "stepped_multipliers": [1.0, 0.75, 0.5, 0.25],
+    "stepped_floor": 0.25,
+    "_curve_note": "Section 8 states a stepped curve (1, .75, .5, .25, .25-floor) while its own formula and sections 17/18 state 0.70^(n-1). Section 18 'Final Recommended Parameter Set' is used as the default; set curve to 'stepped' to switch. Both are unvalidated starting points."
+  },
+
+  "aggregation": {
+    "_spec": "Section 3: new = old + (1 - old) * contribution (overall). Section 8: directional support = c1*m1 + c2*m2 + ...",
+    "overall": "noisy_or_discounted",
+    "directional": "weighted_sum"
+  },
+
+  "direction": {
+    "meaningful_threshold": 0.20,
+    "dominance_ratio": 1.20,
+    "_conflict_margin": "Removed (section 10). Dominance ratio is the single direction-conflict rule."
+  },
+
+  "high_priority_single": {"min_contribution": 0.70},
+
+  "confidence": {"weights": {"coverage": 0.30, "consistency": 0.30, "resolution": 0.25, "completeness": 0.15},
+                 "labels": {"high_from": 80, "moderate_from": 60}},
+
+  "gates_not_used": [
+    "winning directional score >= 0.45 AND confidence >= 60% AND >= 2 independent units (section 11: not re-approved)",
+    "firm (full-reliability) evidence requirement for a direction (not in the finalized spec)"
+  ]
+}

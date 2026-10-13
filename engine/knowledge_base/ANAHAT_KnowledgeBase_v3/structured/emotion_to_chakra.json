@@ -1,0 +1,272 @@
+{
+  "_schema_version": "2.0",
+  "_note": "Source: emotional_pattern_chakra_mapping.txt (already well-structured, kept largely as-is). No duplicate versions of this file were found elsewhere in the knowledge base. || v2.0 UPDATE: therapist-provided Strong/Medium/Weak indicator-strength ratings merged in from ANAHAT_Chakra_Indicator_Strength_Rating_Filled.xlsx (Emotions sheet), matched by ID+chakra. New field 'indicator_strength' added per mapping. Match report: 20 matched, 0 JSON mappings unrated, 1 xlsx rows unused. | v1.2 re-applied onto v3 KB: same annotation fields added.",
+  "entries": [
+    {
+      "emotion": "Fear",
+      "mappings": [
+        {
+          "chakra": "Root Chakra",
+          "state": "Deficient",
+          "meaning": "Lack of safety, insecurity, survival anxiety",
+          "indicator_strength": "Strong"
+        },
+        {
+          "chakra": "Throat Chakra",
+          "state": "Deficient",
+          "meaning": "Fear of speaking, being heard, or judged",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "EMO-001",
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-30"
+    },
+    {
+      "emotion": "Guilt",
+      "mappings": [
+        {
+          "chakra": "Sacral Chakra",
+          "state": "Deficient",
+          "meaning": "Repression of pleasure, sexuality, or creativity",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "EMO-002",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "emotion": "Shame",
+      "mappings": [
+        {
+          "chakra": "Solar Plexus Chakra",
+          "state": "Deficient",
+          "meaning": "Loss of personal power and self-worth",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "EMO-003",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "emotion": "Anger",
+      "mappings": [
+        {
+          "chakra": "Solar Plexus Chakra",
+          "state": "Excess",
+          "meaning": "Excess fire, control issues, power struggle",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "EMO-004",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "emotion": "Grief",
+      "mappings": [
+        {
+          "chakra": "Heart Chakra",
+          "state": "Deficient",
+          "meaning": "Unresolved loss and emotional withdrawal",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "EMO-005",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "emotion": "Jealousy",
+      "mappings": [
+        {
+          "chakra": "Heart Chakra",
+          "state": "Excess",
+          "meaning": "Attachment and fear of loss",
+          "indicator_strength": "Medium"
+        }
+      ],
+      "id": "EMO-006",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "emotion": "Suppressed Expression",
+      "mappings": [
+        {
+          "chakra": "Throat Chakra",
+          "state": "Deficient",
+          "meaning": "Fear of speaking truth",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "EMO-007",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "emotion": "Anxiety",
+      "mappings": [
+        {
+          "chakra": "Root Chakra",
+          "state": "Deficient",
+          "meaning": "Lack of safety and grounding",
+          "indicator_strength": "Strong"
+        },
+        {
+          "chakra": "Solar Plexus Chakra",
+          "state": "Conflicted",
+          "meaning": "Undirected mental and energetic pressure",
+          "indicator_strength": "Medium"
+        },
+        {
+          "chakra": "Throat Chakra",
+          "state": "Deficient",
+          "meaning": "Communication anxiety and fear of expression",
+          "indicator_strength": "Medium"
+        }
+      ],
+      "id": "EMO-008",
+      "chakra_count": 3,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-31"
+    },
+    {
+      "emotion": "Confusion",
+      "mappings": [
+        {
+          "chakra": "Third Eye Chakra",
+          "state": "Deficient",
+          "meaning": "Lack of clarity and insight",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "EMO-009",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "emotion": "Overthinking",
+      "mappings": [
+        {
+          "chakra": "Third Eye Chakra",
+          "state": "Excess",
+          "meaning": "Mental overload and fixation",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "EMO-010",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "emotion": "Meaninglessness",
+      "mappings": [
+        {
+          "chakra": "Crown Chakra",
+          "state": "Deficient",
+          "meaning": "Disconnection from purpose",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "EMO-011",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "emotion": "Feeling Unheard / Not Understood",
+      "mappings": [
+        {
+          "chakra": "Throat Chakra",
+          "state": "Deficient",
+          "meaning": "Communication breakdown and validation needs",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "EMO-012",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "emotion": "Loneliness / Social Isolation",
+      "mappings": [
+        {
+          "chakra": "Heart Chakra",
+          "state": "Deficient",
+          "meaning": "Emotional disconnection from others",
+          "indicator_strength": "Strong"
+        },
+        {
+          "chakra": "Throat Chakra",
+          "state": "Deficient",
+          "meaning": "Inability to reach out and communicate needs",
+          "indicator_strength": "Medium"
+        }
+      ],
+      "id": "EMO-013",
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-32"
+    },
+    {
+      "emotion": "Loss of Control",
+      "mappings": [
+        {
+          "chakra": "Solar Plexus Chakra",
+          "state": "Deficient",
+          "meaning": "Powerlessness and lack of agency",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "EMO-014",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "emotion": "Dissatisfaction / Unfulfilled Potential",
+      "mappings": [
+        {
+          "chakra": "Solar Plexus Chakra",
+          "state": "Deficient",
+          "meaning": "Loss of purpose and personal power",
+          "indicator_strength": "Strong"
+        },
+        {
+          "chakra": "Throat Chakra",
+          "state": "Deficient",
+          "meaning": "Inability to express ambitions and needs",
+          "indicator_strength": "Medium"
+        }
+      ],
+      "id": "EMO-015",
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-33"
+    }
+  ],
+  "indicator_strength_provenance": {
+    "source_file": "ANAHAT_Chakra_Indicator_Strength_Rating_Filled.xlsx",
+    "source_file_md5": "093ccd3bf82daa95f137396cb86b4fd7",
+    "provided_by": "Project therapist (per user instruction: 'treat as authoritative therapist input')",
+    "date_received_and_integrated": "2026-09-02 (first integration); re-verified byte-identical on re-upload same date",
+    "integration_method": "Exact match on (ID, Linked Chakra) between the xlsx 'Symptoms'/'Emotions'/'Behaviours' sheets and this file's existing entries. No fuzzy matching, no inference -- every rating below is a direct 1:1 copy of the therapist's 'Your Rating' column value.",
+    "verification": "171/171 symptom pairs, 20/20 emotion pairs, 24/24 behaviour pairs matched with zero conflicts and zero missing data across both the original integration and this re-verification pass. See config/indicator_strength_conflict_report.md for the full report.",
+    "not_integrated": "The workbook's 'Disambiguation Qs Review' sheet (38 rows) is 0% filled by the therapist as of this upload -- no rating data exists there to integrate. Tracked separately in structured/pending_therapist_input/disambiguation_questions_pending_review.json.",
+    "excel_file_unmodified": true,
+    "excel_file_archived_at": "source_registry/therapist_provided_files/ANAHAT_Chakra_Indicator_Strength_Rating_Filled.xlsx"
+  }
+}

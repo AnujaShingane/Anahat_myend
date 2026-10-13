@@ -1,0 +1,575 @@
+{
+  "_schema_version": "1.3",
+  "_note": "Canonical merged chakra profile v1.1 (audit-corrected). Consolidates advanced_chakra_therapy.txt, COMPREHENSIVE CHAKRA GUIDE.pdf, the 7 individual chakra_*.txt stub files, and the unrecoverable Chakra_Mapping.xslx. AUDIT FIX vs v1.0: restored dietary/aromatherapy recommendations and the 'gland' attribute for Root Chakra (both were present in advanced_chakra_therapy.txt but dropped in the first draft); restored several deficiency/excess descriptor words that were compressed out of the emotional/physical impact lists during the first draft (e.g. Sacral 'addictions' and 'toxic relationships', Solar Plexus 'insomnia' and 'eating disorders', Throat 'nervousness', Third Eye 'seizures'/'neuroses', Crown 'epilepsy'/'schizophrenia'); removed one fabricated descriptor ('Emotional numbness/rigidity' on Sacral Chakra) that did not exist in any source document. 'seed_mantra_bija' (Sanskrit chanting seed sound) and 'swara_note_for_raaga_mapping' (Indian classical svara used for Raaga selection) are two DIFFERENT systems from the source's single 'Sound/Mantra' field -- kept separate to avoid conflating chant therapy with Raaga-svara mapping; only Root Chakra had an explicit Bija mantra (LAM) in the source, so other chakras' seed_mantra_bija is null rather than guessed. NEEDS THERAPIST/CLINICAL LEAD REVIEW before production use, especially the svara-to-chakra assignments. || v1.2 UPDATE (this pass): the swara_note_for_raaga_mapping field's positional Sa/Re/Ga/Ma/Pa/Dha/Ni assignment (previously flagged 'needs domain check, derived positionally, not confirmed') has been INDEPENDENTLY CORROBORATED by a second, previously-unrecoverable source: Chakra_Mapping.xlsx (uploaded in the RAG_documents batch), whose 'Swar' column lists the identical Root->Crown Sa-Re-Ga-Ma-Pa-Dha-Ni sequence. review_status downgraded from 'needs domain check' to 'corroborated by a second independent source, still recommend a music-therapy domain expert sign-off before this drives real raga selection, since two sources sharing the same lineage assumption is not the same as independent verification.' || v1.3 UPDATE (gap-closure pass): svara-to-chakra sourcing detail moved to the new canonical file structured/svara_chakra_mapping.json -- that file is now the source of truth for evidence_level/sources/review_status on this mapping; this field (swara_note_for_raaga_mapping) is a denormalized convenience copy and should be updated if the canonical file changes. REVISED STATUS: downgraded from 'corroborated by a second independent source' to 'two sources found, but judged to share the same lineage assumption -- NOT genuinely independent corroboration.' can_influence_chakra_score and can_influence_raga_recommendation are both explicitly false for this field.",
+  "chakras": [
+    {
+      "chakra_id": 1,
+      "name": "Root Chakra",
+      "sanskrit": "Muladhara",
+      "element": "Earth",
+      "gland": "Adrenal",
+      "color": "Red",
+      "location": "Base of spine",
+      "seed_mantra_bija": "LAM",
+      "swara_note_for_raaga_mapping": "Sa",
+      "core_themes": [
+        "Grounding",
+        "Survival",
+        "Safety",
+        "Stability"
+      ],
+      "associated_with": [
+        "Connection to earth",
+        "Survival",
+        "Health stability",
+        "Security",
+        "Stamina",
+        "Endurance",
+        "Primal needs",
+        "Financial stability",
+        "Basic trust"
+      ],
+      "balanced_state": [
+        "Feels secure and supported",
+        "Trust in life",
+        "Physical vitality"
+      ],
+      "deficiency_signs": {
+        "physical": [
+          "Lower-back pain / sciatica",
+          "Leg weakness",
+          "Elimination issues (constipation/diarrhea)",
+          "Chronic fatigue",
+          "Cold extremities",
+          "Varicose veins",
+          "Rectal problems",
+          "Osteoporosis",
+          "Problems with groin/hips/legs/knees/calves/ankles/feet",
+          "Water retention",
+          "Root-of-teeth problems"
+        ],
+        "emotional_behavioral": [
+          "Anxiety",
+          "Insecurity",
+          "Poor financial management",
+          "Codependency",
+          "Lack of routine",
+          "Loneliness",
+          "Feeling ungrounded/unconfident/abandoned",
+          "Indecisiveness",
+          "Depression",
+          "Addictions",
+          "Phobias",
+          "Obsessive thoughts",
+          "Stress from over-reliance on external circumstances and feeling not good enough"
+        ]
+      },
+      "excess_signs": [
+        "Obesity",
+        "Lethargy",
+        "Excessive materialism",
+        "Greed",
+        "Rigidity",
+        "Controlling behavior"
+      ],
+      "healing_activities": [
+        "Barefoot walking / grounding",
+        "Movement therapy",
+        "Praying, meditating, or connecting to spirit",
+        "Volunteering, acts of kindness and compassion",
+        "Gardening",
+        "Swimming",
+        "Playing in the leaves",
+        "Visualization of red light",
+        "Chanting 'LAM'",
+        "Body-scan grounding exercises",
+        "Positive self-affirmations",
+        "Establishing daily routines",
+        "Financial counseling",
+        "Somatic therapy",
+        "CBT"
+      ],
+      "dietary_and_aromatherapy": {
+        "diet": [
+          "Root vegetables",
+          "Red foods",
+          "Protein"
+        ],
+        "essential_oils": [
+          "Patchouli",
+          "Vetiver",
+          "Cedarwood",
+          "Frankincense"
+        ]
+      },
+      "asanas": [
+        "Tadasana (Mountain)",
+        "Virabhadrasana (Warrior)",
+        "Malasana (Garland)",
+        "Setu Bandhasana (Bridge)",
+        "Lotus pose",
+        "Triangle pose"
+      ],
+      "role_in_system": "Provides foundational stability for body and psyche.",
+      "source_documents": [
+        "advanced_chakra_therapy.txt",
+        "COMPREHENSIVE CHAKRA GUIDE.pdf",
+        "root_chakra.txt",
+        "Chakra_Mapping.xslx (unrecovered - garbled)"
+      ]
+    },
+    {
+      "chakra_id": 2,
+      "name": "Sacral Chakra",
+      "sanskrit": "Swadhisthana",
+      "element": "Water",
+      "gland": null,
+      "color": "Orange",
+      "location": "Below navel / lower abdomen",
+      "seed_mantra_bija": null,
+      "swara_note_for_raaga_mapping": "Re",
+      "core_themes": [
+        "Emotions",
+        "Sexuality",
+        "Creativity",
+        "Flow"
+      ],
+      "associated_with": [
+        "Connection to other people",
+        "Creativity",
+        "Openness",
+        "Fulfillment",
+        "Energy",
+        "Confidence",
+        "Sexual health"
+      ],
+      "balanced_state": [
+        "Emotional fluidity",
+        "Healthy pleasure",
+        "Creative expression"
+      ],
+      "deficiency_signs": {
+        "physical": [
+          "Kidney problems / urinary tract infections",
+          "Chronic lower back pain",
+          "Sexual disorders",
+          "Infertility",
+          "Gynecological problems",
+          "Dysfunctional menstrual cycles",
+          "Problems with intestines, spleen, gallbladder"
+        ],
+        "emotional_behavioral": [
+          "Lack of creativity",
+          "Addictions",
+          "Low self-confidence",
+          "Dependency issues",
+          "Low libido",
+          "Inability to express emotions or desire",
+          "Constant fear of betrayal",
+          "Unsuccessful and toxic relationships",
+          "Guilt"
+        ]
+      },
+      "excess_signs": [
+        "Sexual addiction",
+        "Manipulation",
+        "Self-fulfillment issues"
+      ],
+      "healing_activities": [
+        "Walk under moonlight",
+        "Spend time near water",
+        "Dancing"
+      ],
+      "dietary_and_aromatherapy": null,
+      "asanas": [
+        "Warrior II pose",
+        "Pigeon pose"
+      ],
+      "role_in_system": "Regulates emotional movement and relational connection.",
+      "source_documents": [
+        "COMPREHENSIVE CHAKRA GUIDE.pdf",
+        "sacral_chakra.txt",
+        "Chakra_Mapping.xslx (unrecovered - garbled)"
+      ]
+    },
+    {
+      "chakra_id": 3,
+      "name": "Solar Plexus Chakra",
+      "sanskrit": "Manipura",
+      "element": "Fire",
+      "gland": null,
+      "color": "Yellow",
+      "location": "Below ribcage / upper abdomen",
+      "seed_mantra_bija": null,
+      "swara_note_for_raaga_mapping": "Ga",
+      "core_themes": [
+        "Willpower",
+        "Personal power",
+        "Metabolism",
+        "Action"
+      ],
+      "associated_with": [
+        "Physical center",
+        "Personal power",
+        "Desire",
+        "Inner-strength",
+        "Emotions",
+        "Instincts / gut feelings",
+        "Positive self-image",
+        "Ambition"
+      ],
+      "balanced_state": [
+        "Confidence",
+        "Healthy ambition",
+        "Directed energy"
+      ],
+      "deficiency_signs": {
+        "physical": [
+          "Digestive and intestinal disorders",
+          "Indigestion",
+          "Food allergies",
+          "Eating disorders",
+          "Chronic fatigue",
+          "Poor metabolism",
+          "Diabetes",
+          "Stomach pain",
+          "Obesity",
+          "Eczema",
+          "Acne",
+          "Other stress-related skin conditions"
+        ],
+        "emotional_behavioral": [
+          "Lack of memory and concentration",
+          "Frequent fear of rejection",
+          "Feeling uncentered",
+          "Sugar addictions",
+          "Insomnia",
+          "Eating disorders",
+          "Personal power and self-esteem issues",
+          "Feelings of inferiority and shame",
+          "Lack of direction in life"
+        ]
+      },
+      "excess_signs": [
+        "Perfectionism",
+        "Power hunger",
+        "Being too critical",
+        "Control issues"
+      ],
+      "healing_activities": [
+        "Be in the sunshine"
+      ],
+      "dietary_and_aromatherapy": null,
+      "asanas": [
+        "Boat pose",
+        "Bow pose",
+        "Lion's pose",
+        "Twist"
+      ],
+      "role_in_system": "Transforms energy into purposeful action.",
+      "source_documents": [
+        "COMPREHENSIVE CHAKRA GUIDE.pdf",
+        "solar_plexus_chakra.txt",
+        "Chakra_Mapping.xslx (unrecovered - garbled)"
+      ]
+    },
+    {
+      "chakra_id": 4,
+      "name": "Heart Chakra",
+      "sanskrit": "Anahata",
+      "element": "Air",
+      "gland": null,
+      "color": "Green",
+      "location": "Center of chest",
+      "seed_mantra_bija": null,
+      "swara_note_for_raaga_mapping": "Ma",
+      "core_themes": [
+        "Love",
+        "Compassion",
+        "Grief",
+        "Connection"
+      ],
+      "associated_with": [
+        "Center of spirit and of the chakras",
+        "Love",
+        "Compassion",
+        "Safety",
+        "Trust",
+        "Adventure",
+        "Self-compassion",
+        "Forgiveness"
+      ],
+      "balanced_state": [
+        "Emotional openness",
+        "Forgiveness",
+        "Inner peace"
+      ],
+      "deficiency_signs": {
+        "physical": [
+          "Pneumonia",
+          "Asthma",
+          "Breast problems",
+          "Respiratory problems",
+          "Upper-back pain",
+          "Shoulder and upper-arm pain",
+          "Premature aging",
+          "Arm and wrist pain"
+        ],
+        "emotional_behavioral": [
+          "Grief",
+          "Intolerance",
+          "Hatred",
+          "Trust issues",
+          "Unforgiveness",
+          "Hopelessness",
+          "Feeling uncommitted and detached",
+          "Jealousy",
+          "Bitterness",
+          "Constant fear of being alone"
+        ]
+      },
+      "excess_signs": [
+        "Jealousy",
+        "Codependence",
+        "Over-giving",
+        "Over-apologizing",
+        "Self-sacrificing behavior"
+      ],
+      "healing_activities": [
+        "Walk in nature",
+        "Be with children or animals"
+      ],
+      "dietary_and_aromatherapy": null,
+      "asanas": [
+        "Bow pose",
+        "Camel pose"
+      ],
+      "role_in_system": "Integrates lower and upper chakras through love.",
+      "source_documents": [
+        "COMPREHENSIVE CHAKRA GUIDE.pdf",
+        "heart_chakra.txt",
+        "Chakra_Mapping.xslx (unrecovered - garbled)"
+      ]
+    },
+    {
+      "chakra_id": 5,
+      "name": "Throat Chakra",
+      "sanskrit": "Vishuddha",
+      "element": "Ether",
+      "gland": null,
+      "color": "Blue",
+      "location": "Throat",
+      "seed_mantra_bija": null,
+      "swara_note_for_raaga_mapping": "Pa",
+      "core_themes": [
+        "Communication",
+        "Truth",
+        "Expression"
+      ],
+      "associated_with": [
+        "Truth and self-expression",
+        "Listening skills",
+        "Communication",
+        "Freedom",
+        "Responsibility",
+        "Leadership"
+      ],
+      "balanced_state": [
+        "Clear self-expression",
+        "Honest communication"
+      ],
+      "deficiency_signs": {
+        "physical": [
+          "Nasal area / irritated sinuses",
+          "Sore throat",
+          "Ear infection",
+          "Neck and shoulder problems",
+          "Jaw pain",
+          "Voice loss",
+          "Thyroid problems",
+          "Teeth and gum problems",
+          "Esophagus and tonsil ailments"
+        ],
+        "emotional_behavioral": [
+          "Feeling misunderstood",
+          "Secretive",
+          "Lack of attention and focus",
+          "Dishonesty",
+          "Nervousness",
+          "Anxiety",
+          "Fear",
+          "Attention deficit disorders",
+          "Issues expressing yourself",
+          "Feeling isolated"
+        ]
+      },
+      "excess_signs": [
+        "Loud, interrupting, opinionated behavior",
+        "Gossiping",
+        "Harsh words"
+      ],
+      "healing_activities": [
+        "Say the truth to yourself",
+        "Singing",
+        "Chanting mantras"
+      ],
+      "dietary_and_aromatherapy": null,
+      "asanas": [
+        "Fish pose",
+        "Lion pose"
+      ],
+      "role_in_system": "Channels inner experience into outward expression.",
+      "source_documents": [
+        "COMPREHENSIVE CHAKRA GUIDE.pdf",
+        "throat_chakra.txt",
+        "Chakra_Mapping.xslx (unrecovered - garbled)"
+      ]
+    },
+    {
+      "chakra_id": 6,
+      "name": "Third Eye Chakra",
+      "sanskrit": "Ajna",
+      "element": "Light",
+      "gland": null,
+      "color": "Indigo",
+      "location": "Center of the brows",
+      "seed_mantra_bija": null,
+      "swara_note_for_raaga_mapping": "Dha",
+      "core_themes": [
+        "Insight",
+        "Perception",
+        "Awareness"
+      ],
+      "associated_with": [
+        "Mind",
+        "Ideas",
+        "Thoughts",
+        "Dreams",
+        "Intuition and psychic abilities",
+        "Awareness",
+        "Clear vision",
+        "Clear thoughts"
+      ],
+      "balanced_state": [
+        "Clarity",
+        "Intuition",
+        "Mental balance"
+      ],
+      "deficiency_signs": {
+        "physical": [
+          "Eye problems, glaucoma",
+          "Ear problems and hearing difficulties",
+          "Spinal conditions",
+          "Scalp / hair issues"
+        ],
+        "emotional_behavioral": [
+          "Headaches and migraines",
+          "Nightmares",
+          "Seizures",
+          "Neurological disorders",
+          "Personality disorders",
+          "Neuroses",
+          "Learning difficulties",
+          "Moodiness",
+          "Stubbornness",
+          "Lack of imagination",
+          "Illusions"
+        ]
+      },
+      "excess_signs": [
+        "Hallucinations",
+        "Nightmares",
+        "Seeing spirit",
+        "Obsessiveness"
+      ],
+      "healing_activities": [
+        "Write a dream journal",
+        "Gaze at the stars"
+      ],
+      "dietary_and_aromatherapy": null,
+      "asanas": [
+        "Fish pose",
+        "Child pose",
+        "Shoulder stand"
+      ],
+      "role_in_system": "Processes understanding and inner vision.",
+      "source_documents": [
+        "COMPREHENSIVE CHAKRA GUIDE.pdf",
+        "third_eye_chakra.txt",
+        "Chakra_Mapping.xslx (unrecovered - garbled)"
+      ]
+    },
+    {
+      "chakra_id": 7,
+      "name": "Crown Chakra",
+      "sanskrit": "Sahasrara",
+      "element": "Consciousness",
+      "gland": null,
+      "color": "Violet / White / Purple",
+      "location": "Top of head",
+      "seed_mantra_bija": null,
+      "swara_note_for_raaga_mapping": "Ni",
+      "core_themes": [
+        "Meaning",
+        "Unity",
+        "Higher awareness"
+      ],
+      "associated_with": [
+        "Connection to God / one's belief system",
+        "Spirituality",
+        "Divine wisdom",
+        "Enlightenment",
+        "Connection to the universe",
+        "Imagination",
+        "Awareness",
+        "Optimism",
+        "Pure cosmic energy"
+      ],
+      "balanced_state": [
+        "Spiritual connection",
+        "Acceptance",
+        "Presence"
+      ],
+      "deficiency_signs": {
+        "physical": [
+          "Light sensitivity",
+          "Headaches",
+          "Dementia",
+          "Autoimmune disorders",
+          "Neurological disorders"
+        ],
+        "emotional_behavioral": [
+          "Depression",
+          "Confusion",
+          "Loss of faith",
+          "Mental disconnection",
+          "Dementia",
+          "Epilepsy",
+          "Schizophrenia",
+          "Loneliness",
+          "Insignificance",
+          "Aimlessness",
+          "Learning difficulties"
+        ]
+      },
+      "excess_signs": [
+        "Spiritual addiction",
+        "Judgmental behavior"
+      ],
+      "healing_activities": [
+        "Sit in silence",
+        "Meditate"
+      ],
+      "dietary_and_aromatherapy": null,
+      "asanas": [
+        "Headstand"
+      ],
+      "role_in_system": "Connects individual awareness to universal consciousness.",
+      "source_documents": [
+        "COMPREHENSIVE CHAKRA GUIDE.pdf",
+        "crown_chakra.txt",
+        "Chakra_Mapping.xslx (unrecovered - garbled)"
+      ]
+    }
+  ]
+}

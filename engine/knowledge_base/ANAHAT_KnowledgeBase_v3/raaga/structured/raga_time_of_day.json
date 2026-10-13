@@ -1,0 +1,197 @@
+{
+  "_schema_version": "1.0",
+  "_note": "Time-of-day / prahara grouping derived by re-aggregating raaga/structured/raga_metadata.json (itself sourced from Raga List.xlsx) by its 'traditional_performance_time' field. This uses the traditional 8-prahara system (4 day + 4 night, ~3 hours each) as stated in the source spreadsheet, not a fixed 24-hour clock. A second source, 'Rag Samay Chakra.pdf' (a circular 24-hour raga-time wheel graphic, 4am-4am, 12 segments), was also supplied but is an IMAGE, not machine-readable text -- it was visually inspected (see raaga/reference_images/rag_samay_chakra.png) and broadly corroborates this table (e.g. Bhairav/Ramkali/Jogia cluster at dawn, Malkauns/Darbari/Shahana cluster at midnight) but exact 2-hour segment boundaries were NOT transcribed into structured data because rotated/small text on the wheel could not be read with full confidence -- transcribing an uncertain reading as fact would violate the 'never invent/never guess' rule. A domain expert should re-digitize that wheel directly from the source PDF before it drives time-of-day filtering logic.",
+  "system": "ashta_prahara (8 traditional 3-hour periods: 4 day, 4 night)",
+  "evidence_level": "LEVEL_4",
+  "review_status": "needs_review",
+  "groups": [
+    {
+      "traditional_time_label": "Afternoon",
+      "ragas": [
+        "Brindavani Sarang"
+      ]
+    },
+    {
+      "traditional_time_label": "Any time of the day",
+      "ragas": [
+        "Dhani",
+        "Pahadi",
+        "Mand"
+      ]
+    },
+    {
+      "traditional_time_label": "Early morning",
+      "ragas": [
+        "Allaiya bilawal",
+        "Aabhogi",
+        "Jogiya",
+        "Bialawal",
+        "Bhupal todi",
+        "Bhairav",
+        "Bhairavi",
+        "Ramkali",
+        "Bibhas"
+      ]
+    },
+    {
+      "traditional_time_label": "Evening",
+      "ragas": [
+        "Gauri (Bhairav)",
+        "Gauri (Purvi)",
+        "Jait",
+        "Deepak (Purvi)",
+        "Purvi",
+        "Puriya kalyan",
+        "Puriya dhanshri",
+        "Shri"
+      ]
+    },
+    {
+      "traditional_time_label": "First prahara in day",
+      "ragas": [
+        "Gunkali",
+        "Devgiri Bilawal",
+        "Deshkar",
+        "Hindol"
+      ]
+    },
+    {
+      "traditional_time_label": "First prahara in night",
+      "ragas": [
+        "Kamod",
+        "Kedar",
+        "Chayanat",
+        "Nat bihag",
+        "Narayani",
+        "Padbihag",
+        "Bihagada",
+        "Bhupali",
+        "Yaman",
+        "Sham kalyan",
+        "Shuddh kalyan",
+        "Hamir",
+        "Hansdwani"
+      ]
+    },
+    {
+      "traditional_time_label": "Fourth prahra in day",
+      "ragas": [
+        "Multani"
+      ]
+    },
+    {
+      "traditional_time_label": "Last prahara in day",
+      "ragas": [
+        "Purvi",
+        "Marava",
+        "Marubihag"
+      ]
+    },
+    {
+      "traditional_time_label": "Last prahara in night",
+      "ragas": [
+        "Kalingada",
+        "Basant",
+        "Bhatiyar",
+        "Lalit",
+        "Sohoni"
+      ]
+    },
+    {
+      "traditional_time_label": "Midnight",
+      "ragas": [
+        "Kalavati",
+        "Kafi",
+        "Chandrakauns",
+        "Darbari Kanada",
+        "Bahar",
+        "Bagehshri",
+        "Bhinna Shadaja",
+        "Miya Malhar",
+        "Shivranjani",
+        "Sarswati"
+      ]
+    },
+    {
+      "traditional_time_label": "Night",
+      "ragas": [
+        "Deepak (Bilawal)",
+        "Malgunji"
+      ]
+    },
+    {
+      "traditional_time_label": "Pre-evening",
+      "ragas": [
+        "Puriya"
+      ]
+    },
+    {
+      "traditional_time_label": "Rainy season",
+      "ragas": [
+        "Gaud Malhar",
+        "Megh malhar",
+        "Surmalhar"
+      ]
+    },
+    {
+      "traditional_time_label": "Second Prahara in day",
+      "ragas": [
+        "Asawari"
+      ]
+    },
+    {
+      "traditional_time_label": "Second Prahara in night",
+      "ragas": [
+        "Khamaj",
+        "Gorakh Kalyan",
+        "Jayjaywanti",
+        "Jhinjhoti",
+        "Tilak kamod",
+        "Tilang",
+        "Durga (Khamaj)",
+        "Durga (Bilawal)",
+        "Des",
+        "Nat",
+        "Bihag",
+        "Rageshwari",
+        "Shankara"
+      ]
+    },
+    {
+      "traditional_time_label": "Second Prahara of the day",
+      "ragas": [
+        "Todi"
+      ]
+    },
+    {
+      "traditional_time_label": "Second prahara in day",
+      "ragas": [
+        "Gujari todi",
+        "Gaud Sarang",
+        "Jaunpuri",
+        "barawa",
+        "Bilawaskhani Todi",
+        "Madhmad sarang",
+        "Miyan ki sarang",
+        "Shuddh sarang"
+      ]
+    },
+    {
+      "traditional_time_label": "Third prahara in day",
+      "ragas": [
+        "Dhanshri",
+        "Patdeep",
+        "Pilu",
+        "Bhimapalasi",
+        "Madhuvanti"
+      ]
+    },
+    {
+      "traditional_time_label": "Third prahara in night",
+      "ragas": [
+        "Adana",
+        "Malkauns"
+      ]
+    }
+  ]
+}

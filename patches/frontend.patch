@@ -1,0 +1,179 @@
+diff --git a/frontend/src/pages/therapist/NadikaOfflineSession.jsx b/frontend/src/pages/therapist/NadikaOfflineSession.jsx
+index 61a8980..dc46555 100644
+--- a/frontend/src/pages/therapist/NadikaOfflineSession.jsx
++++ b/frontend/src/pages/therapist/NadikaOfflineSession.jsx
+@@ -621,10 +621,15 @@ export default function NadikaOfflineSession({ patientId, patientName, appointme
+       const concepts = (r.extraction?.concepts || [])
+         .map((c) => c.concept)
+         .filter(Boolean);
++      const recorded = evidenceTerms(r);
+ 
+-      if (concepts.length) {
++      if (recorded.length) {
+         nadika(
+-          `Understood. Session evidence recorded from: ${concepts.join(', ')}.`
++          `Understood. Session evidence recorded: ${recorded.join(', ')}.`
++        );
++      } else if (concepts.length) {
++        nadika(
++          `Noted: ${concepts.join(', ')}. No knowledge-base indicator matched, so this is kept in the transcript but not scored.`
+         );
+       } else {
+         nadika(
+@@ -883,8 +888,11 @@ export default function NadikaOfflineSession({ patientId, patientName, appointme
+             `I understood: ${concepts.join(', ') || 'no clear concept'}. No canonical indicator matched — if it matters, ask a clarifying question in your own words; otherwise let’s continue.`
+           );
+         } else {
++          const recorded = evidenceTerms(r);
+           nadika(
+-            `Understood. Session evidence recorded from: ${concepts.join(', ') || 'noted'}.`
++            recorded.length
++              ? `Understood. Session evidence recorded: ${recorded.join(', ')}.`
++              : `Noted: ${concepts.join(', ') || 'response saved'}. No knowledge-base indicator was recorded from this answer.`
+           );
+         }
+       }
+@@ -2739,14 +2747,46 @@ function CardView({
+         <p className="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-2">
+           Prescription review
+         </p>
+-
++        <p className="text-xs font-bold text-slate-700 mb-1">
++          Chakra imbalances
++        </p>
++        {rxImbalances(d).length === 0 ? (
++          <p className="text-xs text-slate-500 mb-2">
++            No chakra passed the imbalance gate.
++          </p>
++        ) : (
++          <ul className="mb-2 space-y-1">
++            {rxImbalances(d).map((c) => (
++              <li
++                key={c.chakra}
++                className="flex items-center gap-2 text-sm"
++              >
++                <ChakraIcon
++                  name={c.chakra}
++                  size={22}
++                />
++                <span className="font-semibold text-slate-800">
++                  {c.chakra}
++                </span>
++                <span className="text-xs text-slate-500">
++                  {c.direction || 'direction unresolved'}
++                  {c.severity ? ` · ${c.severity}` : ''}
++                  {c.evidence?.length
++                    ? ` · ${[...new Set(c.evidence)].join(', ')}`
++                    : ''}
++                </span>
++              </li>
++            ))}
++          </ul>
++        )}
+         <p className="text-xs font-bold text-slate-700 mb-1">
+           Raags
+         </p>
+-
+         {(d.raga_candidates || []).length === 0 ? (
+           <p className="text-xs text-slate-500 mb-2">
+-            None proposed.
++            {d.raga_status === 'NO_APPROVED_RAGA_MAPPING'
++              ? 'None proposed: no clinically approved chakra-to-raag mapping in the knowledge base yet.'
++              : 'None proposed.'}
+           </p>
+         ) : (
+           (d.raga_candidates || []).map(
+@@ -3430,11 +3470,10 @@ function CardView({
+           /IMBALANCED/i.test(
+             r.status
+           )
+-        );
+-
++        )
++        .sort((a, b) => Number(b.score || 0) - Number(a.score || 0));
+     return (
+       <div className={box}>
+-
+         <p className="text-[11px] font-bold uppercase tracking-widest text-amber-700 mb-2">
+           Therapist only · not shown to the patient
+         </p>
+@@ -3457,11 +3496,18 @@ function CardView({
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
+ 
+                 {imb.map((r) => {
++                  // Severity = strength of the chakra score (0-1). Confidence is shown separately.
+                   const severity =
+                     Math.round(
+-                      r.confidence_pct ||
+-                        0
++                      Math.min(
++                        1,
++                        Number(r.score || 0)
++                      ) * 100
+                     );
++                  const evidenceList = (r.trace || r.evidence || [])
++                    .filter((t) => t.counted)
++                    .map((t) => t.term)
++                    .filter(Boolean);
+ 
+                   return (
+                     <div
+@@ -3520,7 +3566,15 @@ function CardView({
+                         <p className="text-[10px] text-slate-400 mt-0.5">
+                           Severity{' '}
+                           {severity}%
++                          {r.severity ? ` (${r.severity})` : ''}
++                          {' · '}Confidence{' '}
++                          {Math.round(r.confidence_pct || 0)}%
+                         </p>
++                        {evidenceList.length > 0 && (
++                          <p className="text-[10px] text-slate-500 mt-0.5 leading-snug">
++                            Evidence: {[...new Set(evidenceList)].join(', ')}
++                          </p>
++                        )}
+ 
+                       </div>
+                     </div>
+@@ -3536,7 +3590,9 @@ function CardView({
+ 
+             {(card.ragas || []).length === 0 ? (
+               <p className="text-xs text-slate-500 mb-3">
+-                No supported chakra → no raag inference.
++                {imb.length
++                  ? 'No raag proposed: the knowledge base has no clinically approved chakra-to-raag mapping yet. Choose raags yourself in the prescription.'
++                  : 'No supported chakra → no raag inference.'}
+               </p>
+             ) : (
+               <div className="flex flex-wrap gap-1.5 mb-3">
+@@ -3655,6 +3711,31 @@ function CardView({
+   return null;
+ }
+ 
++// KB indicators the engine actually recorded as evidence for one response.
++function evidenceTerms(r) {
++  return [
++    ...new Set(
++      (r?.evidence || [])
++        .map((e) => e?.indicator_term)
++        .filter(Boolean)
++    )
++  ];
++}
++
++// Imbalanced chakras for the prescription card (engine summary, or derived from findings).
++function rxImbalances(d = {}) {
++  if (Array.isArray(d.chakra_imbalances)) return d.chakra_imbalances;
++  return (d.findings || [])
++    .filter((c) => /IMBALANCED/i.test(c?.status || ''))
++    .sort((a, b) => Number(b.score || 0) - Number(a.score || 0))
++    .map((c) => ({
++      chakra: c.chakra,
++      direction: c.direction,
++      severity: c.severity,
++      evidence: (c.trace || []).filter((t) => t.counted).map((t) => t.term)
++    }));
++}
++
+ function Opt({
+   on,
+   primary,

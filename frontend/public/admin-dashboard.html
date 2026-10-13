@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Anahat Transformations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes shimmer {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+        .animate-shimmer {
+            animation: shimmer 6s linear infinite;
+        }
+        .bg-gradient-radial {
+            background: radial-gradient(circle at center, var(--tw-gradient-from), var(--tw-gradient-to));
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-[#020617] text-slate-100 font-sans min-h-screen overflow-y-auto selection:bg-amber-500/30">
+    
+    <!-- Background Effects -->
+    <div class="fixed inset-0 opacity-[0.05] pointer-events-none z-0 mix-blend-overlay"
+         style="background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' opacity=\'1\'/%3E%3C/svg%3E')">
+    </div>
+
+    <div id="cursor-glow" class="fixed w-[600px] h-[600px] rounded-full bg-gradient-radial from-amber-300/10 via-purple-500/5 to-transparent blur-[80px] pointer-events-none transition-transform duration-[400ms] ease-out z-0"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto p-6">
+        <!-- Header -->
+        <div class="bg-[#0a101f]/80 backdrop-blur-xl rounded-[2rem] shadow-2xl shadow-amber-500/10 border border-white/10 p-6 mb-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <div class="relative w-12 h-12 flex items-center justify-center">
+                        <img src="/assets/anahat-logo.png" alt="Anahat" class="w-12 h-12 object-contain relative z-10" />
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-serif font-bold text-slate-100">
+                            Anahat Transformations
+                        </h1>
+                        <p class="text-slate-400 text-sm font-light mt-1">Admin Command Center</p>
+                    </div>
+                </div>
+                <button onclick="logout()" class="px-6 py-3 bg-gradient-to-r from-red-500/20 to-rose-500/20 border border-red-500/30 text-red-300 rounded-xl hover:bg-red-500/30 hover:border-red-500/50 transition-all backdrop-blur-sm font-semibold">
+                    <svg class="w-5 h-5 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="bg-[#0a101f]/80 backdrop-blur-xl rounded-[2rem] border border-cyan-500/20 p-6 shadow-xl shadow-cyan-500/10 hover:shadow-cyan-500/20 transition-all">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-cyan-300 text-sm font-semibold uppercase tracking-widest mb-2">Total Patients</p>
+                        <p class="text-5xl font-serif font-bold text-slate-100 mt-2" id="total-patients">0</p>
+                    </div>
+                    <div class="text-6xl opacity-20">
+                        <svg class="w-16 h-16 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#0a101f]/80 backdrop-blur-xl rounded-[2rem] border border-purple-500/20 p-6 shadow-xl shadow-purple-500/10 hover:shadow-purple-500/20 transition-all">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-purple-300 text-sm font-semibold uppercase tracking-widest mb-2">Total Sessions</p>
+                        <p class="text-5xl font-serif font-bold text-slate-100 mt-2" id="total-sessions">0</p>
+                    </div>
+                    <div class="text-6xl opacity-20">
+                        <svg class="w-16 h-16 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#0a101f]/80 backdrop-blur-xl rounded-[2rem] border border-emerald-500/20 p-6 shadow-xl shadow-emerald-500/10 hover:shadow-emerald-500/20 transition-all">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-emerald-300 text-sm font-semibold uppercase tracking-widest mb-2">Completed</p>
+                        <p class="text-5xl font-serif font-bold text-slate-100 mt-2" id="completed-sessions">0</p>
+                    </div>
+                    <div class="text-6xl opacity-20">
+                        <svg class="w-16 h-16 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Caregiver Access Requests -->
+        <div class="bg-[#0a101f]/80 backdrop-blur-xl rounded-[2rem] shadow-2xl shadow-purple-500/10 border border-white/10 overflow-hidden mb-6">
+            <div class="p-6 bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-purple-500/10 border-b border-white/10 flex justify-between items-center">
+                <div>
+                    <h2 class="text-2xl font-serif font-bold text-slate-100">Caregiver Access Requests</h2>
+                    <p class="text-slate-400 text-sm mt-1">Verify identity and relationship before granting access</p>
+                </div>
+                <span id="caregiver-pending-badge" class="hidden bg-amber-500/20 text-amber-300 border border-amber-500/30 px-4 py-2 rounded-full text-sm font-bold"></span>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-slate-900/50 border-b border-white/5">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-purple-400 uppercase tracking-widest">Caregiver</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-purple-400 uppercase tracking-widest">Relationship</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-purple-400 uppercase tracking-widest">Patient</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-purple-400 uppercase tracking-widest">Submitted</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-purple-400 uppercase tracking-widest">Status</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-purple-400 uppercase tracking-widest">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="caregiver-requests-tbody" class="divide-y divide-white/5">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="bg-[#0a101f]/80 backdrop-blur-xl rounded-[2rem] shadow-xl border border-white/10 p-4 mb-6">
+            <div class="relative">
+                <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input
+                    type="text"
+                    id="search-input"
+                    placeholder="Search patients by name or email..."
+                    class="w-full pl-12 pr-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 transition-all"
+                />
+            </div>
+        </div>
+
+        <!-- Patients Table -->
+        <div class="bg-[#0a101f]/80 backdrop-blur-xl rounded-[2rem] shadow-2xl shadow-purple-500/10 border border-white/10 overflow-hidden">
+            <div class="p-6 bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-amber-500/10 border-b border-white/10">
+                <h2 class="text-2xl font-serif font-bold text-slate-100">Patient Records</h2>
+                <p class="text-slate-400 text-sm mt-1">Comprehensive healing journey overview</p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-slate-900/50 border-b border-white/5">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-amber-400 uppercase tracking-widest">Patient</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-amber-400 uppercase tracking-widest">Email</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-amber-400 uppercase tracking-widest">Sessions</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-amber-400 uppercase tracking-widest">Last Visit</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-amber-400 uppercase tracking-widest">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="patients-tbody" class="divide-y divide-white/5">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Patient Detail Modal -->
+    <div id="patient-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        <div class="bg-[#0a101f] border border-white/10 rounded-[2rem] max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl shadow-amber-500/20">
+            <div class="bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-amber-500/20 p-6 border-b border-white/10 sticky top-0 backdrop-blur-xl z-10">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-2xl font-serif font-bold text-slate-100" id="modal-title">Patient Details</h2>
+                    <button onclick="closeModal()" class="text-slate-400 hover:text-slate-100 hover:bg-white/10 p-2 rounded-lg transition-all">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="modal-content" class="p-6 space-y-6">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const BACKEND_URL = "http://localhost:3000";
+        let allPatients = [];
+
+        // Mouse tracking for glow effect
+        document.addEventListener('mousemove', (e) => {
+            const glow = document.getElementById('cursor-glow');
+            requestAnimationFrame(() => {
+                glow.style.transform = `translate(${e.clientX - 300}px, ${e.clientY - 300}px)`;
+            });
+        });
+
+        async function checkAuth() {
+            const token = localStorage.getItem('adminToken');
+            if (!token) {
+                window.location.href = '/admin-login.html';
+                return false;
+            }
+            return true;
+        }
+
+        const RELATIONSHIP_LABELS = {
+            parent: 'Parent',
+            spouse: 'Spouse',
+            child: 'Child',
+            sibling: 'Sibling',
+            guardian: 'Legal Guardian',
+            caregiver: 'Professional Caregiver',
+            other: 'Other'
+        };
+
+        async function loadCaregiverRequests() {
+            const token = localStorage.getItem('adminToken');
+
+            try {
+                const response = await fetch(`${BACKEND_URL}/admin/caregiver-requests`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (!response.ok) throw new Error('Failed to load caregiver requests');
+
+                const data = await response.json();
+                displayCaregiverRequests(data.requests || []);
+            } catch (error) {
+                console.error('Error loading caregiver requests:', error);
+            }
+        }
+
+        function displayCaregiverRequests(requests) {
+            const tbody = document.getElementById('caregiver-requests-tbody');
+            const badge = document.getElementById('caregiver-pending-badge');
+            tbody.innerHTML = '';
+
+            const pendingCount = requests.filter(r => r.status === 'pending_review').length;
+            if (pendingCount > 0) {
+                badge.textContent = `${pendingCount} pending review`;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            if (requests.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="px-6 py-12 text-center text-slate-400">
+                            <p class="text-lg font-semibold">No caregiver access requests yet</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            requests.forEach(req => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-white/5 transition-colors';
+
+                const statusBadge = {
+                    pending_review: '<span class="px-3 py-1 rounded-full text-xs font-bold border bg-amber-500/20 text-amber-300 border-amber-500/30">⏳ Pending</span>',
+                    approved: '<span class="px-3 py-1 rounded-full text-xs font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/30">✓ Approved</span>',
+                    rejected: '<span class="px-3 py-1 rounded-full text-xs font-bold border bg-red-500/20 text-red-300 border-red-500/30">✕ Rejected</span>'
+                }[req.status] || req.status;
+
+                const relationshipLabel = req.relationship_type === 'other'
+                    ? (req.relationship_other_label || 'Other')
+                    : (RELATIONSHIP_LABELS[req.relationship_type] || req.relationship_type);
+
+                const actions = req.status === 'pending_review' ? `
+                    <div class="flex gap-2 flex-wrap">
+                        <button onclick="viewCaregiverDocument('${req.id}')"
+                                class="px-3 py-2 bg-white/5 border border-white/10 text-slate-300 rounded-lg hover:bg-white/10 transition-all font-semibold text-xs">
+                            📄 Document
+                        </button>
+                        <button onclick="approveCaregiverRequest('${req.id}')"
+                                class="px-3 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-900 rounded-lg hover:shadow-lg transition-all font-semibold text-xs">
+                            Approve
+                        </button>
+                        <button onclick="rejectCaregiverRequest('${req.id}')"
+                                class="px-3 py-2 bg-gradient-to-r from-red-500 to-rose-500 text-white rounded-lg hover:shadow-lg transition-all font-semibold text-xs">
+                            Reject
+                        </button>
+                    </div>
+                ` : `
+                    <button onclick="viewCaregiverDocument('${req.id}')"
+                            class="px-3 py-2 bg-white/5 border border-white/10 text-slate-300 rounded-lg hover:bg-white/10 transition-all font-semibold text-xs">
+                        📄 Document
+                    </button>
+                `;
+
+                tr.innerHTML = `
+                    <td class="px-6 py-4">
+                        <p class="font-semibold text-slate-100">${req.caregiver_name}</p>
+                        <p class="text-xs text-slate-500">${req.caregiver_email}</p>
+                    </td>
+                    <td class="px-6 py-4 text-slate-300">${relationshipLabel}</td>
+                    <td class="px-6 py-4">
+                        <p class="font-semibold text-slate-100">${req.patient_name}</p>
+                        <p class="text-xs text-slate-500">${req.patient_email}</p>
+                    </td>
+                    <td class="px-6 py-4 text-slate-400 text-sm">${req.submitted_at ? new Date(req.submitted_at).toLocaleDateString() : 'N/A'}</td>
+                    <td class="px-6 py-4">${statusBadge}</td>
+                    <td class="px-6 py-4">${actions}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function viewCaregiverDocument(requestId) {
+            const token = localStorage.getItem('adminToken');
+            try {
+                const response = await fetch(`${BACKEND_URL}/admin/caregiver-requests/${requestId}/document`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (!response.ok) throw new Error('Document not available');
+
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                window.open(url, '_blank');
+            } catch (error) {
+                console.error('Error loading document:', error);
+                alert('Failed to load verification document.');
+            }
+        }
+
+        async function approveCaregiverRequest(requestId) {
+            if (!confirm('Approve this caregiver\'s access request?')) return;
+            const token = localStorage.getItem('adminToken');
+
+            try {
+                const response = await fetch(`${BACKEND_URL}/admin/caregiver-requests/${requestId}/approve`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (!response.ok) throw new Error('Failed to approve request');
+
+                const data = await response.json();
+                if (!data.patient_linked) {
+                    alert('Approved. Note: no existing patient account matched that email yet - it will link automatically once that person registers.');
+                }
+                loadCaregiverRequests();
+            } catch (error) {
+                console.error('Error approving request:', error);
+                alert('Failed to approve request: ' + error.message);
+            }
+        }
+
+        async function rejectCaregiverRequest(requestId) {
+            const reason = prompt('Reason for rejecting this request (shown to the caregiver):');
+            if (reason === null) return;
+            const token = localStorage.getItem('adminToken');
+
+            try {
+                const response = await fetch(`${BACKEND_URL}/admin/caregiver-requests/${requestId}/reject`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ reason })
+                });
+                if (!response.ok) throw new Error('Failed to reject request');
+                loadCaregiverRequests();
+            } catch (error) {
+                console.error('Error rejecting request:', error);
+                alert('Failed to reject request: ' + error.message);
+            }
+        }
+
+        async function loadDashboard() {
+            if (!await checkAuth()) return;
+
+            const token = localStorage.getItem('adminToken');
+
+            try {
+                const response = await fetch(`${BACKEND_URL}/admin/dashboard`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (!response.ok) throw new Error('Failed to load dashboard');
+
+                const data = await response.json();
+                
+                document.getElementById('total-patients').textContent = data.totalPatients;
+                document.getElementById('total-sessions').textContent = data.totalSessions;
+                document.getElementById('completed-sessions').textContent = data.completedSessions;
+                
+                allPatients = data.patients;
+                displayPatients(allPatients);
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to load dashboard: ' + error.message);
+            }
+        }
+
+        function displayPatients(patients) {
+            const tbody = document.getElementById('patients-tbody');
+            tbody.innerHTML = '';
+
+            if (patients.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="px-6 py-12 text-center text-slate-400">
+                            <svg class="w-16 h-16 mx-auto mb-4 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                            </svg>
+                            <p class="text-lg font-semibold">No patients found</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            patients.forEach(patient => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-white/5 transition-colors';
+                tr.innerHTML = `
+                    <td class="px-6 py-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-gradient-to-br from-amber-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
+                                ${patient.name.charAt(0).toUpperCase()}
+                            </div>
+                            <span class="font-semibold text-slate-100">${patient.name}</span>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 text-slate-400">${patient.email}</td>
+                    <td class="px-6 py-4">
+                        <span class="bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm font-semibold">
+                            ${patient.sessionCount} sessions
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 text-slate-400">
+                        ${patient.lastVisit ? new Date(patient.lastVisit).toLocaleDateString() : 'N/A'}
+                    </td>
+                    <td class="px-6 py-4">
+    <div class="flex gap-2">
+        <button onclick="viewPatient('${patient.userId}')" 
+                class="px-4 py-2 bg-gradient-to-r from-amber-500 to-purple-500 text-slate-900 rounded-lg hover:shadow-lg transition-all font-semibold text-sm">
+            View Details
+        </button>
+        <button onclick="showReportModal('${patient.userId}')" 
+                class="px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-900 rounded-lg hover:shadow-lg transition-all font-semibold text-sm">
+            📄 Reports
+        </button>
+    </div>
+</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function viewPatient(userId) {
+            const token = localStorage.getItem('adminToken');
+
+            try {
+                const response = await fetch(`${BACKEND_URL}/admin/patient/${userId}`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (!response.ok) throw new Error('Failed to load patient details');
+
+                const patient = await response.json();
+                
+                document.getElementById('modal-title').textContent = `${patient.name}'s Journey`;
+                
+                const modalContent = document.getElementById('modal-content');
+                modalContent.innerHTML = `
+                    <!-- Patient Info -->
+                    <div class="bg-slate-900/50 border border-white/10 rounded-2xl p-6">
+                        <h3 class="text-lg font-bold text-amber-400 mb-4 uppercase tracking-widest">Basic Information</h3>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <p class="text-sm text-slate-500 mb-1">Email Address</p>
+                                <p class="font-semibold text-slate-100">${patient.email}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500 mb-1">Total Sessions</p>
+                                <p class="font-semibold text-slate-100">${patient.sessions.length}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sessions -->
+                    <div>
+                        <h3 class="text-lg font-bold text-amber-400 mb-4 uppercase tracking-widest">Session History</h3>
+                        <div class="space-y-4">
+                            ${patient.sessions.length === 0 ? `
+                                <div class="text-center py-8 text-slate-400">
+                                    <p>No sessions recorded yet</p>
+                                </div>
+                            ` : patient.sessions.map(session => `
+                                <div class="bg-slate-900/50 border border-white/10 rounded-2xl p-5 hover:border-purple-500/30 transition-all">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <div>
+                                            <h4 class="font-bold text-slate-100 text-lg">${session.name}</h4>
+                                            <p class="text-sm text-purple-400 font-semibold mt-1">${session.phase}</p>
+                                        </div>
+                                        <span class="px-3 py-1 rounded-full text-xs font-bold border ${
+                                            session.completed 
+                                                ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' 
+                                                : 'bg-amber-500/20 text-amber-300 border-amber-500/30'
+                                        }">
+                                            ${session.completed ? '✓ Completed' : '⏳ In Progress'}
+                                        </span>
+                                    </div>
+
+                                    ${session.problems && session.problems.length > 0 ? `
+                                        <div class="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
+                                            <p class="text-sm font-semibold text-red-300 mb-2">Reported Issues:</p>
+                                            <ul class="list-disc list-inside text-sm text-slate-300 space-y-1">
+                                                ${session.problems.map(p => `<li>${p}</li>`).join('')}
+                                            </ul>
+                                        </div>
+                                    ` : ''}
+
+                                    ${session.chakras && session.chakras.length > 0 ? `
+                                        <div class="mb-4">
+                                            <p class="text-sm font-semibold text-slate-300 mb-2">Imbalanced Chakras:</p>
+                                            <div class="flex flex-wrap gap-2">
+                                                ${session.chakras.map(c => `
+                                                    <span class="bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-xs font-semibold">${c}</span>
+                                                `).join('')}
+                                            </div>
+                                        </div>
+                                    ` : ''}
+
+                                    <div class="flex items-center gap-2 text-xs text-slate-500 mt-3 pt-3 border-t border-white/5">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                        ${new Date(session.date).toLocaleString()}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                
+                document.getElementById('patient-modal').classList.remove('hidden');
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to load patient details: ' + error.message);
+            }
+        }
+        // Add after viewPatient function:
+
+async function showReportModal(userId) {
+    const token = localStorage.getItem('adminToken');
+
+    try {
+        const response = await fetch(`${BACKEND_URL}/admin/patient/${userId}/report`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            alert(error.error || 'No reports available');
+            return;
+        }
+
+        const reportData = await response.json();
+        showReportModal(reportData);
+
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to load patient report');
+    }
+}
+
+function showReportModal(reportData) {
+    document.getElementById('modal-title').textContent = `Reports: ${reportData.patientName}`;
+    
+    const modalContent = document.getElementById('modal-content');
+    modalContent.innerHTML = `
+        <!-- Download Buttons -->
+        <div class="flex gap-3 mb-6">
+            <button onclick='downloadReport(${JSON.stringify(reportData)}, "doctor")' 
+                    class="flex-1 px-4 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl hover:shadow-lg transition-all font-semibold">
+                📥 Doctor Report
+            </button>
+            <button onclick='downloadReport(${JSON.stringify(reportData)}, "user")' 
+                    class="flex-1 px-4 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl hover:shadow-lg transition-all font-semibold">
+                📥 Prescription
+            </button>
+            <button onclick='downloadAllReports(${JSON.stringify(reportData)})' 
+                    class="flex-1 px-4 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-xl hover:shadow-lg transition-all font-semibold">
+                📥 Complete
+            </button>
+        </div>
+
+        <!-- Chakras -->
+        ${reportData.chakras && reportData.chakras.length > 0 ? `
+            <div class="bg-purple-500/10 border border-purple-500/30 rounded-2xl p-5 mb-6">
+                <h3 class="text-lg font-bold text-purple-400 mb-3">🔮 Imbalanced Chakras</h3>
+                <div class="grid grid-cols-3 gap-2">
+                    ${reportData.chakras.map(c => `
+                        <span class="bg-purple-500/20 text-purple-300 px-3 py-2 rounded-lg text-sm text-center">${c.name || c}</span>
+                    `).join('')}
+                </div>
+            </div>
+        ` : ''}
+
+        <!-- Doctor Report -->
+        <div class="bg-slate-900/50 border border-cyan-500/30 rounded-2xl p-5 mb-6">
+            <h3 class="text-lg font-bold text-cyan-400 mb-3">🩺 Clinical Assessment</h3>
+            <pre class="whitespace-pre-wrap text-sm text-slate-300 bg-black/30 p-4 rounded-lg max-h-96 overflow-y-auto">${reportData.doctorReport || 'No report available'}</pre>
+        </div>
+
+        <!-- User Prescription -->
+        <div class="bg-slate-900/50 border border-emerald-500/30 rounded-2xl p-5">
+            <h3 class="text-lg font-bold text-emerald-400 mb-3">💊 Patient Prescription</h3>
+            <pre class="whitespace-pre-wrap text-sm text-slate-300 bg-black/30 p-4 rounded-lg max-h-96 overflow-y-auto">${reportData.userPrescription || 'No prescription available'}</pre>
+        </div>
+    `;
+    
+    document.getElementById('patient-modal').classList.remove('hidden');
+}
+
+function downloadReport(reportData, type) {
+    const content = type === 'doctor' ? reportData.doctorReport : reportData.userPrescription;
+    const filename = `${type}_report_${reportData.patientName.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.txt`;
+    
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+}
+
+function downloadAllReports(reportData) {
+    const content = `
+PATIENT COMPREHENSIVE REPORT
+============================
+Patient: ${reportData.patientName}
+Email: ${reportData.patientEmail}
+Date: ${new Date(reportData.sessionDate).toLocaleString()}
+
+CLINICAL ASSESSMENT
+===================
+${reportData.doctorReport}
+
+${'='.repeat(80)}
+
+PATIENT PRESCRIPTION
+====================
+${reportData.userPrescription}
+`;
+
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `complete_report_${reportData.patientName.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+}
+
+// Update displayPatients function - replace Actions <td>:
+// Add this in the innerHTML of the <tr>:
+
+        function closeModal() {
+            document.getElementById('patient-modal').classList.add('hidden');
+        }
+
+        function logout() {
+            localStorage.removeItem('adminToken');
+            localStorage.removeItem('adminUser');
+            window.location.href = '/admin-login.html';
+        }
+
+        // Search functionality
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = allPatients.filter(p =>
+                p.name.toLowerCase().includes(searchTerm) ||
+                p.email.toLowerCase().includes(searchTerm)
+            );
+            displayPatients(filtered);
+        });
+
+        // Load dashboard on page load
+        loadDashboard();
+        loadCaregiverRequests();
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "_schema_version": "2.0",
+  "_status": "proposed_clinical_review_required",
+  "unit_score": "indicator strength x patient intensity x evidence reliability",
+  "strength_weights": {
+    "Strong": 1.0,
+    "Medium": 0.6,
+    "Weak": 0.3
+  },
+  "intensity_weights": {
+    "Mild": 0.4,
+    "Moderate": 0.7,
+    "Severe": 1.0
+  },
+  "reliability_weights": {
+    "Confirmed": 1.0,
+    "Resolved After Clarification": 1.0,
+    "Provisional": 0.4,
+    "Unresolved": 0.0,
+    "Historical": 0.0
+  },
+  "combination": "Use diminishing returns within independent correlation groups. Repeating the same problem must not count as many independent pieces of evidence.",
+  "direction": {
+    "meaningful_threshold": 0.2,
+    "conflict_margin": 0.1
+  },
+  "severity_bands": {
+    "0.00-0.20": "Minimal / no meaningful evidence",
+    "0.20-0.45": "Mild",
+    "0.45-0.70": "Moderate",
+    "0.70-1.00": "Severe"
+  },
+  "confidence": {
+    "weights": {
+      "coverage": 0.3,
+      "consistency": 0.3,
+      "resolution": 0.25,
+      "completeness": 0.15
+    },
+    "labels": {
+      "80-100": "High",
+      "60-79": "Moderate",
+      "0-59": "Low"
+    },
+    "correction": "If there is no relevant evidence, confidence must be Low / Not assessed. Do not award full completeness merely because nothing was identified."
+  },
+  "imbalance_gate": {
+    "confirmed": "winning directional score >= 0.45 AND confidence >= 60% AND at least 2 independent supporting evidence units",
+    "high_priority_single": "A Strong + Severe + Confirmed unit with score >= 0.70 may be shown as a high-priority candidate, but seek corroboration before final top-two confirmation.",
+    "conflicted": "If both directions are meaningful and within the conflict margin, do not call the chakra imbalanced; ask clarification.",
+    "top_two": "Select at most two chakras that pass the gate. If fewer than two pass, continue assessment or report that two supported findings were not established.",
+    "therapist_stop": "The therapist may stop at any time; stopping does not make an unsupported chakra an imbalance."
+  }
+}

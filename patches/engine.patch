@@ -1,0 +1,962 @@
+diff --git a/engine/app/core/config.py b/engine/app/core/config.py
+index add2842..c7edc48 100644
+--- a/engine/app/core/config.py
++++ b/engine/app/core/config.py
+@@ -52,6 +52,28 @@ class Settings(BaseSettings):
+     # Weight used when the patient did not state intensity (0.4 == Mild). The item is still
+     # listed as a pending detail so a follow-up question asks for it. Set 0 to score nothing.
+     unstated_intensity_weight: float = 0.4
++    # An ambiguous indicator (e.g. Anxiety -> Root / Solar Plexus / Throat) that has not been
++    # clarified is counted at FULL weight for a chakra only when that same chakra already has
++    # its own confirmed, unambiguous evidence in this session (corroboration). Every other
++    # chakra it maps to keeps the provisional weight. Shown in the trace. Set False to disable.
++    resolve_ambiguity_by_corroboration: bool = True
++    # When the patient did not state intensity, use the patient's OWN baseline rating for the
++    # same construct (baseline anxiety -> Anxiety, energy -> Fatigue, sleep quality -> Insomnia).
++    intensity_from_baseline: bool = True
++
++    # ---- Evidence matching -------------------------------------------------
++    # A "partial" LLM match (closely related, not identical) is recorded as PROVISIONAL
++    # evidence (reduced weight) instead of being thrown away. Only the best partial per concept.
++    record_partial_matches_as_provisional: bool = True
++    # If the LLM validator is unavailable (timeout/error), the single best retrieval match is
++    # kept as PROVISIONAL evidence only when its similarity is at least this high.
++    validator_failure_min_similarity: float = 0.70
++    # Analyse the intake text (patient form notes + therapist context) sent with the first
++    # quadrant recommendation as session evidence. It is otherwise never scored.
++    analyse_intake_as_evidence: bool = True
++
++    # ---- Logging --------------------------------------------------------------
++    log_level: str = "INFO"
+ 
+     # ---- Deep dive ----------------------------------------------------------
+     # Hard stop so deep dive can never become endless questioning (PDF Part 53).
+diff --git a/engine/app/core/logging_config.py b/engine/app/core/logging_config.py
+index e69de29..d5a9708 100644
+--- a/engine/app/core/logging_config.py
++++ b/engine/app/core/logging_config.py
+@@ -0,0 +1,25 @@
++"""Logging setup for the engine.
++
++Without this, Python only prints WARNING and above, so every INFO diagnostic
++(CONCEPT CANONICAL MATCH, FINAL CHAKRA GATE, RAG QUERY ...) was invisible.
++Level comes from settings.log_level (env LOG_LEVEL, default INFO).
++"""
++import logging
++
++_CONFIGURED = False
++
++
++def setup_logging(level: str | None = None) -> None:
++    global _CONFIGURED
++    if _CONFIGURED:
++        return
++    from app.core.config import settings
++    lvl = getattr(logging, str(level or settings.log_level or "INFO").upper(), logging.INFO)
++    handler = logging.StreamHandler()
++    handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s [%(name)s] %(message)s", "%H:%M:%S"))
++    anahat = logging.getLogger("anahat")
++    anahat.setLevel(lvl)
++    if not anahat.handlers:
++        anahat.addHandler(handler)
++    anahat.propagate = False
++    _CONFIGURED = True
+diff --git a/engine/app/engine/scoring_engine.py b/engine/app/engine/scoring_engine.py
+index a5e25c9..42636aa 100644
+--- a/engine/app/engine/scoring_engine.py
++++ b/engine/app/engine/scoring_engine.py
+@@ -80,6 +80,9 @@ class ScoringEngine:
+         self.score_unresolved_as_provisional = bool(getattr(settings, "score_unresolved_as_provisional", True))
+         self.unstated_intensity_weight = float(getattr(settings, "unstated_intensity_weight", 0.4))
+         self.provisional_weight = float(self.reliability.get("Provisional", DEFAULT_RELIABILITY["Provisional"]))
++        self.confirmed_weight = float(self.reliability.get("Confirmed", DEFAULT_RELIABILITY["Confirmed"]))
++        self.resolve_by_corroboration = bool(getattr(settings, "resolve_ambiguity_by_corroboration", True))
++        self.intensity_from_baseline = bool(getattr(settings, "intensity_from_baseline", True))
+         self.repo = IndicatorRepository(kb)
+         self.chakras = kb.chakra_names
+         self.n_quadrants = max(1, len(getattr(kb, "quadrants", []) or []) or 10)
+@@ -119,6 +122,101 @@ class ScoringEngine:
+             records = [i for i in records if i.chakra == ev.selected_chakra]
+         return records
+ 
++    # Baseline construct -> (KB term keyword, rating -> intensity). Only the patient's own
++    # self-rating of the SAME construct is used; nothing is inferred across constructs.
++    @staticmethod
++    def _baseline_intensity(term: str | None, baseline: dict | None):
++        if not baseline or not term:
++            return None, None
++        t = (term or "").lower()
++
++        def scale(value, inverted=False):
++            try:
++                v = round(float(value))
++            except (TypeError, ValueError):
++                return None
++            if not 1 <= v <= 10:
++                return None
++            if inverted:
++                v = 11 - v
++            return "Severe" if v >= 7 else "Moderate" if v >= 4 else "Mild"
++
++        if "anxiety" in t and baseline.get("anxiety") is not None:
++            return scale(baseline["anxiety"]), f"baseline anxiety {baseline['anxiety']}/10"
++        if "fatigue" in t and baseline.get("energy") is not None:
++            level = scale(baseline["energy"], inverted=True)
++            return (level if level != "Mild" else None), f"baseline energy {baseline['energy']}/10"
++        if "insomnia" in t and baseline.get("sleep_quality"):
++            level = {"poor": "Moderate", "fair": "Mild"}.get(str(baseline["sleep_quality"]).lower())
++            return level, f"baseline sleep quality {baseline['sleep_quality']}"
++        return None, None
++
++    def _group(self, ev) -> str:
++        return ev.correlation_group or self.repo.group_key(ev.canonical_indicator_id)
++
++    def _corroboration(self, evidence) -> dict[tuple, float]:
++        """{(chakra, observation group): weight} of confirmed, unambiguous, current, positive,
++        directional evidence. Kept per group so an ambiguous item can never be corroborated by
++        its own observation (self-support)."""
++        per_group: dict[tuple, float] = {}
++        for ev in evidence:
++            if self._kind(ev) != "scorable":
++                continue
++            if ev.status not in (EvidenceStatus.CONFIRMED, EvidenceStatus.RESOLVED_AFTER_CLARIFICATION):
++                continue
++            group = self._group(ev)
++            for item in self.repo.get_by_id(ev.canonical_indicator_id):
++                if item.state_raw not in DIRECTIONS:
++                    continue
++                if ev.status == EvidenceStatus.RESOLVED_AFTER_CLARIFICATION and ev.selected_chakra \
++                        and item.chakra != ev.selected_chakra:
++                    continue
++                w = float(self.strength.get(item.association_rating, 0.0)) * float(
++                    self.intensity.get(ev.intensity, self.unstated_intensity_weight))
++                key = (item.chakra, group)
++                per_group[key] = max(per_group.get(key, 0.0), w)
++        return per_group
++
++    def _clarified_groups(self, evidence) -> set[str]:
++        """Observation groups the therapist/patient already clarified. Twin entries of such a
++        group that were NOT resolved (they do not map to the chosen chakra) must not score."""
++        return {self._group(ev) for ev in evidence
++                if ev.status == EvidenceStatus.RESOLVED_AFTER_CLARIFICATION and not getattr(ev, "superseded", False)}
++
++    def _corroborated_targets(self, evidence, per_group: dict[tuple, float],
++                              clarified: set[str]) -> dict[str, str | None]:
++        """For each unclarified ambiguous observation (all twin KB entries of one patient
++        statement together): the ONE chakra with the strongest independent confirmed support
++        from OTHER observations. Ties or no support -> None (stays provisional)."""
++        groups: dict[str, list] = defaultdict(list)
++        for ev in evidence:
++            if ev.status == EvidenceStatus.UNRESOLVED and not getattr(ev, "superseded", False):
++                groups[self._group(ev)].append(ev)
++        out = {}
++        for group, members in groups.items():
++            if group in clarified:
++                continue
++            support: dict[str, list[float]] = defaultdict(list)
++            for (chakra, other_group), w in per_group.items():
++                if other_group != group:
++                    support[chakra].append(w)
++            combined = {chakra: self._combine(vals) for chakra, vals in support.items()}
++            options = {i.chakra for ev in members for i in self.repo.get_by_id(ev.canonical_indicator_id)
++                       if i.state_raw in DIRECTIONS}
++            target = self._pick_target(options, combined)
++            for ev in members:
++                out[ev.evidence_id] = target
++        return out
++
++    @staticmethod
++    def _pick_target(options, support: dict[str, float]) -> str | None:
++        ranked = sorted(((support.get(c, 0.0), c) for c in options), reverse=True)
++        if not ranked or ranked[0][0] <= 0:
++            return None
++        if len(ranked) > 1 and abs(ranked[0][0] - ranked[1][0]) < 1e-9:
++            return None
++        return ranked[0][1]
++
+     @staticmethod
+     def _quote(ev, responses):
+         if getattr(ev, "quote", None):
+@@ -149,8 +247,10 @@ class ScoringEngine:
+ 
+     # --------------------------------------------------------------------- score
+     def score(self, evidence, *, contradictions=None, assessed_quadrants=None, responses=None,
+-              assessment_context=None):
++              assessment_context=None, baseline=None):
+         contradictions = contradictions or []
++        if baseline is None and assessment_context is not None:
++            baseline = assessment_context.get("baseline")
+         assessed = set(assessed_quadrants or [])
+         n_assessed = len(assessed)
+         adequately_assessed = n_assessed >= self.balanced_min_quadrants
+@@ -214,6 +314,10 @@ class ScoringEngine:
+             "reported after status; not a gate", "confidence component only; not a gate",
+         )
+ 
++        clarified_groups = self._clarified_groups(evidence)
++        support = self._corroboration(evidence) if self.resolve_by_corroboration else {}
++        corroborated_target = self._corroborated_targets(evidence, support, clarified_groups) if support else {}
++
+         for chakra in self.chakras:
+             trace: list[TraceItem] = []
+             negative, historical, unresolved, nondirectional = [], [], [], []
+@@ -240,16 +344,34 @@ class ScoringEngine:
+                 ind = next((item for item in assoc if item.state_raw in DIRECTIONS), None) or assoc[0]
+                 notes = []
+                 provisional = False
++                corroborated_here = False
++                if ev.status == EvidenceStatus.UNRESOLVED and self._group(ev) in clarified_groups:
++                    # A twin KB entry of a statement that was already clarified to another chakra.
++                    continue
+                 if ev.status == EvidenceStatus.UNRESOLVED:
+-                    if not self.score_unresolved_as_provisional:
++                    if corroborated_target.get(ev.evidence_id) == chakra and ind.state_raw in DIRECTIONS:
++                        corroborated_here = True
++                        notes.append("ambiguous indicator attributed to this chakra at full weight: it has the "
++                                     "strongest corroborating confirmed evidence in this session")
++                    elif not self.score_unresolved_as_provisional:
+                         unresolved.append(ev.evidence_id)
+                         continue
++                    else:
++                        provisional = True
++                        unresolved.append(ev.evidence_id)
++                        notes.append("provisional: waiting for KB clarification, counted at reduced weight")
++                elif ev.status == EvidenceStatus.PROVISIONAL:
+                     provisional = True
+-                    unresolved.append(ev.evidence_id)
+-                    notes.append("provisional: waiting for KB clarification, counted at reduced weight")
++                    notes.append("provisional: closely related (partial) match, counted at reduced weight")
+                 elif ev.status not in (EvidenceStatus.CONFIRMED, EvidenceStatus.RESOLVED_AFTER_CLARIFICATION):
+                     continue
+-                if not ev.intensity:
++                intensity_label = ev.intensity
++                if not intensity_label and self.intensity_from_baseline:
++                    derived, source = self._baseline_intensity(ev.indicator_term or ind.term, baseline)
++                    if derived:
++                        intensity_label = derived
++                        notes.append(f"intensity {derived} taken from the patient's {source}")
++                if not intensity_label:
+                     pending.append({"evidence_id": ev.evidence_id, "indicator": ev.indicator_term,
+                                     "missing": ["intensity"]})
+                     if self.unstated_intensity_weight <= 0:
+@@ -258,10 +380,15 @@ class ScoringEngine:
+                     iw_raw = self.unstated_intensity_weight
+                     notes.append(f"intensity not stated: scored at floor weight {iw_raw:.2f}; ask the patient")
+                 else:
+-                    iw_raw = self.intensity.get(ev.intensity, self.unstated_intensity_weight)
++                    iw_raw = self.intensity.get(intensity_label, self.unstated_intensity_weight)
+                 relevant.append(ev)
+                 sw = float(self.strength.get(ind.association_rating, 0.0))
+-                rw = self.provisional_weight if provisional else self._reliability_weight(ev.status.value)
++                if corroborated_here:
++                    rw = self.confirmed_weight
++                elif provisional:
++                    rw = self.provisional_weight
++                else:
++                    rw = self._reliability_weight(ev.status.value)
+                 if rw == 0.0:
+                     unresolved.append(ev.evidence_id); notes.append("unresolved: contributes 0 until clarified")
+                 iw = float(iw_raw)
+@@ -274,7 +401,7 @@ class ScoringEngine:
+                     evidence_id=ev.evidence_id, response_id=ev.response_id, quote=self._quote(ev, responses),
+                     indicator_id=ev.canonical_indicator_id, term=ev.indicator_term or ind.term, domain=ind.domain,
+                     kb_state=ind.state_raw, directional=directional, strength=ind.association_rating,
+-                    strength_weight=sw, intensity=ev.intensity, intensity_weight=iw_raw,
++                    strength_weight=sw, intensity=intensity_label, intensity_weight=iw_raw,
+                     evidence_status=ev.status.value, reliability_weight=rw, contribution=contribution, note=note))
+ 
+             # ---- collapse correlated evidence: one underlying observation = one unit
+@@ -315,8 +442,16 @@ class ScoringEngine:
+             direction, high_priority, gray = None, False, False
+             has_open_items = bool(unresolved or pending)
+ 
+-            deficient_meaningful = deficient >= self.meaningful_threshold
+-            excess_meaningful = excess >= self.meaningful_threshold
++            # A direction only counts when at least one FIRM item (confirmed, clarified or
++            # corroborated: full reliability) supports THAT direction. Support made only of
++            # provisional / unclarified evidence stays UNRESOLVED and asks for clarification.
++            def firm(state=None):
++                return any(t.contribution > 0 and (t.reliability_weight or 0) >= self.confirmed_weight
++                           and (state is None or t.kb_state == state) for t in trace)
++            raw_deficient_meaningful = deficient >= self.meaningful_threshold
++            raw_excess_meaningful = excess >= self.meaningful_threshold
++            deficient_meaningful = raw_deficient_meaningful and firm("Deficient")
++            excess_meaningful = raw_excess_meaningful and firm("Excess")
+             gate = deficient_meaningful or excess_meaningful
+             mapped_count = sum(1 for ev in evidence if self._associations(ev, chakra))
+             gate_failures = []
+@@ -332,11 +467,17 @@ class ScoringEngine:
+ 
+             # Presence-only support: evidence exists and is meaningful, but the KB gives no
+             # Deficient/Excess for it. Report the chakra as imbalanced with direction unresolved.
+-            presence_only_pass = ((not gate) and presence >= self.meaningful_threshold
+-                                  and not polarity_conflict)
++            raw_presence_only = ((not gate) and not raw_deficient_meaningful and not raw_excess_meaningful
++                                 and presence >= self.meaningful_threshold and not polarity_conflict)
++            presence_only_pass = raw_presence_only and firm()
+             if presence_only_pass:
+                 gate_reason = (f"Presence {presence:.2f} reached {self.meaningful_threshold:.2f} but the matched "
+                                "indicators carry no Deficient/Excess state: direction unresolved.")
++            provisional_only = (not gate and not presence_only_pass
++                                and (raw_deficient_meaningful or raw_excess_meaningful or raw_presence_only))
++            if provisional_only:
++                gate_reason = ("Score reached the threshold, but only from provisional / unclarified evidence: "
++                               "needs one confirmed indicator or a clarification answer.")
+             if gate:
+                 if deficient_meaningful and excess_meaningful:
+                     stronger, weaker = max(deficient, excess), min(deficient, excess)
+@@ -374,7 +515,11 @@ class ScoringEngine:
+                     code = "MISSING_DETAILS"
+                     reasons.append("Severity not yet stated for some evidence: ask before scoring.")
+                 if unresolved:
+-                    reasons.append("Some evidence is unresolved/unscored and contributes nothing yet.")
++                    reasons.append("Some evidence is still unclarified or unscored, so it counts at reduced weight or not at all.")
++                if provisional_only:
++                    code = "PROVISIONAL_ONLY"
++                    reasons.append("Possible imbalance supported only by provisional evidence: the therapist can "
++                                   "confirm the evidence, or ask the clarification question, before it is called.")
+                 top_item = max(trace, key=lambda t: t.contribution, default=None)
+                 if (units == 1 and top_item and top_item.strength == "Strong" and top_item.intensity == "Severe"
+                         and top_item.reliability_weight == 1.0 and top_item.contribution >= self.high_priority_single):
+@@ -400,6 +545,11 @@ class ScoringEngine:
+             if "provisional" in counted_notes:
+                 reasons.append("Part of this score rests on provisional (not yet clarified) evidence: confirm with "
+                                "the KB disambiguation question.")
++            if "corroborated" in counted_notes:
++                reasons.append("An ambiguous indicator was counted for this chakra because other confirmed evidence "
++                               "points to the same chakra; the therapist can still clarify it.")
++            if "taken from the patient's baseline" in counted_notes:
++                reasons.append("Intensity for part of this score comes from the patient's own baseline rating.")
+             if "intensity not stated" in counted_notes:
+                 reasons.append("Part of this score uses a floor weight because intensity was not stated: ask how strong it is.")
+             passed = gate or presence_only_pass
+@@ -438,7 +588,8 @@ class ScoringEngine:
+                  for item in trace],
+             )
+ 
+-        supported = [r.chakra for r in results if r.status.startswith("IMBALANCED")]
++        # Strongest finding first (KB design reports the top findings to the therapist).
++        supported = [r.chakra for r in sorted(results, key=lambda r: -r.score) if r.status.startswith("IMBALANCED")]
+         directional = [r.chakra for r in results if r.status in ("IMBALANCED_DEFICIENT", "IMBALANCED_EXCESS")]
+         ranking = [r.chakra for r in sorted(results, key=lambda r: (-r.presence_score, r.chakra))]
+         logging.getLogger("anahat.scoring").debug(
+diff --git a/engine/app/knowledge/indicator_repository.py b/engine/app/knowledge/indicator_repository.py
+index a7baa09..7b4d020 100644
+--- a/engine/app/knowledge/indicator_repository.py
++++ b/engine/app/knowledge/indicator_repository.py
+@@ -60,6 +60,20 @@ class IndicatorRepository:
+     def find_exact_term(self, term: str) -> list[Indicator]:
+         return self.kb.find_by_term(term)
+ 
++    @staticmethod
++    def term_variants(term: str | None) -> set[str]:
++        """Exact sub-forms written INTO a canonical KB term with '/', e.g. 'Silence / Not Speaking
++        Up' -> {'silence not speaking up', 'silence', 'not speaking up'}. Bracketed qualifiers are
++        kept ('Allergies (food)' never becomes plain 'allergies'). Nothing is added from outside
++        the KB term's own words."""
++        raw = term or ""
++        variants = {normalize_term(raw)}
++        for part in re.split(r"\s*/\s*", raw):
++            part = normalize_term(part)
++            if part:
++                variants.add(part)
++        return {v for v in variants if v}
++
+     def find_for_concept(self, concept: str) -> tuple[list[Indicator], str]:
+         normalized = normalize_term(concept)
+         target = _CONCEPT_ALIASES.get(normalized, normalized)
+@@ -67,7 +81,15 @@ class IndicatorRepository:
+             indicator for indicator in self.kb.indicators
+             if normalize_term(indicator.term) == target
+         ]
+-        return matches, "canonical_term" if target == normalized else "kb_grounded_alias"
++        if matches:
++            return matches, "canonical_term" if target == normalized else "kb_grounded_alias"
++        # Second pass: one of the sub-forms the KB term itself lists ("A / B").
++        # Single-word sub-forms must be at least 5 letters to avoid trivial collisions.
++        matches = [
++            indicator for indicator in self.kb.indicators
++            if any(v == target and (" " in v or len(v) >= 5) for v in self.term_variants(indicator.term))
++        ]
++        return matches, "kb_term_variant"
+ 
+     def validate_candidate(self, indicator_id: str, payload: dict | None = None) -> bool:
+         records = self.get_by_id(indicator_id)
+diff --git a/engine/app/llm/prompts.py b/engine/app/llm/prompts.py
+index 919b8b3..187e846 100644
+--- a/engine/app/llm/prompts.py
++++ b/engine/app/llm/prompts.py
+@@ -32,7 +32,9 @@ VALIDATION_SYSTEM_PROMPT = """
+ You are a strict matching checker. You receive a patient's statement, one concept
+ extracted from it, and a CLOSED list of candidate terms (id + name + description).
+ For EACH candidate decide whether it names the same thing the patient described:
+-  exact   - the same symptom / emotion / behaviour
++  exact   - the same symptom / emotion / behaviour, even if the patient used everyday
++            words for it (e.g. "I stay quiet and don't say what I think" = "Silence / Not
++            Speaking Up"; "I'm scared people will judge me" = "Fear")
+   partial - closely related but not the same
+   none    - not what the patient described
+ Rules: use ONLY the ids in the list; never add ids; do not judge severity, cause,
+@@ -46,7 +48,11 @@ def build_extraction_prompt(text: str, context: dict | None = None) -> str:
+ 
+ 
+ def build_validation_prompt(text: str, concept: dict, candidates: list[dict]) -> str:
+-    lines = "\n".join(f"- {c['indicator_id']}: {c.get('term')} ({c.get('domain')})" for c in candidates)
++    lines = "\n".join(
++        f"- {c['indicator_id']}: {c.get('term')} ({c.get('domain')})"
++        + (f" - {c['description']}" if c.get("description") else "")
++        for c in candidates
++    )
+     return (f"{VALIDATION_SYSTEM_PROMPT}\n\nPatient statement:\n{text}\n\n"
+             f"Extracted concept: {concept.get('concept')}\n\nCandidates:\n{lines}")
+ 
+diff --git a/engine/app/main.py b/engine/app/main.py
+index f735e11..4fd7319 100644
+--- a/engine/app/main.py
++++ b/engine/app/main.py
+@@ -1,4 +1,7 @@
+ from fastapi import FastAPI
++from app.core.logging_config import setup_logging
++
++setup_logging()
+ from app.api.assessment_routes import router as assessment_router
+ from app.api.chakra_routes import router as chakra_router
+ from app.api.evidence_routes import router as evidence_router
+diff --git a/engine/app/retrieval/retriever.py b/engine/app/retrieval/retriever.py
+index 90b0514..bc0150f 100644
+--- a/engine/app/retrieval/retriever.py
++++ b/engine/app/retrieval/retriever.py
+@@ -13,7 +13,9 @@ class KnowledgeRetriever:
+         self.embedder = embedder
+         self.collection_name = collection_name or settings.qdrant_collection
+ 
+-    def search(self, query: str, top_k: int | None = None):
++    def search(self, query: str, top_k: int | None = None, query_filter=None):
++        """query_filter: optional qdrant_client.models.Filter applied INSIDE Qdrant, so the
++        top_k results are taken only from matching points (e.g. one quadrant's question bank)."""
+         if not query.strip():
+             return []
+         try:
+@@ -26,6 +28,7 @@ class KnowledgeRetriever:
+                     query=vector_list,
+                     limit=limit,
+                     with_payload=True,
++                    query_filter=query_filter,
+                 )
+                 return getattr(result, "points", result)
+             return self.client.search(
+@@ -33,6 +36,7 @@ class KnowledgeRetriever:
+                 query_vector=vector_list,
+                 limit=limit,
+                 with_payload=True,
++                query_filter=query_filter,
+             )
+         except Exception as exc:
+             raise RetrievalError(f"Qdrant retrieval failed: {exc}") from exc
+diff --git a/engine/app/services/assessment_service.py b/engine/app/services/assessment_service.py
+index ef2c8ec..bc4720b 100644
+--- a/engine/app/services/assessment_service.py
++++ b/engine/app/services/assessment_service.py
+@@ -46,12 +46,15 @@ NORMAL_QUADRANT_QUESTION_LIMIT = 3
+ # Retrieval is still ranked by semantic similarity; this only gives the
+ # metadata/quadrant validator enough candidates to find the requested bank.
+ QUESTION_RAG_RETRIEVAL_LIMIT = 100
++# Question banks emotions / thoughts / beliefs / relationships / past / future_plans have no
++# quadrant of their own; they are attached to the quadrant whose attributes they explore so
++# RAG can actually use them (they were previously always rejected as "wrong_quadrant").
+ QUESTION_BANK_ALIGNMENT_BY_QUADRANT = {
+-    "Nature": {"nature"},
+-    "Family": {"family"},
+-    "Social Circle": {"social_circle"},
++    "Nature": {"nature", "emotions", "thoughts", "beliefs"},
++    "Family": {"family", "relationships", "past"},
++    "Social Circle": {"social_circle", "relationships"},
+     "Personal Interests": {"personal_interests"},
+-    "Profession": {"profession", "career"},
++    "Profession": {"profession", "career", "future_plans"},
+     # The ingestion script maps healthy_habits.md into the Lifestyle
+     # quadrant, while its frontmatter retains the source alignment.
+     "Lifestyle": {"lifestyle", "healthy_habits"},
+@@ -368,16 +371,39 @@ class AssessmentService:
+         # patient has already reported.
+         confirmed_evidence = []
+         if hasattr(self, "evidence_engine"):
+-            for candidate in internal:
+-                validation = candidate.get("validation") or {}
+-                if not validation.get("llm_validated") or validation.get("match") != "exact":
+-                    continue
++            # Which candidates become evidence, and at what reliability:
++            #   exact LLM match                         -> CONFIRMED (ambiguous KB terms -> UNRESOLVED)
++            #   best "partial" match (no exact found)   -> PROVISIONAL (reduced weight)
++            #   validator unavailable, strong retrieval -> PROVISIONAL (reduced weight)
++            rank = {EvidenceStatus.CONFIRMED: 2, EvidenceStatus.PROVISIONAL: 1}
++            by_group = {}
++            for concept, cands in per_concept:
++                exact = [c for c in cands if (c.get("validation") or {}).get("llm_validated")
++                         and (c.get("validation") or {}).get("match") == "exact"]
++                chosen = [(c, EvidenceStatus.CONFIRMED) for c in exact]
++                if not chosen and settings.record_partial_matches_as_provisional:
++                    partial = [c for c in cands if (c.get("validation") or {}).get("match") in {"partial", "retrieval_only"}]
++                    if partial:
++                        best = max(partial, key=lambda c: c.get("score") or 0.0)
++                        chosen = [(best, EvidenceStatus.PROVISIONAL)]
++                for cand, status in chosen:
++                    # One record per canonical term per answer (twin KB entries such as SYM-009 /
++                    # EMO-008 'Anxiety' are created by confirm_candidate itself). If two concepts hit
++                    # the same term, the strongest match wins (exact beats partial).
++                    iid = (cand.get("payload") or {}).get("indicator_id")
++                    group = self.indicators.group_key(iid) if hasattr(self.indicators, "group_key") else iid
++                    if group not in by_group or rank[status] > rank[by_group[group][1]]:
++                        by_group[group] = (cand, status)
++            for candidate, planned_status in by_group.values():
++                if candidate not in ctx.candidates:
++                    ctx.candidates.append(candidate)
++                candidate["recorded_status"] = planned_status.value
+                 recorded = self.confirm_candidate(
+                     session_id,
+                     response.response_id,
+                     candidate["candidate_id"],
+                     confirmed=True,
+-                    status=EvidenceStatus.CONFIRMED,
++                    status=planned_status,
+                     confirmation_actor="patient",
+                 )
+                 if recorded.get("evidence"):
+@@ -430,6 +456,16 @@ class AssessmentService:
+         t = self.indicators.term(iid) if hasattr(self.indicators, "term") else None
+         return t or payload.get("ailment") or payload.get("term") or iid
+ 
++    def _describe(self, iid):
++        """Plain-language meaning of a KB indicator for the matching checker, with chakra and
++        direction words removed (the checker must never see chakra information)."""
++        records = self.indicators.get_by_id(iid) if hasattr(self.indicators, "get_by_id") else []
++        text = " ".join(dict.fromkeys(r.meaning for r in records if getattr(r, "meaning", None)))
++        text = re.sub(r"\b(?:root|sacral|solar plexus|heart|throat|third eye|crown)\s+chakra\b", "", text,
++                      flags=re.IGNORECASE)
++        text = re.sub(r"\b(?:chakras?|deficient|excess|deficiency)\b", "", text, flags=re.IGNORECASE)
++        return " ".join(text.split())[:300] or None
++
+     def _candidates_for(self, concept, text):
+         direct_matches, matching_strategy = self.indicators.find_for_concept(concept.concept)
+         if direct_matches:
+@@ -508,11 +544,24 @@ class AssessmentService:
+             return cands
+         listing = [{"indicator_id": c["payload"]["indicator_id"],
+                     "term": self._term(c["payload"]["indicator_id"], c["payload"]),
+-                    "domain": c["payload"].get("domain")} for c in cands]
++                    "domain": c["payload"].get("domain"),
++                    "description": self._describe(c["payload"]["indicator_id"])} for c in cands]
+         try:
+             verdict = fn(text, concept.model_dump(), listing)
+-        except Exception:  # noqa: BLE001 - degrade: keep retrieval order, mark as not validated
+-            return cands
++        except Exception as exc:  # noqa: BLE001 - degrade, but never silently lose the patient's signal
++            best = max(cands, key=lambda c: c.get("score") or 0.0)
++            keep = (best.get("score") or 0.0) >= settings.validator_failure_min_similarity
++            logging.getLogger("anahat.evidence").warning(
++                "CANDIDATE VALIDATION FAILED | concept=%s error=%s | best=%s score=%.3f | %s",
++                concept.concept, type(exc).__name__, best["payload"].get("indicator_id"),
++                best.get("score") or 0.0,
++                "kept as PROVISIONAL (strong retrieval match)" if keep else "dropped (similarity too low)",
++            )
++            if keep:
++                best["validation"] = {"llm_validated": False, "match": "retrieval_only",
++                                      "reason": "validator unavailable; strong retrieval similarity"}
++                return [best]
++            return []
+         allowed = {c["payload"]["indicator_id"] for c in cands}
+         judged = {j.indicator_id: j for j in verdict.judgements if j.indicator_id in allowed}  # ids outside the list are ignored
+         kept = []
+@@ -536,8 +585,8 @@ class AssessmentService:
+                "match": c["validation"].get("match"), "llm_validated": c["validation"]["llm_validated"],
+                "clarification_required": bool(amb.needs_clarification(iid)) if amb else False,
+                "requires_confirmation": False,
+-               "evidence_recorded": bool(c.get("validation", {}).get("llm_validated")
+-                                          and c.get("validation", {}).get("match") == "exact")}
++               "evidence_recorded": bool(c.get("recorded_status")),
++               "evidence_status": c.get("recorded_status")}
+         if settings.expose_candidate_internals:
+             out["score"], out["payload"] = c["score"], c["payload"]
+         return out
+@@ -555,12 +604,78 @@ class AssessmentService:
+         return {name for name, st in ctx.quadrants.items()
+                 if st.get("completed") or len(st.get("answered_question_ids", [])) >= n or len(st.get("response_ids", [])) >= n}
+ 
++    _INTAKE_SKIP_LINE = re.compile(
++        r"^\s*(patient assessment information|gender|age|occupation|marital status|city|sleep pattern|"
++        r"baseline [a-z ]+)\s*:?", re.IGNORECASE)
++
++    def _intake_text(self, current_issue):
++        """Patient form notes / concerns / therapist context from the intake summary. Demographic
++        and baseline lines are dropped (baseline is used separately, never as a quoted concept)."""
++        keep = [ln for ln in (current_issue or "").splitlines()
++                if ln.strip() and not self._INTAKE_SKIP_LINE.match(ln)]
++        return "\n".join(keep).strip()
++
++    def _analyse_intake(self, sid, ctx, current_issue):
++        """Score what the patient wrote on the intake form. Runs once per session; never blocks
++        quadrant recommendation and never changes the assessment stage."""
++        if (not settings.analyse_intake_as_evidence or ctx.patient_state.get("intake_analysed")
++                or not current_issue or self.llm is None or self.retriever is None):
++            return
++        text = self._intake_text(current_issue)
++        ctx.patient_state["intake_analysed"] = True
++        if len(text) < 20:
++            return
++        safety = self.safety.assess(text) if getattr(self, "safety", None) else {"status": "CLEAR"}
++        if safety.get("status") == "ESCALATE":
++            ctx.patient_state["intake_safety_flag"] = safety
++            ctx.audit("INTAKE_SAFETY_FLAG", details=safety)
++            logging.getLogger("anahat.evidence").warning(
++                "INTAKE SAFETY FLAG | intake text matched a risk signal; not analysed as evidence. "
++                "Therapist must review the intake form.")
++            return
++        stage_before = ctx.stage
++        try:
++            response = ResponseService().create(text=text, question_id="INTAKE", quadrant=None)
++            out = self._analyze(ctx, response, text, session_id=sid, weight_source="intake")
++            logging.getLogger("anahat.evidence").info(
++                "INTAKE ANALYSED AS EVIDENCE | evidence=%s",
++                [e.get("indicator_term") for e in out.get("evidence", [])])
++            if out.get("status") != "SAFETY_ESCALATION":
++                ctx.stage = stage_before
++        except Exception:  # noqa: BLE001 - intake evidence is a bonus; recommendation must still work
++            ctx.stage = stage_before
++            logging.getLogger("anahat.evidence").exception("Intake analysis failed; continuing without it")
++
+     def recommend_quadrants(self, sid, current_issue=None, opening_answers=None):
+         ctx = self._ctx(sid)
+-        # Selection is a session decision made from demographics, baseline and
+-        # opening responses. Keep it stable while later answers update retrieval.
+-        if ctx.patient_state.get("selected_quadrants") is not None:
+-            return copy.deepcopy(ctx.patient_state["selected_quadrants"])
++        if current_issue and ctx.stage != AssessmentStage.OPENING.value:
++            self._analyse_intake(sid, ctx, current_issue)
++            if not ctx.patient_state.get("current_issue"):
++                ctx.patient_state["current_issue"] = current_issue
++        cached = ctx.patient_state.get("selected_quadrants")
++        if cached is not None:
++            # Refresh suggestions only when the patient has said something new since the last
++            # recommendation, so "move to / add a quadrant" reflects the answers so far.
++            if len(ctx.responses) <= ctx.patient_state.get("quadrant_rec_response_count", 0):
++                return copy.deepcopy(cached)
++            completed = {q for q, st in ctx.quadrants.items() if st.get("completed")}
++            concepts = [c["concept"] for r in ctx.responses for c in (r.extraction or {}).get("concepts", [])
++                        if c.get("polarity") != "negative" and c.get("domain") in {"symptom", "emotion", "behaviour"}]
++            issue = " ".join([ctx.patient_state.get("current_issue") or "",
++                              *[r.raw_text for r in ctx.responses[-6:]]])
++            try:
++                rec = self.questions.recommend_quadrants(
++                    current_issue=issue, opening_answers=ctx.patient_state.get("opening_responses", []),
++                    baseline=ctx.baseline, demographics=ctx.demographics, concepts=concepts,
++                    exhausted=completed | self._exhausted(ctx), assessed=self.assessed_quadrants(ctx))
++            except Exception:  # noqa: BLE001 - keep the previous suggestion
++                logging.getLogger("anahat.quadrants").exception("Quadrant refresh failed")
++                return copy.deepcopy(cached)
++            ctx.patient_state["selected_quadrants"] = copy.deepcopy(rec)
++            ctx.patient_state["quadrant_rec_response_count"] = len(ctx.responses)
++            logging.getLogger("anahat.quadrants").info("REFRESHED QUADRANT SUGGESTIONS: %s",
++                                                       [item["quadrant"] for item in rec])
++            return rec
+         if ctx.stage == AssessmentStage.OPENING.value:
+             raise ValueError("Complete the opening responses or explicitly skip opening before quadrant recommendation")
+         concepts, texts = [], []
+@@ -583,6 +698,7 @@ class AssessmentService:
+             exhausted=self._exhausted(ctx), assessed=self.assessed_quadrants(ctx))
+         ctx.patient_state["current_issue"] = full_issue
+         ctx.patient_state["selected_quadrants"] = copy.deepcopy(rec)
++        ctx.patient_state["quadrant_rec_response_count"] = len(ctx.responses)
+         recommendation_logger.info("SUGGESTED QUADRANTS: %s", [item["quadrant"] for item in rec])
+         recommendation_logger.info("QUADRANT RECOMMENDATION EVIDENCE: %s", self.questions.last_recommendation_input)
+         recommendation_logger.info("QUADRANT SCORES AND MATCH REASONS: %s", self.questions.last_recommendation_debug)
+@@ -713,16 +829,23 @@ class AssessmentService:
+         rejected = {"wrong_source": 0, "wrong_quadrant": 0, "already_asked": 0,
+                     "duplicate": 0, "no_question_text": 0}
+         if question_retriever:
++            # Filter INSIDE Qdrant: only canonical question-bank points aligned to this quadrant
++            # compete on similarity. Without it, long reference-document chunks filled the top-N
++            # and every question was rejected afterwards (wrong_source / wrong_quadrant).
++            qdrant_filter = self._question_bank_filter(quadrant)
+             try:
+                 points = question_retriever.search(
+                     rag_query,
+                     top_k=max(QUESTION_RAG_RETRIEVAL_LIMIT, limit * 8),
++                    query_filter=qdrant_filter,
+                 )
+             except TypeError:
+-                # Existing injected/test retrievers may expose the original
+-                # single-argument search contract.
++                # Existing injected/test retrievers may expose an older search contract.
+                 try:
+-                    points = question_retriever.search(rag_query)
++                    try:
++                        points = question_retriever.search(rag_query, top_k=max(QUESTION_RAG_RETRIEVAL_LIMIT, limit * 8))
++                    except TypeError:
++                        points = question_retriever.search(rag_query)
+                 except Exception:  # noqa: BLE001 - use the validated KB fallback
+                     retrieval_error = True
+                     retrieval_failure_detail = "question_retriever_exception"
+@@ -733,6 +856,14 @@ class AssessmentService:
+                 retrieval_failure_detail = "question_retriever_exception"
+                 points = []
+                 logger.exception("Question-bank RAG retrieval failed for quadrant %s", quadrant)
++            if qdrant_filter is not None and not points and not retrieval_error:
++                logger.warning("RAG FILTERED SEARCH RETURNED NOTHING for %s: check that question-bank points carry "
++                               "document_type/quadrant_alignment payload (scripts/ingest_question_bank.py). "
++                               "Retrying unfiltered.", quadrant)
++                try:
++                    points = question_retriever.search(rag_query, top_k=max(QUESTION_RAG_RETRIEVAL_LIMIT, limit * 8))
++                except Exception:  # noqa: BLE001
++                    points = []
+         else:
+             points = []
+             retrieval_failure_detail = "question_retriever_not_configured"
+@@ -870,6 +1001,20 @@ class AssessmentService:
+                 "quadrant_status": "INCOMPLETE" if selected else retrieval_status,
+                 "assessment_status": ctx.patient_state.get("assessment_status", "in_progress")}
+ 
++    @staticmethod
++    def _question_bank_filter(quadrant):
++        alignments = sorted(QUESTION_BANK_ALIGNMENT_BY_QUADRANT.get(quadrant, set()))
++        if not alignments:
++            return None
++        try:
++            from qdrant_client.models import FieldCondition, Filter, MatchAny, MatchValue
++        except ImportError:  # tests without qdrant-client: post-filtering below still applies
++            return None
++        return Filter(must=[
++            FieldCondition(key="document_type", match=MatchValue(value="question_bank")),
++            FieldCondition(key="quadrant_alignment", match=MatchAny(any=alignments)),
++        ])
++
+     @staticmethod
+     def _latest_patient_signal(ctx):
+         """Text and extracted concepts of the patient's most recent real answer."""
+@@ -1099,6 +1244,27 @@ class AssessmentService:
+             ctx.audit("CANDIDATE_REJECTED", candidate_id=candidate_id, actor=confirmation_actor)
+             return {"status": "REJECTED", "candidate_id": candidate_id}
+         existing = next((e for e in ctx.evidence if e.candidate_id == candidate_id), None)
++        if existing is None and hasattr(self.indicators, "group_key"):
++            # Same patient answer + same canonical term (KB twin entries such as SYM-009 / EMO-008
++            # 'Anxiety'): the twin evidence already exists, so do not record the observation twice.
++            group = self.indicators.group_key(candidate["payload"]["indicator_id"])
++            existing = next((e for e in ctx.evidence
++                             if e.response_id == response_id and not e.superseded and e.twin_of is None
++                             and self.indicators.group_key(e.canonical_indicator_id) == group), None)
++        if (existing is not None and existing.status == EvidenceStatus.PROVISIONAL
++                and confirmation_actor == "therapist" and status == EvidenceStatus.CONFIRMED):
++            # A therapist confirming a provisional (partial) match makes it real evidence. Ambiguous
++            # KB terms still need the chakra clarification, so they become UNRESOLVED instead.
++            upgraded = (EvidenceStatus.UNRESOLVED if self.ambiguity.needs_clarification(existing.canonical_indicator_id)
++                        else EvidenceStatus.CONFIRMED)
++            for e in [existing] + [e for e in ctx.evidence if e.twin_of == existing.evidence_id]:
++                e.status = upgraded
++                e.confirmation = {**e.confirmation, "therapist_confirmed": True, "therapist_note": therapist_note}
++            ctx.audit("PROVISIONAL_EVIDENCE_CONFIRMED", evidence_id=existing.evidence_id, status=upgraded.value)
++            return {"status": "CONFIRMED", "evidence": existing.model_dump(),
++                    "clarification_required": upgraded == EvidenceStatus.UNRESOLVED,
++                    "clarifications": self.ambiguity.for_indicator(existing.canonical_indicator_id),
++                    "twin_evidence_ids": [e.evidence_id for e in ctx.evidence if e.twin_of == existing.evidence_id]}
+         if existing:
+             ambiguity = getattr(self, "ambiguity", None)
+             clarification_required = existing.status == EvidenceStatus.UNRESOLVED
+@@ -1248,7 +1414,8 @@ class AssessmentService:
+         }
+         report = self.scoring.score(scoring_evidence, contradictions=contradictions,
+                                     assessed_quadrants=self.assessed_quadrants(ctx),
+-                                    responses=response_map, assessment_context=complete_context)
++                                    responses=response_map, assessment_context=complete_context,
++                                    baseline=ctx.baseline)
+         ctx.stage = AssessmentStage.CHAKRA_SCORING.value
+         ctx.audit("CHAKRA_SCORED", supported=report.supported_chakras)
+         return report
+@@ -1328,7 +1495,8 @@ class AssessmentService:
+         return {
+             "session_id": sid, "stage": ctx.stage, "is_diagnosis": False, "therapist_approval_required": True,
+             "summary": {
+-                "imbalanced": [c["chakra"] for c in cards if c["status"].startswith("IMBALANCED")],
++                "imbalanced": [c["chakra"] for c in sorted(cards, key=lambda c: -c["score"])
++                               if c["status"].startswith("IMBALANCED")],
+                 "display_message": "No chakra imbalance identified from the confirmed evidence."
+                 if not any(c["status"].startswith("IMBALANCED") for c in cards) else "Chakra evaluation complete.",
+                 "balanced": names("BALANCED"),
+@@ -1345,6 +1513,7 @@ class AssessmentService:
+                 "unresolved_evidence": [e.evidence_id for e in ctx.evidence if e.status == EvidenceStatus.UNRESOLVED and not e.superseded],
+                 "safety_amber_unacknowledged": bool(ctx.patient_state.get("safety_amber_unacknowledged")),
+                 "safety_red_active": ctx.stage == AssessmentStage.SAFETY_ESCALATION.value,
++                "intake_safety_flag": ctx.patient_state.get("intake_safety_flag"),
+             },
+             "scoring_audit": report.audit,
+             "requires_domain_validation": _OPEN_REQUIRES_VALIDATION,
+@@ -1356,8 +1525,13 @@ class AssessmentService:
+         """Evaluate the complete, accumulated session only on explicit End Session."""
+         ctx = self._ctx(sid)
+         logger = logging.getLogger("anahat.assessment.progress")
++        # A RED safety escalation pauses everything, including End Session, until a therapist clears it.
++        guard = self._guard_safety(ctx)
++        if guard:
++            return guard
+         if ctx.patient_state.get("final_chakra_result") and ctx.patient_state.get("final_recommendations"):
+-            return {"final_result": copy.deepcopy(ctx.patient_state["final_chakra_result"]),
++            return {"status": "COMPLETED",
++                    "final_result": copy.deepcopy(ctx.patient_state["final_chakra_result"]),
+                     "chakra_report": copy.deepcopy(ctx.patient_state["final_recommendations"]["chakra_report"]),
+                     "raga": copy.deepcopy(ctx.patient_state["final_recommendations"]["raga"]),
+                     "activities": copy.deepcopy(ctx.patient_state["final_recommendations"]["activities"]),
+@@ -1396,21 +1570,18 @@ class AssessmentService:
+         logger.info("TOTAL EXTRACTED EVIDENCE: %s", len(ctx.evidence))
+         completed = [q for q, state in ctx.quadrants.items() if state.get("completed")]
+         logger.info("QUADRANTS COVERED: %s | DEEP DIVE RESPONSES: %s", completed, deep_response_count)
+-        clarification = self.deep_dive_items(sid)
+-        if clarification["items"]:
+-            logger.info("END SESSION BLOCKED | CLARIFICATION REQUIRED: %s", clarification["items"])
+-            ctx.patient_state["assessment_status"] = "awaiting_clarification"
+-            return {
+-                "status": "CLARIFICATION_REQUIRED",
+-                "deep_dive": clarification,
+-                "assessment_context_summary": {
+-                    "total_responses": len(ctx.responses),
+-                    "total_evidence_items": len(ctx.evidence),
+-                    "selected_quadrants": list(ctx.patient_state.get("selected_quadrant_names", [])),
+-                    "completed_quadrants": completed,
+-                    "deep_dive_responses": deep_response_count,
+-                },
+-            }
++        # End Session is the therapist's explicit decision to stop, so it ALWAYS scores.
++        # Open follow-up details no longer block it: the scorer already handles them
++        # (missing intensity -> floor weight, ambiguous -> provisional weight) and lists
++        # them in each chakra's pending_details and in open_items.pending_deep_dive.
++        # Read-only call: do not mark questions as presented or change the stage here.
++        open_followups = self.deep_dive.open_items(ctx.evidence)["items"]
++        blocking_followups = [item for item in open_followups if item.get("blocking")]
++        if open_followups:
++            logger.warning(
++                "END SESSION WITH OPEN FOLLOW-UPS | blocking=%s optional=%s | scoring anyway",
++                len(blocking_followups), len(open_followups) - len(blocking_followups),
++            )
+         logger.info("BUILDING COMPLETE ASSESSMENT CONTEXT")
+         full_context = {
+             "demographics": copy.deepcopy(ctx.demographics), "baseline": copy.deepcopy(ctx.baseline),
+@@ -1421,7 +1592,7 @@ class AssessmentService:
+             "responses": [r.model_dump() if hasattr(r, "model_dump") else copy.deepcopy(r) for r in ctx.responses],
+             "evidence": [e.model_dump() if hasattr(e, "model_dump") else copy.deepcopy(e) for e in ctx.evidence],
+         }
+-        logger.info("FINAL CHAKRA SCORING CONTEXT: %s", full_context)
++        logger.debug("FINAL CHAKRA SCORING CONTEXT: %s", full_context)  # full patient text: debug only
+         # Integrity trace by quadrant makes it visible that the final pass
+         # includes history from every part of the session.
+         response_quadrants = {r.response_id: r.quadrant for r in ctx.responses}
+@@ -1486,7 +1657,9 @@ class AssessmentService:
+         }
+         ctx.patient_state["assessment_status"] = "completed"
+         logger.info("FINAL ASSESSMENT COMPLETE | responses=%s evidence=%s", len(ctx.responses), len(ctx.evidence))
+-        return {"final_result": result, "chakra_report": recommendations["chakra_report"],
++        return {"status": "COMPLETED", "blocking_followups_count": len(blocking_followups),
++                "open_followups_count": len(open_followups),
++                "final_result": result, "chakra_report": recommendations["chakra_report"],
+                 "raga": recommendations["raga"], "activities": recommendations["activities"],
+                 "assessment_context_summary": {"total_responses": len(ctx.responses),
+                     "total_evidence_items": len(ctx.evidence), "selected_quadrants": full_context["selected_quadrants"],
+@@ -1526,5 +1699,17 @@ class AssessmentService:
+         candidates = raga.get("candidates") or []
+         activities = rec.get("activities") or []
+         ctx.stage = AssessmentStage.PRESCRIPTION.value
+-        return self.prescriptions.draft(patient_id=ctx.demographics["patient_id"], findings=final_result["chakras"],
+-                                        raga_candidates=candidates, activities=activities)
++        draft = self.prescriptions.draft(patient_id=ctx.demographics["patient_id"], findings=final_result["chakras"],
++                                         raga_candidates=candidates, activities=activities)
++        # The chakra findings the prescription is based on, in a form that is easy to show.
++        draft["chakra_imbalances"] = sorted([
++            {"chakra": c["chakra"], "status": c["status"], "status_label": c.get("status_label"),
++             "direction": c.get("direction"), "severity": c.get("severity"), "score": c.get("score"),
++             "confidence_pct": c.get("confidence_pct"), "reason": c.get("reason"),
++             "evidence": [t.get("term") for t in c.get("trace", []) if t.get("counted")]}
++            for c in final_result["chakras"] if str(c.get("status", "")).startswith("IMBALANCED")
++        ], key=lambda x: -(x.get("score") or 0))
++        draft["chakra_summary"] = final_result.get("summary", {})
++        draft["raga_status"] = raga.get("status") or ("AVAILABLE" if candidates else "NO_APPROVED_RAGA_MAPPING")
++        draft["raga_governance_notes"] = raga.get("governance_notes", [])
++        return draft
+diff --git a/engine/tests/integration/test_assessment_flow.py b/engine/tests/integration/test_assessment_flow.py
+index 969bb20..29da601 100644
+--- a/engine/tests/integration/test_assessment_flow.py
++++ b/engine/tests/integration/test_assessment_flow.py
+@@ -122,17 +122,9 @@ def test_opening_response_route_completes_assessment_to_final_result(monkeypatch
+     assert completed.status_code == 200
+     final = client.post(f'/assessment/sessions/{session_id}/end')
+     assert final.status_code == 200
+-    assert final.json()['status'] == 'CLARIFICATION_REQUIRED'
+-    for item in final.json()['deep_dive']['items']:
+-        answer = client.post(f'/assessment/sessions/{session_id}/deep-dive/answer', json={
+-            'evidence_id': item['evidence_id'],
+-            'field': item['field'],
+-            'value': 'Root Chakra' if item['field'] == 'disambiguation' else 'Severe',
+-            'raw_text': 'I feel unsafe and worried about basic needs.' if item['field'] == 'disambiguation' else 'It is severe.',
+-        })
+-        assert answer.status_code == 200
+-    final = client.post(f'/assessment/sessions/{session_id}/end')
+-    assert final.status_code == 200
++    # End Session always scores; open follow-ups are reported, not blocking.
++    assert final.json()['status'] == 'COMPLETED'
++    assert final.json()['final_result']['open_items']['pending_deep_dive']
+     assert final.json()['assessment_context_summary']['total_responses'] >= 4
+     assert 'final_result' in final.json() and 'chakra_report' in final.json() and 'raga' in final.json()
+ 
+@@ -169,17 +161,18 @@ def test_selected_quadrant_uses_rag_until_coverage_then_displays_final_result():
+         score_calls.append(1)
+         return original_score(*args, **kwargs)
+     svc.scoring.score = count_final_score
+-    final = svc.finalize_session(sid)
+-    assert final['status'] == 'CLARIFICATION_REQUIRED'
+-    while final.get('status') == 'CLARIFICATION_REQUIRED' and final.get('deep_dive', {}).get('items'):
+-        for item in final['deep_dive']['items']:
++    # Follow-ups are answered during the session (not forced by End Session).
++    for item in svc.deep_dive_items(sid)['items']:
++        if item['field'] in {'intensity', 'disambiguation'}:
+             svc.answer_deep_dive(
+                 sid, item['evidence_id'], item['field'],
+                 'Root Chakra' if item['field'] == 'disambiguation' else 'Severe',
+                 raw_text='I feel unsafe and worried about basic needs.'
+                 if item['field'] == 'disambiguation' else 'It is severe.',
+             )
+-        final = svc.finalize_session(sid)
++    final = svc.finalize_session(sid)
++    # End Session always scores on the first call, even with open follow-ups.
++    assert final['status'] == 'COMPLETED'
+     assert len(score_calls) == 1
+     assert final['final_result']['summary']['display_message'] == 'Chakra evaluation complete.'
+     assert len(final['final_result']['chakras']) == 7
+diff --git a/engine/tests/scenarios/test_spec_scenarios.py b/engine/tests/scenarios/test_spec_scenarios.py
+index 90bfdb4..38dca65 100644
+--- a/engine/tests/scenarios/test_spec_scenarios.py
++++ b/engine/tests/scenarios/test_spec_scenarios.py
+@@ -259,12 +259,14 @@ def test_18_concept_with_no_kb_match_or_no_quote_never_becomes_a_candidate():
+ 
+ def test_18b_llm_validation_rejects_bad_matches_and_ignores_invented_ids():
+     from app.llm.schemas import CandidateJudgement, CandidateValidation
+-    txt = "I feel unheard at home"
++    txt = "Nobody at home listens to me"
++    # Wording that is NOT a canonical KB term, so the semantic route + LLM validator is exercised
++    # ("feeling unheard" is now matched directly as a sub-form of "Feeling Unheard / Not Understood").
+     def validate(text, concept, cands):
+         return CandidateValidation(judgements=[CandidateJudgement(indicator_id="SYM-999", match="exact"),
+                                                 CandidateJudgement(indicator_id=cands[0]["indicator_id"], match="none")])
+-    svc, sid = make_session({txt: [concept("feel unheard", "feeling unheard", "emotion")]},
+-                            {"feeling unheard": [(THROAT["unheard"], .9)]}, validate=validate)
++    svc, sid = make_session({txt: [concept("Nobody at home listens to me", "nobody listens to me", "emotion")]},
++                            {"nobody listens to me": [(THROAT["unheard"], .9)]}, validate=validate)
+     assert say(svc, sid, txt)[0]["candidate_count"] == 0
+ 
+ 
+@@ -291,7 +293,11 @@ def test_20_prescription_is_only_a_draft_until_the_therapist_decides():
+     script, table, t1, t2 = throat_script()
+     svc, sid = make_session(script, table)
+     say(svc, sid, t1); say(svc, sid, t2)
++    end = svc.finalize_session(sid)                 # a prescription exists only after End Session
++    assert end["status"] == "COMPLETED"
+     draft = svc.prescription(sid)
++    # the chakra findings the prescription is based on travel with the draft
++    assert [c["chakra"] for c in draft["chakra_imbalances"]] == end["final_result"]["summary"]["imbalanced"]
+     dumped = draft if isinstance(draft, dict) else draft.model_dump() if hasattr(draft, "model_dump") else vars(draft)
+     text = str(dumped).lower()
+     assert "approv" in text or "draft" in text

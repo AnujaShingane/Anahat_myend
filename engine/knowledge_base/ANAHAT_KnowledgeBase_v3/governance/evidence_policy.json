@@ -1,0 +1,14 @@
+{
+  "_schema_version": "1.0",
+  "_note": "Controlled evidence-level vocabulary for the unified ANAHAT knowledge base. Every ingested document/chunk must be tagged with exactly one of these levels. LEVEL_4/5/6 content must never be presented as established medical fact (Section 7 of the KB upgrade brief).",
+  "levels": [
+    {"level": "LEVEL_1", "meaning": "Peer-reviewed / high-quality clinical research", "examples": ["music-therapy-research-a-review-of-references-in-the-medical-literature (Aldridge)"]},
+    {"level": "LEVEL_2", "meaning": "Recognized professional/clinical reference", "examples": ["DSM-5-TR", "Grant's Atlas of Anatomy", "Textbook of Human Anatomy", "Cognitive Psychology 6e", "Handbook of Psychological Assessment"]},
+    {"level": "LEVEL_3", "meaning": "Music-therapy professional literature", "examples": ["the-handbook-of-music-therapy-2nd-edition", "Handbook of Neurologic Music Therapy", "music-therapy-in-a-multicultural-context", "musicophilia (Sacks)", "music-as-medicine"]},
+    {"level": "LEVEL_4", "meaning": "Musicological / traditional Indian classical knowledge", "examples": ["Raga List.xlsx", "Equivalent Ragas in Hindustani and Carnatic Music", "Introduction of Indian Classical Music", "ABC of Music"]},
+    {"level": "LEVEL_5", "meaning": "Traditional chakra / Ayurvedic / spiritual / practitioner-tradition framework", "examples": ["Complete Book of Chakras", "anodea-judith-wheels-of-life", "Eastern Body Western Mind", "Ayurveda_Redesigned", "Emotional Issues & co-relation of Raga", "Chakras & Singing Style Association"]},
+    {"level": "LEVEL_6", "meaning": "Popular / self-help / background material", "examples": ["Joe-Dispenza-Evolve-Your-Brain", "1-2-3 Magic parenting book"]},
+    {"level": "LEVEL_UNKNOWN", "meaning": "Not yet classified -- needs review before ingestion", "examples": []}
+  ],
+  "rule": "LEVEL_4, LEVEL_5, LEVEL_6, and LEVEL_UNKNOWN content may be retrieved for context/explanation only (allowed_usage: [context, explanation]). Only LEVEL_1-3 content, and only after explicit review_status=approved, may ever be flagged can_influence_chakra_score or can_influence_raga_recommendation = true for anything touching a diagnosable medical/psychiatric condition. Traditional/energetic (LEVEL_4/5) musicological or time-of-day metadata (e.g. raga performance time, vadi/samvadi) may support raga candidate filtering (can_influence_raga_recommendation=true) because it is not a clinical claim -- but must never be relabeled as evidence-based."
+}

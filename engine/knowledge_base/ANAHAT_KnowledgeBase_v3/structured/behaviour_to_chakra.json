@@ -1,0 +1,323 @@
+{
+  "_schema_version": "2.0",
+  "_note": "Source: behavioural_pattern_chakra_mapping.txt (already well-structured, kept largely as-is). No duplicate versions found elsewhere. || v2.0 UPDATE: therapist-provided Strong/Medium/Weak indicator-strength ratings merged in from ANAHAT_Chakra_Indicator_Strength_Rating_Filled.xlsx (Behaviours sheet), matched by ID+chakra. New field 'indicator_strength' added per mapping. Match report: 24 matched, 0 JSON mappings unrated, 1 xlsx rows unused. | v1.2 re-applied onto v3 KB: same annotation fields added.",
+  "entries": [
+    {
+      "behaviour": "Avoidance",
+      "mappings": [
+        {
+          "chakra": "Root Chakra",
+          "state": "Deficient",
+          "meaning": "Fear-based withdrawal and lack of grounding",
+          "indicator_strength": "Medium"
+        }
+      ],
+      "id": "BEH-001",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "behaviour": "Addiction",
+      "mappings": [
+        {
+          "chakra": "Sacral Chakra",
+          "state": "Excess",
+          "meaning": "Compulsive emotional regulation",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "BEH-002",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "behaviour": "Overworking",
+      "mappings": [
+        {
+          "chakra": "Solar Plexus Chakra",
+          "state": "Excess",
+          "meaning": "Control-driven action and power imbalance",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "BEH-003",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "behaviour": "Passivity",
+      "mappings": [
+        {
+          "chakra": "Solar Plexus Chakra",
+          "state": "Deficient",
+          "meaning": "Suppressed will and low initiative",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "BEH-004",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "behaviour": "People Pleasing",
+      "mappings": [
+        {
+          "chakra": "Heart Chakra",
+          "state": "Excess",
+          "meaning": "Overgiving and loss of boundaries",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "BEH-005",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "behaviour": "Emotional Withdrawal",
+      "mappings": [
+        {
+          "chakra": "Heart Chakra",
+          "state": "Deficient",
+          "meaning": "Fear of intimacy and protection from hurt",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "BEH-006",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "behaviour": "Silence / Not Speaking Up",
+      "mappings": [
+        {
+          "chakra": "Throat Chakra",
+          "state": "Deficient",
+          "meaning": "Suppressed self-expression",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "BEH-007",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "behaviour": "Feeling Misunderstood",
+      "mappings": [
+        {
+          "chakra": "Throat Chakra",
+          "state": "Deficient",
+          "meaning": "Inability to communicate inner truth effectively",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "BEH-008",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "behaviour": "Feeling Isolated",
+      "mappings": [
+        {
+          "chakra": "Throat Chakra",
+          "state": "Deficient",
+          "meaning": "Communication breakdown leading to social disconnection",
+          "indicator_strength": "Medium"
+        },
+        {
+          "chakra": "Heart Chakra",
+          "state": "Deficient",
+          "meaning": "Emotional withdrawal and relational disconnection",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "BEH-009",
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-32"
+    },
+    {
+      "behaviour": "Secretive / Withholding Information",
+      "mappings": [
+        {
+          "chakra": "Throat Chakra",
+          "state": "Deficient",
+          "meaning": "Fear of expressing truth or being vulnerable",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "BEH-010",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "behaviour": "Attention Deficit / Lack of Focus",
+      "mappings": [
+        {
+          "chakra": "Throat Chakra",
+          "state": "Deficient",
+          "meaning": "Difficulty maintaining attention on communication and expression tasks",
+          "indicator_strength": "Weak"
+        },
+        {
+          "chakra": "Third Eye Chakra",
+          "state": "Deficient",
+          "meaning": "Mental clarity and focus issues",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "BEH-011",
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-34"
+    },
+    {
+      "behaviour": "Cannot Sustain Interest",
+      "mappings": [
+        {
+          "chakra": "Throat Chakra",
+          "state": "Deficient",
+          "meaning": "Difficulty expressing commitment and following through on communication",
+          "indicator_strength": "Weak"
+        },
+        {
+          "chakra": "Sacral Chakra",
+          "state": "Deficient",
+          "meaning": "Loss of creative flow and emotional engagement",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "BEH-012",
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-35"
+    },
+    {
+      "behaviour": "Dishonesty / Lying",
+      "mappings": [
+        {
+          "chakra": "Throat Chakra",
+          "state": "Conflicted",
+          "meaning": "Fear of speaking truth, distorted self-expression",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "BEH-013",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "behaviour": "Issues Expressing Emotions",
+      "mappings": [
+        {
+          "chakra": "Throat Chakra",
+          "state": "Deficient",
+          "meaning": "Blocked emotional communication",
+          "indicator_strength": "Strong"
+        },
+        {
+          "chakra": "Sacral Chakra",
+          "state": "Deficient",
+          "meaning": "Emotional fluidity and expression blocked",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "BEH-014",
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-36"
+    },
+    {
+      "behaviour": "Obsessive Thinking",
+      "mappings": [
+        {
+          "chakra": "Third Eye Chakra",
+          "state": "Excess",
+          "meaning": "Mental fixation and loss of perspective",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "BEH-015",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "behaviour": "Dissociation",
+      "mappings": [
+        {
+          "chakra": "Crown Chakra",
+          "state": "Excess",
+          "meaning": "Over-identification with thought or spiritual bypass",
+          "indicator_strength": "Strong"
+        }
+      ],
+      "id": "BEH-016",
+      "chakra_count": 1,
+      "diagnostic_type": "clean",
+      "disambiguation_pattern_id": null
+    },
+    {
+      "behaviour": "Not Confident / Low Self-Confidence",
+      "mappings": [
+        {
+          "chakra": "Solar Plexus Chakra",
+          "state": "Deficient",
+          "meaning": "Loss of personal power and self-worth",
+          "indicator_strength": "Strong"
+        },
+        {
+          "chakra": "Sacral Chakra",
+          "state": "Deficient",
+          "meaning": "Suppressed creative self-expression",
+          "indicator_strength": "Medium"
+        }
+      ],
+      "id": "BEH-017",
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-37"
+    },
+    {
+      "behaviour": "Dejected / Pessimistic",
+      "mappings": [
+        {
+          "chakra": "Solar Plexus Chakra",
+          "state": "Deficient",
+          "meaning": "Loss of willpower and inner fire",
+          "indicator_strength": "Strong"
+        },
+        {
+          "chakra": "Sacral Chakra",
+          "state": "Deficient",
+          "meaning": "Emotional stagnation",
+          "indicator_strength": "Medium"
+        }
+      ],
+      "id": "BEH-018",
+      "chakra_count": 2,
+      "diagnostic_type": "ambiguous",
+      "disambiguation_pattern_id": "RCD-38"
+    }
+  ],
+  "indicator_strength_provenance": {
+    "source_file": "ANAHAT_Chakra_Indicator_Strength_Rating_Filled.xlsx",
+    "source_file_md5": "093ccd3bf82daa95f137396cb86b4fd7",
+    "provided_by": "Project therapist (per user instruction: 'treat as authoritative therapist input')",
+    "date_received_and_integrated": "2026-09-02 (first integration); re-verified byte-identical on re-upload same date",
+    "integration_method": "Exact match on (ID, Linked Chakra) between the xlsx 'Symptoms'/'Emotions'/'Behaviours' sheets and this file's existing entries. No fuzzy matching, no inference -- every rating below is a direct 1:1 copy of the therapist's 'Your Rating' column value.",
+    "verification": "171/171 symptom pairs, 20/20 emotion pairs, 24/24 behaviour pairs matched with zero conflicts and zero missing data across both the original integration and this re-verification pass. See config/indicator_strength_conflict_report.md for the full report.",
+    "not_integrated": "The workbook's 'Disambiguation Qs Review' sheet (38 rows) is 0% filled by the therapist as of this upload -- no rating data exists there to integrate. Tracked separately in structured/pending_therapist_input/disambiguation_questions_pending_review.json.",
+    "excel_file_unmodified": true,
+    "excel_file_archived_at": "source_registry/therapist_provided_files/ANAHAT_Chakra_Indicator_Strength_Rating_Filled.xlsx"
+  }
+}

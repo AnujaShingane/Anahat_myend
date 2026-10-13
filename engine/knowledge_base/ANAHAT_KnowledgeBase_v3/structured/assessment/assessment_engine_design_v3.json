@@ -1,0 +1,128 @@
+{
+  "_schema_version": "3.0",
+  "_status": "proposed_clinical_review_required",
+  "principle": "AI is an assistant. The therapist makes the final decision at every stage.",
+  "flow": [
+    "Demographics -> baseline ratings -> therapist patient-state -> fixed opening -> initial quadrant recommendation -> therapist selects quadrant -> personalized questions within selected quadrant -> therapist records patient response -> indicator extraction -> ambiguity resolution -> chakra scoring -> next quadrant/deep-dive recommendation -> therapist continues or stops -> top two supported chakra findings -> approved raga/prahar mapping -> editable therapist prescription -> patient prescription"
+  ],
+  "demographics": {
+    "use": [
+      "personalize wording",
+      "select communication style",
+      "provide context for follow-up questions"
+    ],
+    "direct_quadrant_weight": 0.0,
+    "direct_chakra_weight": 0.0,
+    "gender_rule": "Do not use gender as a quadrant or chakra scoring signal.",
+    "age_rule": "Use age mainly for communication and assessment suitability; do not assume a chakra from age.",
+    "occupation_rule": "Use occupation as context for questions about work/study stress, routine, or environment; do not assign a quadrant merely because of job title."
+  },
+  "initial_quadrant_recommendation": {
+    "evidence_priority": [
+      "current issue / main reason for help",
+      "opening-answer content",
+      "baseline ratings"
+    ],
+    "starting_weights": {
+      "current_issue": 0.65,
+      "opening_answers": 0.2,
+      "baseline_ratings": 0.15,
+      "demographics": 0.0,
+      "therapist_state": 0.0
+    },
+    "output": [
+      "top 3 candidate quadrants",
+      "relevance score",
+      "confidence",
+      "reasons",
+      "missing information",
+      "suggested next exploration"
+    ],
+    "note": "Starting weights are engineering hypotheses and require therapist-labelled validation; they are not clinical truth."
+  },
+  "quadrant_selection": {
+    "therapist_final": true,
+    "rule": "AI recommends; therapist selects the quadrant to explore.",
+    "after_selection": "AI may suggest 2-3 patient-specific questions based on the selected quadrant, current issue, previous answers, and untested high-value attributes."
+  },
+  "adaptive_questioning": {
+    "principle": "Do not ask the same generic questions to everyone.",
+    "selection_priority": [
+      "directly explore the patient's stated problem within the selected quadrant",
+      "resolve an ambiguity that could change chakra ranking",
+      "fill an important unanswered quadrant attribute",
+      "clarify trigger, timing, intensity, impact, or coping",
+      "avoid questions already answered"
+    ],
+    "response_storage": [
+      "raw therapist-entered response",
+      "structured extracted evidence",
+      "intensity",
+      "evidence status",
+      "source question id"
+    ]
+  },
+  "chakra_detection": {
+    "primary_evidence": [
+      "therapist-confirmed patient symptoms",
+      "emotions",
+      "behaviours",
+      "patient intensity",
+      "resolved ambiguity",
+      "independent evidence across the session"
+    ],
+    "demographics_not_evidence": true,
+    "top_two_only_after_gate": true,
+    "continue_until": [
+      "two chakras pass the imbalance gate",
+      "or therapist explicitly stops"
+    ],
+    "never_guess": true
+  },
+  "next_step_logic": [
+    "If selected quadrant has strong unresolved evidence, recommend deeper exploration there.",
+    "If another quadrant has stronger unexplored relevance, recommend it as the next candidate.",
+    "If an indicator maps to multiple chakras, recommend clarification before ranking that evidence as confirmed.",
+    "If two chakras pass the gate, show top two and allow therapist to finish or continue.",
+    "If no two pass, say more assessment is needed rather than forcing a top two."
+  ],
+  "raga_mapping": {
+    "input": "therapist-approved top two chakras",
+    "source": "Only approved KB mappings",
+    "prahara": "Use approved raga time metadata; do not invent a time.",
+    "safety": "Apply existing safety/governance flags and do not use unreviewed practitioner mappings as clinical evidence."
+  },
+  "prescription": {
+    "therapist_can_edit": true,
+    "therapist_output": [
+      "patient details",
+      "main problem",
+      "assessment findings",
+      "top two chakra findings",
+      "raga and prahar suggestions",
+      "activities",
+      "songs",
+      "clinical/safety notes",
+      "therapist final decision"
+    ],
+    "patient_output": [
+      "patient id",
+      "patient name",
+      "therapist name",
+      "therapist-approved activities",
+      "therapist-approved music/raga plan",
+      "approved listening time/prahar",
+      "simple instructions"
+    ]
+  },
+  "human_oversight": [
+    "therapist chooses style",
+    "therapist chooses quadrant",
+    "therapist may request another question",
+    "therapist may mark answer unclear",
+    "therapist may correct extracted evidence",
+    "therapist may override recommendation",
+    "therapist decides when assessment is complete",
+    "therapist edits and approves prescription"
+  ]
+}

@@ -1,0 +1,349 @@
+{
+  "_schema_version": "1.0",
+  "_note": "Disambiguation-question drafts for symptoms/emotions/behaviours that map to MORE THAN ONE chakra -- i.e. cases where the deterministic scoring engine can't tell which chakra a reported indicator points to without asking a follow-up question. Draft questions were authored by ANAHAT (grounded in the existing questioning-technique guides per the 'Grounded in real source?' column), but the 'Is this a good question?' and 'Your Better Version' columns are 100% UNFILLED (0/38) in the therapist's returned workbook -- this is real, still-open therapist work, not something to fill in automatically. Do NOT treat the draft questions below as approved for use until a therapist has reviewed them.",
+  "review_status": "therapist_review_not_yet_started",
+  "entries": [
+    {
+      "pattern_id": "RCD-01",
+      "symptoms_emotions_behaviours": "Abdominal cramps",
+      "candidate_chakras": "Root, Sacral",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "When the cramps come on, does it feel more like you're unsafe or ungrounded -- or more like you're holding back feelings, maybe around intimacy or closeness?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-02",
+      "symptoms_emotions_behaviours": "Aches",
+      "candidate_chakras": "Heart, Sacral",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does the ache feel more like grief or a guarded heart -- or more like longing for something that feels missing, like love or joy?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-03",
+      "symptoms_emotions_behaviours": "Adrenal problems, Glands: Adrenals",
+      "candidate_chakras": "Root, Solar Plexus",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this feel more connected to ongoing fear or feeling unsafe -- or more to feeling pushed, like you always have to prove yourself or stay in control?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-04",
+      "symptoms_emotions_behaviours": "Alcoholism",
+      "candidate_chakras": "Solar Plexus, Sacral",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Is this more about needing to loosen control or ease inhibition -- or more about overwhelming emotions that feel hard to manage?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-05",
+      "symptoms_emotions_behaviours": "Anorexia",
+      "candidate_chakras": "Root, Solar Plexus, Sacral",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "What feels closest -- feeling unsafe in your body or the world around you, needing to stay in control, or discomfort with feelings tied to your body?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-06",
+      "symptoms_emotions_behaviours": "Anxiety",
+      "candidate_chakras": "Root, Solar Plexus",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this feel more like fear or feeling ungrounded -- or more like restless energy you can't seem to direct or settle?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-07",
+      "symptoms_emotions_behaviours": "Apathy",
+      "candidate_chakras": "Sacral, Solar Plexus",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this feel more like your emotions have gone flat or numb -- or more like you've lost your drive or motivation to do things?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-08",
+      "symptoms_emotions_behaviours": "Arthritis",
+      "candidate_chakras": "Root, Solar Plexus",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this feel more connected to feeling unsteady or unsupported physically -- or more to feeling stuck, like your energy or will is blocked?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-09",
+      "symptoms_emotions_behaviours": "Candida",
+      "candidate_chakras": "Solar Plexus, Root",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Is this more about feeling drained from pushing yourself too hard -- or more about needing something, like food, to feel steady and grounded?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-10",
+      "symptoms_emotions_behaviours": "Dizziness",
+      "candidate_chakras": "Third Eye, Crown",
+      "grounded_in_source": "No -- we had to guess from theme words only, please check this one",
+      "draft_question": "Does this happen more when your mind feels overloaded or overstimulated -- or more when you feel spiritually disconnected or unsure of meaning?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-11",
+      "symptoms_emotions_behaviours": "Gum Problems",
+      "candidate_chakras": "Root, Solar Plexus",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this feel more connected to feeling unsafe or unsupported -- or more to holding back anger, or not standing up for yourself when you need to?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-12",
+      "symptoms_emotions_behaviours": "Hands",
+      "candidate_chakras": "Solar Plexus, Heart, Throat",
+      "grounded_in_source": "No -- we had to guess from theme words only, please check this one",
+      "draft_question": "What feels closest -- feeling unable to get things done or take action, something about love or connection, or something about expressing yourself?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-13",
+      "symptoms_emotions_behaviours": "Hay fever",
+      "candidate_chakras": "Sacral, Heart",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this feel more like built-up or blocked emotions -- or more like difficulty loving or accepting yourself?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-14",
+      "symptoms_emotions_behaviours": "Headaches",
+      "candidate_chakras": "Third Eye, Crown",
+      "grounded_in_source": "No -- we had to guess from theme words only, please check this one",
+      "draft_question": "Does this happen more when you're straining to figure something out or overthinking -- or more when you're questioning meaning or feeling spiritually unsettled?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-15",
+      "symptoms_emotions_behaviours": "Heartburn",
+      "candidate_chakras": "Solar Plexus, Heart",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this come up more when you're pushing yourself hard or trying to stay in control -- or more with strong feelings about love, trust, or relationships?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-16",
+      "symptoms_emotions_behaviours": "Hives",
+      "candidate_chakras": "Heart, Solar Plexus",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this come up more with anger or irritation about being in control -- or more with feelings of being hurt or let down by someone?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-17",
+      "symptoms_emotions_behaviours": "Hyperventilation",
+      "candidate_chakras": "Heart, Root",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this feel more connected to feeling unsafe or ungrounded -- or more to overwhelming feelings of love, loss, or connection?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-18",
+      "symptoms_emotions_behaviours": "Impotence",
+      "candidate_chakras": "Sacral, Solar Plexus",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Is this more about discomfort or fear around intimacy -- or more about not feeling confident or good enough?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-19",
+      "symptoms_emotions_behaviours": "Insomnia",
+      "candidate_chakras": "Root, Solar Plexus, Third Eye, Crown",
+      "grounded_in_source": "No -- we had to guess from theme words only, please check this one",
+      "draft_question": "When this happens, what feels closest -- your mind won't stop racing, you feel unsafe or on edge, you feel pressured like you need to stay in control, or you feel disconnected, like something's missing?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-20",
+      "symptoms_emotions_behaviours": "Jaw Problems",
+      "candidate_chakras": "Solar Plexus, Throat",
+      "grounded_in_source": "No -- we had to guess from theme words only, please check this one",
+      "draft_question": "Does this feel more like holding in anger or frustration -- or more like struggling to say what you really want to say?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-21",
+      "symptoms_emotions_behaviours": "Joints",
+      "candidate_chakras": "Root, Sacral",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this feel more connected to feeling unsteady or ungrounded in life -- or more to feeling disconnected from your body or your feelings?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-22",
+      "symptoms_emotions_behaviours": "Knee problems",
+      "candidate_chakras": "Root, Sacral",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this feel more like feeling unsteady or unsafe in your life right now -- or more like struggling to go with the flow or adapt to change?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-23",
+      "symptoms_emotions_behaviours": "Legs",
+      "candidate_chakras": "Root, Sacral",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this feel more like feeling unsupported or unsteady -- or more like feeling stuck, unable to move forward in something emotionally?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-24",
+      "symptoms_emotions_behaviours": "Migraines",
+      "candidate_chakras": "Third Eye, Crown",
+      "grounded_in_source": "No -- we had to guess from theme words only, please check this one",
+      "draft_question": "Does this happen more when your mind feels overloaded with thoughts -- or more when you feel disconnected from meaning or your sense of purpose?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-25",
+      "symptoms_emotions_behaviours": "Obesity",
+      "candidate_chakras": "Root, Solar Plexus",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this feel more connected to needing to feel safe or grounded -- or more to feeling blocked, like your drive or energy has nowhere to go?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-26",
+      "symptoms_emotions_behaviours": "Pneumonia",
+      "candidate_chakras": "Heart, Solar Plexus, Root",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "What feels closest -- feeling unsafe or depleted, having lost your will or drive, or feeling deeply unloved or alone?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-27",
+      "symptoms_emotions_behaviours": "Skin, Skin Problems",
+      "candidate_chakras": "Root, Sacral",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this feel more connected to feeling exposed or unsafe -- or more to struggling with emotional boundaries, like letting people too close or not close enough?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-28",
+      "symptoms_emotions_behaviours": "Stomach problems",
+      "candidate_chakras": "Root, Solar Plexus",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this feel more connected to feeling unsafe about the basics in life -- or more to feeling pressured, like you're pushing yourself too hard?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-29",
+      "symptoms_emotions_behaviours": "Stuttering",
+      "candidate_chakras": "Sacral, Throat",
+      "grounded_in_source": "No -- we had to guess from theme words only, please check this one",
+      "draft_question": "Is this more about holding difficult feelings inside -- or more about finding it hard to get your words out, even when you want to speak?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-30",
+      "symptoms_emotions_behaviours": "Fear (emotion)",
+      "candidate_chakras": "Root, Throat",
+      "grounded_in_source": "No -- we had to guess from theme words only, please check this one",
+      "draft_question": "When you feel this fear, is it more about not feeling safe or secure -- or more about being afraid to speak up or be judged?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-31",
+      "symptoms_emotions_behaviours": "Anxiety (emotion)",
+      "candidate_chakras": "Root, Solar Plexus, Throat",
+      "grounded_in_source": "No -- we had to guess from theme words only, please check this one",
+      "draft_question": "What feels closest -- not feeling safe or grounded, feeling pressure you can't direct anywhere, or fear around speaking up or being judged?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-32",
+      "symptoms_emotions_behaviours": "Loneliness / Social Isolation (emotion), Feeling Isolated (behaviour)",
+      "candidate_chakras": "Heart, Throat",
+      "grounded_in_source": "No -- we had to guess from theme words only, please check this one",
+      "draft_question": "Does this feel more like not feeling close or loved by anyone -- or more like you want to reach out and connect, but can't find the words or the way to do it?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-33",
+      "symptoms_emotions_behaviours": "Dissatisfaction / Unfulfilled Potential (emotion)",
+      "candidate_chakras": "Solar Plexus, Throat",
+      "grounded_in_source": "No -- we had to guess from theme words only, please check this one",
+      "draft_question": "Is this more about feeling like you've lost your sense of purpose or drive -- or more about not being able to say what you actually want or need?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-34",
+      "symptoms_emotions_behaviours": "Attention Deficit / Lack of Focus (behaviour)",
+      "candidate_chakras": "Throat, Third Eye",
+      "grounded_in_source": "No -- we had to guess from theme words only, please check this one",
+      "draft_question": "Is this more about struggling to focus generally, like your mind wanders -- or more specifically about losing focus when you're trying to express or communicate something?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-35",
+      "symptoms_emotions_behaviours": "Cannot Sustain Interest (behaviour)",
+      "candidate_chakras": "Throat, Sacral",
+      "grounded_in_source": "No -- we had to guess from theme words only, please check this one",
+      "draft_question": "Does this feel more like you struggle to follow through once you've committed to something -- or more like your creative spark or interest just fades quickly?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-36",
+      "symptoms_emotions_behaviours": "Issues Expressing Emotions (behaviour)",
+      "candidate_chakras": "Throat, Sacral",
+      "grounded_in_source": "No -- we had to guess from theme words only, please check this one",
+      "draft_question": "Is this more about not being able to find the words for how you feel -- or more about the feelings themselves feeling stuck or blocked inside?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-37",
+      "symptoms_emotions_behaviours": "Not Confident / Low Self-Confidence (behaviour)",
+      "candidate_chakras": "Solar Plexus, Sacral",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this feel more like not feeling good enough or in control -- or more like holding back your creative or personal self-expression?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    },
+    {
+      "pattern_id": "RCD-38",
+      "symptoms_emotions_behaviours": "Dejected / Pessimistic (behaviour)",
+      "candidate_chakras": "Solar Plexus, Sacral",
+      "grounded_in_source": "Yes -- based on our real questioning guides",
+      "draft_question": "Does this feel more like you've lost your drive or willpower -- or more like your emotions feel stuck or flat?",
+      "is_good_question": null,
+      "therapist_better_version": null
+    }
+  ]
+}

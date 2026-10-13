@@ -1,0 +1,79 @@
+{
+  "_note": "Explicit, reviewer-editable trigger rules for the assessment-area (quadrant) recommender (app/services/quadrant_triggers.py). A rule fires when its pattern appears in what the patient / therapist actually provided (form concerns and notes, known conditions, opening and later answers, extracted concepts, baseline ratings). Negated mentions ('no blood pressure problem') do not fire. Rules are combined with semantic relevance and coverage; they are cues for the therapist, never evidence and never chakra mappings. 'must_include' areas are never dropped by the result limit.",
+  "max_recommended": 7,
+  "semantic_weight": 20,
+  "assessed_penalty": 0.35,
+  "baseline_rules": [
+    {"field": "stress", "op": ">=", "value": 7, "quadrants": ["Lifestyle", "Music Therapy Profile"], "reason": "high baseline stress"},
+    {"field": "anxiety", "op": ">=", "value": 7, "quadrants": ["Lifestyle", "Music Therapy Profile"], "reason": "high baseline anxiety"},
+    {"field": "mood", "op": "<=", "value": 4, "quadrants": ["Nature", "Personal Interests"], "reason": "low baseline mood"},
+    {"field": "energy", "op": "<=", "value": 4, "quadrants": ["Physical Nature", "Lifestyle"], "reason": "low baseline energy"},
+    {"field": "sleep_quality", "op": "in", "value": ["poor", "fair"], "quadrants": ["Lifestyle"], "reason": "baseline sleep quality is not good"}
+  ],
+  "quadrants": {
+    "Medical & Therapeutic Background": {
+      "priority": 100, "must_include": true,
+      "triggers": [
+        {"id": "known_condition", "pattern": "blood pressure|hypertension|\\bbp\\b|diabet|sugar level|thyroid|asthma|cardiac|heart (?:disease|problem|condition)|cholesterol|arthritis|migraine|epilep|cancer|kidney|liver|chronic|surgery|operation", "reason": "a medical condition or health concern was mentioned"},
+        {"id": "medication_care", "pattern": "medication|medicine|tablet|prescri|doctor|physician|treatment|therapy|counsel+ing|psychiatr|psycholog|diagnos|hospital|check-?up", "reason": "medication or existing medical / therapeutic care was mentioned"}
+      ]
+    },
+    "Lifestyle": {
+      "priority": 80,
+      "triggers": [
+        {"id": "sleep", "pattern": "sleep|insomnia|wake up at night|restless night|awake at night", "reason": "sleep difficulty"},
+        {"id": "routine_rest", "pattern": "irregular|routine|schedule|relax|unwind|rest\\b|burn-?out|screen time|habit|no time to", "reason": "irregular routine or difficulty relaxing"}
+      ]
+    },
+    "Profession": {
+      "priority": 80,
+      "triggers": [
+        {"id": "work_pressure", "pattern": "\\bwork\\b|working|\\bjob\\b|office|career|burn-?out|deadline|boss|colleague|workplace|workload|salaried|business|professional|exam|study|studies", "reason": "work or study pressure"}
+      ]
+    },
+    "Family": {
+      "priority": 70,
+      "triggers": [
+        {"id": "family_context", "pattern": "family|husband|wife|spouse|children|kids|\\bson\\b|daughter|parents|in-laws|mother|father|household|caregiv|domestic", "reason": "family responsibilities or relationships"}
+      ]
+    },
+    "Physical Nature": {
+      "priority": 70,
+      "triggers": [
+        {"id": "body_energy", "pattern": "fatigue|tired|exhaust|low energy|no energy|weak|body (?:ache|pain)|\\bpain|\\bache|stiff|dizz|breath|palpitation|physical", "reason": "fatigue, low energy or physical discomfort"}
+      ]
+    },
+    "Music Therapy Profile": {
+      "priority": 70,
+      "triggers": [
+        {"id": "music_goal", "pattern": "music|\\bsong|raag|raga|instrument|\\bsing|melod|calming sounds?", "reason": "music preferences or goals were mentioned"},
+        {"id": "relax_goal", "pattern": "stress|anxi|relax|calm|burn-?out|sleep|mood|tension|unwind", "reason": "stress, anxiety or sleep goals that music therapy is meant to support", "weight": 0.75}
+      ]
+    },
+    "Diet": {
+      "priority": 60,
+      "triggers": [
+        {"id": "eating", "pattern": "\\beat|eating|diet|appetite|food|meal|skip(?:ping)? meals|junk|caffeine|\\btea\\b|coffee|sugar|salt|acidity|bloat|digest|nausea|weight (?:gain|loss)|overweight|obes", "reason": "eating habits or a dietary concern"},
+        {"id": "health_diet_link", "pattern": "blood pressure|hypertension|diabet|cholesterol|thyroid|obes|overweight|acidity|digest", "reason": "a health condition where eating habits are usually relevant", "weight": 0.6}
+      ]
+    },
+    "Personal Interests": {
+      "priority": 50,
+      "triggers": [
+        {"id": "interests_time", "pattern": "hobb|free time|time for myself|no time for me|leisure|passion|enjoy|interest in|used to love|do not enjoy|don't enjoy|lost interest", "reason": "little enjoyment or time for oneself"}
+      ]
+    },
+    "Social Circle": {
+      "priority": 50,
+      "triggers": [
+        {"id": "support_social", "pattern": "friend|lonel|isolat|social|no one to talk|nobody to talk|support system|community|neighbou?r", "reason": "limited social support or isolation"}
+      ]
+    },
+    "Nature": {
+      "priority": 40,
+      "triggers": [
+        {"id": "temperament", "pattern": "introvert|extrovert|temperament|personality|perfection|people.?pleas|keep (?:my )?(?:worries|feelings|things) to myself|hold (?:it )?(?:in|back)|overthink|sensitive|short.?temper|optimis|pessimis", "reason": "personality or emotional style is part of the concern"}
+      ]
+    }
+  }
+}

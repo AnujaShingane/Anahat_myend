@@ -1,0 +1,470 @@
+{
+  "_schema_version": "1.0",
+  "_status": "ENGINEERING DEFAULTS - REQUIRES THERAPIST / DOMAIN VALIDATION BEFORE PRODUCTION",
+  "_purpose": "Policy for the adaptive (LLM-worded) question generator. This file deliberately lives OUTSIDE knowledge_base/ANAHAT_KnowledgeBase_v3 so the hash-verified KB stays untouched. It contains NO chakra meanings, indicator mappings or symptom lists: those are always read at runtime from the KB (quadrant_question_bank.json, symptom/emotion/behaviour_to_chakra.json, chakra_disambiguation_questions_v3.json, chakra_master.json).",
+  "kb_sources_used_at_runtime": {
+    "quadrants_and_attributes": "structured/quadrant_question_bank.json",
+    "canonical_indicators": [
+      "structured/symptom_to_chakra.json",
+      "structured/emotion_to_chakra.json",
+      "structured/behaviour_to_chakra.json"
+    ],
+    "competing_interpretations": "structured/assessment/chakra_disambiguation_questions_v3.json (answer_options labels are sent to the model as patient-safe themes, chakra names removed)",
+    "fallback_theme_for_single_chakra_indicators": "structured/chakra_master.json core_themes",
+    "selection_priority": "structured/assessment/assessment_engine_design_v3.json adaptive_questioning.selection_priority",
+    "questioning_principles": "rag/assessment_technique/foundational_questioning_principles.md (open questions, avoid 'why', avoid leading and yes/no questions)"
+  },
+  "exploration_goals": [
+    "distinguish_interpretations",
+    "context",
+    "trigger",
+    "onset",
+    "duration",
+    "frequency",
+    "intensity",
+    "current_or_historical",
+    "daily_impact",
+    "emotional_response",
+    "behavioural_response",
+    "coping",
+    "what_helps_or_worsens",
+    "attribute_exploration"
+  ],
+  "question_types": [
+    "exploration",
+    "clarification",
+    "impact",
+    "trigger",
+    "timeline",
+    "intensity",
+    "coping",
+    "context"
+  ],
+  "evidence_dimensions": [
+    "current_or_historical",
+    "onset",
+    "duration",
+    "frequency",
+    "intensity",
+    "trigger",
+    "context",
+    "daily_impact",
+    "emotional_response",
+    "behavioural_response",
+    "coping"
+  ],
+  "goal_order_for_a_new_signal": [
+    "distinguish_interpretations",
+    "context",
+    "trigger",
+    "daily_impact",
+    "what_helps_or_worsens",
+    "frequency",
+    "duration",
+    "coping"
+  ],
+  "goals_owned_by_structured_follow_up": {
+    "_note": "currentness and intensity are asked by the existing deep-dive follow-up with fixed answer options (Mild/Moderate/Severe, current/historical). The generator does not duplicate them for a signal whose follow-up was already presented.",
+    "goals": [
+      "current_or_historical",
+      "intensity"
+    ]
+  },
+  "limits": {
+    "min_question_chars": 12,
+    "max_question_chars": 220,
+    "max_question_words": 40,
+    "min_generation_confidence": 0.5,
+    "duplicate_similarity_threshold": 0.8,
+    "max_signals_in_context": 4,
+    "max_asked_questions_in_context": 15,
+    "max_reference_questions": 3,
+    "max_latest_answer_chars": 600,
+    "max_concern_chars": 600,
+    "min_question_words": 6
+  },
+  "forbidden_patient_facing_terms": {
+    "_note": "Checked on every generated question, case-insensitive, as whole words/phrases with simple inflections (s, ed, ing, ness, ly, al). A term ending in '*' is a stem ('diagnos*' matches 'diagnosis', 'diagnosed'). Single words like 'root', 'heart' or 'throat' are NOT listed on their own because patients legitimately use them ('my throat hurts'); chakra names are matched as full names, plus the Sanskrit names from chakra_master.json at runtime.",
+    "chakra_terms": [
+      "chakra",
+      "chakras",
+      "root chakra",
+      "sacral chakra",
+      "solar plexus",
+      "heart chakra",
+      "throat chakra",
+      "third eye",
+      "crown chakra",
+      "energy centre",
+      "energy center",
+      "energy block",
+      "blocked energy",
+      "blockage",
+      "aura",
+      "kundalini",
+      "muladhara",
+      "swadhisthana",
+      "svadhisthana",
+      "manipura",
+      "anahata",
+      "vishuddha",
+      "vishuddhi",
+      "ajna",
+      "sahasrara"
+    ],
+    "diagnostic_terms": [
+      "diagnos*",
+      "disorder",
+      "imbalance",
+      "imbalanced",
+      "deficient",
+      "deficiency",
+      "excess energy",
+      "symptom of",
+      "sign of",
+      "caused by",
+      "because of your",
+      "treatment",
+      "medication",
+      "medicine",
+      "prescri*",
+      "cure",
+      "therapy will",
+      "you should",
+      "you need to",
+      "you must",
+      "raga",
+      "raag"
+    ],
+    "plain_language_blocklist": [
+      "manifestation*",
+      "psychological*",
+      "psychosomatic",
+      "somatic",
+      "somatis*",
+      "suppression",
+      "repress*",
+      "maladaptive",
+      "dysregulat*",
+      "cognitive*",
+      "etiology",
+      "pathology",
+      "symptomatolog*",
+      "comorbid*",
+      "affect regulation",
+      "coping mechanism*",
+      "stressor*",
+      "precipitat*",
+      "exacerbat*",
+      "ameliorat*",
+      "presentation",
+      "emotional lability",
+      "ruminat*"
+    ]
+  },
+  "leading_patterns": {
+    "_note": "Regular expressions (case-insensitive). A match rejects the question.",
+    "patterns": [
+      "\\bdon'?t you\\b",
+      "\\bdoesn'?t it\\b",
+      "\\bisn'?t it\\b",
+      "\\baren'?t you\\b",
+      "\\bwouldn'?t you\\b",
+      "\\bwouldn'?t it\\b",
+      "\\bright\\?$",
+      "\\bsurely\\b",
+      "\\bis it because\\b",
+      "\\bis that because\\b",
+      "\\bdo you think it'?s because\\b",
+      "\\bhow (much|badly) does .* (hurt|upset|bother|damage)\\b",
+      "\\bobviously\\b",
+      "\\byour (?:trauma|abuse|childhood trauma)\\b",
+      "\\bwhen you were (?:abused|neglected|hurt)\\b",
+      "\\bbecause (?:your|of your) (?:husband|wife|family|boss|job)\\b"
+    ]
+  },
+  "presupposed_feeling_words": {
+    "_note": "Each inner list is ONE feeling written in its different forms. If a generated question names a feeling from a group and the patient has not used ANY word of that group in this session, the question is treated as leading (it puts a feeling into the patient's mouth). Matching is by word start, so 'scared' also covers 'scaredy'.",
+    "groups": [
+      [
+        "unsafe",
+        "not safe"
+      ],
+      [
+        "insecure",
+        "insecurity"
+      ],
+      [
+        "afraid",
+        "scared",
+        "fear",
+        "fearful",
+        "frightened"
+      ],
+      [
+        "guilt",
+        "guilty"
+      ],
+      [
+        "ashamed",
+        "shame",
+        "embarrassed"
+      ],
+      [
+        "angry",
+        "anger",
+        "furious",
+        "rage",
+        "irritated"
+      ],
+      [
+        "resent",
+        "resentful",
+        "resentment"
+      ],
+      [
+        "worthless",
+        "useless"
+      ],
+      [
+        "hopeless",
+        "helpless"
+      ],
+      [
+        "lonely",
+        "loneliness",
+        "isolated"
+      ],
+      [
+        "abandoned",
+        "abandonment"
+      ],
+      [
+        "rejected",
+        "rejection"
+      ],
+      [
+        "betrayed",
+        "betrayal"
+      ],
+      [
+        "unloved"
+      ],
+      [
+        "depressed",
+        "depression"
+      ],
+      [
+        "sad",
+        "sadness",
+        "unhappy"
+      ],
+      [
+        "grief",
+        "grieving",
+        "grieve"
+      ],
+      [
+        "jealous",
+        "jealousy",
+        "envy"
+      ],
+      [
+        "anxious",
+        "anxiety",
+        "nervous",
+        "worried",
+        "worry",
+        "worries"
+      ],
+      [
+        "panic",
+        "panicky"
+      ],
+      [
+        "stressed",
+        "stress",
+        "tense",
+        "tension"
+      ],
+      [
+        "overwhelmed",
+        "overwhelming"
+      ],
+      [
+        "trapped",
+        "stuck"
+      ],
+      [
+        "controlled",
+        "controlling"
+      ],
+      [
+        "judged",
+        "judgement",
+        "judgment"
+      ],
+      [
+        "unheard",
+        "ignored",
+        "not listened"
+      ],
+      [
+        "powerless"
+      ],
+      [
+        "numb",
+        "numbness"
+      ],
+      [
+        "empty",
+        "emptiness"
+      ],
+      [
+        "pressure",
+        "pressured",
+        "pressurized",
+        "pressurised",
+        "pressurizes",
+        "pressurises",
+        "pressurize",
+        "pressurise"
+      ]
+    ]
+  },
+  "open_question_starters": [
+    "can you describe",
+    "can you help me understand",
+    "can you say",
+    "can you share",
+    "can you tell",
+    "can you walk",
+    "could you describe",
+    "could you help me understand",
+    "could you say",
+    "could you share",
+    "could you tell",
+    "could you walk",
+    "how",
+    "how's",
+    "if you",
+    "in what way",
+    "in what ways",
+    "in your own words",
+    "on a scale",
+    "tell me",
+    "thinking about",
+    "what",
+    "what's",
+    "when",
+    "when you",
+    "where",
+    "which",
+    "who",
+    "would you describe",
+    "would you say",
+    "would you tell",
+    "you mentioned",
+    "you said"
+  ],
+  "sensitive_topics": {
+    "_note": "If the generated question OR the patient context it is built from touches one of these topics, the question needs therapist review (delivery 'therapist_review'), or in AI-only mode ('auto') the validated KB question is used instead. Whole words/phrases with simple inflections; a term ending in '*' is a stem ('suicid*' matches 'suicidal').",
+    "topics": {
+      "trauma": [
+        "trauma*",
+        "flashback",
+        "nightmare",
+        "assault",
+        "attacked",
+        "accident"
+      ],
+      "abuse": [
+        "abuse*",
+        "beats me",
+        "beat me",
+        "hits me",
+        "hitting me",
+        "molest*",
+        "violence",
+        "violent",
+        "raped",
+        "rape"
+      ],
+      "sexuality": [
+        "sex",
+        "sexual*",
+        "intimacy",
+        "intimate",
+        "libido",
+        "erectile",
+        "virgin"
+      ],
+      "addiction": [
+        "addict*",
+        "alcohol*",
+        "drinking problem",
+        "drunk",
+        "drugs",
+        "withdrawal",
+        "relapse",
+        "gambling"
+      ],
+      "medical_history": [
+        "surgery",
+        "cancer",
+        "tumour",
+        "tumor",
+        "hiv",
+        "pregnan*",
+        "miscarriage",
+        "seizure",
+        "epilep*"
+      ],
+      "severe_symptoms": [
+        "can't breathe",
+        "cannot breathe",
+        "chest pain",
+        "fainted",
+        "blackout",
+        "hallucinat*",
+        "hearing voices"
+      ],
+      "self_harm_or_safety": [
+        "suicid*",
+        "self harm",
+        "self-harm",
+        "hurt myself",
+        "harm myself",
+        "end my life",
+        "kill myself",
+        "want to die",
+        "wish i was dead",
+        "wish i were dead"
+      ]
+    }
+  },
+  "delivery_policy": {
+    "_note": "Set with DYNAMIC_QUESTION_DELIVERY.",
+    "auto": {
+      "description": "AI-only mode. A generated question that passes every backend check is shown to the patient directly.",
+      "use_kb_question_instead_when": [
+        "the latest patient answer or opening concern touches a sensitive topic (sensitive_topics)",
+        "the generated question touches a sensitive topic",
+        "the latest answer is not safety-CLEAR, or an AMBER alert is unacknowledged, or a RED escalation is active",
+        "the model fails, times out, returns invalid JSON or CANNOT_GENERATE",
+        "any backend validation fails (structure, chakra/diagnostic words, leading, unknown ids, duplicate, low confidence)"
+      ],
+      "flag_only": [
+        "ambiguity_with_3_or_more_interpretations (indicator maps to 3+ chakras): delivered, flagged in therapist_review_reasons for later audit"
+      ]
+    },
+    "therapist_review": {
+      "description": "Every generated question is returned with delivery_status PENDING_THERAPIST_REVIEW. The therapist approves, edits or rejects it (POST /sessions/{id}/questions/{question_id}/review). An answer to a pending question is refused. Reject switches to the KB fallback question.",
+      "review_reasons_reported": [
+        "sensitive_topic",
+        "sensitive_topic_in_patient_context",
+        "ambiguity_with_3_or_more_interpretations"
+      ]
+    }
+  }
+}

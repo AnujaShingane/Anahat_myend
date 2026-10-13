@@ -1,0 +1,257 @@
+{
+  "_schema_version": "3.0",
+  "_note": "Unified ANAHAT Knowledge Base manifest, v2. Builds on the existing v1 KB (ANAHAT_KnowledgeBase_Redesigned.zip, itself derived from ANAHAT-RAG_Knowledgebase.pdf, 25 source docs) by adding a populated raaga/ layer and a classified registry of 57 unique files from the DATA/Music_Therapy uploads (medical, psychology, music theory, chakra, Ayurveda). No file in structured/ or config/ from the existing v1 KB was modified -- see README.md for what changed and what is proposed-only.",
+  "version": "5.0",
+  "ingestion_date": "2026-09-01",
+  "domains": [
+    "structured (chakra/symptom/emotion/behaviour mapping, assessment, opening questions -- unchanged from v1)",
+    "config (governance -- unchanged from v1, plus a proposed addendum)",
+    "rag/assessment_technique",
+    "rag/chakra_reasoning",
+    "rag/clinical_frameworks",
+    "rag/protocol_and_safety",
+    "rag/question_bank",
+    "rag/symptom_detection",
+    "rag/wellness_strategies",
+    "raaga/structured (NEW -- raga_metadata, raga_time_of_day, raga_hindustani_carnatic_equivalents, chakra_raga_bridge)",
+    "raaga/rag (NEW -- raga_theory, chakra_raga_reasoning, raga_therapeutic_indications_practitioner)",
+    "medical (anatomy, physiology, neurology, brain_and_cognition, medical_context -- registry only, not yet ingested)",
+    "psychology (emotions, behaviour, psychological_context -- registry only, not yet ingested)",
+    "music_therapy (general, neurologic, clinical_research -- registry only, not yet ingested)",
+    "music/indian_classical (registry only, not yet ingested)",
+    "chakra/traditional (registry only, not yet ingested)",
+    "traditional/ayurveda (registry only, not yet ingested)",
+    "governance (evidence_policy, safety_rules -- NEW)",
+    "source_registry (source_metadata / ingestion matrix -- NEW)"
+  ],
+  "structured_datasets_preserved_from_v1": [
+    "structured/chakra_master.json (7 chakras, v1.2 -- swara mapping corroborated this pass)",
+    "structured/symptom_to_chakra.json (135 entries)",
+    "structured/emotion_to_chakra.json (15 entries)",
+    "structured/behaviour_to_chakra.json (18 entries)",
+    "structured/quadrant_question_bank.json (10 quadrants, v1.1 -- response options added this pass)",
+    "structured/emergency_contacts.json",
+    "structured/opening_questions.json",
+    "structured/fixed_opening_questions.json",
+    "config/governance_rules.json (14 rules, v1.1)"
+  ],
+  "structured_datasets_added_v2": [
+    "raaga/structured/raga_metadata.json (93 ragas -- vadi/samvadi/traditional performance time)",
+    "raaga/structured/raga_time_of_day.json (19 time-period groupings, ashta-prahara system)",
+    "raaga/structured/raga_hindustani_carnatic_equivalents.json (132 thaat/melakarta/carnatic equivalence rows)",
+    "raaga/structured/chakra_raga_bridge.json (schema + ANAHAT practitioner-tradition therapeutic-goal associations, NOT a confirmed chakra mapping -- see file's own _note)"
+  ],
+  "evidence_level_summary_across_57_new_files": {
+    "LEVEL_3": 11,
+    "LEVEL_UNKNOWN": 2,
+    "LEVEL_2": 18,
+    "LEVEL_6": 3,
+    "LEVEL_5": 17,
+    "LEVEL_4": 12,
+    "LEVEL_1": 1
+  },
+  "priority_summary": {
+    "HIGH": 13,
+    "MEDIUM": 24,
+    "LOW": 27
+  },
+  "files_requiring_review": 54,
+  "files_ingested_this_pass": 10,
+  "files_registry_only_pending_licensing_or_content_review": 47,
+  "qdrant_design": {
+    "collection_name": "anahat_knowledge",
+    "note": "Single collection, metadata-filtered -- see README.md Qdrant Schema section. NOT stood up in this pass (no network/vector-DB access in this environment); this is a design spec only.",
+    "vector_config": "model-dependent; recommend 768 or 1024-dim depending on chosen embedding model, cosine distance",
+    "payload_fields": [
+      "domain",
+      "subdomain",
+      "knowledge_type",
+      "framework",
+      "evidence_level",
+      "authority_level",
+      "review_status",
+      "chakra",
+      "raga",
+      "therapeutic_goal",
+      "source_type",
+      "can_influence_chakra_score",
+      "can_influence_raga_recommendation",
+      "safety_status"
+    ]
+  },
+  "governance_rules_location": "config/governance_rules.json (v1.1, unchanged) + config/governance_addendum_proposed.json (v2, proposed Rule 15, NOT yet merged) + governance/evidence_policy.json + governance/safety_rules.json",
+  "known_gaps_still_open": [
+    "svara-to-chakra assignments in chakra_master.json: corroborated by a second independent source (v2.1) but still not independently clinically verified",
+    "clinical_conditions_pending_review/ question sets still unscoped (carried over from v1)",
+    "KIRAN helpline number has one conflicting secondary-source figure -- needs a second independent verification pass",
+    "108/102 ambulance number varies by state and is being integrated into 112 -- current per-state status not confirmed",
+    "US emergency_contacts entries not re-verified this pass (carried forward from v1 as-is)",
+    "47 of the 57 DATA-upload files remain registry-only, pending licensing/authorship review (unchanged from v2.1)",
+    "Exact 2-hour raga-time-wheel segment boundaries (Rag Samay Chakra.pdf) still not digitized (unchanged from v2.1)",
+    "raga aroha/avaroha/pakad/mood-character fields still null across all 93 raga_metadata.json entries (unchanged from v2.1)",
+    "No raga contraindication data found in any source reviewed across all passes",
+    "The new Throat/Third-Eye/Crown questions are authored-to-spec, not clinically piloted -- need therapist review before production use",
+    "'Bilahari' (referenced in the new research-supported raga-therapeutic-goal data) has no vadi/samvadi/time-of-day metadata in raga_metadata.json -- only its Hindustani equivalents are known"
+  ],
+  "v2_1_update_2026_08_11": {
+    "upload": "RAG_documents-20260811T042928Z-1-001.zip",
+    "finding": "This upload is the original 25-document source set v1 was already built from. 20 of 22 files confirmed fully redundant with existing v1 content and were NOT re-ingested. See source_registry/RAG_documents_upload_audit.md for the full file-by-file disposition.",
+    "changes_applied": [
+      "structured/chakra_master.json -> v1.2: swara_note_for_raaga_mapping corroborated by Chakra_Mapping.xlsx's 'Swar' column (independent source, same Sa-Re-Ga-Ma-Pa-Dha-Ni sequence, all 7 chakras matched)",
+      "structured/quadrant_question_bank.json -> v1.1: needs_source_reexport resolved; added attributes_with_responses (77 attributes across 10 quadrants) from the clean xlsx re-export"
+    ],
+    "gaps_still_not_closed_by_this_upload": [
+      "No new chakra->raga mapping data (this upload had no raga content at all)",
+      "No Indian crisis-resource numbers (mental_health_resources.txt in this upload is the same US-only source already in emergency_contacts.json)",
+      "Throat/Third-Eye/Crown chakra-specific questions still missing (advanced_questioning_techniques.txt in this upload ends at the same unfinished placeholder as v1's copy)"
+    ]
+  },
+  "v3_0_gap_fill_pass_2026_08_11": {
+    "instruction": "Explicit gap-filling task targeting the 3 open gaps from v2.1's known_gaps_still_open.",
+    "gap_status": {
+      "chakra_to_raga_mapping": {
+        "status": "PARTIALLY_CLOSED / CLINICAL_REVIEW_REQUIRED",
+        "files_modified": [
+          "raaga/structured/chakra_raga_bridge.json (v1.0 -> v2.0)"
+        ],
+        "summary": "0 relationships found linking a specific chakra directly to a specific raga with real clinical/peer-reviewed support -- none exist in the literature searched. 3 relationships found linking a specific RAGA to a therapeutic OUTCOME with genuine peer-reviewed support (verified via PMC/DOAJ/ResearchGate, not just a search snippet): Darbari Kanada (depression/anxiety/stress/insomnia, elderly, N=39, no control group), Bilahari (anxiety/sleep/somatic symptoms, cancer caregivers, N=30, Heliyon/PMC9508548), Bhairavi (stress markers via HRV, N=44, randomized VR design, Scientific Reports). None of the source studies claim a chakra link -- none was added. One additional source (a school-student paper in a low-tier journal, IJARIIT V10I4-1179, claiming specific raga->chakra activation effects) was investigated and its central citation could not be verified to exist -- excluded entirely, logged in chakra_raga_bridge.json's excluded_low_credibility_sources."
+      },
+      "indian_mental_health_crisis_resources": {
+        "status": "CLOSED_FOR_CURRENT_SOURCES / PERIODIC_VERIFICATION_REQUIRED",
+        "files_modified": [
+          "structured/emergency_contacts.json (v1.0 -> v2.0)"
+        ],
+        "summary": "Added Tele MANAS (14416 / 1-800-891-4416, MoHFW/NIMHANS), KIRAN (1800-599-0019, Ministry of Social Justice & Empowerment), national emergency 112 (MHA/ERSS), and ambulance 108/102 (NHM) -- each with official source URL and verification date. US resources from v1 kept, not removed. One number (KIRAN) had a conflicting figure in a secondary source during research and is flagged for a second independent check before production."
+      },
+      "throat_third_eye_crown_questions": {
+        "status": "CLOSED / THERAPIST_REVIEW_REQUIRED",
+        "files_added": [
+          "structured/chakra_specific_questions.json (new, 17 questions)",
+          "rag/assessment_technique/chakra_specific_questioning_throat.md (new)",
+          "rag/assessment_technique/chakra_specific_questioning_third_eye.md (new)",
+          "rag/assessment_technique/chakra_specific_questioning_crown.md (new)",
+          "rag/assessment_technique/ambiguity_resolution_guidance.md (new)"
+        ],
+        "files_removed": [
+          "rag/assessment_technique/chakra_specific_questioning_GAP_throat_third_eye_crown.md (superseded)"
+        ],
+        "summary": "6 Throat questions, 6 Third-Eye questions, 5 Crown questions (incl. explicit spiritual-content opt-in gate). All investigate underlying experience without naming the chakra or asserting imbalance. Authored fresh (no source material existed for these 3 chakras in either upload) -- flagged therapist_review_required, not clinically piloted."
+      }
+    }
+  },
+  "gap_closure_pass_2026_08_11_v4": {
+    "_note": "This pass addressed the 11 numbered gaps from the follow-up 'Remaining Gap Closure & Final Hardening' instruction. IMPORTANT CAPABILITY DISCLOSURE: this pass has NO live web/browsing tool available. Every item below reflects what could honestly be done with (a) restructuring/joining data already in the KB, (b) new schema/framework design, and (c) careful re-examination of source PDFs already uploaded (e.g. re-rendering the Raga Samay Chakra image at higher resolution). Nothing below reflects new external research, live fact-checking, or new source discovery -- where the original gap required that, it is marked SOURCE_VERIFICATION_REQUIRED or NOT_FOUND, not fabricated closed.",
+    "gaps": [
+      {
+        "id": 1,
+        "title": "Svara -> Chakra assignments",
+        "status": "PARTIALLY_CLOSED",
+        "detail": "New canonical file structured/svara_chakra_mapping.json created with full source/tradition/evidence_level per svara, explicit empty conflicting_traditions_found array (honestly labeled as 'not searched', not 'confirmed none exist'). Still MUSICOLOGICAL_REVIEW_REQUIRED -- only one tradition/lineage was ever found in the source material, not independently cross-validated."
+      },
+      {
+        "id": 2,
+        "title": "Clinical-condition question sets",
+        "status": "CLOSED",
+        "detail": "New structured/clinical_context_questions.json created -- safety/personalization context questions (10 categories), explicitly distinct from the pre-existing symptom-screening clinical_conditions_pending_review/ folder. Recommendation logged: do not ship clinical_conditions_pending_review/ as-is; product/clinical decision still needed on that separate item."
+      },
+      {
+        "id": 3,
+        "title": "KIRAN number independent verification",
+        "status": "SOURCE_VERIFICATION_REQUIRED",
+        "detail": "Cannot be closed by this or any prior pass -- no pass on this KB has had live web access. Relabeled emergency_contacts.json's verification_status fields from 'verified_via_official_source' (an overclaim given no live check occurred) to 'training_data_recall_matches_named_official_source_not_live_checked', which is the accurate description. A human must call the number or check the live URL before production."
+      },
+      {
+        "id": 4,
+        "title": "108/102 ambulance state-specific clarification",
+        "status": "SOURCE_VERIFICATION_REQUIRED",
+        "detail": "Same capability constraint as item 3. Existing note already flagged state-by-state variation; not resolved further this pass."
+      },
+      {
+        "id": 5,
+        "title": "US emergency resources re-verification",
+        "status": "SOURCE_VERIFICATION_REQUIRED",
+        "detail": "Relabeled verification_status to 'carried_forward_from_v1_not_reverified_any_pass' for honesty. Not removed, per instruction."
+      },
+      {
+        "id": 6,
+        "title": "47 registry-only files licensing review",
+        "status": "PARTIALLY_CLOSED",
+        "detail": "knowledge_base_ingestion_matrix.csv extended with author/publication_title/license_status/source_verification_status/ingestion_status columns for all 64 rows, using the requested controlled vocabulary. 23 files positively identified as commercially-published with license_review_required; 7 files flagged do_not_ingest as sourced from unauthorized-sharing aggregators (PDFDrive/pdfcoffee.com in filename); 21 unattributed files flagged source_verification_required. No file's full text was newly ingested this pass -- this was classification, not ingestion."
+      },
+      {
+        "id": 7,
+        "title": "Raga Samay Chakra exact boundaries",
+        "status": "CLOSED",
+        "detail": "New raaga/structured/raga_samay_chakra_time_wheel.json created with exact start/end times for all 12 segments, transcribed from a 300dpi re-render of the source image, which this pass found clearly legible (correcting the prior pass's more cautious 'could not read with confidence' call). Confidence and transcription method documented in-file. Kept separate from, not merged into, the existing 8-segment ashta_prahara raga_time_of_day.json."
+      },
+      {
+        "id": 8,
+        "title": "93-raga aroha/avaroha/pakad/mood metadata",
+        "status": "NOT_FOUND / MUSICOLOGICAL_REVIEW_REQUIRED",
+        "detail": "Honest non-closure. thaat field filled for 19/92 ragas via a legitimate cross-reference join against the existing Hindustani/Carnatic equivalents table (not new research). aroha/avaroha/pakad/mood_character/therapeutic_goal remain null for all 92 ragas -- no musicological reference source is available to this pass. Each null field now carries an explicit '<field>_status: not_found' sibling so this is distinguishable from 'never checked'. Closing this fully requires either web access to a citable source or a domain expert supplying the data directly."
+      },
+      {
+        "id": 9,
+        "title": "Reliable raga contraindication data",
+        "status": "PARTIALLY_CLOSED (framework only, by design)",
+        "detail": "New raaga/structured/raga_safety_metadata.json created. 7 ragas flagged condition_flagged (epilepsy/schizophrenia/Parkinson's/cardiac/blood-pressure associations already present in the traditional-indication data) routed to clinical_review_required. All other ~85 ragas explicitly marked evidence_level: insufficient with a usage_constraint that empty contraindications must never be read as 'confirmed safe'. This is the correct final state per the project brief's own instruction not to invent contraindications -- it is not expected to ever show anything other than 'insufficient' without real clinical input."
+      },
+      {
+        "id": 10,
+        "title": "Throat/Third-Eye/Crown question review",
+        "status": "PARTIALLY_CLOSED",
+        "detail": "Formal QA review completed (see rag/assessment_technique/_QA_REVIEW_throat_third_eye_crown_2026_08.md). 1 leading question found and fixed (CQ-AJN-02). All 17 questions confirmed neutral, non-diagnostic, chakra-belief-free, and Crown/spiritual questions confirmed optional with explicit consent gating. review_status remains therapist_review_required on every question -- an AI QA pass is not a clinical validation."
+      },
+      {
+        "id": 11,
+        "title": "Bilahari metadata / raga-research vs chakra-mapping distinction",
+        "status": "CLOSED",
+        "detail": "New raaga/structured/carnatic_raga_metadata.json created -- Bilahari represented as a Carnatic-tradition entity with its two (internally-inconsistent, flagged-not-resolved) Hindustani equivalents, rather than a fabricated single Hindustani mapping. chakra_raga_bridge.json re-reviewed and confirmed compliant with the raga-research/chakra-mapping separation requirement; annotated with an explicit confirmation note."
+      }
+    ],
+    "counts": {
+      "CLOSED": 3,
+      "PARTIALLY_CLOSED": 4,
+      "SOURCE_VERIFICATION_REQUIRED": 3,
+      "NOT_FOUND_MUSICOLOGICAL_REVIEW_REQUIRED": 1
+    },
+    "files_created_this_pass": [
+      "structured/svara_chakra_mapping.json",
+      "structured/clinical_context_questions.json",
+      "raaga/structured/raga_samay_chakra_time_wheel.json",
+      "raaga/structured/carnatic_raga_metadata.json",
+      "raaga/structured/raga_safety_metadata.json",
+      "rag/assessment_technique/_QA_REVIEW_throat_third_eye_crown_2026_08.md",
+      "raaga/reference_images/rag_samay_chakra_hires-1.png"
+    ],
+    "files_modified_this_pass": [
+      "structured/chakra_master.json (v1.2 -> v1.3, note updated)",
+      "structured/emergency_contacts.json (v2.0 -> v2.1, verification_status vocabulary corrected)",
+      "structured/chakra_specific_questions.json (CQ-AJN-02 reworded)",
+      "raaga/structured/raga_metadata.json (v1.0 -> v2.0, thaat cross-referenced, not_found status fields added)",
+      "raaga/structured/chakra_raga_bridge.json (confirmation note appended, no structural change)",
+      "knowledge_base_ingestion_matrix.csv (5 new columns added: author, publication_title, license_status, source_verification_status, ingestion_status)"
+    ],
+    "files_not_ingested_this_pass": "No file's full text was newly ingested into any RAG markdown this pass -- all work was structured-data engineering, schema design, and classification, consistent with 'Do not modify application code unnecessarily' / focus-on-structure guidance from earlier passes."
+  },
+  "v5_0_update": {
+    "_note": "Two therapist-provided documents integrated: (1) a fully-completed Chakra Indicator Strength Rating workbook, (2) a home-based MT activities guide.",
+    "additions": [
+      {
+        "item": "Indicator strength ratings (Strong/Medium/Weak)",
+        "status": "CLOSED",
+        "detail": "100% complete therapist ratings (171 symptom-chakra pairs, 20 emotions, 24 behaviours) merged into structured/symptom_to_chakra.json, emotion_to_chakra.json, behaviour_to_chakra.json as new 'indicator_strength_by_chakra' / 'indicator_strength' fields. Every entry-chakra pair matched by ID with zero discrepancies. This is the first real clinical weighting data available to the deterministic scoring engine -- previously every indicator counted equally regardless of how directly it points to a given chakra."
+      },
+      {
+        "item": "Disambiguation question review",
+        "status": "STILL_OPEN_NOT_STARTED",
+        "detail": "The same workbook's 'Disambiguation Qs Review' sheet (38 draft questions for symptoms/emotions/behaviours that map to multiple chakras) came back 0% filled -- registered as structured/pending_therapist_input/disambiguation_questions_pending_review.json with review_status: therapist_review_not_yet_started. Not fabricated or completed by this pass."
+      },
+      {
+        "item": "Home-based MT activities by population",
+        "status": "CLOSED",
+        "detail": "New file rag/clinical_frameworks/home_based_mt_activities_by_population.md -- practical, equipment-free activities across 8 populations/contexts (prenatal, school/college students, neurodivergent, corporate, seniors, general adults, emotional-challenge-specific). Fills a real gap: prior music_therapy_interventions structured data had technique names but blank practical-detail fields. Tagged CONTEXTUAL/RAG tier, not structured/decision tier -- no citations or evidence-level claims in the source."
+      }
+    ]
+  }
+}

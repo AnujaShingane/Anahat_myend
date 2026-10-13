@@ -1,0 +1,133 @@
+{
+  "_schema_version": "1.0",
+  "_note": "Created in response to gap-closure item #2. PURPOSE, stated explicitly to avoid drift: this file collects CLINICAL CONTEXT for therapy safety and personalization -- e.g. 'does this patient have a hearing impairment that changes how a raga recommendation should be delivered' -- NOT symptom severity for diagnosis. This is a different and narrower purpose than the pre-existing rag/question_bank/clinical_conditions_pending_review/ folder, which asks condition-specific SYMPTOM questions (e.g. 'how often do you have panic attacks') that function closer to a diagnostic screening instrument. That folder remains PENDING and is recommended NOT to ship in production in its current form -- see the recommendation note at the end of this file. Nothing here diagnoses; every question is designed to be answerable factually by the patient (yes/no, or a short factual statement) rather than requiring symptom self-rating.",
+  "does_not_diagnose": true,
+  "relationship_to_clinical_conditions_pending_review": "DIFFERENT PURPOSE, KEPT SEPARATE. See _note above.",
+  "categories": {
+    "existing_diagnosed_conditions": {
+      "purpose": "Know what's already diagnosed so ANAHAT never appears to 'discover' or contradict an existing diagnosis.",
+      "questions": [
+        {
+          "question_id": "CC-DX-01",
+          "question": "Have you been diagnosed with any medical or mental health condition that you'd like your therapist to be aware of?",
+          "response_type": "free_text_optional",
+          "sensitivity": "high",
+          "therapist_review_required": true
+        }
+      ]
+    },
+    "current_treatment": {
+      "purpose": "Avoid recommending anything that could conflict with or undermine ongoing treatment.",
+      "questions": [
+        {
+          "question_id": "CC-TX-01",
+          "question": "Are you currently seeing a doctor, psychiatrist, psychologist, or counsellor for any ongoing treatment?",
+          "response_type": "yes_no_optional_detail",
+          "sensitivity": "medium",
+          "therapist_review_required": false
+        }
+      ]
+    },
+    "relevant_medications": {
+      "purpose": "Some medications affect sedation/alertness or interact with relaxation practices; the therapist -- not the AI -- should factor this in.",
+      "questions": [
+        {
+          "question_id": "CC-MED-01",
+          "question": "Are you currently taking any medication that affects your mood, sleep, or energy levels?",
+          "response_type": "free_text_optional",
+          "sensitivity": "high",
+          "therapist_review_required": true,
+          "safety_note": "Answers here must never be used to suggest, adjust, or comment on medication. Route to therapist only."
+        }
+      ]
+    },
+    "hearing_sensory_considerations": {
+      "purpose": "A music-based intervention needs to know about hearing impairment, sound sensitivity, or sensory processing differences before recommending anything.",
+      "questions": [
+        {
+          "question_id": "CC-SENS-01",
+          "question": "Do you have any hearing difficulty, sound sensitivity, or sensory condition that affects how you experience music?",
+          "response_type": "free_text_optional",
+          "sensitivity": "medium",
+          "therapist_review_required": true
+        }
+      ]
+    },
+    "neurological_conditions": {
+      "purpose": "Conditions like epilepsy (photosensitive or sound-triggered seizures are rare but documented) or migraine can be directly relevant to a music-based intervention's safety.",
+      "questions": [
+        {
+          "question_id": "CC-NEURO-01",
+          "question": "Do you have any neurological condition (for example epilepsy, migraine, or a history of seizures) that you'd like considered before starting a music-based practice?",
+          "response_type": "free_text_optional",
+          "sensitivity": "high",
+          "therapist_review_required": true,
+          "safety_note": "If disclosed, cross-reference raaga/structured/raga_safety_metadata.json's condition-flagged entries and route to therapist before any raga recommendation is shown."
+        }
+      ]
+    },
+    "pain_related_considerations": {
+      "purpose": "Understand whether physical pain/discomfort is part of the current picture, for context, not treatment.",
+      "questions": [
+        {
+          "question_id": "CC-PAIN-01",
+          "question": "Are you currently experiencing any physical pain or discomfort that affects your daily life?",
+          "response_type": "free_text_optional",
+          "sensitivity": "medium",
+          "therapist_review_required": false
+        }
+      ]
+    },
+    "sleep_related_concerns": {
+      "purpose": "Sleep context is directly relevant to several therapeutic goals already in the KB (raga-Bilahari sleep-disturbance research, senior-citizen insomnia raga associations).",
+      "questions": [
+        {
+          "question_id": "CC-SLEEP-01",
+          "question": "How would you describe your sleep over the past few weeks?",
+          "response_type": "free_text",
+          "sensitivity": "low",
+          "therapist_review_required": false
+        }
+      ]
+    },
+    "cognitive_considerations": {
+      "purpose": "Understand if memory, attention, or processing differences should shape how questions/recommendations are delivered (pacing, repetition, simplification) -- not to screen for a cognitive disorder.",
+      "questions": [
+        {
+          "question_id": "CC-COG-01",
+          "question": "Is there anything about how you process information or remember things that we should keep in mind while working together?",
+          "response_type": "free_text_optional",
+          "sensitivity": "medium",
+          "therapist_review_required": false
+        }
+      ]
+    },
+    "known_music_sensitivities_or_triggers": {
+      "purpose": "Directly actionable for raga/music selection -- avoid recommending something the patient has flagged as distressing.",
+      "questions": [
+        {
+          "question_id": "CC-MUS-01",
+          "question": "Is there any type of music, sound, or instrument that you find distressing or would prefer to avoid?",
+          "response_type": "free_text_optional",
+          "sensitivity": "low",
+          "therapist_review_required": false,
+          "directly_usable_by": "raga_recommendation_safety_filter"
+        }
+      ]
+    },
+    "relevant_therapist_safety_considerations": {
+      "purpose": "Catch-all opt-in for anything the structured categories above didn't capture, always routed to a human.",
+      "questions": [
+        {
+          "question_id": "CC-SAFE-01",
+          "question": "Is there anything else about your health or circumstances that you think your therapist should know before we begin?",
+          "response_type": "free_text_optional",
+          "sensitivity": "high",
+          "therapist_review_required": true
+        }
+      ]
+    }
+  },
+  "governance_alignment": "Every question above is designed to be answerable as a fact ('yes, I have hearing loss') rather than a self-rated symptom scale ('how often do you feel anxious, 1-10') -- this is the structural difference from clinical_conditions_pending_review/. Consistent with Governance Rule 9 (never give medical advice) and Rule 10 (present as AI-assisted interpretation, not diagnosis): none of these answers should ever generate a diagnostic label. High-sensitivity answers (CC-DX-01, CC-MED-01, CC-NEURO-01, CC-SAFE-01) are flagged therapist_review_required and must not silently feed the automated chakra-scoring or raga-recommendation pipeline without a human in the loop.",
+  "recommendation_on_clinical_conditions_pending_review_folder": "Per the still-open README item 'Decide whether question_bank/clinical_conditions_pending_review/ ships at all': this pass's recommendation is NOT to ship it in its current form. Its condition-specific symptom-frequency questions ('how often do you have panic attacks') read as a screening instrument for named psychiatric diagnoses, which sits outside ANAHAT's stated non-diagnostic scope. If the product wants condition-aware context, this new clinical_context_questions.json file is the safer, narrower substitute. This is a recommendation, not an automatic deletion -- the old folder is left in place, unchanged, pending a product/clinical decision."
+}

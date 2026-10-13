@@ -1,0 +1,651 @@
+{
+  "_note": "Everyday-language cue words used ONLY to check that a patient's own words genuinely point at a KB indicator (app/engine/grounding.py). Keys are normalised KB terms. This is matching vocabulary, not a KB entry: it adds no indicator, no chakra mapping and no clinical meaning, and a hit never creates evidence by itself. A domain reviewer may extend it. Matching is by word stem, so 'worry' also covers 'worrying'. Entries added in the scoring-rules round are DRAFTS (status: draft_requires_domain_review): they widen recall for everyday wording and must be reviewed by a domain expert. Keep cues specific: a generic word here makes unrelated statements match.",
+  "insomnia": [
+    "sleep",
+    "asleep",
+    "awake",
+    "sleepless",
+    "sleeping",
+    "tossing and turning",
+    "wake up at night"
+  ],
+  "fatigue": [
+    "tired",
+    "tiredness",
+    "exhausted",
+    "exhaustion",
+    "drained",
+    "worn out",
+    "no energy",
+    "low energy"
+  ],
+  "chronic fatigue": [
+    "tired",
+    "exhausted",
+    "exhaustion",
+    "drained",
+    "no energy",
+    "low energy"
+  ],
+  "headaches": [
+    "headache",
+    "head hurts",
+    "head aches",
+    "head pain",
+    "head is pounding"
+  ],
+  "migraines": [
+    "migraine"
+  ],
+  "anxiety": [
+    "anxious",
+    "worry",
+    "worried",
+    "worrying",
+    "nervous",
+    "panic",
+    "on edge",
+    "uneasy"
+  ],
+  "stomach problems": [
+    "stomach",
+    "tummy",
+    "belly",
+    "abdomen",
+    "abdominal"
+  ],
+  "abdominal cramps": [
+    "cramp",
+    "cramps",
+    "stomach",
+    "abdomen",
+    "abdominal"
+  ],
+  "blood pressure high": [
+    "blood pressure",
+    "hypertension",
+    "bp"
+  ],
+  "overthinking": [
+    "overthink",
+    "think too much",
+    "racing thoughts",
+    "mind keeps going",
+    "cannot switch off",
+    "can't switch off"
+  ],
+  "suppressed expression": [
+    "bottle up",
+    "keep to myself",
+    "keep it inside",
+    "hold it in",
+    "keep my worries to myself",
+    "keep my feelings",
+    "do not share",
+    "don't share",
+    "hide my feelings"
+  ],
+  "issues expressing emotions": [
+    "express",
+    "bottle up",
+    "keep to myself",
+    "keep it inside",
+    "hold it in",
+    "hide my feelings"
+  ],
+  "silence not speaking up": [
+    "stay quiet",
+    "stay silent",
+    "do not speak up",
+    "don't speak up",
+    "keep quiet",
+    "say nothing"
+  ],
+  "secretive withholding information": [
+    "keep to myself",
+    "hide",
+    "do not tell",
+    "don't tell",
+    "keep it secret"
+  ],
+  "anger": [
+    "angry",
+    "anger",
+    "furious",
+    "rage",
+    "irritated",
+    "irritable",
+    "annoyed",
+    "short tempered",
+    "lose my temper"
+  ],
+  "emotional withdrawal": [
+    "withdraw",
+    "withdrawn",
+    "alone",
+    "isolate",
+    "shut down",
+    "do not feel like talking",
+    "don't feel like talking",
+    "go to my room"
+  ],
+  "overworking": [
+    "overwork",
+    "work too much",
+    "long hours",
+    "cannot stop working",
+    "can't stop working",
+    "work all the time"
+  ],
+  "loneliness social isolation": [
+    "lonely",
+    "loneliness",
+    "alone",
+    "no one to talk to",
+    "isolated"
+  ],
+  "grief": [
+    "grief",
+    "grieving",
+    "lost someone",
+    "bereaved",
+    "passed away",
+    "mourning"
+  ],
+  "fear": [
+    "afraid",
+    "scared",
+    "fear",
+    "frightened",
+    "terrified"
+  ],
+  "not confident low self confidence": [
+    "confidence",
+    "self doubt",
+    "not good enough",
+    "doubt myself",
+    "insecure"
+  ],
+  "nausea": [
+    "nauseous",
+    "nausea",
+    "feel sick",
+    "queasy",
+    "vomit"
+  ],
+  "dizziness": [
+    "dizzy",
+    "lightheaded",
+    "light headed",
+    "spinning"
+  ],
+  "shortness of breath": [
+    "breathless",
+    "cannot breathe",
+    "can't breathe",
+    "out of breath",
+    "short of breath"
+  ],
+  "breath shortness": [
+    "breathless",
+    "cannot breathe",
+    "can't breathe",
+    "out of breath",
+    "short of breath"
+  ],
+  "heart problems general": [
+    "heart",
+    "palpitation",
+    "palpitations",
+    "chest tight",
+    "chest pain"
+  ],
+  "indigestion": [
+    "indigestion",
+    "acidity",
+    "bloated",
+    "bloating",
+    "heavy after eating"
+  ],
+  "constipation": [
+    "constipated",
+    "constipation"
+  ],
+  "diarrhea": [
+    "diarrhoea",
+    "diarrhea",
+    "loose motions"
+  ],
+  "depression": [
+    "depressed",
+    "hopeless",
+    "low mood"
+  ],
+  "dejected pessimistic": [
+    "hopeless",
+    "pessimistic",
+    "nothing will",
+    "no point",
+    "dejected"
+  ],
+  "guilt": [
+    "guilty",
+    "guilt",
+    "regret",
+    "regrets",
+    "remorse",
+    "blame myself",
+    "blaming myself",
+    "my fault"
+  ],
+  "shame": [
+    "ashamed",
+    "shame",
+    "humiliated",
+    "embarrassed",
+    "embarrassment",
+    "worthless"
+  ],
+  "jealousy": [
+    "jealous",
+    "envy",
+    "envious",
+    "resent",
+    "resentful",
+    "resentment"
+  ],
+  "confusion": [
+    "confused",
+    "confusing",
+    "unclear",
+    "muddled",
+    "bewildered",
+    "disoriented",
+    "cant decide",
+    "unsure what to do",
+    "lost and confused"
+  ],
+  "meaninglessness": [
+    "pointless",
+    "meaningless",
+    "no purpose",
+    "purposeless",
+    "empty inside",
+    "what is the point",
+    "no point",
+    "nothing matters",
+    "lost my purpose"
+  ],
+  "feeling unheard not understood": [
+    "unheard",
+    "not heard",
+    "nobody listens",
+    "no one listens",
+    "dont listen",
+    "not listened",
+    "ignored",
+    "dismissed",
+    "not taken seriously"
+  ],
+  "loss of control": [
+    "out of control",
+    "lose control",
+    "losing control",
+    "lost control",
+    "helpless",
+    "powerless",
+    "cant cope",
+    "cannot cope"
+  ],
+  "dissatisfaction unfulfilled potential": [
+    "dissatisfied",
+    "unfulfilled",
+    "unsatisfied",
+    "wasted potential",
+    "not living up",
+    "stuck in life",
+    "stagnant",
+    "settling"
+  ],
+  "avoidance": [
+    "avoid",
+    "avoiding",
+    "avoidance",
+    "run away from",
+    "escape from",
+    "put off",
+    "procrastinate",
+    "procrastinating",
+    "shy away"
+  ],
+  "addiction": [
+    "addicted",
+    "addiction",
+    "cant stop drinking",
+    "cant stop smoking",
+    "hooked",
+    "substance",
+    "craving",
+    "cravings",
+    "dependent on"
+  ],
+  "passivity": [
+    "passive",
+    "go along",
+    "just accept",
+    "let things happen",
+    "dont take initiative",
+    "no initiative",
+    "give in",
+    "resign myself"
+  ],
+  "people pleasing": [
+    "people pleaser",
+    "please everyone",
+    "please others",
+    "cant say no",
+    "unable to say no",
+    "keep everyone happy",
+    "put others first"
+  ],
+  "feeling misunderstood": [
+    "misunderstood",
+    "misunderstand",
+    "dont understand me",
+    "no one understands",
+    "nobody understands",
+    "get me wrong"
+  ],
+  "feeling isolated": [
+    "isolated",
+    "isolate myself",
+    "cut off",
+    "alone",
+    "left out",
+    "shut myself away"
+  ],
+  "cannot sustain interest": [
+    "lose interest",
+    "lost interest",
+    "cant stick",
+    "bored quickly",
+    "start things and drop",
+    "leave things half",
+    "dont finish",
+    "give up quickly"
+  ],
+  "dishonesty lying": [
+    "lie",
+    "lying",
+    "lied",
+    "dishonest",
+    "cover up",
+    "make up stories",
+    "hide the truth"
+  ],
+  "obsessive thinking": [
+    "obsess",
+    "obsessing",
+    "obsessive",
+    "cant stop thinking",
+    "same thought",
+    "thoughts loop",
+    "intrusive thoughts",
+    "stuck in my head",
+    "ruminate",
+    "ruminating"
+  ],
+  "dissociation": [
+    "dissociate",
+    "dissociation",
+    "numb",
+    "detached",
+    "spaced out",
+    "zone out",
+    "zoning out",
+    "not real",
+    "out of body",
+    "disconnected from myself"
+  ],
+  "attention deficit lack of focus": [
+    "focus",
+    "concentrate",
+    "concentration",
+    "distracted",
+    "distraction",
+    "mind wanders",
+    "cant stay on task",
+    "scattered"
+  ],
+  "apathy": [
+    "apathetic",
+    "dont care",
+    "no motivation",
+    "unmotivated",
+    "indifferent",
+    "no interest in anything",
+    "lack of motivation"
+  ],
+  "alcoholism": [
+    "drink too much",
+    "drinking too much",
+    "alcohol",
+    "drunk",
+    "cant stop drinking"
+  ],
+  "anorexia": [
+    "not eating",
+    "refuse to eat",
+    "afraid of gaining weight",
+    "starving myself",
+    "skip meals"
+  ],
+  "asthma": [
+    "wheeze",
+    "wheezing",
+    "asthmatic",
+    "inhaler"
+  ],
+  "bedwetting": [
+    "wet the bed",
+    "wetting the bed",
+    "wet my bed"
+  ],
+  "incontinence": [
+    "leak urine",
+    "leaking urine",
+    "lose bladder control",
+    "cant hold urine"
+  ],
+  "blood pressure low": [
+    "low blood pressure",
+    "low bp",
+    "bp is low"
+  ],
+  "chills": [
+    "chills",
+    "shivering",
+    "shiver",
+    "feel cold and shaky"
+  ],
+  "fevers": [
+    "fever",
+    "feverish",
+    "high temperature"
+  ],
+  "hyperventilation": [
+    "hyperventilate",
+    "hyperventilating",
+    "breathing too fast",
+    "fast breathing",
+    "gasping"
+  ],
+  "itching": [
+    "itchy",
+    "itch",
+    "itching",
+    "scratching"
+  ],
+  "skin problems": [
+    "rash",
+    "acne",
+    "pimples",
+    "breakout",
+    "breakouts",
+    "dry skin",
+    "skin irritation"
+  ],
+  "obesity": [
+    "overweight",
+    "weight gain",
+    "gained weight",
+    "obese"
+  ],
+  "menstrual problems": [
+    "periods",
+    "menstrual",
+    "menstruation",
+    "irregular cycle",
+    "painful periods"
+  ],
+  "stuttering": [
+    "stutter",
+    "stammer",
+    "stammering",
+    "stuttering"
+  ],
+  "heartburn": [
+    "acid reflux",
+    "reflux",
+    "acidity",
+    "burning in chest",
+    "burning chest"
+  ],
+  "gas pains": [
+    "gas",
+    "bloating",
+    "bloated",
+    "flatulence",
+    "trapped wind"
+  ],
+  "colds": [
+    "cold",
+    "sneezing",
+    "runny nose",
+    "blocked nose",
+    "sniffles"
+  ],
+  "hay fever": [
+    "pollen",
+    "hayfever",
+    "seasonal allergy",
+    "sneezing fits"
+  ],
+  "impotence": [
+    "erectile",
+    "erection",
+    "cant perform"
+  ],
+  "sterility": [
+    "infertile",
+    "infertility",
+    "cant conceive",
+    "unable to conceive"
+  ],
+  "jaw problems": [
+    "clench",
+    "clenching",
+    "grinding teeth",
+    "teeth grinding",
+    "jaw pain",
+    "jaw tension",
+    "tmj"
+  ],
+  "neck problems": [
+    "stiff neck",
+    "neck pain",
+    "neck tension",
+    "neck stiffness"
+  ],
+  "lump in throat": [
+    "lump in my throat",
+    "throat feels tight",
+    "tight throat",
+    "choking feeling",
+    "something stuck in throat"
+  ],
+  "hip problems": [
+    "hip pain",
+    "hips hurt",
+    "sore hips"
+  ],
+  "knee problems": [
+    "knee pain",
+    "knees hurt",
+    "sore knees"
+  ],
+  "sciatica": [
+    "sciatic",
+    "pain down my leg",
+    "shooting leg pain"
+  ],
+  "paralysis": [
+    "paralysed",
+    "paralyzed",
+    "cant move",
+    "unable to move"
+  ],
+  "eczema": [
+    "eczema",
+    "dry itchy skin",
+    "skin flare"
+  ],
+  "hives": [
+    "hives",
+    "welts",
+    "raised itchy bumps"
+  ],
+  "edema": [
+    "swelling",
+    "swollen",
+    "puffy",
+    "water retention"
+  ],
+  "diabetes": [
+    "sugar level",
+    "blood sugar",
+    "diabetic"
+  ],
+  "arthritis": [
+    "joint pain",
+    "stiff joints",
+    "swollen joints",
+    "arthritic"
+  ],
+  "candida": [
+    "yeast infection",
+    "thrush"
+  ],
+  "urinary infections": [
+    "uti",
+    "burning urination",
+    "burning when i pee",
+    "frequent urination"
+  ],
+  "bladder problems": [
+    "bladder",
+    "frequent urge to urinate",
+    "overactive bladder"
+  ],
+  "gum problems": [
+    "bleeding gums",
+    "gum pain",
+    "gums bleed",
+    "sore gums"
+  ],
+  "allergies food": [
+    "food allergy",
+    "allergic to food",
+    "allergic reaction to food"
+  ]
+}
